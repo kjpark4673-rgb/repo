@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 14 실습 보드 · 라라스윗</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#191f28;--sub:#6b7684;--blue:#3182f6;--blue-bg:#e8f3ff;--red:#f04452;--line:#e5e8eb;--ok:#03b26c}
+@media (prefers-color-scheme:dark){:root{--bg:#101114;--card:#1c1d22;--ink:#f2f4f6;--sub:#9aa3af;--blue:#4593fc;--blue-bg:#1b2b42;--line:#2c2e35;--red:#ff6b77;--ok:#2fd18c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",sans-serif;line-height:1.55}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;padding:10px 16px;overflow-x:auto}
+nav a{flex:none;color:var(--sub);text-decoration:none;font-weight:600;padding:8px 14px;border-radius:999px;font-size:15px}
+nav a.on{background:var(--ink);color:var(--bg)}
+main{max-width:1080px;margin:0 auto;padding:0 16px 120px}
+section{min-height:80vh;padding:56px 0 24px;scroll-margin-top:56px}
+.tag{display:inline-block;background:var(--blue-bg);color:var(--blue);font-weight:700;border-radius:8px;padding:4px 10px;font-size:14px}
+h1{font-size:clamp(30px,5vw,56px);line-height:1.25;margin:14px 0 12px;letter-spacing:-.02em}
+h2{font-size:clamp(24px,3.6vw,40px);margin:12px 0 18px;letter-spacing:-.02em}
+p.lead{font-size:clamp(17px,2vw,24px);color:var(--sub);margin:0 0 24px}
+.card{background:var(--card);border-radius:20px;padding:24px;margin:14px 0;border:1px solid var(--line)}
+.card h3{margin:0 0 8px;font-size:20px}
+.rule{border-left:6px solid var(--red)}
+.rule b{color:var(--red)}
+ul{margin:8px 0 0;padding-left:22px}li{margin:6px 0}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.copy{position:relative;background:var(--card);border:2px dashed var(--blue);border-radius:20px;padding:22px 22px 22px;margin:14px 0;cursor:pointer;transition:.15s}
+.copy:hover{background:var(--blue-bg)}
+.copy:focus-visible{outline:3px solid var(--blue)}
+.copy .hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
+.copy .hd b{font-size:18px}
+.copy .btn{background:var(--blue);color:#fff;border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+.copy.done{border-style:solid;border-color:var(--ok)}
+.copy.done .btn{background:var(--ok)}
+.copy pre{margin:0;white-space:pre-wrap;word-break:keep-all;font:inherit;font-size:clamp(15px,1.6vw,19px)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:16px;overflow:hidden;font-size:clamp(14px,1.5vw,18px)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--blue-bg);color:var(--blue)}
+td.t{white-space:nowrap;font-weight:700}
+.now{background:var(--blue-bg)}
+.note{color:var(--sub);font-size:15px}
+.big{font-size:clamp(20px,2.6vw,32px);font-weight:800}
+.tools{position:fixed;right:16px;bottom:16px;display:flex;gap:8px;z-index:6}
+.tools button{border:0;background:var(--ink);color:var(--bg);font-weight:700;border-radius:999px;padding:12px 18px;font-size:15px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:76px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:12px;font-weight:700;opacity:0;pointer-events:none;transition:.2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="#s0">미션</a><a href="#s1">오늘의 사례</a><a href="#s2">Step 1</a><a href="#s3">Step 2</a><a href="#s4">시간표</a><a href="#s5">제출</a>
+</nav>
+<main>
+
+<section id="s0">
+  <span class="tag">11/12(목) · Day 14</span>
+  <h1>고민 금지!<br>스킬 하나로 3개 산업 돌리기</h1>
+  <p class="lead">오늘 만드는 SKILL.md는 <b>만능 붕어빵 틀</b>입니다. 틀은 고정, 반죽(브랜드)만 바꿔 끼웁니다.</p>
+  <div class="card rule"><h3>❌ 오늘의 절대 규칙</h3><div class="big"><b>어느 회사 할지 고민하는 시간 0초</b></div>
+    <ul><li>입사할 회사를 못 정했어도 괜찮습니다.</li><li>오전 전원 <b>라라스윗</b> 하나로 통일합니다.</li><li>오후에 같은 틀에 반죽만 바꿔 ① 릴스 ② 팝업 ③ 여행이 나오는 걸 직접 확인합니다.</li></ul></div>
+  <div class="grid">
+    <div class="card"><h3>🍞 비유</h3>붕어빵 틀(SKILL.md)은 그대로, 팥·슈크림(브랜드)만 바꿉니다. 틀이 좋으면 반죽은 1분이면 됩니다.</div>
+    <div class="card"><h3>🔁 오늘의 흐름</h3>퍼소나(누구) → 고객여정(언제·어디서·왜) → 스위치 A·B·C</div>
+    <div class="card"><h3>📌 내일 예고</h3>밸류체인·매출 공식(트래픽×전환율×객단가) + 공격팀/보강팀</div>
+  </div>
+</section>
+
+<section id="s1">
+  <span class="tag">전원 공통 사례</span>
+  <h2>라라스윗 × 저당 디저트 2534</h2>
+  <div class="grid">
+    <div class="card"><h3>브랜드·아이템</h3>라라스윗 저당 아이스크림 파인트</div>
+    <div class="card"><h3>타겟 상황</h3>다이어트·건강관리 중인 2534 여성. 야근·운동 후 밤 10시, 릴스를 보며 <b>죄책감 없는 디저트</b>를 찾는다.</div>
+    <div class="card"><h3>핵심 갈등(가설)</h3>맛있는 건 죄책감, 죄책감 없는 건 맛이 없다.</div>
+  </div>
+  <div class="card"><h3>⚠️ 데이터 규칙</h3>제품 스펙·가격·수치·후기는 <b>지어내지 않습니다.</b> 모르면 <code>[실데이터 입력]</code>으로 두고, 공식몰·마켓 후기에서 직접 채웁니다.</div>
+  <div class="card"><h3>💡 사례를 바꾸려면?</h3>Step 1 프롬프트의 <b>[브랜드]</b> 줄만 바꾸면 됩니다. (예: 아렌시아, 제로이드)</div>
+</section>
+
+<section id="s2">
+  <span class="tag">오전 · 10:00</span>
+  <h2>Step 1 · 마스터 스킬 만들기</h2>
+  <p class="lead">아래 박스를 <b>클릭하면 복사</b>됩니다. Claude Code에 붙여넣으세요.</p>
+  <div class="copy" tabindex="0" role="button" data-copy="p1">
+    <div class="hd"><b>📋 퍼소나 + CJM 통합 스킬 생성 프롬프트</b><span class="btn">클릭해서 복사</span></div>
+<pre id="p1">내 작업 폴더에 어떤 산업(뷰티 영상, 오프라인 팝업/전시, 여행·웰니스 상품 기획)에도 재사용할 수 있는 마스터 스킬 파일 `SKILL.md`를 만들어줘.
+
+[SKILL.md 필수 구조]
+1. 입력 슬롯: BRAND / ITEM / TARGET / SITUATION (반죽만 갈아끼우는 구조)
+2. 타겟 퍼소나 딥다이브 (5-Whys 결핍 분석)
+   - 인구통계 말고, 타겟의 '진짜 짜증 나는 일상 속 순간(Trigger)'을 5번의 Why로 파고들어 정의
+   - 마지막에 "이 사람은 ___ 하고 싶은데 ___ 때문에 못 한다" 한 줄로 요약
+3. 6단계 고객여정지도(CJM)
+   [1 문제 자각] → [2 릴스/검색 탐색] → [3 경쟁사 비교 &amp; 의심(이탈 구간)] → [4 결정적 구매 트리거(간증/근거)] → [5 첫 사용/현장 경험] → [6 자발적 바이럴/재구매]
+   - 각 단계를 표로: 고객의 속마음 대사 / 이탈하는 이유 / 마케터·기획자가 던질 훅 카피
+4. 산업별 출력 스위치
+   - 모드 A: 15초 릴스/숏폼 영상 에이전트
+   - 모드 B: 오프라인 팝업/전시 공간 기획 에이전트
+   - 모드 C: 여행사 테마 투어 기획 에이전트
+   - 내가 모드를 부르면 퍼소나와 CJM을 근거로 해당 기획서를 HTML 웹페이지로 출력
+5. 규칙: 스펙·가격·수치·후기는 지어내지 말고 모르면 [실데이터 입력]으로 남길 것
+
+[오늘의 공통 사례]
+- BRAND: 라라스윗
+- ITEM: 저당 아이스크림 파인트
+- TARGET: 다이어트·건강관리 중이지만 밤마다 디저트가 당기는 2534 여성 직장인
+- SITUATION: 야근·운동 후 밤 10시, 인스타 릴스를 보며 죄책감 없는 디저트를 찾는 순간
+
+먼저 SKILL.md를 만들고, 위 사례로 퍼소나(5-Whys)와 6단계 CJM 표를 도출해줘.</pre>
+  </div>
+  <div class="card"><h3>✅ 성공 기준 (10:50까지)</h3><ul><li>폴더에 <code>SKILL.md</code>가 생겼다</li><li>5-Whys 5단계가 이어져 있고, 마지막이 <b>감정 수준</b>이다</li><li>CJM 표가 6행 × 3열로 채워졌다</li><li><code>[실데이터 입력]</code> 칸을 최소 3곳 실제 출처로 채웠다</li></ul></div>
+</section>
+
+<section id="s3">
+  <span class="tag">오전 11:00 ~ 13:00</span>
+  <h2>Step 2 · 반죽만 바꿔 3개 산업 뽑기</h2>
+  <p class="lead">SKILL.md는 그대로 둔 채, 번호 하나(또는 전부)를 복사해 입력하세요.</p>
+  <div class="copy" tabindex="0" role="button" data-copy="p2">
+    <div class="hd"><b>🎬 스위치 1 · 모드 A 영상 (콘텐츠 마케터·릴스 PD)</b><span class="btn">클릭해서 복사</span></div>
+<pre id="p2">방금 분석한 퍼소나와 CJM(특히 1단계 짜증 모먼트와 3단계 의심 구간)을 근거로 [모드 A: 15초 인스타 릴스/쇼츠 영상 제작 기획안]을 HTML로 뽑아줘.
+첫 3초 비주얼 훅, 나레이션 대본, 컷별 화면 구성표(초/화면/자막/사운드), 생성형 AI에 바로 넣을 이미지·영상 프롬프트까지 세트로. 근거 없이 쓴 문장은 마지막에 목록으로 표시해줘.</pre>
+  </div>
+  <div class="copy" tabindex="0" role="button" data-copy="p3">
+    <div class="hd"><b>🎪 스위치 2 · 모드 B 팝업 (백화점·전시·이벤트)</b><span class="btn">클릭해서 복사</span></div>
+<pre id="p3">방금 분석한 퍼소나와 CJM을 근거로 [모드 B: 성수동 오프라인 팝업스토어 공간 동선 기획안]을 HTML 제안서로 뽑아줘.
+입구에서 발걸음을 멈추는 포토존(1단계) → 직접 맛보며 의심을 깨는 시식·체험존(3단계) → 현장 구매 및 인스타 스토리 인증 이벤트(6단계) 동선, 존별 CJM 단계 매핑, 현장 스태프 응대 매뉴얼(의심 질문 Q&amp;A)을 포함해줘.</pre>
+  </div>
+  <div class="copy" tabindex="0" role="button" data-copy="p4">
+    <div class="hd"><b>✈️ 스위치 3 · 모드 C 여행·웰니스 (여행·로컬·서비스)</b><span class="btn">클릭해서 복사</span></div>
+<pre id="p4">SKILL.md의 틀은 그대로 유지하고 입력 대상만 [주말에 도심을 떠나 힐링·웰니스를 찾는 2534 직장인 대상 1박 2일 로컬 웰니스 투어 패키지, 라라스윗 '죄책감 없는 디저트 보상' 콘셉트 결합]으로 바꿔서 [모드 C: 여행사 상품 기획 &amp; 모객 랜딩 제안서]를 HTML로 뽑아줘.
+예약 전 망설이는 포인트와 해소책, 시간대별 투어 코스, 인스타그래머블 스팟을 포함해줘.</pre>
+  </div>
+  <div class="card"><h3>👀 관찰 포인트</h3>세 결과물에서 <b>같은 것</b>(퍼소나·결핍·훅 카피의 뼈대)과 <b>다른 것</b>(포맷·동선·코스)을 각각 한 줄로 적어보세요.</div>
+</section>
+
+<section id="s4">
+  <span class="tag">오늘 시간표</span>
+  <h2>1시간 단위 마이크로 루프</h2>
+  <table id="tt">
+    <tr><th>시간</th><th>내용</th></tr>
+    <tr data-s="9" data-e="10"><td class="t">09:00–10:00</td><td><b>오프닝</b> · 선택 장애 제거 선언, 퍼소나+CJM이 한 세트인 이유</td></tr>
+    <tr data-s="10" data-e="11"><td class="t">10:00–11:00</td><td><b>실습 1</b> · Step 1 프롬프트로 SKILL.md 생성</td></tr>
+    <tr data-s="11" data-e="12"><td class="t">11:00–12:00</td><td><b>실습 2</b> · 스위치 1(영상)·2(팝업) 가동, 라이브 비교</td></tr>
+    <tr data-s="12" data-e="13"><td class="t">12:00–13:00</td><td><b>실습 3</b> · 스위치 3(여행) + 오전 결과물 HTML 렌더링·제출</td></tr>
+    <tr data-s="13" data-e="14"><td class="t">13:00–14:00</td><td>점심</td></tr>
+    <tr data-s="14" data-e="16"><td class="t">14:00–16:00</td><td><b>트랙별 적용</b> · 아래 3개 중 1개 선택해 본인 SKILL.md 가동</td></tr>
+    <tr data-s="16" data-e="18"><td class="t">16:00–18:00</td><td><b>1:1 클리닉</b> · 스위치보드 아키텍처 다이어그램(HTML) 제작·제출</td></tr>
+  </table>
+  <div class="grid" style="margin-top:14px">
+    <div class="card"><h3>🎬 영상/뷰티 트랙</h3>휩드 또는 아렌시아 15초 릴스 &amp; 커버 계정 자동화</div>
+    <div class="card"><h3>🎪 오프라인/전시 트랙</h3>현대프리미엄아울렛 대전점 / 성수 팝업 공간·프로모션</div>
+    <div class="card"><h3>✈️ 여행/푸드/웰니스 트랙</h3>라라스윗 / 로컬 웰니스 투어 패키지 &amp; 모객 캠페인</div>
+  </div>
+  <p class="note">현재 시각에 맞춰 해당 행이 자동 강조됩니다.</p>
+</section>
+
+<section id="s5">
+  <span class="tag">퇴실 전</span>
+  <h2>제출 체크리스트</h2>
+  <div class="card"><ul>
+    <li>☐ <code>SKILL.md</code> (퍼소나 5-Whys + CJM 6단계 + 모드 A·B·C)</li>
+    <li>☐ 모드 A·B·C 중 최소 2개의 HTML 기획서</li>
+    <li>☐ 스위치보드 아키텍처 다이어그램 1장 (퍼소나 → CJM → A/B/C)</li>
+    <li>☐ <code>[실데이터 입력]</code> 3곳 이상 출처 표기</li>
+    <li>☐ 개인 실습 시트에 링크 제출</li>
+  </ul></div>
+  <div class="card"><h3>🛠 막혔을 때</h3><ul><li>결과가 엉뚱함 → CJM 3단계(의심)부터 다시 읽고 "근거 없이 쓴 문장" 목록 확인</li><li>수치가 의심스러움 → 출처 요구: "이 숫자의 출처를 링크로 달아줘, 없으면 [실데이터 입력]"</li></ul></div>
+</section>
+
+</main>
+
+<div class="tools"><button id="fs">전체화면</button><button id="top">맨 위로</button></div>
+<div class="toast" id="toast">복사됨! Claude Code에 붙여넣기</div>
+
+<script>
+(function(){
+  var toast=document.getElementById('toast'),tm;
+  function show(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove('show')},1600)}
+  function fallbackCopy(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);return ok}
+  function copy(box){
+    var t=document.getElementById(box.dataset.copy).innerText;
+    var done=function(ok){
+      if(ok){box.classList.add('done');box.querySelector('.btn').textContent='복사 완료 ✓';show('복사됨! Claude Code에 붙여넣기');
+        setTimeout(function(){box.classList.remove('done');box.querySelector('.btn').textContent='클릭해서 복사'},2500)}
+      else show('복사 실패 — 텍스트를 직접 선택해 주세요')};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},function(){done(fallbackCopy(t))})}
+    else done(fallbackCopy(t));
+  }
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){copy(b)});
+    b.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();copy(b)}});
+  });
+  // nav highlight
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=secs.indexOf(e.target);links.forEach(function(l,j){l.classList.toggle('on',i===j)})}})},{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(function(s){io.observe(s)});
+  // keyboard: arrows jump between sections
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+    var y=window.scrollY+80,i=0;secs.forEach(function(s,j){if(s.offsetTop<=y)i=j});
+    var n=Math.max(0,Math.min(secs.length-1,i+(e.key==='ArrowRight'?1:-1)));
+    secs[n].scrollIntoView({behavior:'smooth'});
+  });
+  // highlight current time row
+  var h=new Date().getHours();
+  document.querySelectorAll('#tt tr[data-s]').forEach(function(r){if(h>=+r.dataset.s&&h<+r.dataset.e)r.classList.add('now')});
+  // tools
+  document.getElementById('top').onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+  document.getElementById('fs').onclick=function(){try{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen()}catch(e){}};
+})();
+</script>
+</body>
+</html>
