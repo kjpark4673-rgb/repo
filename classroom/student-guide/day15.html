@@ -1,0 +1,865 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>라라스윗 경쟁 분석 가이드</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+/* 레이아웃: 시간표 순서대로 내려가는 한 줄 가이드. 구간마다 짧은 강의 → 복사 박스 → 성공 체크 */
+:root{--bg:#f2f4f6;--card:#ffffff;--ink:#191f28;--sub:#6b7684;--blue:#3182f6;--blue-ink:#ffffff;--blue-soft:#e8f3ff;--line:#e5e8eb;--red:#f04452;--red-soft:#ffeeee;--ok:#03b26c;--ok-soft:#e6f8f0;--warn:#e69a00;--warn-soft:#fff6e0;--code:#f2f4f6;--tech:#6b4de6;--tech-ink:#ffffff;--tech-soft:#f0ecff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171c;--card:#202027;--ink:#f2f4f6;--sub:#a1a9b4;--blue:#4593fc;--blue-ink:#0b1220;--blue-soft:#1c2b42;--line:#2e2e36;--red:#ff6b77;--red-soft:#3a2024;--ok:#2fd18c;--ok-soft:#14302a;--warn:#f5b73b;--warn-soft:#352b14;--code:#2a2a33;--tech:#a391ff;--tech-ink:#140d33;--tech-soft:#27223d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17171c;--card:#202027;--ink:#f2f4f6;--sub:#a1a9b4;--blue:#4593fc;--blue-ink:#0b1220;--blue-soft:#1c2b42;--line:#2e2e36;--red:#ff6b77;--red-soft:#3a2024;--ok:#2fd18c;--ok-soft:#14302a;--warn:#f5b73b;--warn-soft:#352b14;--code:#2a2a33;--tech:#a391ff;--tech-ink:#140d33;--tech-soft:#27223d;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:22px;line-height:1.65;padding-block:0 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));word-break:keep-all;overflow-wrap:break-word}
+@media(max-width:600px){body{font-size:20px}}
+.wrap{max-width:860px;margin:0 auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;color:var(--sub);font-weight:700;font-size:18px;padding:10px 18px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+nav a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+section{padding:72px 0 8px;scroll-margin-top:72px}
+.eyebrow{display:inline-block;color:var(--blue);background:var(--blue-soft);font-weight:800;font-size:18px;border-radius:10px;padding:6px 14px}
+h1{font-size:clamp(38px,7vw,68px);line-height:1.25;font-weight:800;letter-spacing:-0.03em;margin:20px 0 16px;text-wrap:balance}
+h2{font-size:clamp(32px,5vw,50px);line-height:1.3;font-weight:800;letter-spacing:-0.02em;margin:16px 0 28px;text-wrap:balance}
+h3{font-size:clamp(24px,3.2vw,30px);line-height:1.4;font-weight:800;margin:0 0 10px}
+h3.gap{margin-top:40px}
+p{margin:0 0 12px}
+a{color:var(--blue)}
+.lead{font-size:clamp(22px,3vw,28px);color:var(--sub);line-height:1.6;margin-bottom:28px}
+.sub{color:var(--sub)}
+.card{background:var(--card);border-radius:24px;padding:32px;margin:0 0 16px}
+.card.blue{background:var(--blue);color:var(--blue-ink)}
+.card.blue .sub,.card.blue h3{color:var(--blue-ink)}
+.card.soft{background:var(--blue-soft)}
+.card.warn{background:var(--warn-soft)}
+.card.red{background:var(--red-soft)}
+.card.ok{background:var(--ok-soft)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-bottom:16px}
+.grid .card{margin:0;min-width:0}
+.big{font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.4}
+.num{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--blue);color:var(--blue-ink);font-weight:800;font-size:22px;margin-bottom:12px}
+ul,ol{margin:8px 0 0;padding-left:1.2em}li{margin:8px 0}
+.copy{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);border:2px solid var(--blue);border-radius:24px;padding:28px;margin:0 0 16px;cursor:pointer;transition:background .15s}
+.copy:hover{background:var(--blue-soft)}
+.copy:focus-visible,nav a:focus-visible,summary:focus-visible,button:focus-visible,a.link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.copy .hd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.copy .hd b{font-size:24px;font-weight:800;min-width:0}
+.copy .btn{background:var(--blue);color:var(--blue-ink);border-radius:999px;padding:8px 20px;font-weight:800;font-size:18px;white-space:nowrap}
+.copy pre{margin:0;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font:inherit;font-size:20px;line-height:1.65;background:var(--code);border-radius:16px;padding:20px}
+.copy.done{border-color:var(--ok)}
+.copy.done .btn{background:var(--ok)}
+.tech{background:var(--tech-soft);border-radius:28px;padding:28px 20px 12px;margin:32px 0 16px}
+.tech>.tag{display:inline-block;background:var(--tech);color:var(--tech-ink);font-weight:800;font-size:18px;border-radius:10px;padding:6px 14px;margin:0 8px 12px}
+.tech>p{margin:0 8px 16px}
+.tech .copy{border-color:var(--tech)}
+.tech .copy:hover{background:var(--card)}
+.tech .copy .btn{background:var(--tech);color:var(--tech-ink)}
+.tech .copy.done{border-color:var(--ok)}
+.tech .copy.done .btn{background:var(--ok)}
+.tablewrap{overflow-x:auto;margin:0 0 16px;border-radius:24px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:20px;min-width:560px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:18px 22px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--blue);font-weight:800;background:var(--blue-soft)}
+tr:last-child td{border-bottom:0}
+.check{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check:last-child{border-bottom:0}
+.check input{width:32px;height:32px;flex:none;margin:2px 0 0;accent-color:var(--blue)}
+.check span{flex:1;min-width:0}
+.check input:checked + span{color:var(--sub);text-decoration:line-through}
+.progress{height:12px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0 20px}
+.progress i{display:block;height:100%;width:0;background:var(--blue);transition:width .3s}
+details{background:var(--card);border-radius:20px;margin:0 0 12px;padding:0 28px}
+summary{cursor:pointer;font-weight:800;font-size:24px;padding:24px 0;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--blue);font-size:32px;line-height:1}
+details[open] summary::after{content:"–"}
+details .body{padding:0 0 24px;color:var(--sub)}
+details .body b{color:var(--ink)}
+.signal{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));margin-bottom:16px}
+.signal .card{margin:0;border-top:12px solid var(--line)}
+.sg{border-top-color:var(--ok)!important}.sy{border-top-color:var(--warn)!important}.sr{border-top-color:var(--red)!important}
+.flow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));margin-bottom:16px}
+.flow .card{margin:0;padding:24px;min-width:0}
+.flow .tag{color:var(--blue);font-weight:800;font-size:18px}
+.tree{font-family:'Courier New',monospace;font-size:19px;line-height:1.8;background:var(--code);border-radius:16px;padding:20px;overflow-x:auto;white-space:pre;margin:0}
+.pill{display:inline-block;background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:4px 14px;font-weight:800;font-size:18px;margin-right:6px}
+.pill.as{background:var(--warn-soft);color:var(--warn)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
+a.link{display:inline-block;text-decoration:none;background:var(--card);border:1px solid var(--line);color:var(--ink);font-weight:800;font-size:19px;border-radius:999px;padding:12px 22px}
+a.link::after{content:" ↗";color:var(--blue)}
+.formula{font-size:clamp(22px,3.4vw,32px);font-weight:800;line-height:1.5}
+.theme{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:25;border:0;background:var(--ink);color:var(--bg);font:inherit;font-weight:800;font-size:17px;padding:14px 22px;border-radius:999px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:14px 24px;border-radius:14px;font-weight:700;font-size:19px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:90%;text-align:center}
+.toast.show{opacity:1}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+<nav id="nav" aria-label="구간 이동">
+<a href="#s0">오늘</a><a href="#s1">용어</a><a href="#s2">준비</a><a href="#s3">실습 1</a><a href="#s4">실습 2</a><a href="#s5">실습 3</a><a href="#s6">오전 정리</a><a href="#s7">숫자</a><a href="#s8">공격·보강</a><a href="#s9">산출물</a><a href="#s10">마무리</a><a href="#s11">막히면</a><a href="#s12">일하는 법</a>
+</nav>
+
+<section id="s0">
+<span class="eyebrow">11/13(금) · Day 15 · 09:00–09:30</span>
+<h1>잘 파는 브랜드를 뜯어보면,<br>내가 만들 것이 보여요</h1>
+<p class="lead">오늘의 질문은 하나예요. <b>우리 소재가 이길 자리는 어디이고, 그 자리를 잡으면 숫자가 얼마나 달라질까?</b></p>
+<div class="card blue"><div class="big">오늘은 고를 게 없어요</div><p style="margin-top:10px">회사는 전원 <b>라라스윗</b>. 순서는 이 페이지 그대로. 위에서 아래로 내려가면 저녁 6시에 결과물이 남아요.</p></div>
+
+<h3 class="gap">아직 뭘 해야 할지 안 잡혔다면, 이 카드부터 읽어요</h3>
+<div class="card red">
+<ul>
+<li>오늘은 52일 중 <b>15일째</b>예요. 4분의 1이 넘게 지났어요.</li>
+<li><b>11/18(수) 피칭 데이</b>에는 내 결과물 링크를 걸고 5분 발표해요. 준비할 수업일은 오늘, 월요일, 화요일 <b>3일</b>이에요.</li>
+<li>회사 고르기, 도구 고르기, 주제 고르기에 쓴 시간은 포트폴리오에 남지 않아요. <b>만든 것만 남아요.</b></li>
+<li>채용하는 사람은 "열심히 배웠어요"를 읽지 않아요. <b>눌러서 열리는 결과물</b>을 봐요.</li>
+</ul>
+<p style="margin-top:16px">방향이 안 잡히는 건 능력이 부족해서가 아니에요. <b>끝까지 만든 결과물이 아직 없어서</b>예요. 한 개를 끝내면 다음에 할 일이 보여요.</p>
+</div>
+<div class="card checks">
+<h3>지금 나는 어디에 있나요?</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c0a"><span>이번 주에 만든 결과물 중 <b>남이 열 수 있는 링크</b>가 1개 이상 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c0b"><span>내 결과물을 1분 안에 <b>"누구에게, 무엇을, 왜"</b>로 설명할 수 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c0c"><span>11/18 피칭 데이에 <b>무엇을 보여 줄지</b> 정했어요</span></label>
+<p class="sub" style="margin-top:16px">체크가 0개여도 오늘 저녁에는 달라져요. 단, 이 페이지를 건너뛰지 않고 끝까지 했을 때만요.</p>
+</div>
+
+<h3 class="gap">오늘 남는 것 3가지</h3>
+<div class="grid">
+<div class="card"><span class="num">1</span><h3>벤치마킹 아카이브</h3><p class="sub">한 걸음 앞선 브랜드 3곳의 광고·게시물·상세페이지 27건</p></div>
+<div class="card"><span class="num">2</span><h3>포지셔닝 맵과 가설 5개</h3><p class="sub">빈 땅 3곳, 그리고 우리가 시험할 소재 가설</p></div>
+<div class="card"><span class="num">3</span><h3>상세페이지 개선안 + 광고 릴스</h3><p class="sub">숫자를 붙이고 공격을 견딘 v2 가설로 만들어요</p></div>
+</div>
+<div class="tablewrap"><table>
+<tr><th>시간</th><th>하는 일</th><th>남는 파일</th></tr>
+<tr><td>09:30</td><td>실습 1 · 벤치마킹 아카이빙</td><td>archive.csv</td></tr>
+<tr><td>10:30</td><td>실습 2 · 왜 잘 팔리는지 깊게 파기</td><td>패턴 분석, 승부 소재 해부</td></tr>
+<tr><td>11:30</td><td>실습 3 · 비교표, 포지셔닝 맵, 가설</td><td>positioning.html, 가설 v1</td></tr>
+<tr><td>12:30</td><td>오전 정리, 링크 기록</td><td>오전 요약 1장</td></tr>
+<tr><td>14:00</td><td>수익성 시뮬레이션</td><td>시뮬레이터 HTML</td></tr>
+<tr><td>15:00</td><td>공격팀·보강팀</td><td>가설 v2</td></tr>
+<tr><td>16:30</td><td>상세페이지 개선안 + 광고 릴스</td><td>pdp_v1.html, reels_v1.md</td></tr>
+<tr><td>17:30</td><td>조장 체크, 동료 발견 공유</td><td>실습시트 링크</td></tr>
+</table></div>
+<div class="grid">
+<div class="card warn"><h3>숫자는 전부 "가정"이에요</h3><p>오늘 나오는 매출, 전환율, 시장 규모는 계산 연습용이에요. 출처가 없는 숫자에는 반드시 <b>가정</b>이라고 적어요.</p></div>
+<div class="card warn"><h3>광고 세팅과 예산은 다루지 않아요</h3><p>그건 퍼포먼스 마케터의 일이에요. 우리 일은 <b>콘텐츠가 매력적이어서 사게 만드는 것</b>이에요.</p></div>
+</div>
+</section>
+
+<section id="s1">
+<span class="eyebrow">용어</span>
+<h2>어려운 말, 비유로 쉽게</h2>
+<div class="grid">
+<div class="card"><h3>벤치마킹 = 앞서 달리는 선수의 경기 영상</h3><p class="sub">나보다 한 걸음 앞선 선수의 영상을 돌려 봐요. 나와 비슷하거나 느린 선수의 영상은 볼 필요가 없어요.</p></div>
+<div class="card"><h3>아카이브 = 요리사의 맛집 노트</h3><p class="sub">잘되는 집이 무엇을, 어떻게, 얼마나 오래 파는지 적어 둬요. 내 메뉴를 감이 아니라 근거로 정하게 돼요.</p></div>
+<div class="card"><h3>승부 소재 = 상대 팀 에이스</h3><p class="sub">오래 틀고, 모양만 바꿔 여러 벌 만드는 광고예요. 그 브랜드가 지금 가장 믿는 카드예요.</p></div>
+<div class="card"><h3>포지셔닝 맵 = 동네 지도</h3><p class="sub">가게들이 어디에 몰려 있는지 그려 보면, 아무도 없는 <b>빈 땅</b>이 보여요.</p></div>
+<div class="card"><h3>가설 = 일기예보</h3><p class="sub">"이렇게 하면 이렇게 될 것이다, 왜냐하면". 틀릴 수 있지만 근거가 있어야 해요.</p></div>
+<div class="card"><h3>TAM·SAM·SOM = 피자 한 판</h3><p class="sub">피자 전체(TAM), 우리 배달 구역 안의 조각(SAM), 올해 실제로 먹을 수 있는 조각(SOM)이에요.</p></div>
+<div class="card"><h3>깔때기 = 정수기 필터</h3><p class="sub">본 사람 → 멈춘 사람 → 상세페이지에 온 사람 → 산 사람. 칸을 지날 때마다 걸러져요.</p></div>
+<div class="card"><h3>공격팀·보강팀 = 스파링</h3><p class="sub">시합 전에 미리 맞아 봐요. 회의에서 처음 맞는 것보다 훨씬 덜 아파요.</p></div>
+</div>
+<h3 class="gap">셋은 맡은 일이 달라요</h3>
+<div class="tablewrap"><table>
+<tr><th></th><th>광고 소재</th><th>오가닉 게시물</th><th>상세페이지</th></tr>
+<tr><td><b>맡은 일</b></td><td>모르는 사람을 멈추게 하고 상세페이지로 보내요</td><td>아는 사람과 관계를 쌓아요</td><td>온 사람을 사게 해요</td></tr>
+<tr><td><b>잘됐다는 신호</b></td><td>오래 집행, 변형 여러 개</td><td>저장, 공유, 댓글</td><td>의심에 답하는 순서</td></tr>
+<tr><td><b>고객여정</b></td><td>1~2단계</td><td>2, 6단계</td><td>3~4단계</td></tr>
+</table></div>
+<div class="card soft"><p><b>구매는 상세페이지에서 일어나요.</b> 릴스가 아무리 좋아도 상세페이지가 의심을 못 풀면 팔리지 않아요. 그래서 오늘은 광고와 상세페이지를 한 세트로 봐요.</p></div>
+</section>
+
+<section id="s2">
+<span class="eyebrow">시작 전 점검</span>
+<h2>다섯 가지만 확인해요</h2>
+<div class="card checks">
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c2a"><span>바탕화면에 <b>day15</b> 폴더를 만들고 Claude Code에서 열었어요</span></label>
+<label class="check"><input type="checkbox" data-k="c2b"><span>day15 안에 <b>context</b>, <b>capture</b> 폴더를 만들었어요</span></label>
+<label class="check"><input type="checkbox" data-k="c2c"><span>어제 만든 퍼소나·CJM 파일이 어디 있는지 알아요</span></label>
+<label class="check"><input type="checkbox" data-k="c2d"><span>메타 광고 라이브러리와 스니핏이 열려요</span></label>
+<label class="check"><input type="checkbox" data-k="c2e"><span>내 실습시트가 열려요</span></label>
+</div>
+<div class="links">
+<a class="link" href="https://www.facebook.com/ads/library/" target="_blank" rel="noopener">메타 광고 라이브러리</a>
+<a class="link" href="https://snipit.im/" target="_blank" rel="noopener">스니핏</a>
+<a class="link" href="https://ads.tiktok.com/business/creativecenter/" target="_blank" rel="noopener">틱톡 크리에이티브 센터</a>
+</div>
+<button class="copy" type="button" data-copy="p01"><div class="hd"><b>P01 · 어제 퍼소나와 CJM 가져오기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p01">바탕화면의 day14 폴더에서 라라스윗 퍼소나(5-Whys)와 6단계 고객여정지도(CJM) 표가 들어 있는 파일을 찾아서, 지금 폴더의 context/ 폴더에 복사해줘.
+그다음 퍼소나 한 줄 요약과, CJM 3단계(비교·의심)의 이탈 이유를 5줄로 정리해서 보여줘.
+- day14 폴더의 파일은 수정하지 마.
+- 파일을 못 찾으면 지어내지 말고 못 찾았다고 말해줘.</pre></button>
+<button class="copy" type="button" data-copy="p01b"><div class="hd"><b>P01-b · 어제 파일이 없을 때</b><span class="btn">눌러서 복사</span></div>
+<pre id="p01b">context/persona.md 파일을 만들어줘. 아래 공통 사례로 퍼소나(5-Whys)와 6단계 고객여정지도 표를 도출해서 적어줘.
+- BRAND: 라라스윗 / ITEM: 저당 아이스크림 파인트
+- TARGET: 다이어트·건강관리 중이지만 밤마다 디저트가 당기는 2534 여성 직장인
+- SITUATION: 야근·운동 후 밤 10시, 인스타 릴스를 보며 죄책감 없는 디저트를 찾는 순간
+- 5-Whys는 행동 → 상황 → 제약 → 과거 경험 → 바라는 자기 모습 순서로 깊어지게.
+- CJM 6단계: 문제 자각 → 탐색 → 비교·의심 → 구매 결심 → 첫 사용 → 자랑·재구매. 단계마다 속마음 대사, 이탈 이유.
+- 스펙·가격·수치·후기는 지어내지 말고 [실데이터 입력]으로 남겨줘.</pre></button>
+<h3 class="gap">오늘이 끝나면 폴더가 이렇게 돼요</h3>
+<div class="card"><pre class="tree">day15/
+├─ context/              ← 어제 퍼소나·CJM
+├─ capture/              ← 캡처 이미지
+├─ benchmark_후보.md
+├─ archive.csv           ← 아카이브 (구글 시트로도)
+├─ pattern_1차.md, pattern_심화.md
+├─ winner_해부.md, pdp_해부.md
+├─ positioning.html
+├─ hypothesis_v1.md  →  hypothesis_v2.md
+├─ sim_content.html
+├─ pdp_v1.html           ← 상세페이지 개선안
+└─ reels_v1.md           ← 광고 릴스 대본</pre></div>
+</section>
+
+<section id="s3">
+<span class="eyebrow">09:30–10:30 · 실습 1</span>
+<h2>한 걸음 앞선 브랜드 3곳을 모아요</h2>
+<span class="pill">짧은 강의</span>
+<div class="card" style="margin-top:12px"><h3>누구를 볼까요? 한 걸음 앞선 곳만</h3>
+<ul>
+<li><b>한 걸음 앞선 브랜드</b>는 이미 돈과 시간을 써서 시험을 끝냈어요. 그 답안지를 보는 거예요.</li>
+<li><b>비슷하거나 작은 브랜드</b>는 볼 필요가 없어요. 배울 게 적어요.</li>
+<li><b>너무 먼 거대 기업</b>도 빼요. 예산과 모델이 달라서 따라 할 수 없어요. 단, 그 회사의 특정 제품 라인은 괜찮아요.</li>
+</ul></div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p02" style="margin-top:12px"><div class="hd"><b>P02 · 벤치마킹 브랜드 3곳 찾기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p02">웹 검색을 써서, 라라스윗(저당 아이스크림)이 벤치마킹할 브랜드 후보 6곳을 찾아줘.
+
+[조건]
+1. 우리 퍼소나(context/ 폴더 참고)가 같은 순간, 즉 밤에 죄책감 없는 디저트·간식을 찾을 때 실제로 함께 고민할 브랜드일 것. 아이스크림이 아니어도 돼(저당·제로 간식, 단백질 디저트 등).
+2. 라라스윗보다 한 걸음 앞선 브랜드만. 매출, 직원 수, 유통 채널 수, 인스타그램 팔로워, 집행 중인 광고 수 가운데 2가지 이상에서 앞선다는 근거가 있어야 해.
+3. 라라스윗과 비슷하거나 작은 브랜드는 제외. 반대로 그룹 대기업 전체처럼 너무 커서 콘텐츠 방식을 따라 할 수 없는 곳도 제외(그 회사의 특정 브랜드·제품 라인은 가능).
+
+[출력]
+- 표: 브랜드 / 대표 제품 / 왜 같은 고객인가 / 앞선 근거 2가지(각각 출처 링크) / 인스타그램 계정 주소
+- 출처 링크가 없는 정보는 쓰지 말고 [확인 필요]로 남겨. 숫자를 추측하지 마.
+- 마지막에 추천 3곳과, 제외한 브랜드와 그 이유를 한 줄씩.
+결과는 benchmark_후보.md로 저장해줘.</pre></button>
+<div class="card checks">
+<h3>3곳을 확정하기 전에 내 눈으로 확인해요</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c3a"><span>3곳 모두 인스타그램 계정이 <b>실제로 있어요</b></span></label>
+<label class="check"><input type="checkbox" data-k="c3b"><span>3곳 모두 광고 라이브러리나 스니핏에서 <b>광고가 보여요</b></span></label>
+<label class="check"><input type="checkbox" data-k="c3c"><span>"앞선 근거" 출처 링크를 <b>1개 이상 직접 열어</b> 봤어요</span></label>
+<p class="sub" style="margin-top:12px">광고가 안 보이는 브랜드는 빼고 다음 후보로 바꿔요. AI가 찾은 후보는 출발점이고, 확정은 사람이 해요.</p>
+</div>
+
+<span class="pill">짧은 강의</span>
+<div class="card soft" style="margin-top:12px"><h3>스니핏, 검색만 쓰면 절반만 쓰는 거예요</h3>
+<p>광고 라이브러리에서 하나씩 넘겨 보던 일을 줄여 주는 도구예요. 오늘은 아래 기능까지 써 봐요.</p>
+<ul>
+<li><b>게재 기간 필터 + 성과순 정렬</b> · 오래 튼 광고부터 봐요. 승부 소재 후보가 바로 나와요.</li>
+<li><b>브랜드 아카이브</b> · 브랜드를 등록하면 광고와 게시물이 매일 쌓여요. 이미 쌓인 광고는 내려간 뒤에도 볼 수 있어요.</li>
+<li><b>영상의 컷과 스크립트 보기</b> · 영상을 하나하나 틀지 않고 장면과 대사를 읽어요. 실습 2의 해부가 빨라져요.</li>
+<li><b>보드</b> · 고른 소재를 폴더로 모으고 팀과 공유해요.</li>
+<li><b>AI 에이전트</b> · 채팅으로 조건을 걸어 찾고 표로 정리해 달라고 할 수 있어요.</li>
+</ul>
+<p class="sub" style="margin-top:12px">스니핏 공식 안내 기준이에요(11/12 확인). 메뉴 이름과 범위는 화면에서 다시 확인해요. 네이버 광고는 지원이 확인되지 않았어요.</p></div>
+<div class="grid">
+<div class="card"><h3>얼마인가요?</h3><ul><li>무료: 가입하면 검색과 저장을 쓸 수 있어요. 하루 사용량과 등록 브랜드 수에 제한이 있어요.</li><li>유료: Basic 월 3만 원대, Scale 월 15만 원 안팎</li><li>7일 무료 체험은 계정당 1회</li></ul><p class="sub" style="margin-top:12px">11/12 기준이에요. 결제 전에 공식 요금 페이지에서 금액을 확인해요. 가입 코드는 공지시트 "벤치마킹" 탭에 있어요.</p></div>
+<div class="card"><h3>왜 써 보라고 하나요?</h3><ul><li>현업 마케팅팀이 실제로 쓰는 종류의 도구예요. 써 본 경험이 곧 이력서 한 줄이에요.</li><li>오늘은 무료나 7일 체험으로 충분해요.</li><li>매주 벤치마킹을 이어 갈 사람은 결제를 고민해 볼 만해요. 선택이에요.</li></ul></div>
+</div>
+<div class="card"><h3>오늘 모을 양 · 27건</h3>
+<p class="formula">3곳 × (광고 5 + 오가닉 3 + 상세페이지 1)</p>
+<ul>
+<li><b>광고 5개</b> · 게재 기간이 긴 것, 같은 콘셉트로 변형이 여러 개인 것부터</li>
+<li><b>오가닉 3개</b> · 저장과 댓글이 많은 것</li>
+<li><b>상세페이지 1개</b> · 대표 제품 페이지를 위에서 아래까지 이어서 캡처</li>
+</ul>
+<p class="sub" style="margin-top:12px">캡처 파일 이름은 <b>브랜드_유형_번호.png</b> (예: A브랜드_광고_01.png)로 맞추고 capture 폴더에 넣어요. 영상은 3초 간격으로 4~5장 캡처해요.</p></div>
+<h3 class="gap">현업이 보는 눈 4가지</h3>
+<div class="tablewrap"><table>
+<tr><th>이런 게 보이면</th><th>이렇게 읽어요</th></tr>
+<tr><td>한 광고를 몇 달째 틀고 있다</td><td>성과가 났을 가능성이 높아요. 단, <b>가설</b>로만 적어요</td></tr>
+<tr><td>같은 콘셉트가 모양만 바꿔 여러 개다</td><td>지금 시험 중인 <b>승부 소재</b>예요. 무엇을 바꿔 가며 시험하는지 적어요</td></tr>
+<tr><td>광고와 오가닉의 말투가 다르다</td><td>정상이에요. 맡은 일이 달라서 섞어 비교하지 않아요</td></tr>
+<tr><td>댓글에 같은 질문이 반복된다</td><td>상세페이지가 답하지 못한 <b>빈칸</b>이에요. 우리 상세페이지의 재료예요</td></tr>
+</table></div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p03" style="margin-top:12px"><div class="hd"><b>P03 · 아카이브 표 양식 만들기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p03">archive.csv 파일을 만들어줘. 1건이 1행이고, 열은 아래 순서야.
+번호 / 수집일 / 브랜드 / 채널 / 유형(광고·오가닉·상세페이지) / 링크 / 캡처 파일명 / 게재 시작일 / 게재 기간(일) / 포맷·길이 / 첫 3초 훅 유형 / 훅 문장 원문 / 핵심 메시지 / 근거 유형 / 오퍼 / CTA / 고객여정 단계 / 톤·비주얼 / 댓글 주요 반응 / 변형 수 / 우리 적용 아이디어
+
+- 훅 유형 선택지: 문제 공감, 반전, 질문, 결과 먼저, 식감·소리, 인물
+- 근거 유형 선택지: 성분, 수치, 후기, 전문가, 비교, 인증
+- 고객여정 단계 선택지: 문제 자각, 탐색, 비교·의심, 구매 결심, 첫 사용, 자랑·재구매
+- 선택지와 칸별 기록 방법을 설명한 기록규칙.md도 같이 만들어줘.
+- 예시 행은 넣지 마. 지어낸 광고가 섞이면 안 돼. 빈 표로 시작해.</pre></button>
+<button class="copy" type="button" data-copy="p04"><div class="hd"><b>P04 · 캡처를 표로 옮기기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p04">capture/ 폴더의 이미지를 하나씩 보고 archive.csv에 한 건씩 추가해줘. 파일 이름은 브랜드_유형_번호.png 형식이야.
+- 화면에 보이는 것만 적어. 자막과 카피는 원문 그대로 옮겨.
+- 링크, 게재 시작일, 댓글 반응처럼 캡처에 없는 칸은 비워 두고 [내가 입력]이라고 표시해.
+- 훅 유형, 근거 유형, 고객여정 단계는 기록규칙.md의 선택지에서만 골라.
+- 같은 영상의 캡처 여러 장은 1건으로 합쳐.
+- 다 옮기면 [내가 입력]으로 남은 칸을 목록으로 보여줘.</pre></button>
+<div class="card warn"><h3>이 칸은 내 손으로 채워요</h3><p><b>링크, 게재 시작일, 댓글 원문 1~2개.</b> Claude는 인스타그램과 광고 라이브러리 화면을 직접 못 봐요. 이 칸을 Claude에게 맡기면 지어내요.</p><p class="sub">다 채우면 구글 시트에서 "파일 → 가져오기"로 archive.csv를 올려 둬요. 오전 정리 때 이 시트 링크를 써요.</p></div>
+<div class="card checks">
+<h3>이 다섯 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c3d"><span>벤치마킹 3곳마다 <b>앞선 근거와 출처 링크</b>가 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c3e"><span>archive.csv에 <b>20건 이상</b> 들어 있어요 (목표 27건)</span></label>
+<label class="check"><input type="checkbox" data-k="c3f"><span>광고마다 <b>게재 시작일</b>이 적혀 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c3g"><span>훅 문장이 <b>원문 그대로</b>예요</span></label>
+<label class="check"><input type="checkbox" data-k="c3h"><span>상세페이지 캡처가 <b>3곳 모두</b> 있어요</span></label>
+</div>
+<div class="tech"><span class="tag">데이터·서비스 트랙</span>
+<p>공통 실습(P02~P04)을 먼저 하고, 이 과제를 더해요. 오후 손익 시뮬레이션의 재료가 돼요.</p>
+<button class="copy" type="button" data-copy="t1"><div class="hd"><b>T1 · 가격·용량·배송 조건 비교표</b><span class="btn">눌러서 복사</span></div>
+<pre id="t1">웹 검색으로 라라스윗과 벤치마킹 3곳의 대표 제품 판매 조건을 조사해서 price_table.csv로 만들어줘.
+열: 브랜드 / 제품명 / 판매처(공식몰 우선) / 판매가 / 용량 / 100ml(또는 100g)당 가격 / 묶음 구성 / 배송비 / 무료배송 기준 금액 / 배송 방식(냉동 등) / 출처 링크 / 확인 날짜
+- 출처 페이지에서 확인한 값만 적어. 확인하지 못한 칸은 [확인 필요].
+- 100ml당 가격처럼 계산한 값은 계산식을 옆 열에 남겨.
+- 마지막에 "배송 조건이 가장 다른 브랜드"와 그 차이를 한 줄로 적어줘.</pre></button>
+</div>
+</section>
+
+<section id="s4">
+<span class="eyebrow">10:30–11:30 · 실습 2</span>
+<h2>"무엇"에서 멈추지 말고 "왜"까지</h2>
+<div class="flow">
+<div class="card"><span class="tag">1차</span><h3>무엇</h3><p class="sub">어떤 패턴이 반복되나</p></div>
+<div class="card"><span class="tag">심화</span><h3>왜</h3><p class="sub">왜 이 시장은 이 훅인가</p></div>
+<div class="card"><span class="tag">장면</span><h3>어떻게</h3><p class="sub">승부 소재를 초 단위로</p></div>
+<div class="card"><span class="tag">다음</span><h3>그래서</h3><p class="sub">우리 가설과 대본으로</p></div>
+</div>
+<span class="pill">짧은 강의</span>
+<div class="grid" style="margin-top:12px">
+<div class="card red"><h3>얕은 분석</h3><ul><li>"문제 공감형 훅이 많다"</li><li>"후기를 근거로 쓴다"</li><li>"할인 오퍼가 있다"</li></ul><p class="sub" style="margin-top:8px">이름표만 붙였어요. 누구나 10분이면 해요.</p></div>
+<div class="card ok"><h3>깊은 분석</h3><ul><li>이 훅이 고객의 <b>어떤 의심</b>을 깨는가</li><li>왜 <b>이 시장</b>에서는 그 의심이 큰가</li><li>근거가 <b>아카이브 몇 번</b>인가</li></ul><p class="sub" style="margin-top:8px">여기까지 가야 우리 소재를 만들 수 있어요.</p></div>
+</div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p05" style="margin-top:12px"><div class="hd"><b>P05 · 1차 패턴 분석</b><span class="btn">눌러서 복사</span></div>
+<pre id="p05">archive.csv를 읽고 1차 패턴 분석을 해줘. 광고, 오가닉, 상세페이지를 섞지 말고 따로 분석해.
+1. 브랜드별 훅 유형 건수 표
+2. 핵심 메시지, 근거 유형, 오퍼에서 반복되는 패턴
+3. 게재 기간이 가장 긴 광고 3건과, 변형이 가장 많은 콘셉트(승부 소재 후보)
+4. 광고에는 있는데 오가닉에는 없는 메시지, 그리고 그 반대
+5. 댓글에 나온 질문 가운데 상세페이지가 답하지 않는 것
+
+- 모든 문장 끝에 근거가 된 아카이브 번호를 (#3, #7)처럼 붙여. 번호를 붙일 수 없는 문장은 쓰지 마.
+- "성과가 좋다"고 단정하지 말고 "오래 집행 중이라 성과가 났을 가능성(가설)"이라고 써.
+pattern_1차.md로 저장해줘.</pre></button>
+<button class="copy" type="button" data-copy="p06"><div class="hd"><b>P06 · 5-Whys 심화 · 왜 이 훅이 반복되나</b><span class="btn">눌러서 복사</span></div>
+<pre id="p06">pattern_1차.md에서 가장 많이 반복된 훅 패턴 1개를 골라, "왜 이 훅이 이 시장에서 반복되는가"를 5-Whys로 파줘.
+- 내려가는 순서: 보이는 현상 → 고객의 상황 → 고객의 의심·제약 → 과거 실패 경험 → 바라는 자기 모습
+- 단계마다 근거로 아카이브 번호나 댓글·후기 원문을 붙여. 근거가 없으면 [추정]이라고 표시해.
+- 우리 퍼소나(context/ 폴더)의 5-Whys와 겹치는 지점, 다른 지점을 표로 정리해.
+- 마지막 한 줄: "이 시장의 고객은 ___를 믿고 싶은데 ___ 때문에 의심한다. 그래서 잘 파는 브랜드는 첫 3초에 ___를 보여 준다."
+pattern_심화.md로 저장해줘.</pre></button>
+<div class="card soft"><p><b>영상은 Claude가 직접 못 봐요.</b> 승부 소재의 캡처 4~5장과 자막 받아 적은 것을 준비해요. 스니핏의 스크립트 보기를 쓰면 빨라요.</p></div>
+<button class="copy" type="button" data-copy="p07"><div class="hd"><b>P07 · 승부 소재 1개 장면 해부</b><span class="btn">눌러서 복사</span></div>
+<pre id="p07">승부 소재 후보 가운데 아카이브 #[번호]를 초 단위로 해부해줘. capture/ 폴더의 해당 캡처와 아래 내 메모를 써.
+[내 메모: 자막·대사 받아 적은 것을 여기에 붙여넣기]
+
+1. 표: 구간(0~3초, 3~8초 …) / 화면에 보이는 것(인물, 장소, 손에 든 것, 제품이 처음 나오는 시점) / 자막·대사 원문 / 소리 / 이 구간이 깨는 고객의 의심 / 고객여정 단계
+2. 이 영상을 본 적 없는 사람도 눈앞에 그릴 수 있게 한 장면으로 다시 써줘(시간, 장소, 손에 든 물건, 혼잣말).
+3. 이 소재가 작동하는 이유 3가지, 그리고 우리가 그대로 베끼면 안 되는 이유 1가지.
+- 내가 준 자료에 없는 부분은 지어내지 말고 [영상 다시 확인]으로 남겨.
+winner_해부.md로 저장해줘.</pre></button>
+<button class="copy" type="button" data-copy="p08"><div class="hd"><b>P08 · 승부 상세페이지 해부</b><span class="btn">눌러서 복사</span></div>
+<pre id="p08">capture/ 폴더의 [브랜드] 상세페이지 캡처를 위에서 아래로 읽고 섹션별로 해부해줘.
+1. 표: 순서 / 이 섹션이 하는 일(멈춤, 공감, 의심 해소, 근거, 오퍼, 구매 유도) / 헤드라인 원문 / 근거 유형 / 답하는 고객 질문
+2. 스크롤하기 전 첫 화면이 약속하는 것 한 줄
+3. 가격이 처음 나오는 위치, 그리고 그 직전에 무엇을 보여 주는지
+4. 우리 CJM 3단계의 의심(context/ 폴더) 가운데 이 페이지가 답한 것과 답하지 않은 것
+5. 같은 브랜드 광고의 훅과 상세페이지 첫 화면의 약속이 같은 약속인지(아카이브 번호로 비교)
+- 캡처에서 읽을 수 없는 부분은 [확인 필요]로 남겨.
+pdp_해부.md로 저장해줘.</pre></button>
+<button class="copy" type="button" data-copy="p09"><div class="hd"><b>P09 · 분석이 얕을 때</b><span class="btn">눌러서 복사</span></div>
+<pre id="p09">방금 분석이 훅 이름을 나열하는 데 그쳤어. 패턴마다 아래 세 가지를 붙여서 다시 써줘.
+① 고객의 어떤 의심을 깨려는 것인지
+② 근거가 되는 아카이브 번호
+③ 우리 퍼소나에게도 통할지, 그 이유
+근거가 없는 문장은 지워.</pre></button>
+<div class="card checks">
+<h3>이 네 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c4a"><span>분석 문장마다 <b>아카이브 번호</b>가 붙어 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c4b"><span>5-Whys의 마지막이 <b>고객이 바라는 자기 모습</b>이에요</span></label>
+<label class="check"><input type="checkbox" data-k="c4c"><span>승부 소재 해부를 읽으면 <b>영상이 눈앞에 그려져요</b></span></label>
+<label class="check"><input type="checkbox" data-k="c4d"><span>상세페이지가 <b>답하지 않은 의심</b>을 1개 이상 찾았어요</span></label>
+</div>
+<div class="tech"><span class="tag">데이터·서비스 트랙</span>
+<p>공통 실습 P05, P06을 한 뒤에 해요. 마케팅 짝꿍이 "느낌"으로 말한 패턴을 숫자로 확인해 주는 역할이에요.</p>
+<button class="copy" type="button" data-copy="t2"><div class="hd"><b>T2 · 훅 유형 빈도 차트</b><span class="btn">눌러서 복사</span></div>
+<pre id="t2">archive.csv로 hook_chart.html을 만들어줘.
+1. 브랜드 × 훅 유형 건수 막대 차트
+2. 유형(광고·오가닉)별 근거 유형 건수 막대 차트
+3. 광고의 게재 기간 분포(브랜드별)
+- 모든 숫자는 CSV에서 직접 센 값만 써. 차트 아래에 집계 표도 같이 보여줘.
+- 차트 아래에 한계를 적어줘: 표본이 약 27건이고 사람이 고른 것이라 시장 전체를 대표하지 않는다는 점.
+- pattern_1차.md의 주장 가운데 숫자와 맞지 않는 것이 있으면 목록으로 알려줘.</pre></button>
+</div>
+</section>
+
+<section id="s5">
+<span class="eyebrow">11:30–12:30 · 실습 3</span>
+<h2>지도를 그리고, 빈 땅을 찾고, 가설을 세워요</h2>
+<span class="pill">짧은 강의</span>
+<div class="grid" style="margin-top:12px">
+<div class="card red"><h3>뻔한 축</h3><p><b>가격 ↔ 품질</b></p><p class="sub">어느 시장에나 쓸 수 있는 축은 아무것도 알려 주지 않아요.</p></div>
+<div class="card ok"><h3>쓸모 있는 축</h3><p><b>고객이 실제로 고르는 기준</b>과 <b>소재가 하는 약속</b></p><p class="sub">예: "맛을 약속 ↔ 성분을 약속", "혼자 누리는 보상 ↔ 같이 나누는 자랑". 예시일 뿐이에요. 내 아카이브에서 뽑아요.</p></div>
+</div>
+<div class="card warn"><h3>빈 땅이 비어 있는 이유는 세 가지예요</h3>
+<ul>
+<li><b>아무도 생각하지 못했다</b> → 기회예요</li>
+<li><b>해 봤는데 안 팔렸다</b> → 함정이에요</li>
+<li><b>하면 안 된다</b> → 식품 광고는 "살이 빠진다" 같은 효능 표현에 제한이 있을 수 있어요 <b>[현업 확인 필요]</b></li>
+</ul></div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p10" style="margin-top:12px"><div class="hd"><b>P10 · 경쟁 비교표 + 포지셔닝 맵</b><span class="btn">눌러서 복사</span></div>
+<pre id="p10">archive.csv, pattern_심화.md, winner_해부.md, pdp_해부.md를 근거로 아래를 해줘.
+
+1. 경쟁 비교표. 행은 라라스윗과 벤치마킹 3곳. 열은 핵심 약속 한 줄 / 주력 훅 / 주력 근거 / 오퍼 / 상세페이지 첫 화면 / 댓글에서 반복되는 질문. 칸마다 아카이브 번호를 붙여. 라라스윗 행은 공식몰과 공식 인스타그램을 웹에서 확인해 채우고 출처 링크를 붙여.
+2. 포지셔닝 맵의 축 후보 3쌍을 제안해줘. 가격·품질 같은 뻔한 축은 빼고, 우리 퍼소나가 실제로 고르는 기준과 소재가 하는 약속에서 뽑아. 축마다 왜 이 축인지 한 줄.
+
+여기까지만 하고 멈춰서 내가 축을 고르길 기다려.
+3. 내가 축을 고르면, 4개 브랜드를 2×2 맵에 배치한 positioning.html을 만들어줘. 점 옆에 배치 근거(아카이브 번호)를 적어.</pre></button>
+<div class="grid">
+<div class="card red"><h3>약한 가설</h3><p>"감성적인 릴스를 만들면 반응이 좋을 것이다"</p><p class="sub">누구의 어떤 의심인지, 근거가 무엇인지 없어요.</p></div>
+<div class="card ok"><h3>쓸 수 있는 가설</h3><p>"[훅]으로 [메시지]를 보여 주면 [어떤 의심]이 풀려서 [멈춤·이동·구매]가 오른다. 왜냐하면 [아카이브 번호]"</p><p class="sub">틀렸는지 확인할 수 있어요.</p></div>
+</div>
+<button class="copy" type="button" data-copy="p11"><div class="hd"><b>P11 · 공백 3개 + 우리 소재 가설 5개</b><span class="btn">눌러서 복사</span></div>
+<pre id="p11">포지셔닝 맵과 경쟁 비교표를 근거로 아래를 써줘.
+
+1. 공백(빈 땅) 3개: 벤치마킹 3곳 중 아무도 하지 않는 메시지, 포맷, 근거. 공백마다 "비어 있는 이유 추정"을 적어(아무도 시도하지 않음 / 시도했다가 그만둔 흔적 / 표현 규정상 못 함). 규정과 관련 있으면 [현업 확인 필요]를 붙여.
+2. 우리 소재 가설 5개. 형식: "[훅]으로 [메시지]를 보여 주면 [퍼소나의 어떤 의심]이 풀려서 [멈춤 / 상세페이지 이동 / 구매]가 오른다. 왜냐하면 [아카이브 번호 또는 댓글 원문]."
+3. 가설마다: 쓰는 곳(광고 릴스 / 상세페이지 / 둘 다), 고객여정 단계, 무엇을 보면 맞았다고 할지.
+
+- 5개 중 2개 이상은 상세페이지용, 1개 이상은 공백을 노리는 가설로.
+- 숫자 목표는 적지 마. 오후에 가정값으로 따로 계산할 거야.
+hypothesis_v1.md로 저장해줘.</pre></button>
+<div class="card checks">
+<h3>이 네 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c5a"><span>맵의 축을 <b>내가 골랐고</b> 이유를 말할 수 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c5b"><span>공백 3개마다 <b>비어 있는 이유</b>가 적혀 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c5c"><span>가설 5개 모두 <b>"왜냐하면"</b> 뒤에 근거가 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c5d"><span>상세페이지용 가설이 <b>2개 이상</b>이에요</span></label>
+</div>
+<div class="tech"><span class="tag">데이터·서비스 트랙</span>
+<p>"왜 그 브랜드가 그 자리에 있나요?"라는 질문에 숫자로 답하는 과제예요.</p>
+<button class="copy" type="button" data-copy="t3"><div class="hd"><b>T3 · 포지셔닝 좌표의 근거표 + 산점도</b><span class="btn">눌러서 복사</span></div>
+<pre id="t3">포지셔닝 맵의 두 축을 각각 1~5점 척도로 정의해줘(점수마다 기준 문장 1줄).
+그 기준으로 archive.csv의 건마다 점수를 매겨 score.csv로 저장하고, 브랜드별 평균을 좌표로 쓴 산점도 positioning_data.html을 만들어줘.
+- 점마다 표본 건수를 같이 표시해.
+- 차트 아래에 점수 기준과 한계(주관 평가, 표본 약 27건)를 적어.
+- 사람이 손으로 배치한 positioning.html과 위치가 가장 다른 브랜드 1곳을 짚고, 왜 다른지 설명해줘.</pre></button>
+</div>
+</section>
+
+<section id="s6">
+<span class="eyebrow">12:30–13:00 · 오전 정리</span>
+<h2>남이 열 수 있어야 결과물이에요</h2>
+<button class="copy" type="button" data-copy="p12"><div class="hd"><b>P12 · 오전 결과 한 장 요약</b><span class="btn">눌러서 복사</span></div>
+<pre id="p12">오늘 오전에 만든 파일을 모두 읽고 오전요약.md 한 장으로 정리해줘.
+1. 벤치마킹 3곳과 고른 근거 한 줄씩
+2. 가장 강한 패턴 1개와 그 이유(5-Whys 마지막 한 줄)
+3. 승부 소재 1개와 작동하는 이유
+4. 공백 3개
+5. 가설 5개
+줄마다 아카이브 번호를 붙이고, 새로운 내용은 추가하지 마.</pre></button>
+<div class="card checks">
+<h3>점심 전에 링크를 기록해요</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c6a"><span>아카이브 구글 시트를 <b>"링크가 있는 모든 사용자 · 뷰어"</b>로 공유했어요</span></label>
+<label class="check"><input type="checkbox" data-k="c6b"><span>그 링크를 <b>내 실습시트</b>에 붙였어요</span></label>
+<label class="check"><input type="checkbox" data-k="c6c"><span><b>짝꿍 폰</b>에서 로그인 없이 열려요</span></label>
+</div>
+<div class="card red"><h3>이런 링크는 나만 열려요</h3><ul><li><b>localhost</b>로 시작하는 주소</li><li><b>C:\</b> 나 <b>/Users/</b> 로 시작하는 내 컴퓨터 경로</li><li>공유 설정을 안 한 채팅 대화 링크</li></ul><p class="sub" style="margin-top:8px">HTML 파일을 화면으로 보여 주는 배포는 11/18에 해요. 오늘은 구글 시트와 드라이브 폴더 링크로 확인해요.</p></div>
+</section>
+
+<section id="s7">
+<span class="eyebrow">14:00–15:00 · 수익성 시뮬레이션</span>
+<h2>내 가설은 어느 칸을 움직이나요?</h2>
+<span class="pill">짧은 강의</span>
+<div class="flow" style="margin-top:12px">
+<div class="card"><span class="tag">고정</span><h3>도달</h3><p class="sub">본 사람 수. 오늘은 건드리지 않아요</p></div>
+<div class="card soft"><span class="tag">릴스 첫 3초</span><h3>멈춤률</h3><p class="sub">넘기지 않고 멈춘 비율</p></div>
+<div class="card soft"><span class="tag">릴스 마지막</span><h3>이동률</h3><p class="sub">상세페이지로 넘어온 비율</p></div>
+<div class="card soft"><span class="tag">상세페이지</span><h3>구매 전환율</h3><p class="sub">와서 산 비율</p></div>
+<div class="card soft"><span class="tag">오퍼·구성</span><h3>객단가</h3><p class="sub">한 번에 사는 금액</p></div>
+</div>
+<div class="card"><p class="formula">매출 = 도달 × 멈춤률 × 이동률 × 구매 전환율 × 객단가</p><p class="sub">파란 칸 네 개가 콘텐츠가 움직이는 칸이에요. 도달을 늘리는 일(예산, 세팅)은 퍼포먼스 마케터가 해요. 우리는 <b>같은 도달에서 더 멈추게, 더 사게</b> 만들어요.</p></div>
+<div class="tablewrap"><table>
+<tr><th>계산 예시 (전부 가정)</th><th>멈춤률</th><th>구매 전환율</th><th>매출</th><th>차이</th></tr>
+<tr><td>기준안</td><td>20%</td><td>3%</td><td>900,000원</td><td>-</td></tr>
+<tr><td>릴스 훅만 개선</td><td><b>25%</b></td><td>3%</td><td>1,125,000원</td><td>+225,000원</td></tr>
+<tr><td>상세페이지만 개선</td><td>20%</td><td><b>4%</b></td><td>1,200,000원</td><td>+300,000원</td></tr>
+<tr><td>둘 다 개선</td><td><b>25%</b></td><td><b>4%</b></td><td>1,500,000원</td><td>+600,000원</td></tr>
+</table></div>
+<p class="sub">가정: 도달 100,000명, 이동률 5%, 객단가 30,000원. 설명을 위해 만든 숫자이고 라라스윗의 실제 값이 아니에요.</p>
+<div class="card soft"><h3>이 표에서 볼 것</h3><ul><li>릴스와 상세페이지는 <b>둘 다 매출 칸</b>이에요.</li><li>둘 다 고치면 더한 것(525,000원)보다 커요. <b>곱셈이라서</b>예요.</li><li>숫자는 맞히려고 쓰는 게 아니에요. <b>어느 칸이 가장 크게 움직이는지</b> 비교하려고 써요.</li></ul></div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p13" style="margin-top:12px"><div class="hd"><b>P13 · 시장 규모 TAM·SAM·SOM (10분만)</b><span class="btn">눌러서 복사</span></div>
+<pre id="p13">웹 검색으로 라라스윗의 시장 규모를 TAM, SAM, SOM으로 간단히 잡아줘.
+- TAM: 국내 아이스크림(또는 디저트) 시장 전체
+- SAM: 그중 저당·제로 디저트를 찾는 2534
+- SOM: 라라스윗이 1년 안에 현실적으로 닿을 수 있는 몫
+- 통계에는 출처 링크와 기준 연도를 꼭 붙여. 출처를 못 찾은 값은 "가정"이라고 쓰고, 그렇게 가정한 논리를 한 줄로 적어.
+- 계산식을 그대로 보여줘(무엇 × 무엇).
+- 표 1개와 한 줄 결론만. 길게 쓰지 마.
+market_size.md로 저장해줘.</pre></button>
+<button class="copy" type="button" data-copy="p14"><div class="hd"><b>P14 · 콘텐츠 매출 시뮬레이터</b><span class="btn">눌러서 복사</span></div>
+<pre id="p14">sim_content.html을 만들어줘. 외부 라이브러리 없이 파일 하나로.
+식: 매출 = 도달 × 멈춤률 × 상세페이지 이동률 × 구매 전환율 × 객단가
+
+- 다섯 값을 모두 슬라이더로 만들고, 값 옆에 "가정" 배지를 붙여.
+- 초기값은 나에게 먼저 물어봐. 내가 모른다고 하면 네가 넣되 "설명용 가정"이라고 표시해.
+- 도달 슬라이더는 기본으로 잠가 두고 "도달을 늘리는 일은 오늘 범위 밖"이라고 안내해.
+- 단계별로 남은 사람 수를 깔때기 막대로, 매출을 큰 숫자로 보여줘.
+- 기준안과 개선안 두 세트를 나란히 놓고 차이를 원과 %로 보여줘.
+- 맨 아래에 "모든 수치는 학습용 가정이며 실제 성과가 아닙니다"라고 적어.
+- 폰에서도 보이게 만들어줘.</pre></button>
+<button class="copy" type="button" data-copy="p15"><div class="hd"><b>P15 · 가설 5개를 숫자로 번역</b><span class="btn">눌러서 복사</span></div>
+<pre id="p15">hypothesis_v1.md의 가설 5개가 깔때기의 어느 칸(멈춤률, 이동률, 구매 전환율, 객단가)을 움직이는지 표로 정리해줘.
+- 가설 하나는 칸 하나만 움직인다고 봐.
+- 가설마다 변화 폭을 "보수적", "기대" 두 가지로 가정해서 적고, 왜 그 정도로 봤는지 한 줄(아카이브 번호, 또는 "근거 없음, 순수 가정").
+- 내 시뮬레이터의 기준안에 넣었을 때 매출 차이를 계산해.
+- 매출 차이가 큰 순서로 정렬해.
+- 1등 가설이 틀렸다면 가장 먼저 의심할 가정 1개를 짚어줘.
+- 모든 숫자에 "가정"을 붙여.
+hypothesis_숫자.md로 저장해줘.</pre></button>
+<div class="card checks">
+<h3>이 세 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c7a"><span>시뮬레이터의 모든 값에 <b>"가정"</b>이 붙어 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c7b"><span>가설 5개가 <b>매출 차이 순</b>으로 줄 서 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c7c"><span>1등 가설이 <b>어느 칸</b>을 움직이는지 한마디로 말할 수 있어요</span></label>
+</div>
+<div class="tech"><span class="tag">데이터·서비스 트랙</span>
+<p>P14, P15 대신 이 두 개를 해요. 많이 파는 것과 남는 것은 달라요. 냉동 배송은 보냉 포장과 배송비가 붙어서, 주문이 늘어도 한 건당 남는 돈이 적을 수 있어요.</p>
+<button class="copy" type="button" data-copy="t4"><div class="hd"><b>T4 · 주문량·재고·배송비 손익 시뮬레이터</b><span class="btn">눌러서 복사</span></div>
+<pre id="t4">sim_profit.html을 만들어줘.
+식:
+- 주문 1건당 이익 = 객단가 − 제품 원가 − 포장·보냉재 비용 − 배송비 − 결제·플랫폼 수수료
+- 월 이익 = 월 주문량 × 주문 1건당 이익 − 고정비 − 재고 폐기 손실
+
+- 슬라이더: 월 주문량, 객단가, 원가율, 포장·보냉재 비용, 건당 배송비, 무료배송 기준 금액, 수수료율, 고정비, 재고 폐기율
+- 모든 값에 "가정" 배지를 붙여. 단, price_table.csv에서 확인한 값(판매가, 배송비 기준)은 "확인됨"과 출처로 구분해서 표시해.
+- 출력: 주문 1건당 이익, 손익분기 주문량, 주문량에 따른 월 이익 그래프, 무료배송 기준을 바꿨을 때 건당 이익의 변화
+- 초기값은 나에게 먼저 물어봐.
+- 맨 아래에 "가정값은 학습용이며 실제 원가·비용이 아닙니다"라고 적어.</pre></button>
+<p><b>상사는 "그래서 내가 무엇을 결정하면 되나"를 가장 먼저 찾아요.</b> 분석 과정은 맨 뒤로 보내요.</p>
+<button class="copy" type="button" data-copy="t5"><div class="hd"><b>T5 · 경영진 보고 1장</b><span class="btn">눌러서 복사</span></div>
+<pre id="t5">sim_profit.html의 결과를 경영진 보고 1장(report_1p.md)으로 써줘. 순서를 꼭 지켜.
+1. 결론 한 문장
+2. 결정해 주셔야 할 것 1가지
+3. 선택지 2~3개: 선택지마다 기대 효과와 위험
+4. 추천안과 근거 3줄
+5. 이 결론이 뒤집히는 조건
+6. 배경과 계산 방법(3줄 이내)
+- 가정한 값과 확인한 값을 구분해서 표시해.
+- "~로 보입니다", "~일 수 있습니다"를 줄이고, 판단을 분명하게 써.</pre></button>
+</div>
+</section>
+
+<section id="s8">
+<span class="eyebrow">15:00–16:30 · 공격팀·보강팀</span>
+<h2>회의에서 맞기 전에 미리 맞아 봐요</h2>
+<span class="pill">짧은 강의</span>
+<div class="card" style="margin-top:12px"><p>10/29에 했던 <b>제안서 → 공격 → 보강</b>을 다시 꺼내요. 그때와 다른 점은 오늘은 <b>근거 번호와 숫자</b>가 붙어 있다는 거예요. 공격이 더 구체적으로 들어와요.</p>
+<ul><li>공격을 받고 <b>가설을 버리는 것도 실력</b>이에요. 5개 중 2~3개만 남아도 정상이에요.</li><li>보강은 <b>주장 → 근거 → 간증</b> 순서예요. 간증은 실제 고객의 말이에요.</li></ul></div>
+<div class="card checks">
+<h3>먼저 5분 · 짝꿍이 직접 공격해요</h3>
+<p class="sub">사람에게 먼저 맞아 봐야 AI의 공격을 걸러 읽을 수 있어요. 서로의 가설 표를 보고 질문 3개씩 던져요.</p>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c8a"><span>"이 가설의 근거 광고는 몇 번이에요?"</span></label>
+<label class="check"><input type="checkbox" data-k="c8b"><span>"벤치마킹 브랜드가 이미 하고 있는 거 아니에요?"</span></label>
+<label class="check"><input type="checkbox" data-k="c8c"><span>"그 변화 폭은 왜 그 숫자예요?"</span></label>
+</div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p16" style="margin-top:12px"><div class="hd"><b>P16 · 공격팀 · 깐깐한 10년 차 콘텐츠 팀장</b><span class="btn">눌러서 복사</span></div>
+<pre id="p16">너는 식품 브랜드에서 10년 넘게 일한 깐깐한 콘텐츠 팀장이야. hypothesis_v1.md, hypothesis_숫자.md, 경쟁 비교표와 포지셔닝 맵을 읽고 내 가설을 공격해줘.
+
+[공격 관점 5가지]
+① 근거: 아카이브 몇 건으로 그런 말을 하나
+② 고객: 우리 퍼소나가 정말 그렇게 반응하나
+③ 차별: 벤치마킹 브랜드가 이미 하고 있는 것 아닌가
+④ 숫자: 가정한 변화 폭이 낙관적이지 않나
+⑤ 실행: 촬영과 제작이 가능한가, 식품 광고 표현으로 문제가 없나
+
+- 가설마다 가장 아픈 질문 1개씩, 그리고 전체에서 가장 약한 가설 1개를 지목해.
+- 칭찬과 해결책은 쓰지 마. 질문과 지적만.
+- 내가 준 자료에 없는 사실을 근거로 공격하지 마. 업계 통계를 지어내지 마.
+attack.md로 저장해줘.</pre></button>
+<button class="copy" type="button" data-copy="p17"><div class="hd"><b>P17 · 보강팀 · 주장-근거-간증</b><span class="btn">눌러서 복사</span></div>
+<pre id="p17">attack.md의 지적마다 주장-근거-간증으로 답해줘.
+- 주장: 한 문장
+- 근거: 아카이브 번호, 댓글 원문, 시뮬레이션 계산
+- 간증: 실제 고객의 말(후기·댓글 원문과 출처). 없으면 지어내지 말고 [수집 필요: 어디서 찾을지]로 남겨.
+
+- 방어가 안 되는 지적은 "인정"이라고 쓰고, 가설을 고치거나 버려.
+- 숫자에 대한 지적에는 변화 폭을 낮춘 보수안으로 다시 계산해서 답해.
+defense.md로 저장해줘.</pre></button>
+<button class="copy" type="button" data-copy="p18"><div class="hd"><b>P18 · v2로 합치기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p18">hypothesis_v1.md와 defense.md를 합쳐 hypothesis_v2.md를 만들어줘.
+- 가설마다 [유지 / 수정 / 폐기]를 표시해.
+- 수정한 가설은 바뀌기 전과 후 문장을 나란히 보여줘.
+- 폐기한 가설은 버린 이유를 한 줄로 남겨.
+- 남은 가설 중 오늘 만들 1순위 1개를 추천하고, 상세페이지와 광고 릴스에 같이 쓸 "하나의 약속"을 한 문장으로 써줘.</pre></button>
+<div class="card checks">
+<h3>이 세 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c8d"><span>v2에 <b>바뀐 곳</b>이 표시돼 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c8e"><span>지어낸 간증이 없고, 없는 곳은 <b>[수집 필요]</b>예요</span></label>
+<label class="check"><input type="checkbox" data-k="c8f"><span><b>하나의 약속</b>이 한 문장으로 정해졌어요</span></label>
+</div>
+<div class="tech"><span class="tag">데이터·서비스 트랙</span>
+<p>P16~P18 대신 이 과제를 해요. 공격 대상은 손익 시뮬레이터의 가정값이에요.</p>
+<button class="copy" type="button" data-copy="t6"><div class="hd"><b>T6 · 재무팀장의 숫자 공격</b><span class="btn">눌러서 복사</span></div>
+<pre id="t6">너는 숫자에 깐깐한 재무팀장이야. sim_profit.html의 가정값을 하나씩 점검해줘.
+- 가정마다: 출처가 있는가 / 범위가 현실적인가 / 이 값이 20% 틀리면 결론이 바뀌는가
+- 결론을 가장 크게 흔드는 가정 3개와, 각각을 확인할 방법(누구에게 묻거나 어디서 찾을지)
+- 지적만 하고 해결책은 쓰지 마. 자료에 없는 통계를 지어내지 마.
+attack_숫자.md로 저장해줘.
+그다음 이 지적을 반영해 report_1p.md를 v2로 고치고, 바뀐 곳을 표시해줘.</pre></button>
+</div>
+</section>
+
+<section id="s9">
+<span class="eyebrow">16:30–17:30 · 오늘의 산출물</span>
+<h2>하나의 약속을 두 그릇에 담아요</h2>
+<span class="pill">짧은 강의</span>
+<div class="card blue" style="margin-top:12px"><div class="big">릴스가 한 약속을<br>상세페이지 첫 화면이 이어받아요</div><p style="margin-top:10px">릴스를 보고 들어왔는데 다른 이야기가 나오면 바로 나가요. 그래서 <b>상세페이지를 먼저</b> 만들고, 그 페이지로 데려오는 릴스를 만들어요.</p></div>
+<div class="tablewrap"><table>
+<tr><th></th><th>광고 소재 릴스</th><th>오가닉 릴스</th></tr>
+<tr><td><b>보는 사람</b></td><td>우리를 모르는 사람</td><td>이미 팔로우한 사람</td></tr>
+<tr><td><b>목표</b></td><td>상세페이지로 보내기</td><td>저장, 공유, 댓글</td></tr>
+<tr><td><b>첫 3초</b></td><td>고객의 짜증 나는 순간</td><td>계정의 분위기, 재미</td></tr>
+<tr><td><b>끝</b></td><td>상세페이지 첫 화면과 같은 문장</td><td>다음 게시물 기대</td></tr>
+<tr><td><b>만드는 수</b></td><td>훅만 바꾼 변형 여러 개</td><td>한 편씩</td></tr>
+</table></div>
+<div class="card soft"><p><b>시간 배분.</b> 상세페이지 40분 → 릴스 20분. 릴스를 못 끝내면 과제로 가져가요. 상세페이지는 오늘 끝내요.</p></div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p19" style="margin-top:12px"><div class="hd"><b>P19 · 상세페이지 개선안</b><span class="btn">눌러서 복사</span></div>
+<pre id="p19">hypothesis_v2.md의 1순위 약속, pdp_해부.md, context/ 폴더의 퍼소나와 CJM을 근거로 라라스윗 대표 제품의 상세페이지 개선안 pdp_v1.html을 만들어줘. 폰 화면 폭 기준으로.
+
+[구성]
+① 첫 화면: 약속 한 줄 + 퍼소나의 장면
+② 공감: 짜증 나는 순간
+③ 의심 해소: CJM 3단계의 의심 2개 이상에 하나씩 답하는 섹션
+④ 근거: 성분, 수치, 후기 자리. 전부 [실데이터 입력]으로 두고 어디서 가져올지 메모
+⑤ 벤치마킹 브랜드의 댓글 질문에서 뽑은 FAQ 3개
+⑥ 오퍼와 구매 버튼 자리
+
+- 섹션마다 옆에 "이 섹션이 깨는 의심 / 근거 아카이브 번호"를 메모 박스로 붙여.
+- 가격, 영양 성분, 후기는 지어내지 마. 이미지 자리는 회색 박스로 두고 어떤 사진이 필요한지 적어.
+- 효능을 단정하는 표현(살이 빠진다 등)은 쓰지 마. 애매하면 [표현 확인 필요]를 붙여.
+- 맨 아래에 "학습용 가상 기획안이며 브랜드와 무관합니다"라고 적어.</pre></button>
+<button class="copy" type="button" data-copy="p20"><div class="hd"><b>P20 · 이 상세페이지로 보내는 광고 릴스 대본</b><span class="btn">눌러서 복사</span></div>
+<pre id="p20">pdp_v1.html의 첫 화면과 같은 약속으로, 이 상세페이지로 보내는 15초 광고 소재 릴스 대본을 reels_v1.md로 써줘.
+- 첫 3초 훅을 A, B 두 가지로(같은 약속, 다른 장면). 훅마다 어떤 의심을 노리는지 한 줄.
+- 컷 표: 초 / 화면(인물, 장소, 손에 든 것) / 자막 / 나레이션 / 소리
+- 제품은 3초가 지난 뒤에 등장해.
+- 마지막 컷의 문장은 상세페이지 첫 화면의 약속과 같게.
+- winner_해부.md에서 배운 구조 1가지를 어디에 적용했는지 표시해. 장면과 문장은 베끼지 말고 새로 써.
+- 끝에 촬영 준비물 목록과, 근거 없이 쓴 문장 목록을 붙여.</pre></button>
+<button class="copy" type="button" data-copy="p21"><div class="hd"><b>P21 · 첫 장면이 밋밋할 때</b><span class="btn">눌러서 복사</span></div>
+<pre id="p21">첫 3초가 설명처럼 들려. 퍼소나의 짜증 나는 순간을 시간, 장소, 손에 든 물건, 혼잣말이 보이는 한 장면으로 다시 써줘. 자막은 12자 이내로, 제품과 브랜드 이름은 넣지 마.</pre></button>
+<div class="card checks">
+<h3>이 네 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c9a"><span>릴스 마지막 문장과 상세페이지 첫 화면이 <b>같은 약속</b>이에요</span></label>
+<label class="check"><input type="checkbox" data-k="c9b"><span>상세페이지가 <b>의심 2개 이상</b>에 답해요</span></label>
+<label class="check"><input type="checkbox" data-k="c9c"><span>가격, 성분, 후기가 <b>[실데이터 입력]</b>으로 남아 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="c9d"><span>맨 아래에 <b>학습용 가상 기획안</b> 표시가 있어요</span></label>
+</div>
+<div class="tech"><span class="tag">데이터·서비스 트랙 · AX팀 킥오프</span>
+<p>여러분은 <b>교실 안의 사내 AX팀</b>이에요. 마케팅 트랙 동료가 오늘 가장 번거로워한 일을 찾아, 다음 주에 실제로 쓸 도구로 만들어요.</p>
+<p><b>순서.</b> 인터뷰 상대 1명 정하기(오늘 실습에서 가장 오래 헤맨 사람이 좋아요) → 15분 인터뷰 → PRD 1장. 상대를 못 구하면 강사에게 말해요.</p>
+<p><b>현업 요령.</b> "이런 도구 있으면 쓰실래요?"라고 묻지 않아요. 다들 "네"라고 해요. <b>오늘 실제로 어떻게 했는지</b>를 순서대로 물어요.</p>
+<button class="copy" type="button" data-copy="t7"><div class="hd"><b>T7 · 현업 인터뷰 질문지</b><span class="btn">눌러서 복사</span></div>
+<pre id="t7">나는 교실 안 사내 AX팀이야. 마케팅 트랙 동료 1명을 15분 인터뷰해서 반복 업무의 불편을 찾으려 해. 인터뷰 질문지 interview.md를 만들어줘.
+① 오늘 한 일(벤치마킹 수집 → 표 정리 → 패턴 분석 → 가설) 중 가장 오래 걸린 단계
+② 그 단계를 실제로 어떻게 했는지 순서대로(무엇을 열고, 무엇을 복사했는지)
+③ 틀렸거나 다시 한 부분
+④ 이 일을 앞으로 얼마나 자주 하게 될지
+⑤ 지금 쓰는 임시방편
+- 유도 질문은 넣지 마("이런 도구가 있으면 쓰시겠어요?" 같은 질문).
+- 질문마다 답을 받아 적을 칸과, 더 캐물을 질문 1개를 붙여.</pre></button>
+<button class="copy" type="button" data-copy="t8"><div class="hd"><b>T8 · PRD 1장</b><span class="btn">눌러서 복사</span></div>
+<pre id="t8">interview.md에 내가 적은 답을 바탕으로 PRD 1장(prd_v0.md)을 써줘.
+1. 문제: 누가, 언제, 얼마나 자주, 지금 어떻게 하고 있나
+2. 지금 방식의 비용: 걸리는 시간과 실수. 인터뷰에서 들은 그대로 적고 숫자를 추측하지 마
+3. 해결 아이디어 한 줄
+4. 입력 → 처리 → 출력 → 검증
+5. 다음 주에 만들 가장 작은 버전(화면 1개)
+6. 만들지 않을 것 3가지
+7. 성공 기준: 인터뷰한 동료가 실제 작업에 한 번 쓴다
+- 인터뷰에 없는 내용은 [추가 인터뷰 필요]로 남겨.</pre></button>
+</div>
+</section>
+
+<section id="s10">
+<span class="eyebrow">17:30–18:00 · 마무리</span>
+<h2>링크를 남기고 퇴근해요</h2>
+<div class="card checks">
+<h3>조장 체크</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="c10a"><span>조원 전원이 실습시트에 <b>오늘 링크 2개</b>(아카이브 시트, day15 드라이브 폴더)를 적었어요</span></label>
+<label class="check"><input type="checkbox" data-k="c10b"><span>링크를 <b>다른 사람 폰</b>에서 열어 봤고 전부 열려요</span></label>
+<label class="check"><input type="checkbox" data-k="c10c"><span>덜 끝난 파일은 이름 끝에 <b>_진행중</b>을 붙였어요</span></label>
+<label class="check"><input type="checkbox" data-k="c10d"><span>오늘 막힌 조원이 있으면 <b>강사에게 말로</b> 전했어요</span></label>
+</div>
+<div class="grid">
+<div class="card"><h3>파일 이름 규칙</h3><pre class="tree" style="font-size:18px">이름_Day15_archive.csv
+이름_Day15_positioning.html
+이름_Day15_hypothesis_v2.md
+이름_Day15_pdp_v1.html
+이름_Day15_reels_v1.md</pre><p class="sub" style="margin-top:12px">Claude에게 "제출할 파일 이름 앞에 이름_Day15_를 붙여줘"라고 해도 돼요.</p></div>
+<div class="card"><h3>올리는 법</h3><ul><li>day15 폴더를 구글 드라이브에 올려요</li><li>폴더를 "링크가 있는 모든 사용자 · 뷰어"로 공유해요</li><li>링크를 실습시트에 붙여요</li></ul><p class="sub" style="margin-top:12px">드라이브에서 HTML은 코드로 보여요. 오늘은 열리는지만 확인해요.</p></div>
+</div>
+<h3 class="gap">이렇게 평가해요</h3>
+<div class="tablewrap"><table>
+<tr><th>항목</th><th>아쉬움</th><th>좋음</th><th>훌륭함</th></tr>
+<tr><td>벤치마킹 선정</td><td>유명해서 골랐음</td><td>앞선 근거와 출처가 있음</td><td>같은 고객인 이유까지 설명됨</td></tr>
+<tr><td>아카이브</td><td>10건 미만, 빈칸 많음</td><td>20건 이상, 원문 그대로</td><td>27건, 게재 기간과 댓글까지</td></tr>
+<tr><td>분석 깊이</td><td>훅 이름 나열</td><td>"왜"가 근거 번호와 함께</td><td>우리 퍼소나와 연결됨</td></tr>
+<tr><td>가설</td><td>근거 없는 느낌</td><td>"왜냐하면"이 있음</td><td>공격을 받고 고친 흔적</td></tr>
+<tr><td>산출물</td><td>릴스와 상세페이지가 따로</td><td>같은 약속으로 이어짐</td><td>의심 2개 이상을 근거로 해소</td></tr>
+</table></div>
+<div class="card soft"><h3>동료 발견 5분</h3><p>오늘 알게 된 것 하나를 조에서 돌아가며 말해요. 도구 조합, 프롬프트 요령, 시장에서 본 것 무엇이든 좋아요.</p></div>
+<button class="copy" type="button" data-copy="p22"><div class="hd"><b>P22 · 오늘 발견 한 줄 뽑기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p22">오늘 작업한 파일을 훑어보고, 내가 오늘 새로 알게 된 것 후보 3개를 한 줄씩 뽑아줘.
+- 종류: 도구 조합 / 프롬프트 요령 / 시장에 대한 발견
+- 각 줄에 근거가 된 파일 이름을 붙여.
+내가 하나를 골라 실습시트에 적을 거야.</pre></button>
+<h3 class="gap">지켜야 할 세 가지</h3>
+<div class="grid">
+<div class="card"><h3>공식이 아님을 표시</h3><p class="sub">"학습용 가상 기획안이며 브랜드와 무관합니다"를 기획안 아래에 넣어요.</p></div>
+<div class="card"><h3>캡처는 분석용으로만</h3><p class="sub">남의 광고 이미지와 영상을 내 결과물에 그대로 넣지 않아요. 구조만 배워요.</p></div>
+<div class="card"><h3>댓글과 후기는 출처와 함께</h3><p class="sub">작성자 아이디는 지우고, 어디서 가져왔는지 적어요.</p></div>
+</div>
+<div class="card soft"><h3>다음 주 예고 · 오늘의 v2가 다음 주의 재료예요</h3>
+<ul><li><b>11/16(월)</b> MVP 정의서, 시안과 프로토타입</li><li><b>11/17(화)</b> 고도화, 사용자 테스트, 피치덱 뼈대</li><li><b>11/18(수)</b> 피칭 데이. 링크를 배포하고 5분 발표</li></ul>
+<p class="sub" style="margin-top:8px">hypothesis_v2.md와 pdp_v1.html을 지우지 말고 가져오세요.</p></div>
+<div class="card blue"><div class="big">오늘 여러분은 감이 아니라<br>근거 번호로 말했어요.</div><p style="margin-top:12px">벤치마킹 · 누가 앞서 있나 / 가설 · 우리는 어디서 이길까 / 숫자 · 그러면 얼마나 달라질까</p></div>
+</section>
+
+<section id="s11">
+<span class="eyebrow">막히면</span>
+<h2>막히면 카드를 세워요</h2>
+<div class="signal">
+<div class="card sg"><h3>초록 · 끝났어요</h3><p class="sub">성공 기준을 다 채웠어요. 옆 사람을 돕거나 다음 실습으로 가요.</p></div>
+<div class="card sy"><h3>노랑 · 결과가 이상해요</h3><p class="sub">돌아가긴 하는데 얕아요. 보정 프롬프트를 쓰고 짝꿍에게 물어요.</p></div>
+<div class="card sr"><h3>빨강 · 멈췄어요</h3><p class="sub">에러, 로그인, 파일이 안 생겨요. 강사가 바로 가요.</p></div>
+</div>
+<h3 class="gap">오늘 많이 막힐 다섯 곳</h3>
+<details><summary>1. Claude가 본 적 없는 광고를 지어내요</summary><div class="body"><p><b>원인</b> Claude는 인스타그램과 광고 라이브러리를 직접 못 봐요. 물어보면 그럴듯하게 만들어 내요.</p><p><b>해결</b> 광고는 내가 모으고, Claude는 내가 준 표와 캡처만 분석하게 해요. 아래 프롬프트로 점검해요.</p>
+<button class="copy" type="button" data-copy="p23"><div class="hd"><b>P23 · 지어낸 광고 점검</b><span class="btn">눌러서 복사</span></div>
+<pre id="p23">방금 결과에서 archive.csv에 없는 광고, 게시물, 댓글을 인용한 문장을 전부 찾아 목록으로 보여주고 삭제해줘. 아카이브 번호가 붙지 않은 주장도 따로 표시해줘.</pre></button></div></details>
+<details><summary>2. 벤치마킹 브랜드의 광고가 안 보여요</summary><div class="body"><p><b>확인</b> 광고 라이브러리에서 국가는 대한민국, 광고 카테고리는 "모든 광고"로 두고, 브랜드 이름을 한글과 영문으로 각각 검색해요.</p><p><b>그래도 없으면</b> 그 브랜드는 빼고 benchmark_후보.md의 다음 후보로 바꿔요. 광고를 안 하는 브랜드는 오늘 실습에 맞지 않아요.</p></div></details>
+<details><summary>3. 스니핏 무료 사용량이 끝났어요</summary><div class="body"><p><b>해결</b> 광고 라이브러리에서 직접 찾아 이어 가요. 결과는 같아요. 7일 무료 체험을 아직 안 썼다면 오늘 써도 돼요.</p></div></details>
+<details><summary>4. Claude가 캡처를 못 읽어요</summary><div class="body"><p><b>확인</b> 캡처가 day15/capture 폴더 안에 있는지, 파일 이름에 띄어쓰기가 없는지 봐요.</p>
+<button class="copy" type="button" data-copy="p24"><div class="hd"><b>P24 · 캡처 폴더 읽게 하기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p24">capture/ 폴더의 이미지 파일 목록을 보여주고, 첫 번째 이미지에 보이는 글자를 그대로 읽어줘. 못 읽으면 이유를 말해줘.</pre></button>
+<p><b>글자가 작아 못 읽으면</b> 상세페이지는 화면을 나눠서 여러 장으로 캡처해요.</p></div></details>
+<details><summary>5. 링크가 짝꿍 폰에서 안 열려요</summary><div class="body"><p><b>원인</b> 공유 설정이 "제한됨"이거나, 내 컴퓨터 안의 주소예요.</p><p><b>해결</b> 구글 시트와 드라이브 폴더의 공유를 "링크가 있는 모든 사용자 · 뷰어"로 바꾸고, 주소창의 링크가 아니라 <b>공유 버튼의 "링크 복사"</b>로 복사해요.</p></div></details>
+<h3 class="gap">그 밖에 자주 막히는 상황</h3>
+<details><summary>분석이 훅 이름 나열로 끝나요</summary><div class="body"><p><b>해결</b> 실습 2의 P09(분석이 얕을 때)를 써요.</p></div></details>
+<details><summary>사용량 한도 메시지가 떠요</summary><div class="body"><p><b>해결</b> 글로 하는 단계(패턴 분석, 5-Whys, 공격, 보강)는 GPT 에듀에 같은 프롬프트와 파일을 올려서 해도 돼요. 결과는 같은 파일 이름으로 day15 폴더에 저장해요.</p></div></details>
+<details><summary>결과가 영어로 나와요</summary><div class="body"><p><b>해결</b> "모든 결과를 한국어로"라고 덧붙여요.</p></div></details>
+<details><summary>답이 길어서 끝이 잘려요</summary><div class="body"><p><b>해결</b> "계속해줘"라고 입력해요.</p></div></details>
+<details><summary>Claude가 계속 질문만 해요</summary><div class="body"><p><b>해결</b> "네가 가정하고, 가정한 곳을 표시해서 진행해줘"라고 해요.</p></div></details>
+<details><summary>이전 대화를 잊었어요</summary><div class="body"><p><b>해결</b> "@파일이름 읽고 이어서 해줘"라고 해요. 오늘 단계마다 파일로 저장하는 이유예요.</p></div></details>
+</section>
+
+<section id="s12">
+<span class="eyebrow">업무 워크플로우</span>
+<h2>오늘 한 일이 곧 현업의 순서예요</h2>
+<p class="lead">경쟁 분석도 네 칸으로 그릴 수 있어요. 회사에 가면 이 네 칸을 매주 돌려요.</p>
+<div class="flow">
+<div class="card"><span class="tag">입력</span><h3>무엇을 넣나</h3><p class="sub">한 걸음 앞선 3곳, 우리 퍼소나와 CJM</p></div>
+<div class="card"><span class="tag">처리</span><h3>어떤 순서로</h3><p class="sub">수집 → 패턴 → 왜 → 장면 → 가설</p></div>
+<div class="card"><span class="tag">출력</span><h3>어떤 모양으로</h3><p class="sub">맵, 가설, 상세페이지, 릴스</p></div>
+<div class="card"><span class="tag">검증</span><h3>맞는지 확인</h3><p class="sub">아카이브 번호, 공격·보강, 가정 표시</p></div>
+</div>
+<div class="card warn"><p><b>AI에게 맡기는 칸과 내가 하는 칸을 나눠요.</b> 수집과 판단(무엇이 승부 소재인지, 어느 축을 쓸지, 어떤 가설을 버릴지)은 사람이, 정리와 계산과 초안은 AI가 해요.</p></div>
+<h3 class="gap">현업의 벤치마킹 루틴 (수업용 권장)</h3>
+<div class="tablewrap"><table>
+<tr><th>주기</th><th>할 일</th><th>걸리는 시간</th></tr>
+<tr><td>매주</td><td>3곳의 새 광고를 확인하고 표에 추가</td><td>30분</td></tr>
+<tr><td>격주</td><td>패턴 분석을 갱신하고 승부 소재가 바뀌었는지 확인</td><td>1시간</td></tr>
+<tr><td>매월</td><td>가설을 새로 세우고 소재에 반영</td><td>반나절</td></tr>
+</table></div>
+<h3 class="gap">직무별로 보면</h3>
+<div class="tablewrap"><table>
+<tr><th>직무</th><th>입력</th><th>처리</th><th>출력</th></tr>
+<tr><td>콘텐츠 마케터</td><td>벤치마킹 광고, 상세페이지</td><td>훅과 의심 해소 구조 분석</td><td>상세페이지, 광고 릴스 대본</td></tr>
+<tr><td>MD</td><td>경쟁 상품의 가격, 구성, 후기</td><td>구매 이유와 빈칸 정리</td><td>기획전 구성, 상세페이지 기획</td></tr>
+<tr><td>데이터 분석</td><td>아카이브 표, 판매 조건</td><td>빈도와 손익 계산</td><td>차트, 경영진 보고 1장</td></tr>
+<tr><td>개발·AX</td><td>현업의 반복 작업</td><td>인터뷰 → PRD</td><td>팀이 쓰는 도구</td></tr>
+</table></div>
+<button class="copy" type="button" data-copy="p25"><div class="hd"><b>P25 · 내 경쟁 분석 스킬 만들기 (심화·과제)</b><span class="btn">눌러서 복사</span></div>
+<pre id="p25">오늘 내가 한 작업 순서를 다른 브랜드에도 다시 쓸 수 있게 스킬로 만들어줘. 위치는 .claude/skills/competitor-archive/SKILL.md이고, 맨 위에 name과 description(언제 쓰는 스킬인지)을 적어.
+
+[구조]
+1. 입력 슬롯: BRAND / CATEGORY / 퍼소나·CJM 파일 경로
+2. 단계: 한 걸음 앞선 벤치마킹 브랜드 찾기 → 아카이브 표 양식 → 1차 패턴 → 5-Whys 심화 → 승부 소재·상세페이지 해부 → 비교표·포지셔닝 맵 → 공백과 가설
+3. 규칙:
+   - 광고·게시물은 사람이 수집한다. 아카이브에 없는 소재를 인용하지 않는다.
+   - 모든 주장에 아카이브 번호를 붙인다.
+   - 숫자는 출처가 없으면 "가정"으로 표시한다.
+   - 비슷하거나 작은 브랜드는 벤치마킹 대상에서 뺀다.
+4. 단계마다 저장할 파일 이름
+오늘 day15 폴더의 파일들을 참고해서, 내가 실제로 한 순서와 맞게 써줘.</pre></button>
+<div class="card soft"><h3>주말 숙제 한 줄</h3><p>내가 일하고 싶은 산업에서 <b>한 걸음 앞선 브랜드 1곳</b>을 골라, 오늘과 같은 방법으로 광고 5개만 모아 보세요. 스킬을 만들었다면 재료만 바꿔 돌리면 돼요.</p></div>
+</section>
+</div>
+
+<button class="theme" id="themeBtn" type="button">다크 모드</button>
+<div class="toast" id="toast" role="status" aria-live="polite">복사됐어요</div>
+
+<script>
+(function(){
+  var toast=document.getElementById('toast'),tm;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove('show')},1800)}
+  function fb(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);return ok}
+  function copy(b){
+    var t=document.getElementById(b.getAttribute('data-copy')).innerText;
+    function done(ok){
+      if(ok){b.classList.add('done');b.querySelector('.btn').textContent='복사 완료';show('복사됐어요. Claude Code에 붙여넣기');
+        setTimeout(function(){b.classList.remove('done');b.querySelector('.btn').textContent='눌러서 복사'},2500)}
+      else{show('복사가 안 됐어요. 글자를 길게 눌러 직접 선택해 주세요')}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},function(){done(fb(t))})}
+    else done(fb(t));
+  }
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(){copy(b)})});
+
+  // 체크리스트 (이 기기에만 저장)
+  var store=null;try{store=window.localStorage}catch(e){}
+  function get(k){try{return store&&store.getItem('l15-'+k)==='1'}catch(e){return false}}
+  function set(k,v){try{store&&store.setItem('l15-'+k,v?'1':'0')}catch(e){}}
+  var groups=[].slice.call(document.querySelectorAll('.checks'));
+  function update(){
+    groups.forEach(function(g){
+      var boxes=g.querySelectorAll('input[data-k]'),n=0;
+      [].forEach.call(boxes,function(b){if(b.checked)n++});
+      var bar=g.querySelector('.progress i');if(bar&&boxes.length)bar.style.width=(n/boxes.length*100)+'%';
+    });
+  }
+  [].forEach.call(document.querySelectorAll('input[data-k]'),function(b){
+    b.checked=get(b.getAttribute('data-k'));
+    b.addEventListener('change',function(){set(b.getAttribute('data-k'),b.checked);update()});
+  });
+  update();
+
+  // 메뉴 강조
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=secs.indexOf(e.target);links.forEach(function(l,j){l.classList.toggle('on',i===j)});if(links[i]&&links[i].scrollIntoView){try{links[i].scrollIntoView({block:'nearest',inline:'center'})}catch(x){}}}})},{rootMargin:'-30% 0px -60% 0px'});
+    secs.forEach(function(s){io.observe(s)});
+  }
+  links[0].classList.add('on');
+
+  // 테마 전환
+  var root=document.documentElement,btn=document.getElementById('themeBtn');
+  function isDark(){var t=root.getAttribute('data-theme');if(t)return t==='dark';return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches}
+  function label(){btn.textContent=isDark()?'라이트 모드':'다크 모드'}
+  btn.addEventListener('click',function(){root.setAttribute('data-theme',isDark()?'light':'dark');label()});
+  label();
+})();
+</script>
