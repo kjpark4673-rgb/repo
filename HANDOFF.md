@@ -47,7 +47,7 @@
 | 2 | 실습 보드(클릭 복사) | `classroom/day14-board.html` / 아티팩트 https://claude.ai/artifact/Q5uVH5WFqJzjCixCK5jGuW | **Step 1 프롬프트가 구버전** |
 | 3 | 강사용+학생용 보강 해설 덱 52장 | `classroom/deck-day14-support/project/` / https://claude.ai/artifact/3PsLP3gswKCNjsxgrPxko4 | 발행됨. 강사용 장은 `[강사용]` 표시 |
 | 4 | **학생용 가이드 웹페이지**(토스 UI) | `classroom/student-guide/guide.html` / https://claude.ai/artifact/6Ts7gNkcU1nMu6ocBQPxfX | 발행됨. **최신 기준 프롬프트가 여기 있음** |
-| 5 | **별첨 문서**(복습 프롬프트 20개 + 부서별 스킬 로드맵 + 링크드인) | Docs 문서 https://claude.ai/artifact/6FvsDN1JWUfx3NeA7aA77V | 발행됨 (아래 상세) |
+| 5 | **별첨 문서**(복습 프롬프트 20개 + 부서별 스킬 로드맵 + 링크드인) | Docs 문서 https://claude.ai/artifact/6FvsDN1JWUfx3NeA7aA77V / 마크다운 백업 `classroom/backup/별첨-복습프롬프트-스킬로드맵.md` | 발행됨 (아래 상세). 백업에서 로드맵 도식은 글자 자리표시자로 바뀌어 있고, 첫머리 `@james` 표시는 Docs가 넣은 값이라 공유 전 확인 필요 |
 
 Docs 문서 식별자: 문서 `2a934d51-7281-45d3-9e2a-bd1a70120e48`, 탭 `72a19b38-0cac`, 본문 노드 `b50684d0-caab`. 편집은 docs 도구(`read`/`update`)로 한다. 링크를 웹으로 가져오지 말 것.
 
