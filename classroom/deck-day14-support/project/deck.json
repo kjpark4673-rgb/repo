@@ -1,0 +1,40 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-11T23:40:00Z"},
+  "lists": "css",
+  "title": "Day 14 보강 해설 덱",
+  "cover": "cover",
+  "order": [
+    "cover", "how-to-read", "today-one-line",
+    "diag-summary", "gap-skill-location", "gap-1min", "gap-fact", "gap-overwrite", "gap-modec", "gap-30", "gap-track-dup", "gap-submit",
+    "concept-skill", "concept-prompt-vs-skill", "concept-persona", "concept-5whys", "concept-cjm", "concept-hook", "concept-switch", "concept-html", "glossary",
+    "setup-check", "setup-folder",
+    "step1-flow", "step1-permissions", "step1-success",
+    "whys-bad-good", "whys-fix-prompt", "cjm-check", "fact-check",
+    "step2-what-changes", "modea-detail", "modeb-detail", "modec-detail", "html-open",
+    "tech-track", "data-track", "mkt-levels",
+    "timetable-revised", "signal", "checkpoints", "submit-rule", "rubric",
+    "faq-1", "faq-2", "fallback",
+    "wf-ipo", "wf-steps", "wf-job",
+    "ethics", "tomorrow", "closing"
+  ],
+  "sections": {
+    "s1": {"description": "오늘 수업을 한 문장으로 정리하고 이 덱 쓰는 법을 안내한다", "start": "cover"},
+    "s2": {"description": "기존 교안에서 놓친 것과 고쳐야 할 것", "start": "diag-summary"},
+    "s3": {"description": "어려운 개념을 비유로 쉽게 풀어 준다", "start": "concept-skill"},
+    "s4": {"description": "수업 시작 전 환경 점검", "start": "setup-check"},
+    "s5": {"description": "Step 1을 막힘 없이 따라 하는 법", "start": "step1-flow"},
+    "s6": {"description": "결과물이 괜찮은지 스스로 검증하는 법", "start": "whys-bad-good"},
+    "s7": {"description": "Step 2 세 가지 모드를 제대로 이해하기", "start": "step2-what-changes"},
+    "s8": {"description": "희망 직무별 난이도와 심화 미션", "start": "tech-track"},
+    "s9": {"description": "수정 시간표와 교실 운영 장치", "start": "timetable-revised"},
+    "s10": {"description": "자주 막히는 상황과 해결법", "start": "faq-1"},
+    "s11": {"description": "업무 워크플로우 설계 방법", "start": "wf-ipo"},
+    "s12": {"description": "주의사항과 내일 수업 연결", "start": "ethics"}
+  },
+  "faces": {
+    "ibm-plex-sans-kr": {"family": "IBM Plex Sans KR", "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&display=swap"},
+    "noto-sans-kr": {"family": "Noto Sans KR", "href": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"}
+  },
+  "designSystems": []
+}
