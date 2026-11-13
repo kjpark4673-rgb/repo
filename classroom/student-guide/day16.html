@@ -103,14 +103,14 @@ a.link::after{content:" ↗";color:var(--blue)}
 
 <div class="wrap">
 <nav id="nav" aria-label="구간 이동">
-<a href="#s0">오늘</a><a href="#s1">준비</a><a href="#s2">1교시</a><a href="#s3">2교시</a><a href="#s4">3교시</a><a href="#s5">5초 테스트</a><a href="#s6">4교시</a><a href="#s7">5교시</a><a href="#s8">발표 한 장</a><a href="#s9">마무리</a><a href="#s10">막히면</a>
+<a href="#s0">오늘</a><a href="#s1">준비</a><a href="#s2">1교시</a><a href="#s3">2교시</a><a href="#s4">3교시</a><a href="#s5">4교시</a><a href="#s6">오후</a><a href="#s7">마무리</a><a href="#s8">막히면</a>
 </nav>
 
 <section id="s0">
 <span class="eyebrow">11/16(월) · Day 16 · 09:00–09:20</span>
-<h1>오늘은 만드는 날이에요</h1>
-<p class="lead">저녁 6시에 <b>폰에서 보이는 랜딩페이지 한 장</b>이 남아요. 수요일 발표에 그대로 띄울 거예요.</p>
-<div class="card blue"><div class="big">프롬프트는 11개, 전부 짧아요</div><p style="margin-top:10px">복사해서 붙이면 Claude가 되묻지 않고 끝까지 만들어요. 빈칸을 채울 필요도 없어요. 전부 실제로 돌려 보고 넣었어요.</p></div>
+<h1>오늘은 만드는 첫날이에요</h1>
+<p class="lead">저녁 6시에 세 가지가 남아요. <b>MVP 정의서, 폰에서 보이는 랜딩페이지 초안, 키비주얼 시안.</b> 내일 고치고, 수요일에 발표해요.</p>
+<div class="card blue"><div class="big">꼭 하는 프롬프트는 다섯 개예요</div><p style="margin-top:10px">P1 벤치마킹 → P3 MVP 정의서 → P5 계획 → P6 만들기 → P10 키비주얼. 나머지는 결과를 한 단계 올리는 한 줄이에요. P와 T 박스는 전부 실제로 돌려 보고 넣었어요. 붙이면 Claude가 되묻지 않고 끝까지 만들어요.</p></div>
 <h3 class="gap">금요일에 Claude가 자꾸 멈춘 이유</h3>
 <div class="grid">
 <div class="card red"><h3>금요일의 말투</h3><p>"자료가 없으면 쓰지 마. 모르면 나에게 물어봐."</p><p class="sub">그래서 Claude가 멈추고, 되묻고, 아무것도 만들지 않았어요.</p></div>
@@ -121,20 +121,19 @@ a.link::after{content:" ↗";color:var(--blue)}
 <div class="tablewrap"><table>
 <tr><th>시간</th><th>하는 일</th><th>남는 파일</th></tr>
 <tr><td>09:00</td><td>오프닝, 준비</td><td>CLAUDE.md</td></tr>
-<tr><td>09:20</td><td>1교시 · 벤치마킹 한 장</td><td>benchmark.md</td></tr>
-<tr><td>10:10</td><td>2교시 · MVP 정의서</td><td>mvp.md</td></tr>
-<tr><td>11:00</td><td>3교시 · 랜딩페이지 v1</td><td>landing.html</td></tr>
-<tr><td>12:30</td><td>짝꿍 5초 테스트</td><td>메모 3줄</td></tr>
+<tr><td>09:20</td><td>1교시 · 벤치마킹 한 장 (금요일 마무리)</td><td>benchmark.md</td></tr>
+<tr><td>10:00</td><td>2교시 · MVP 정의서</td><td>mvp.md</td></tr>
+<tr><td>11:00</td><td>3교시 · 계획부터 받고 만들기</td><td>plan.md, landing.html</td></tr>
+<tr><td>12:00</td><td>4교시 · 'AI가 만든 티' 빼기</td><td>landing.html</td></tr>
 <tr><td>13:00</td><td>점심</td><td></td></tr>
-<tr><td>14:00</td><td>4교시 · v2로 고치기</td><td>landing_v2.html</td></tr>
-<tr><td>15:00</td><td>5교시 · SNS 시안, 릴스 대본</td><td>sns.html, reels.md</td></tr>
-<tr><td>16:00</td><td>발표 한 장 (테크 트랙은 AX팀 스프린트)</td><td>pitch.md</td></tr>
-<tr><td>17:30</td><td>마무리, 링크 기록</td><td>실습시트</td></tr>
+<tr><td>14:00</td><td>오후 실습 · 키비주얼과 SNS 시안 (테크 트랙은 샘플 데이터)</td><td>kv.md, images 폴더, sns.html</td></tr>
+<tr><td>16:00</td><td>다듬기, 내 회사로 한 번 더 (테크 트랙은 AX팀 스프린트)</td><td></td></tr>
+<tr><td>17:00</td><td>팀 공유, 회고, 링크 기록</td><td>실습시트</td></tr>
 </table></div>
 <div class="grid">
 <div class="card"><h3>MVP = 시식 코너</h3><p class="sub">가게를 다 짓기 전에 한 입만 내놓고 반응을 봐요. 오늘의 한 입은 랜딩페이지 한 장이에요.</p></div>
-<div class="card"><h3>랜딩페이지 = 가게 쇼윈도</h3><p class="sub">지나가던 사람이 멈추고, 들어오고, 사게 만드는 한 장이에요.</p></div>
-<div class="card"><h3>5초 테스트 = 간판 테스트</h3><p class="sub">간판을 5초 보고 무슨 가게인지 모르면 아무도 안 들어와요.</p></div>
+<div class="card"><h3>계획 먼저 = 공사 전 도면 확인</h3><p class="sub">벽을 세운 뒤에 고치면 비싸요. 도면에서 고치면 한 줄이에요.</p></div>
+<div class="card"><h3>디자인 스킬 = 선배의 체크리스트</h3><p class="sub">잘하는 선배가 "이건 하지 마"라고 적어 준 종이예요. 폴더에 넣어 두면 Claude가 읽고 따라요.</p></div>
 </div>
 </section>
 
@@ -145,7 +144,7 @@ a.link::after{content:" ↗";color:var(--blue)}
 <div class="progress"><i></i></div>
 <label class="check"><input type="checkbox" data-k="a1"><span><b>작업 폴더</b>를 Claude Code에서 열었어요 (하던 폴더 그대로 좋아요)</span></label>
 <label class="check"><input type="checkbox" data-k="a2"><span>내 회사로 할 사람은 아래 세 칸을 바꿨어요 (안 바꾸면 라라스윗)</span></label>
-<label class="check"><input type="checkbox" data-k="a3"><span><b>P0</b>을 실행해서 CLAUDE.md가 생겼어요</span></label>
+<label class="check"><input type="checkbox" data-k="a3"><span><b>P0</b>을 실행했어요</span></label>
 </div>
 <div class="card" id="profileCard">
 <h3>내 회사로 하려면 여기만 바꿔요</h3>
@@ -155,18 +154,20 @@ a.link::after{content:" ↗";color:var(--blue)}
 <div class="field"><label for="v-customer">우리 고객 한 줄</label><input id="v-customer" data-in="customer" type="text" maxlength="90" placeholder="다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인" autocomplete="off"></div>
 <button class="ghost" id="resetProfile" type="button">라라스윗으로 되돌리기</button>
 </div>
-<div class="card soft"><p><b>CLAUDE.md는 폴더에 붙여 두는 근무 수칙이에요.</b> 한 번 만들어 두면 Claude가 이 폴더에서 일할 때마다 먼저 읽어요. 그래서 뒤의 프롬프트가 짧아져요.</p></div>
+<div class="card soft"><p><b>CLAUDE.md는 폴더에 붙여 두는 근무 수칙이에요.</b> Claude가 이 폴더에서 일할 때마다 먼저 읽어요. 금요일에 만든 수칙에 "멈추고 묻기"가 남아 있으면 오늘도 Claude가 멈춰요. P0이 그 줄을 지우고 오늘 수칙을 넣어요.</p></div>
 <button class="copy" type="button" data-copy="p00"><div class="hd"><b>P0 · 오늘의 작업 규칙 심기</b><span class="btn">눌러서 복사</span></div>
-<pre id="p00">이 폴더에 CLAUDE.md 파일을 만들어줘. 이미 있으면 맨 아래에 덧붙여줘. 내용은 아래 그대로야.
+<pre id="p00">이 폴더의 CLAUDE.md를 오늘 수업에 맞게 고쳐줘. 파일이 없으면 새로 만들어줘. 끝나면 3줄로만 알려줘.
+1. "멈추고 묻기", "아카이브에 없는 것은 쓰지 않기"처럼 금요일에 넣은 규칙이 있으면 그 줄만 지워줘. 다른 내용은 건드리지 마.
+2. 아래 내용을 맨 아래에 넣어줘. 같은 제목이 이미 있으면 바꿔 넣어줘.
 
-# 수업 작업 규칙
+# 수업 작업 규칙 (다른 규칙과 부딪히면 이 규칙이 먼저다)
 - 되묻지 않는다. 정보가 모자라면 스스로 가정하고 끝까지 만든다.
 - 가정하거나 추측한 곳에는 (가정)이라고 표시한다. 숫자, 가격, 후기를 사실처럼 꾸미지 않는다.
 - 필요한 파일이 없어도 멈추지 않는다. 없는 대로 진행한다.
 - 결과는 파일로 저장하고, 끝나면 3줄로만 보고한다: 만든 파일 / 핵심 한 줄 / 내가 다음에 할 일 한 줄.
 - 모든 결과는 한국어로, 쉬운 말로 쓴다.
 
-# 기준 브랜드
+# 기준 브랜드 (오늘은 이 브랜드로 작업한다)
 - 브랜드: <b data-v="brand">라라스윗</b>
 - 제품: <b data-v="product">저당 아이스크림</b>
 - 고객: <b data-v="customer">다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인</b></pre></button>
@@ -186,7 +187,7 @@ a.link::after{content:" ↗";color:var(--blue)}
 </section>
 
 <section id="s2">
-<span class="eyebrow">09:20–10:10 · 1교시</span>
+<span class="eyebrow">09:20–10:00 · 1교시</span>
 <h2>벤치마킹 한 장을 끝내요</h2>
 <span class="pill">짧은 강의</span>
 <div class="card" style="margin-top:12px"><p>금요일에 못 끝낸 사람도 여기서 한 번에 끝내요. <b>한 걸음 앞선 비슷한 브랜드 3곳</b>이 무엇을 약속하고 어떻게 말하는지 한 장으로 봐요.</p>
@@ -214,21 +215,21 @@ a.link::after{content:" ↗";color:var(--blue)}
 </section>
 
 <section id="s3">
-<span class="eyebrow">10:10–11:00 · 2교시</span>
+<span class="eyebrow">10:00–10:50 · 2교시</span>
 <h2>무엇을 만들지 한 장으로 정해요</h2>
 <span class="pill">짧은 강의</span>
-<div class="card" style="margin-top:12px"><h3>MVP 정의서는 다섯 칸이에요</h3>
-<ul><li><b>누구에게</b> · 고객 한 명의 장면</li><li><b>어떤 문제</b> · 이 사람이 사지 않는 이유</li><li><b>무엇을 보여 줄까</b> · 약속 한 줄</li><li><b>성공 기준</b> · 5초 보고 알아보는가</li><li><b>만들지 않을 것</b> · 이번엔 뺄 것</li></ul>
-<p class="sub" style="margin-top:12px">현업에서 가장 지키기 어려운 칸이 "만들지 않을 것"이에요. 다 넣으려다 아무것도 못 끝내요.</p></div>
+<div class="card" style="margin-top:12px"><h3>MVP 정의서는 여섯 칸이에요</h3>
+<ul><li><b>누구에게</b> · 고객 한 명의 장면</li><li><b>사지 않는 이유</b> · 이 사람이 망설이는 이유 3가지</li><li><b>핵심 가설</b> · "첫 화면에서 이걸 보여 주면 산다"는 한 줄</li><li><b>꼭 넣을 것</b> · 이번에 반드시 들어갈 5가지</li><li><b>만들지 않을 것</b> · 이번엔 뺄 3가지</li><li><b>성공 기준</b> · 5초 보고 알아보는가</li></ul>
+<p class="sub" style="margin-top:12px">핵심 가설은 아직 맞는지 모르는 말이에요. 내일 사람에게 보여 주고 맞는지 확인해요. 현업에서 가장 지키기 어려운 칸은 "만들지 않을 것"이에요. 다 넣으려다 아무것도 못 끝내요.</p></div>
 <span class="pill">따라 하기</span>
 <button class="copy" type="button" data-copy="p03" style="margin-top:12px"><div class="hd"><b>P3 · MVP 정의서 한 장</b><span class="btn">눌러서 복사</span></div>
 <pre id="p03">우리 브랜드의 기획전 랜딩페이지를 MVP로 만들 거야. MVP 정의서 한 장을 mvp.md로 써줘.
 - 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
 - 누구에게: 우리 고객 한 명을 장면으로(시간, 장소, 혼잣말)
-- 어떤 문제: 이 사람이 사지 않는 이유 3가지
-- 무엇을 보여 줄까: 랜딩페이지에 담을 약속 한 줄과 꼭 넣을 것 5가지
+- 사지 않는 이유 3가지
+- 핵심 가설 한 줄: 그 가운데 가장 큰 이유를 첫 화면에서 무엇으로 풀면 사는가
+- 약속 한 줄, 꼭 넣을 것 5가지(필수 기능), 만들지 않을 것 3가지
 - 성공 기준: 처음 보는 사람이 첫 화면을 5초 보고 "무엇을, 누구에게, 왜"를 말할 수 있다
-- 만들지 않을 것 3가지
 benchmark.md나 context 폴더가 있으면 읽고, 없으면 없는 대로 써줘. 되묻지 말고 끝까지 만들고, 끝나면 3줄로만 알려줘.</pre></button>
 <button class="copy" type="button" data-copy="p04"><div class="hd"><b>P4 · 더 깊게 · 약속 한 줄 고르기</b><span class="btn">눌러서 복사</span></div>
 <pre id="p04">mvp.md의 약속 한 줄을 서로 다른 방향으로 5개 더 써줘. 그중 우리 고객이 가장 멈출 것 1개를 네가 골라서 이유 한 줄과 함께 mvp.md에 반영해줘.
@@ -238,7 +239,7 @@ benchmark.md나 context 폴더가 있으면 읽고, 없으면 없는 대로 써�
 <div class="card checks">
 <h3>이 두 가지가 보이면 성공</h3>
 <div class="progress"><i></i></div>
-<label class="check"><input type="checkbox" data-k="c1"><span>약속 한 줄을 <b>소리 내어 읽었을 때 어색하지 않아요</b></span></label>
+<label class="check"><input type="checkbox" data-k="c1"><span><b>핵심 가설 한 줄</b>을 소리 내어 읽었을 때 어색하지 않아요</span></label>
 <label class="check"><input type="checkbox" data-k="c2"><span>"만들지 않을 것" 3가지가 적혀 있어요</span></label>
 </div>
 <div class="tech"><span class="tag">데이터·서비스 트랙</span>
@@ -247,6 +248,7 @@ benchmark.md나 context 폴더가 있으면 읽고, 없으면 없는 대로 써�
 <pre id="t1">내가 만들 도구(또는 서비스)의 MVP 정의서 한 장을 mvp.md로 써줘.
 - 만들 것: (여기에 한 줄로 적어요. 비워 두면 "마케팅 동료가 경쟁사 광고를 표로 정리하는 일을 줄여 주는 도구"로 해줘)
 - 누가, 언제, 어떤 불편을 겪나
+- 핵심 가설 한 줄: 이 도구가 있으면 누구의 어떤 일이 얼마나 줄어드나
 - 핵심 화면 1개: 무엇을 넣으면 무엇이 나오나
 - 샘플 데이터: 어떤 열이 필요한가
 - 성공 기준: 동료 한 명이 실제 일에 한 번 써 본다
@@ -256,32 +258,51 @@ benchmark.md나 context 폴더가 있으면 읽고, 없으면 없는 대로 써�
 </section>
 
 <section id="s4">
-<span class="eyebrow">11:00–12:30 · 3교시</span>
-<h2>랜딩페이지 v1을 만들어요</h2>
+<span class="eyebrow">11:00–12:00 · 3교시</span>
+<h2>계획부터 받고, 그다음에 만들어요</h2>
 <span class="pill">짧은 강의</span>
-<div class="card" style="margin-top:12px"><h3>위에서 아래로, 여덟 걸음</h3>
+<div class="card" style="margin-top:12px"><h3>바로 만들라고 하지 않아요</h3>
+<p>현업은 <b>계획 확인 → 구현</b> 순서로 일해요. 계획은 30초면 읽고, 고칠 곳은 한 줄로 말할 수 있어요. 다 만든 뒤에 고치면 처음부터 다시 해야 해요.</p>
+<ul><li>금요일의 "멈추고 물어봐"와 달라요. 그때는 Claude가 나에게 물었어요. 오늘은 <b>계획이라는 결과물</b>을 먼저 받고, <b>내가</b> 한 군데를 고쳐요.</li><li>Claude Code에는 이 일을 해 주는 <b>계획 모드</b>가 있어요. 입력창 아래의 모드에서 <b>Plan</b>을 고르면 Claude가 파일을 건드리지 않고 계획부터 보여 주고, 내가 승인하면 만들기 시작해요. 화면은 강사 화면에서 같이 봐요. 오늘은 모드를 바꾸지 않고, 같은 흐름을 P5와 P6 두 줄로 해요.</li></ul></div>
+<div class="card"><h3>위에서 아래로, 여덟 걸음</h3>
 <p class="formula" style="font-size:clamp(20px,3vw,26px)">문제 → 공감 → 제품 → 근거 → 남의 말 → 쓰는 장면 → 걱정 풀기 → 지금 사기</p>
-<ul><li><b>고객이 주인공</b>이에요. 브랜드는 돕는 역할이에요.</li><li>첫 화면에 제품부터 나오면 광고처럼 보여서 넘겨요. <b>고객의 짜증 나는 순간</b>이 먼저예요.</li><li>v1은 못생겨도 돼요. <b>빨리 만들어서 남에게 보여 주는 게</b> 오늘의 일이에요.</li></ul></div>
+<ul><li>랜딩페이지는 <b>가게 쇼윈도</b>예요. 지나가던 사람이 멈추고, 들어오고, 사게 만드는 한 장이에요.</li><li><b>고객이 주인공</b>이에요. 브랜드는 돕는 역할이에요.</li><li>첫 화면에 제품부터 나오면 광고처럼 보여서 넘겨요. <b>고객의 짜증 나는 순간</b>이 먼저예요.</li></ul></div>
+<details><summary>선택 · Claude Design으로 시안을 먼저 보고 싶다면</summary><div class="body">
+<p><b>Claude Design</b>은 Claude와 대화하면서 시안과 움직이는 프로토타입을 만드는 도구예요. 눈으로 먼저 보고 싶은 사람만 해요. 여는 곳은 강사 화면에서 같이 봐요.</p>
+<ol><li>Claude Design에 mvp.md를 올리거나 내용을 붙이고, 아래 한 줄을 보내요.</li><li>시안이 마음에 들면 오른쪽 위 <b>Export</b>에서 <b>Handoff to Claude Code</b>를 골라요. Claude Code로 넘어가요.</li><li>넘기기가 안 되면 Export에서 HTML로 내려받아 작업 폴더에 <b>landing.html</b>로 저장해요. 그다음은 P7부터 같아요.</li></ol>
+<button class="copy" type="button" data-copy="d1"><div class="hd"><b>Claude Design에 보내는 한 줄</b><span class="btn">눌러서 복사</span></div>
+<pre id="d1">이 MVP 정의서로 폰 화면 기획전 랜딩페이지 시안을 만들어줘. 화면 순서는 문제 → 공감 → 제품 → 근거 → 남의 말 → 쓰는 장면 → 걱정 풀기 → 지금 사기. 사진 자리는 회색 박스로 두고, 가격과 후기는 [채울 곳]으로 표시해줘.</pre></button>
+<p class="sub">이 구간은 공식 도움말에서 메뉴 이름만 확인했고, 직접 눌러 보지는 못했어요. Claude Design도 같은 사용량 한도를 써요. 한도가 빠듯한 사람은 강사 화면으로만 보고 P5로 가요.</p>
+</div></details>
 <span class="pill">따라 하기</span>
-<button class="copy" type="button" data-copy="p05" style="margin-top:12px"><div class="hd"><b>P5 · 랜딩페이지 v1</b><span class="btn">눌러서 복사</span></div>
-<pre id="p05">mvp.md를 바탕으로 기획전 랜딩페이지 landing.html을 만들어줘. 폰 화면 기준, 파일 하나로.
+<button class="copy" type="button" data-copy="p05" style="margin-top:12px"><div class="hd"><b>P5 · 계획부터 받기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p05">mvp.md를 바탕으로 기획전 랜딩페이지 landing.html을 만들 거야. 아직 만들지 말고, 계획만 plan.md로 써줘.
 - 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
-- 순서: 문제 → 공감 → 제품 → 근거 → 남의 말(후기) → 쓰는 장면 → 걱정 풀기 → 지금 사기
+- 화면 순서: 문제 → 공감 → 제품 → 근거 → 남의 말(후기) → 쓰는 장면 → 걱정 풀기 → 지금 사기
+- 화면마다 한 줄씩: 무엇을 보여 주나 / 큰 카피 / 사진 자리
+- 맨 끝에 네가 가정한 것 3가지
+mvp.md가 없으면 네가 정해서 써줘. 되묻지 말고 계획만 쓰고, 끝나면 3줄로만 알려줘.</pre></button>
+<div class="card soft"><p><b>plan.md를 열어 읽어요.</b> 바꾸고 싶은 곳을 한 군데만 정해요. 예: "3번 화면은 빼줘", "후기 화면을 근거 화면보다 먼저". P6의 "계획에서 바꿀 것" 자리에 적어요. 없으면 비워 둬요.</p></div>
+<button class="copy" type="button" data-copy="p06"><div class="hd"><b>P6 · 계획대로 만들기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p06">plan.md 계획대로 landing.html을 만들어줘. 폰 화면 기준, 파일 하나로.
+- 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
+- 계획에서 바꿀 것: (여기에 적어요. 비워 둬도 돼요)
 - 고객이 주인공이고, 브랜드는 돕는 역할이야.
 - 사진 자리는 회색 박스로 두고 어떤 사진인지 적어줘. 가격, 성분, 후기처럼 내가 채울 곳은 [채울 곳]이라고 표시해.
 - 맨 아래에 "학습용 가상 기획안이며 브랜드와 무관합니다"라고 적어줘.
-mvp.md가 없으면 네가 정해서 만들어줘. 되묻지 말고 끝까지 만들고, 끝나면 3줄로만 알려줘.</pre></button>
+plan.md가 없으면 네가 정해서 만들어줘. 되묻지 말고 끝까지 만들고, 끝나면 3줄로만 알려줘.</pre></button>
+<p class="sub">Claude의 답에 나온 <b>landing.html</b> 파일 이름을 누르면 옆 창에 열려요. 안 열리면 아래 한 줄을 보내요.</p>
 <button class="copy" type="button" data-copy="open"><div class="hd"><b>브라우저로 열기</b><span class="btn">눌러서 복사</span></div>
 <pre id="open">landing.html을 브라우저로 열어줘.</pre></button>
-<button class="copy" type="button" data-copy="p06"><div class="hd"><b>P6 · 눈에 보이게 · 첫 화면 다시</b><span class="btn">눌러서 복사</span></div>
-<pre id="p06">landing.html의 첫 화면이 설명처럼 보여. 우리 고객의 짜증 나는 순간이 한 장면으로 보이게 첫 화면만 다시 만들어줘(시간, 장소, 손에 든 것, 혼잣말). 제품은 두 번째 화면부터 나오게 해줘.
+<button class="copy" type="button" data-copy="p07"><div class="hd"><b>P7 · 눈에 보이게 · 첫 화면 다시</b><span class="btn">눌러서 복사</span></div>
+<pre id="p07">landing.html의 첫 화면이 설명처럼 보여. 우리 고객의 짜증 나는 순간이 한 장면으로 보이게 첫 화면만 다시 만들어줘(시간, 장소, 손에 든 것, 혼잣말). 제품은 두 번째 화면부터 나오게 해줘.
 - 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
 - landing.html이 없으면 네가 먼저 만들고 이어서 해줘.
 되묻지 말고 끝까지 하고, 끝나면 3줄로만 알려줘.</pre></button>
 <div class="card checks">
 <h3>이 세 가지가 보이면 성공</h3>
 <div class="progress"><i></i></div>
-<label class="check"><input type="checkbox" data-k="d1"><span>landing.html이 <b>브라우저에서 열려요</b></span></label>
+<label class="check"><input type="checkbox" data-k="d1"><span>landing.html이 <b>화면에 열려요</b></span></label>
 <label class="check"><input type="checkbox" data-k="d2"><span>첫 화면에 제품이 아니라 <b>고객의 장면</b>이 있어요</span></label>
 <label class="check"><input type="checkbox" data-k="d3"><span>가격, 성분, 후기는 <b>[채울 곳]</b>으로 남아 있어요</span></label>
 </div>
@@ -297,115 +318,132 @@ mvp.md가 없으면 네가 정해서 만들어줘. 되묻지 말고 끝까지 �
 </section>
 
 <section id="s5">
-<span class="eyebrow">12:30–13:00 · 사람이 하는 일</span>
-<h2>짝꿍에게 5초만 보여 줘요</h2>
-<div class="card"><ol>
-<li>짝꿍에게 내 화면의 <b>첫 화면만 5초</b> 보여 주고 가려요.</li>
-<li>짝꿍이 세 가지를 말해요: <b>무엇을 파나요? 누구에게 파나요? 왜 사야 하나요?</b></li>
-<li>틀리게 말한 것, 망설인 것을 <b>그대로 3줄</b> 받아 적어요. 변명하지 않아요.</li>
-<li>바꿔서 한 번 더 해요.</li>
-</ol></div>
-<div class="card warn"><p><b>이 3줄은 Claude가 못 만드는 재료예요.</b> 처음 보는 사람의 진짜 반응은 사람에게서만 나와요. 오후에 이 메모로 고쳐요.</p></div>
-</section>
-
-<section id="s6">
-<span class="eyebrow">14:00–15:00 · 4교시</span>
-<h2>들은 말로 v2를 만들어요</h2>
+<span class="eyebrow">12:00–13:00 · 4교시</span>
+<h2>'AI가 만든 티'를 빼요</h2>
 <span class="pill">짧은 강의</span>
-<div class="card" style="margin-top:12px"><p><b>잘 팔리는 페이지는 한 번에 나오지 않아요. 고쳐서 나와요.</b> 구매가 느리면 현업은 두 가지부터 봐요. 나쁜 후기가 쌓였는지, 페이지가 늘어져서 읽다 나가는지.</p></div>
+<div class="card" style="margin-top:12px"><h3>AI가 만든 페이지가 서로 닮은 이유</h3>
+<p>고른 게 아니라 <b>기본값</b>이 나왔기 때문이에요. Anthropic이 공개한 디자인 스킬 <b>frontend-design</b>은 자주 나오는 기본값을 이렇게 짚어요.</p>
+<ul><li>크림색 바탕에 명조 제목, 주황빛 포인트</li><li>검은 바탕에 형광색 포인트 하나</li><li>똑같이 둥근 카드를 줄 세우고, 같은 그림자와 그라데이션 장식</li></ul></div>
+<div class="card"><h3>스킬이 하는 말 (쉬운 말로 옮겼어요)</h3>
+<ul><li><b>글꼴</b> · 한 가지나 두 가지만 써요. 두 가지면 확실히 다르게 골라요. 제목에서 한 단어만 색칠하지 않아요.</li><li><b>구조와 여백</b> · 테두리, 번호, 꼬리표는 뜻이 있을 때만 써요. 순서가 아닌데 01, 02, 03을 붙이지 않아요.</li><li><b>색</b> · 이름을 붙인 4~6가지만 써요.</li><li><b>과감함</b> · 한 군데만 세게, 나머지는 조용하게. 나가기 전에 거울을 보고 액세서리 하나를 빼요.</li></ul></div>
+<div class="card soft"><p><b>스킬은 폴더에 넣어 두는 선배의 체크리스트예요.</b> 목요일에 내가 만든 스킬과 같은 자리(.claude/skills)에 들어가요. 오늘은 남이 공개한 스킬을 받아서 써요.</p></div>
 <span class="pill">따라 하기</span>
-<button class="copy" type="button" data-copy="p07" style="margin-top:12px"><div class="hd"><b>P7 · v2로 고치기</b><span class="btn">눌러서 복사</span></div>
-<pre id="p07">landing.html을 고쳐서 landing_v2.html로 저장해줘.
+<button class="copy" type="button" data-copy="p08" style="margin-top:12px"><div class="hd"><b>P8 · 공개 디자인 스킬 받기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p08">Anthropic이 공개한 디자인 스킬 frontend-design을 이 폴더에 설치해줘.
+- 주소: https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md
+- 이 파일을 내려받아 .claude/skills/frontend-design/SKILL.md로 그대로 저장해줘. 내용은 고치지 마.
+- 내려받지 못하면 멈추지 말고, 네가 아는 글꼴·여백·색 규칙 10줄을 같은 자리에 저장하고 첫 줄에 (직접 정리함)이라고 적어줘.
+되묻지 말고 끝까지 하고, 끝나면 이 스킬이 하지 말라는 것 3가지만 쉬운 말로 알려줘.</pre></button>
+<button class="copy" type="button" data-copy="p09"><div class="hd"><b>P9 · 스킬 규칙으로 다듬기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p09">.claude/skills/frontend-design/SKILL.md를 읽고, 그 규칙대로 landing.html의 글꼴, 여백, 색을 다듬어줘. 글과 화면 순서는 바꾸지 마.
 - 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
-- 짝꿍이 한 말: (여기에 적어요. 비워 둬도 돼요)
-- 짝꿍이 한 말이 비어 있으면, 네가 깐깐한 고객이 되어 3가지를 지적하고 그걸로 고쳐줘.
-- 우리 고객이 중간에 나갈 것 같은 곳 2군데도 찾아서 같이 고쳐줘.
-landing.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 바꾼 곳만 3줄로 알려줘.</pre></button>
+- 고치기 전 파일은 landing_before.html로 남겨줘.
+- 글꼴은 두 가지 이하, 색은 이름을 붙인 4~6가지로 정해줘.
+- 스킬 파일이 없으면 네가 아는 좋은 디자인 규칙으로 해줘. landing.html이 없으면 문제에서 지금 사기까지 여덟 화면으로 네가 먼저 만들고 이어서 해줘.
+되묻지 말고 끝까지 하고, 끝나면 바꾼 곳을 세 문장으로만 알려줘. 글꼴 이름과 색 코드는 말하지 않아도 돼.</pre></button>
 <div class="card checks">
 <h3>이 두 가지가 보이면 성공</h3>
 <div class="progress"><i></i></div>
-<label class="check"><input type="checkbox" data-k="e1"><span>v1과 v2를 나란히 열고 <b>바뀐 곳 3가지</b>를 말할 수 있어요</span></label>
-<label class="check"><input type="checkbox" data-k="e2"><span>짝꿍에게 v2로 <b>5초 테스트를 한 번 더</b> 했어요</span></label>
+<label class="check"><input type="checkbox" data-k="e1"><span>landing_before.html과 landing.html을 나란히 열고 <b>달라진 곳 2가지</b>를 말할 수 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="e2"><span>글과 화면 순서는 <b>그대로</b>예요</span></label>
+</div>
+</section>
+
+<section id="s6">
+<span class="eyebrow">14:00–17:00 · 오후 실습</span>
+<h2>키비주얼과 SNS 시안을 뽑아요</h2>
+<span class="pill">짧은 강의</span>
+<div class="card" style="margin-top:12px"><p><b>키비주얼은 기획전의 대표 사진 한 장이에요.</b> 가게 간판 옆에 거는 큰 사진과 같아요. 랜딩페이지 첫 화면, 인스타그램 시안, 내일 만들 숏폼이 모두 이 한 장의 분위기를 따라가요.</p></div>
+<div class="tablewrap"><table>
+<tr><th>만들 것</th><th>쓰는 도구</th><th>언제</th></tr>
+<tr><td>키비주얼, SNS 시안</td><td>ChatGPT 이미지 (GPT 에듀)</td><td>오늘</td></tr>
+<tr><td>15초 숏폼 티저</td><td>Google Flow, Kling</td><td>내일</td></tr>
+<tr><td>브랜드 비주얼 셋</td><td>수업에서 안내</td><td>다음 주</td></tr>
+</table></div>
+<div class="card"><h3>이미지 뽑을 때 세 가지</h3>
+<ul><li><b>글자는 이미지에 그리지 않아요.</b> AI가 그린 한글은 틀릴 때가 있어요. 카피는 페이지에서 얹어요.</li><li><b>실제 로고와 실제 포장은 그리지 않아요.</b> 우리는 학습용 가상 기획안을 만들어요.</li><li><b>한 장씩 뽑아요.</b> 마음에 안 들면 한 가지만 바꿔서 다시 시켜요.</li></ul></div>
+<span class="pill">따라 하기</span>
+<button class="copy" type="button" data-copy="p10" style="margin-top:12px"><div class="hd"><b>P10 · 키비주얼과 SNS 시안 프롬프트</b><span class="btn">눌러서 복사</span></div>
+<pre id="p10">우리 랜딩페이지의 약속으로 키비주얼 1장과 인스타그램 시안 3장을 만들 거야. 이미지 AI에 붙여 넣을 프롬프트를 kv.md로 써줘.
+- 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
+- 약속은 landing.html이나 mvp.md에서 가져와. 없으면 네가 정해.
+- 키비주얼 1장(kv.png): 가로로 긴 대표 이미지. 랜딩페이지 첫 화면에 들어가.
+- 인스타그램 시안 3장(sns1.png, sns2.png, sns3.png): 정사각형. 훅은 서로 다르게(문제 공감 / 반전 / 결과 먼저)
+- 장마다: 이미지 프롬프트(장면, 빛, 구도, 색) / 이미지 위에 얹을 큰 카피 한 줄 / 저장할 파일 이름
+- 이미지 프롬프트마다 "글자, 실제 브랜드 로고, 실제 제품 포장은 그리지 않는다"를 넣어줘.
+되묻지 말고 끝까지 쓰고, 끝나면 3줄로만 알려줘.</pre></button>
+<div class="card"><ol>
+<li>kv.md에 나온 이미지 프롬프트를 <b>GPT 에듀</b>에 한 장씩 붙여 넣어 이미지를 만들어요.</li>
+<li>내려받아 작업 폴더에 <b>images</b> 폴더를 만들고 넣어요. 이름은 kv, sns1, sns2, sns3으로 맞춰요.</li>
+<li>P11을 실행해요.</li>
+</ol></div>
+<button class="copy" type="button" data-copy="p11"><div class="hd"><b>P11 · 이미지를 페이지에 넣기</b><span class="btn">눌러서 복사</span></div>
+<pre id="p11">images 폴더의 이미지를 landing.html에 넣고, 인스타그램 시안 3장은 sns.html 한 파일에 나란히 보여 줘.
+- 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
+- 이미지 이름은 kv.png, sns1.png, sns2.png, sns3.png가 기준이야. kv는 landing.html 첫 화면에, 나머지는 어울리는 회색 박스 자리에 넣어줘. 이름이나 확장자가 달라도 그림을 보고 네가 자리를 정해줘.
+- sns.html에는 장마다 이미지와 kv.md의 큰 카피를 같이 보여 줘.
+- 이미지가 아직 없으면 회색 박스를 그대로 두고, 어떤 이름의 파일을 넣으면 되는지 알려줘.
+landing.html이 없으면 문제에서 지금 사기까지 여덟 화면으로, kv.md가 없으면 큰 카피 4개를 네가 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 3줄로만 알려줘.</pre></button>
+<div class="card checks">
+<h3>이 세 가지가 보이면 성공</h3>
+<div class="progress"><i></i></div>
+<label class="check"><input type="checkbox" data-k="f1"><span>images 폴더에 <b>이미지 4장</b>이 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="f2"><span>landing.html 첫 화면에 <b>키비주얼</b>이 보여요</span></label>
+<label class="check"><input type="checkbox" data-k="f3"><span>sns.html에 <b>시안 3장</b>이 카피와 함께 보여요</span></label>
 </div>
 <div class="tech"><span class="tag">데이터·서비스 트랙</span>
-<p>마케팅 트랙 동료 한 명에게 프로토타입을 3분 써 보게 하고, 헷갈려한 곳을 받아 적어요.</p>
-<button class="copy" type="button" data-copy="t3"><div class="hd"><b>T3 · 써 본 사람의 말로 v2</b><span class="btn">눌러서 복사</span></div>
-<pre id="t3">prototype.html을 고쳐서 prototype_v2.html로 저장해줘.
-- 써 본 동료가 한 말: (여기에 적어요. 비워 둬도 돼요)
-- 비어 있으면, 네가 처음 써 보는 동료가 되어 헷갈리는 곳 3가지를 찾아 고쳐줘.
-prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 바꾼 곳만 3줄로 알려줘.</pre></button>
+<p>오후에는 프로토타입에 샘플 데이터를 제대로 붙여요. 16:00부터는 AX팀 스프린트예요. 마케팅 트랙 동료 한 명에게 3분 써 보게 하고, 헷갈려한 곳을 그대로 받아 적어요. 내일 고칠 재료예요.</p>
+<button class="copy" type="button" data-copy="t3"><div class="hd"><b>T3 · 샘플 데이터 붙이기</b><span class="btn">눌러서 복사</span></div>
+<pre id="t3">prototype.html에 샘플 데이터를 제대로 붙여 줘.
+- 샘플 데이터를 30줄로 늘려서 sample.csv로도 저장해줘.
+- 화면을 열면 처음부터 샘플이 보이고, CSV 파일을 고르면 그 데이터로 바뀌게 해줘.
+- 화면에 "샘플 데이터"라고 표시하고, 내 파일로 바꾸면 그 표시가 사라지게 해줘.
+prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 3줄로만 알려줘.</pre></button>
+</div>
+<h3 class="gap">16:00부터 · 내 속도에 맞게</h3>
+<div class="grid">
+<div class="card"><h3>아직 덜 끝났다면</h3><p class="sub">세 가지만 남기면 돼요. mvp.md, landing.html, 키비주얼 1장.</p></div>
+<div class="card"><h3>먼저 끝났다면</h3><p class="sub">준비 구간의 세 칸을 내 회사로 바꾸고, 새 폴더에서 P3 → P5 → P6 → P9를 한 번 더 해요. 두 번째가 훨씬 빨라요.</p></div>
 </div>
 </section>
 
 <section id="s7">
-<span class="eyebrow">15:00–16:00 · 5교시</span>
-<h2>같은 약속을 SNS에 옮겨요</h2>
-<span class="pill">짧은 강의</span>
-<div class="card" style="margin-top:12px"><p><b>광고가 한 약속을 랜딩페이지 첫 화면이 이어받아야 해요.</b> 그래서 랜딩페이지를 먼저 만들었어요. 이제 그 약속 그대로 사람을 데려올 이미지와 릴스를 만들어요.</p></div>
-<span class="pill">따라 하기</span>
-<button class="copy" type="button" data-copy="p08" style="margin-top:12px"><div class="hd"><b>P8 · 인스타그램 시안 3장</b><span class="btn">눌러서 복사</span></div>
-<pre id="p08">우리 랜딩페이지의 약속으로 인스타그램 피드 이미지 시안 3장을 sns.html 한 파일에 만들어줘.
-- 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
-- 약속은 landing_v2.html에서 가져와. 없으면 landing.html이나 mvp.md에서, 그것도 없으면 네가 정해.
-- 정사각형 3장, 훅은 서로 다르게: 문제 공감 / 반전 / 결과 먼저
-- 장마다 큰 카피 한 줄, 작은 카피 한 줄, 사진 자리에는 어떤 장면인지 설명
-- 장 아래에, 이 이미지를 AI로 만들 때 쓸 프롬프트를 한 줄씩 적어줘.
-되묻지 말고 끝까지 만들고, 끝나면 3줄로만 알려줘.</pre></button>
-<button class="copy" type="button" data-copy="p09"><div class="hd"><b>P9 · 15초 릴스 대본</b><span class="btn">눌러서 복사</span></div>
-<pre id="p09">우리 랜딩페이지와 같은 약속으로 15초 릴스 대본을 reels.md로 써줘. 첫 3초 훅 2가지, 컷 5개(초 / 화면 / 자막), 마지막 문장은 랜딩페이지 첫 화면의 약속과 같게 해줘.
-- 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
-- 약속은 landing_v2.html, landing.html, mvp.md 순서로 찾고, 없으면 네가 정해.
-되묻지 말고 끝까지 쓰고, 끝나면 3줄로만 알려줘.</pre></button>
-<p class="sub">시안 아래에 나온 이미지 프롬프트는 GPT 에듀의 이미지 만들기에 붙여 넣어 실제 이미지로 뽑아 볼 수 있어요. 내일 숏폼 티저를 만들 때 이 대본을 써요.</p>
-</section>
-
-<section id="s8">
-<span class="eyebrow">16:00–17:30 · 발표 한 장</span>
-<h2>수요일에 할 말을 한 장으로 묶어요</h2>
-<div class="card"><p>발표는 다섯 마디예요. <b>누구의 어떤 문제인가 → 우리의 답 → 근거 → 숫자 한 줄 → 다음에 할 일.</b> 오늘 만든 파일에 이미 다 있어요. 묶기만 해요.</p></div>
-<button class="copy" type="button" data-copy="p10"><div class="hd"><b>P10 · 발표 한 장</b><span class="btn">눌러서 복사</span></div>
-<pre id="p10">오늘 이 폴더에서 만든 파일을 읽고, 수요일 발표에 쓸 한 장을 pitch.md로 써줘.
-- 우리 브랜드: <b data-v="brand">라라스윗</b> (<b data-v="product">저당 아이스크림</b>)
-1. 누구의 어떤 문제인가
-2. 우리의 답: 랜딩페이지 한 줄 소개
-3. 근거 3개
-4. 숫자 한 줄: 매출 = 노출 수 × 클릭률 × 구매 전환율 × 객단가 가운데 우리가 움직이는 조각과 그 이유
-5. 다음에 할 일 3가지
-숫자는 전부 (가정)이라고 표시하고, 없는 파일은 없는 대로 써줘. 되묻지 말고 끝까지 쓰고, 끝나면 3줄로만 알려줘.</pre></button>
-<div class="card soft"><p><b>pitch.md를 소리 내어 1분 안에 읽어 봐요.</b> 막히는 문장이 고칠 문장이에요. 그 문장에 리모컨 "말이 길 때"를 써요.</p></div>
-<div class="tech"><span class="tag">데이터·서비스 트랙 · AX팀 스프린트</span>
-<p>이 시간은 AX팀 스프린트예요. prototype_v2.html을 동료 한 명이 실제 일에 써 보게 하고, P10을 그대로 써서 발표 한 장을 만들어요. 4번의 숫자 한 줄은 "누가, 몇 번, 몇 분을 아끼나"로 바꿔 써요.</p>
-</div>
-</section>
-
-<section id="s9">
-<span class="eyebrow">17:30–18:00 · 마무리</span>
-<h2>링크를 남기고 퇴근해요</h2>
+<span class="eyebrow">17:00–18:00 · 마무리</span>
+<h2>보여 주고, 적고, 퇴근해요</h2>
+<div class="card"><h3>팀 공유 · 한 사람 1분</h3><ol>
+<li>조 안에서 한 사람씩 화면을 띄워요.</li>
+<li>한 문장으로 말해요: <b>누구에게, 무엇을, 왜.</b></li>
+<li>듣는 사람은 한마디만 해요. 첫 화면을 보고 바로 이해됐는지.</li>
+</ol></div>
 <div class="card checks">
 <h3>조장 체크</h3>
 <div class="progress"><i></i></div>
-<label class="check"><input type="checkbox" data-k="f1"><span>조원 전원의 폴더에 <b>landing_v2.html</b>(테크는 prototype_v2.html)이 있어요</span></label>
-<label class="check"><input type="checkbox" data-k="f2"><span>작업 폴더를 드라이브에 올리고 <b>링크를 실습시트에</b> 적었어요</span></label>
-<label class="check"><input type="checkbox" data-k="f3"><span>못 끝낸 조원이 있으면 <b>강사에게 말로</b> 전했어요</span></label>
+<label class="check"><input type="checkbox" data-k="g1"><span>조원 전원의 폴더에 <b>mvp.md와 landing.html</b>(테크는 prototype.html)이 있어요</span></label>
+<label class="check"><input type="checkbox" data-k="g2"><span>작업 폴더를 드라이브에 올리고 <b>링크를 실습시트에</b> 적었어요</span></label>
+<label class="check"><input type="checkbox" data-k="g3"><span>실습시트에 <b>회고 3줄</b>을 적었어요: 오늘 만든 것 / 막힌 곳 / 내일 고칠 것</span></label>
+<label class="check"><input type="checkbox" data-k="g4"><span>못 끝낸 조원이 있으면 <b>강사에게 말로</b> 전했어요</span></label>
 </div>
 <div class="card soft"><h3>내일과 모레</h3>
-<ul><li><b>화요일</b> 랜딩페이지 완성, 15초 숏폼 티저, 발표 자료 뼈대</li><li><b>수요일</b> 피칭 데이. 링크를 띄우고 5분 발표</li></ul>
-<p class="sub" style="margin-top:8px">오늘 만든 landing_v2.html, reels.md, pitch.md를 지우지 말고 가져오세요.</p></div>
+<ul><li><b>화요일</b> 사람에게 보여 주고 고치기, 15초 숏폼 티저, 오후 4시부터 발표 자료 뼈대</li><li><b>수요일</b> 피칭 데이. 5분 발표, 라이브 데모, 3분 질문</li></ul>
+<p class="sub" style="margin-top:8px">오늘 만든 mvp.md, landing.html, kv.md, images 폴더를 지우지 말고 가져오세요.</p></div>
 <div class="card blue"><div class="big">오늘 여러분은 기획서가 아니라<br>남에게 보여 줄 수 있는 것을 만들었어요.</div></div>
 </section>
 
-<section id="s10">
+<section id="s8">
 <span class="eyebrow">막히면</span>
 <h2>긴 설명 대신 한 줄을 보내요</h2>
-<details><summary>Claude가 "실행해도 될까요?"라고 물어요</summary><div class="body"><p>이건 되묻는 게 아니라 <b>허락 창</b>이에요. 파일을 만들거나 웹을 검색하겠다는 것이면 Yes를 눌러요.</p><p>작업 폴더 밖의 파일을 지우거나 바꾸겠다고 하면 No를 누르고 강사를 불러요.</p></div></details>
-<details><summary>Claude가 자꾸 되물어요</summary><div class="body"><p>준비 구간의 리모컨 <b>"되물을 때"</b>를 보내요. P0을 안 했다면 지금 해요. 그 뒤로는 덜 물어요.</p></div></details>
+<details><summary>Claude가 "실행해도 될까요?"라고 물어요</summary><div class="body"><p>이건 되묻는 게 아니라 <b>허락 창</b>이에요. 파일을 만들거나, 웹을 검색하거나, 스킬 파일을 내려받겠다는 것이면 Yes를 눌러요.</p><p>작업 폴더 밖의 파일을 지우거나 바꾸겠다고 하면 No를 누르고 강사를 불러요.</p></div></details>
+<details><summary>Claude가 자꾸 되물어요</summary><div class="body"><p>리모컨 <b>"되물을 때"</b>를 보내요. 그래도 물으면 P0을 다시 실행해요. 금요일 규칙이 남아 있는 거예요.</p></div></details>
 <details><summary>파일이 없다고 멈췄어요</summary><div class="body"><p>리모컨 <b>"자료가 없다고 멈췄을 때"</b>를 보내요. 앞 교시를 못 끝냈어도 뒤 교시를 할 수 있게 만들어 뒀어요.</p></div></details>
+<details><summary>계획이 마음에 안 들어요</summary><div class="body"><p>"plan.md에서 ○번 화면을 이렇게 바꿔줘"라고 한 줄로 말해요. 계획을 고치는 건 싸요. 여러 번 고쳐도 돼요.</p></div></details>
 <details><summary>답이 너무 길어요</summary><div class="body"><p>리모컨 <b>"말이 길 때"</b>를 보내요.</p></div></details>
 <details><summary>결과가 뻔해요</summary><div class="body"><p>리모컨 <b>"더 깊게"</b>를 한 번, <b>"눈에 보이게"</b>를 한 번 보내요. 두 번이면 달라져요.</p></div></details>
+<details><summary>스킬 파일을 못 받았어요</summary><div class="body"><p>괜찮아요. P9는 스킬 파일이 없어도 돌아가요. 그대로 P9를 실행해요.</p></div></details>
+<details><summary>이미지가 안 만들어져요</summary><div class="body"><p>회색 박스 그대로 두고 넘어가요. 키비주얼 1장만 있어도 오늘은 충분해요. 나머지는 내일 채워요.</p></div></details>
 <details><summary>폰 화면에서 글자가 넘쳐요</summary><div class="body"><p>"폰 화면에서 글자가 옆으로 넘쳐. 고쳐줘"라고 증상을 그대로 말해요.</p></div></details>
 <details><summary>HTML이 코드 글자로 보여요</summary><div class="body"><p>메모장으로 열린 거예요. 파일을 크롬 창에 끌어다 놓아요.</p></div></details>
-<details><summary>사용량 한도 메시지가 떠요</summary><div class="body"><p>글로 하는 단계(P1~P4, P9, P10)는 GPT 에듀에 같은 프롬프트를 붙여서 해도 돼요. 결과를 같은 파일 이름으로 폴더에 저장해요.</p></div></details>
-<details><summary>새 대화를 열었더니 앞 내용을 몰라요</summary><div class="body"><p>괜찮아요. 프롬프트가 폴더의 파일을 읽게 되어 있어요. "이 폴더의 파일을 읽고 이어서 해줘"라고 먼저 보내요.</p></div></details>
+<details><summary>사용량 한도 메시지가 떠요</summary><div class="body"><p>글로 하는 단계(P1~P5, P10)는 GPT 에듀에 같은 프롬프트를 붙여서 해도 돼요. 결과를 같은 파일 이름으로 폴더에 저장해요.</p></div></details>
+<details><summary>새 대화를 열었더니 앞 내용을 몰라요</summary><div class="body"><p>괜찮아요. 프롬프트가 폴더의 파일을 읽게 되어 있어요. 다음 프롬프트를 그대로 붙여요.</p></div></details>
 </section>
 </div>
 
