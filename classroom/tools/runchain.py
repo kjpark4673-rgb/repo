@@ -1,6 +1,7 @@
 # 수업 프롬프트를 실제로 돌려 보는 시험기. 사용: python3 runchain.py <guide.html> <작업폴더> <결과.json> <단계...>
 # 단계 표기: p01 (새 대화) / p02+ (앞 대화에 이어서)
 # 환경 변수: BRAND='브랜드|제품|고객' (다른 브랜드로 바꿔 시험), TOOLS='허용 도구 목록', PMODE='권한 모드(기본 acceptEdits, 계획 모드는 plan)'
+#           FILL='{"p06":["(여기에 적어요. 비워 둬도 돼요)","3번 화면은 빼줘"]}' (학생이 괄호 자리를 채운 경우), 단계를 p05&p06처럼 쓰면 두 프롬프트를 한 번에 붙여 넣은 경우
 import sys,re,json,html,subprocess,os,time
 guide,work,outp=sys.argv[1],sys.argv[2],sys.argv[3]; steps=sys.argv[4:]
 src=open(guide,encoding='utf-8').read()
@@ -9,6 +10,9 @@ os.makedirs(work,exist_ok=True)
 if os.environ.get('BRAND'):
     bb,pp,cc=os.environ['BRAND'].split('|')
     prompts={k:v.replace('라라스윗',bb).replace('저당 아이스크림',pp).replace('다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인',cc) for k,v in prompts.items()}
+FILL=json.loads(os.environ.get('FILL','{}'))
+for k,(old,new) in FILL.items():
+    assert old in prompts[k],('FILL 대상 없음',k); prompts[k]=prompts[k].replace(old,new)
 def tree():
     out={}
     for r,d,f in os.walk(work):
@@ -20,7 +24,7 @@ ASK=re.compile(r'\?|알려\s*주|말씀해\s*주|골라\s*주|선택해\s*주|�
 TOOLS=os.environ.get('TOOLS','WebSearch,WebFetch,Read,Write,Edit,Glob,Grep'); PMODE=os.environ.get('PMODE','acceptEdits')
 log=json.load(open(outp)) if os.environ.get('APPEND') and os.path.exists(outp) else []
 for st in steps:
-    cont=st.endswith('+'); pid=st.rstrip('+'); pr=prompts[pid]
+    cont=st.endswith('+'); pid=st.rstrip('+'); pr='\n\n'.join(prompts[x] for x in pid.split('&'))
     before=tree(); t0=time.time()
     cmd=['claude']+(['-c'] if cont else [])+['-p',pr,'--permission-mode',PMODE,'--allowedTools',TOOLS,'--max-turns','40','--output-format','json']
     try:
