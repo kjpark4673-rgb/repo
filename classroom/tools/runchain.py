@@ -5,6 +5,9 @@ guide,work,outp=sys.argv[1],sys.argv[2],sys.argv[3]; steps=sys.argv[4:]
 src=open(guide,encoding='utf-8').read()
 prompts={m.group(1):html.unescape(re.sub(r'<[^>]+>','',m.group(2))) for m in re.finditer(r'<pre id="([a-z]+\d*)">(.*?)</pre>',src,flags=re.S)}
 os.makedirs(work,exist_ok=True)
+if os.environ.get('BRAND'):
+    bb,pp,cc=os.environ['BRAND'].split('|')
+    prompts={k:v.replace('라라스윗',bb).replace('저당 아이스크림',pp).replace('다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인',cc) for k,v in prompts.items()}
 def tree():
     out={}
     for r,d,f in os.walk(work):
