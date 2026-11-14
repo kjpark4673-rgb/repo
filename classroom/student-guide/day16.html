@@ -1,5 +1,5 @@
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>랜딩페이지 만드는 날</title>
+<title>Day 16 · 랜딩페이지 MVP</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
 <style>
 /* 레이아웃: 시간표 순서대로 내려가는 한 줄 가이드. 구간마다 짧은 강의 → 복사 박스 → 성공 체크 */
@@ -99,6 +99,24 @@ a.link::after{content:" ↗";color:var(--blue)}
 .toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:14px 24px;border-radius:14px;font-weight:700;font-size:19px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:90%;text-align:center}
 .toast.show{opacity:1}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* 하루 지도: 맨 앞에서 하루의 구조를 보여 주는 목차. 세 덩어리(정하기, 만들기, 내놓기)와 시간표 */
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}
+.acts div{background:var(--blue-soft);border-radius:16px;padding:14px 8px;text-align:center;min-width:0}
+.acts b{display:block;color:var(--blue);font-size:clamp(18px,3.2vw,26px);font-weight:800}
+.acts span{font-size:clamp(14px,2.4vw,18px);font-variant-numeric:tabular-nums}
+.map{background:var(--card);border-radius:24px;padding:6px 24px;margin:0 0 16px}
+.map .grp{color:var(--blue);font-weight:800;font-size:18px;line-height:1.5;padding:22px 0 6px}
+.map .row{display:grid;grid-template-columns:3.4em 1fr;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line);text-decoration:none;color:inherit}
+.map .grp + .row{border-top:0}
+.map .t{font-weight:800;font-variant-numeric:tabular-nums}
+.map .w b{display:block;font-weight:800}
+.map .w small{display:block;color:var(--sub);font-size:18px;line-height:1.5}
+.map .rest .w{color:var(--sub)}
+.map a.row:hover .w b{color:var(--blue)}
+.map a.row:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+.why{color:var(--sub);margin:-12px 0 24px}
+.why b{color:var(--ink)}
 </style>
 
 <div class="wrap">
@@ -107,81 +125,91 @@ a.link::after{content:" ↗";color:var(--blue)}
 </nav>
 
 <section id="s0">
-<span class="eyebrow">11/16(월) · Day 16 · 09:00–09:25</span>
-<h1>오늘은 랜딩페이지를 만드는 날이에요</h1>
-<p class="lead">저녁 6시에 네 가지가 남아요. <b>MVP 정의서, 폰에서 보이는 랜딩페이지 초안, 키비주얼 시안, 그리고 오늘을 정리한 포트폴리오 한 장.</b> 테크 트랙은 랜딩페이지와 키비주얼 대신 버튼이 눌리는 프로토타입을 남겨요.</p>
-<p class="sub">모르는 말이 나오면 이 구간 맨 아래의 "오늘 처음 나오는 말"을 봐요.</p>
+<span class="eyebrow">Day 16 / 52 · 11/16(월)</span>
+<h1>Day 16 · 랜딩페이지를 만드는 날</h1>
+<p class="lead">아침에 정하고, 점심 전에 만들고, 오후에 내놓아요. 6시에 <b>MVP 정의서, 랜딩페이지 초안, 키비주얼 시안, 포트폴리오 한 장</b>이 남아요.</p>
 
-<h3 class="gap">시작하기 전에, 이런 생각이 들 수 있어요</h3>
-<p class="sub">드는 게 당연한 생각이에요. 짧게 답할게요. 더 궁금하면 펼쳐 봐요.</p>
-<div class="card"><h3>"콘텐츠 마케터가 되고 싶은데, 랜딩페이지는 왜 만들어요?"</h3>
+<h3 class="gap">오늘 한눈에</h3>
+<div class="acts">
+<div><b>① 정하기</b><span>09:40–11:00</span></div>
+<div><b>② 만들기</b><span>11:00–13:00</span></div>
+<div><b>③ 내놓기</b><span>14:00–18:00</span></div>
+</div>
+<div class="map">
+<div class="grp">시작</div>
+<div class="row rest"><span class="t">09:00</span><span class="w">오늘 한눈에 보기 (지금 이 화면)</span></div>
+<a class="row" href="#s1"><span class="t">09:25</span><span class="w"><b>준비 · 규칙 심기, 채용 공고 확인</b><small>남는 것: CLAUDE.md, why.md</small></span></a>
+<div class="grp">① 정하기 · 남이 한 것을 보고, 무엇을 만들지 한 장으로 정해요</div>
+<a class="row" href="#s2"><span class="t">09:40</span><span class="w"><b>1교시 · 벤치마킹 한 장</b><small>남는 것: benchmark.md</small></span></a>
+<a class="row" href="#s3"><span class="t">10:15</span><span class="w"><b>2교시 · MVP 정의서</b><small>남는 것: mvp.md</small></span></a>
+<div class="grp">② 만들기 · 계획을 확인하고, 만들고, 다듬어요</div>
+<a class="row" href="#s4"><span class="t">11:00</span><span class="w"><b>3교시 · 계획 받고 랜딩페이지 만들기</b><small>남는 것: landing.html (테크 트랙은 prototype.html)</small></span></a>
+<a class="row" href="#s5"><span class="t">12:00</span><span class="w"><b>4교시 · 첫 화면과 디자인 다듬기</b><small>남는 것: 다듬은 landing.html</small></span></a>
+<div class="row rest"><span class="t">13:00</span><span class="w">점심</span></div>
+<div class="grp">③ 내놓기 · 이미지를 붙이고, 보여 주고, 한 장으로 남겨요</div>
+<a class="row" href="#s6"><span class="t">14:00</span><span class="w"><b>오후 · 키비주얼과 인스타그램 시안</b><small>남는 것: 이미지, sns.html (테크 트랙은 sample.csv)</small></span></a>
+<a class="row" href="#s6b"><span class="t">16:00</span><span class="w"><b>덜 끝난 것 끝내기</b><small>먼저 끝났으면 내 회사로 한 번 더</small></span></a>
+<a class="row" href="#s7"><span class="t">17:00</span><span class="w"><b>마무리 · 조 공유, 포트폴리오 한 장, 링크</b><small>남는 것: portfolio_1116.md, 남이 열 수 있는 링크</small></span></a>
+</div>
+<p class="sub">줄을 누르면 그 구간으로 가요. <b>꼭 하는 것</b>은 P0 → W1 → P1 → P3 → P5 → P6 → P10 → W2예요. 이것만 끝내도 오늘은 통과예요.</p>
+<p class="sub"><b>테크 트랙</b>은 랜딩페이지와 키비주얼 대신 버튼이 눌리는 프로토타입을 남겨요. 꼭 하는 것은 P0 → T0 → P1 → T1 → T2 → T3 → W2예요.</p>
+
+<h3 class="gap">오늘 수업, 이렇게 보면 돼요</h3>
+<p class="sub">과정 중반에 자주 나오는 궁금증 다섯 가지예요. 궁금한 줄만 눌러 봐요.</p>
+<details><summary>랜딩페이지는 콘텐츠 마케터의 일이 이어지는 자리예요</summary><div class="body">
 <p>콘텐츠 마케터의 일은 올리는 데서 끝나지 않아요. <b>보고 누른 사람이 사게 만드는 데까지</b>예요. 살지 말지는 광고를 누르고 도착한 페이지에서 정해져요.</p>
-<details><summary>조금 더 보기</summary><div class="body"><ul>
+<ul>
 <li>오늘의 순서가 그 일의 순서예요. 경쟁사 보기 → 기획 한 장 → 페이지 → 광고 이미지.</li>
 <li>기획서만 보여 주는 것과, 눌러서 열리는 페이지를 같이 보여 주는 것은 달라요. 오늘은 열리는 페이지가 생겨요.</li>
 <li><b>MD를 하고 싶다면</b> 기획전을 짜고 운영하는 일, 상세페이지를 챙기는 일이 MD의 일에 들어 있어요.</li>
 <li><b>테크 트랙이라면</b> 무엇을 만들지 한 장으로 정하고, 계획을 확인하고, 만들어서 남이 써 보게 하는 순서가 곧 서비스를 만드는 일이에요.</li>
-<li>말로만 듣지 말고 준비 구간의 <b>W1</b>로 직접 확인해요. 내가 가고 싶은 일의 채용 공고에 오늘 하는 일이 적혀 있는지 Claude가 찾아 줘요.</li>
-</ul></div></details></div>
-<div class="card"><h3>"뭘 하고 살지도 아직 모르겠는데, 이걸 왜 하고 있어요?"</h3>
-<p>해 보기 전에는 알 수 없어서예요. 오늘 하루에 <b>서로 다른 일 다섯 가지</b>를 해 봐요. 그리고 어느 일에서 시간 가는 줄 몰랐는지를 찾아요.</p>
-<details><summary>조금 더 보기</summary><div class="body"><ul>
-<li>다섯 가지는 조사하기, 기획하기, 만들기, 다듬기, 이미지 뽑기예요. 마케팅과 서비스 쪽 직무는 이름이 달라도 이 일들을 다르게 섞은 거예요.</li>
-<li>저녁에 한 줄만 적어요. <b>어느 단계에서 시간 가는 줄 몰랐나요?</b> 없었다면 가장 덜 지루했던 단계를 적어요. 그 한 줄이 진로를 정할 때 쓰는 내 자료예요. 머리로 생각해서는 안 나오고, 해 봐야 나와요.</li>
+<li>준비 구간의 <b>W1</b>(테크 트랙은 T0)으로 직접 확인해 볼 수 있어요. 가고 싶은 일의 채용 공고에 오늘 하는 일이 적혀 있는지 Claude가 찾아 줘요.</li>
+</ul></div></details>
+<details><summary>하고 싶은 일을 아직 정하지 않았어도 괜찮아요</summary><div class="body">
+<p>해 보기 전에는 알기 어려워요. 그래서 오늘 하루에 <b>서로 다른 일 다섯 가지</b>를 해 봐요. 조사하기, 기획하기, 만들기, 다듬기, 이미지 뽑기. 마케팅과 서비스 쪽 직무는 이름이 달라도 이 일들을 다르게 섞은 거예요.</p>
+<ul>
+<li>저녁에 한 줄만 적어요. 어느 단계에서 시간 가는 줄 몰랐는지. 없었다면 가장 덜 지루했던 단계를 적어요. 그 한 줄이 진로를 정할 때 쓰는 내 자료가 돼요.</li>
 <li>준비 구간의 W1을 "아직 모름" 그대로 실행하면, 이 일들이 각각 어떤 직무의 채용 공고에 나오는지 찾아 줘요.</li>
-</ul></div></details></div>
-<div class="card"><h3>"오늘 하고 나면, 1월 7일에 과정이 끝나면 뭐가 남아요?"</h3>
-<p>오늘은 <b>남에게 보여 줄 수 있는 페이지 한 장과 포트폴리오 한 장</b>이 남아요. 이런 장을 모아 12월 4일에 포트폴리오 사이트를 만들고, 1월 6일에는 대표 결과물 하나와 내가 내린 결정을 한 사람씩 발표해요.</p>
-<details><summary>조금 더 보기</summary><div class="body"><ul>
+</ul></div></details>
+<details><summary>오늘은 열리는 페이지 한 장과 포트폴리오 한 장이 남아요</summary><div class="body">
+<p>이런 장을 모아 12월 4일에 포트폴리오 사이트를 만들고, 1월 6일에는 대표 결과물 하나와 내가 내린 결정을 한 사람씩 발표해요.</p>
+<ul>
 <li><b>오늘 저녁</b> · 열리는 랜딩페이지 한 장, 그리고 내가 무엇을 확인하고 고르고 고쳤는지 적은 포트폴리오 한 장</li>
 <li><b>수요일</b> · 피칭 데이(5분 발표와 라이브 데모)를 해 본 경험</li>
 <li><b>12월 4일</b> · 내 결과물을 모은 포트폴리오 사이트, 개인 데모 5분, 내 스킬 파일 묶음</li>
 <li><b>12월 18일</b> · 새 주제로 한 팀 프로젝트의 최종 발표</li>
 <li><b>1월 6일</b> · 한 사람씩 발표해요. 내 대표 결과물, 내가 맡은 역할, 내가 내린 결정, 검증한 결과</li>
-</ul><p>12월과 1월의 내용은 공식 일정표에 적힌 것이에요. 정리하면 1월 7일에 세 가지가 남아요. 남에게 보여 줄 수 있는 포트폴리오, 다음 일에도 다시 쓰는 내 스킬 묶음, "내가 무엇을 결정했는지" 말할 수 있는 근거.</p><p> 1월 6일에 말할 "내가 내린 결정"은 그날 만들어 낼 수 없어요. 오늘부터 한 장씩 적어 두면 그날 그대로 꺼내 쓸 수 있어요. 그래서 오늘 마지막에 <b>W2</b>로 한 장을 남겨요.</p></div></details></div>
-<div class="card"><h3>"이 과정은 지역 아이디어로 창업해서 서비스를 내는 과정 아니에요?"</h3>
-<p>아니에요. <b>사업자를 내거나 서비스를 출시하는 일정은 공식 일정표에 없어요.</b> 오늘 만드는 것도 대부분 창업 아이템이 아니라, 가고 싶은 회사나 연습용 브랜드의 기획전 페이지예요. 요리 학교에서 코스 요리를 처음부터 끝까지 한 번 내 보는 것과 같아요. 식당을 차리려는 게 아니에요. 주방의 모든 자리에 서 봐야 내 자리가 어디인지 알 수 있어서예요.</p>
-<details><summary>조금 더 보기</summary><div class="body"><ul>
-<li>지역 자산 조사 → 페인포인트 → 비즈니스 모델 → 시장 검증 → 만들기 → 피칭. 회사가 새 상품이나 캠페인을 내놓을 때도 이 순서를 밟아요. 그 순서를 <b>연습 재료</b>로 빌려 쓰는 거예요.</li>
+</ul>
+<p>12월과 1월의 내용은 공식 일정표에 적힌 것이에요. 1월 7일에는 세 가지가 남아요. 남에게 보여 줄 수 있는 포트폴리오, 다음 일에도 다시 쓰는 내 스킬 묶음, "내가 무엇을 결정했는지" 말할 수 있는 근거.</p>
+<p>1월 6일에 말할 "내가 내린 결정"은 오늘부터 한 장씩 적어 두면 그날 그대로 꺼내 쓸 수 있어요. 그래서 오늘 마지막에 <b>W2</b>로 한 장을 남겨요.</p></div></details>
+<details><summary>이 과정은 창업의 순서를 빌린 실무 연습이에요</summary><div class="body">
+<p>지역 자산 조사 → 페인포인트 → 비즈니스 모델 → 시장 검증 → 만들기 → 피칭. 지금까지 밟아 온 순서가 창업 교육과 닮아서 창업 과정처럼 보일 수 있어요. 회사가 새 상품이나 캠페인을 내놓을 때도 같은 순서를 밟아요. 그 순서를 <b>연습 재료</b>로 빌려 쓰는 거예요.</p>
+<p>요리 학교에서 코스 요리를 처음부터 끝까지 한 번 내 보는 것과 같아요. 주방의 모든 자리에 서 봐야 내 자리가 어디인지 알 수 있어요.</p>
+<ul>
+<li>사업자 등록이나 서비스 출시는 공식 일정표에 없어요. 오늘 만드는 것도 대부분 가고 싶은 회사나 연습용 브랜드의 기획전 페이지예요.</li>
 <li>지금 하는 주제는 수요일 피칭으로 한 바퀴가 끝나요. 12월 7일부터는 <b>새 주제</b>로 같은 순서를 한 번 더 돌아요. 공식 일정표의 12월 7일 줄에는 지금까지의 실습 결과물을 그대로 이어가지 않고 새 프로젝트 주제를 고른다고, 12월 8일 줄에는 조사 방법과 도구만 다시 쓴다고 적혀 있어요. 그러니까 남는 것은 주제가 아니라 <b>방법과 도구, 그리고 결과물</b>이에요.</li>
 <li>공식 일정표에 적힌 12월 팀 프로젝트의 설명은 이래요. 콘텐츠 쪽은 "브랜드 전략부터 캠페인 기획, 비주얼·영상 콘텐츠 제작까지 종합적으로 수행할 수 있는 AI Agent"를 만드는 것, 테크 트랙은 대시보드와 "실무에 활용 가능한 업무 자동화 서비스"를 만드는 것.</li>
-<li>마지막 날(1월 7일)에 정하는 것은 취업, 창업, 더 배우기 가운데 <b>내</b> 목표예요. 창업을 하고 싶은 사람은 그때 그 목표를 세우면 돼요.</li>
-</ul><p>공식 일정표는 강사님이 가지고 있어요. 직접 보고 싶으면 물어봐요.</p></div></details></div>
-<div class="card"><h3>"Claude가 다 만들어 주는데, 내가 한 건 뭐예요?"</h3>
-<p>Claude는 초안을 빨리 만들어요. <b>맞는지, 좋은지는 사람이 정해요.</b> 1월 6일에 발표하는 것도 바로 이 "내가 내린 결정"이에요.</p>
-<details><summary>오늘 내가 내리는 결정 네 가지</summary><div class="body"><ul>
+<li>마지막 날(1월 7일)에는 취업, 창업, 더 배우기 가운데 <b>내</b> 목표를 정해요. 창업을 하고 싶은 사람은 그때 그 목표를 세우면 돼요.</li>
+</ul>
+<p>공식 일정표는 강사님이 가지고 있어요. 직접 보고 싶으면 물어봐요.</p></div></details>
+<details><summary>초안은 Claude가 만들고, 결정은 내가 해요</summary><div class="body">
+<p>Claude는 초안을 빨리 만들어요. <b>맞는지, 좋은지는 사람이 정해요.</b> 1월 6일에 발표하는 것도 이 "내가 내린 결정"이에요. 오늘 내가 내리는 결정은 네 가지예요.</p>
+<ul>
 <li>Claude가 <b>(가정)</b>이라고 표시한 곳을 내 눈으로 확인하기</li>
 <li>약속 한 줄 후보 가운데 <b>고르기</b></li>
 <li>계획을 읽고 <b>한 군데 고칠지 정하기</b></li>
 <li>이미지를 보고 <b>다시 시킬지 정하기</b></li>
-</ul><p>가이드에서 <b>"내 결정"</b>이라고 적힌 곳이 그 자리예요. 테크 트랙은 테크 트랙 상자 안에 "내 결정"이 따로 있어요. 약속 한 줄 대신 무엇을 넣고 뺄지 정하고, 이미지 대신 동료가 헷갈려한 곳 가운데 먼저 고칠 것을 정해요.</p></div></details></div>
-
-<h3 class="gap">오늘 하는 일과 이유</h3>
-<div class="card"><ul>
-<li><b>09:25 준비 · 규칙 심기, 채용 공고 확인</b> · Claude가 금요일처럼 멈추지 않게 하고, 오늘 하는 일이 채용 공고에 정말 나오는지 직접 확인해요.</li>
-<li><b>09:40 1교시 · 벤치마킹 한 장</b> · 남이 이미 시험해 본 것을 모르고 만들면, 남이 틀린 곳에서 똑같이 틀려요.</li>
-<li><b>10:15 2교시 · MVP 정의서</b> · 만들기 전에 "누구에게, 무엇을, 왜"를 한 장으로 정해요. 회사에서는 이 한 장으로 상사와 동료를 설득해요.</li>
-<li><b>11:00 3교시 · 계획부터 받고 만들기</b> · AI에게 일을 시킬 때는 계획을 먼저 봐요. 다 만든 뒤에 고치면 비싸요.</li>
-<li><b>12:00 4교시 · 다듬기</b> · 첫 화면에서 "내 얘기네" 하고 멈추게 만들고, AI가 만든 티를 빼요. 티가 나면 고객도 면접관도 넘겨요.</li>
-<li><b>13:00 점심</b></li>
-<li><b>14:00 오후 · 키비주얼과 인스타그램 시안</b> · 광고와 도착한 페이지가 같은 약속을 말해야 사요.</li>
-<li><b>16:00 덜 끝난 것 끝내기</b> · 먼저 끝났으면 내 회사로 한 번 더 해요.</li>
-<li><b>17:00 조 공유, 포트폴리오 한 장, 링크 기록</b> · 만든 것은 남이 볼 수 있어야 내 것이 돼요.</li>
-<li><b>테크 트랙</b> · 2교시부터 길이 달라요. 무엇을 만들지 한 장으로 정하고(T1), 계획을 확인하고(T2), 만들고(T3), 다듬고(T4), 샘플 데이터를 붙여 동료가 써 보게 해요(T5). 서비스를 만드는 일의 순서 그대로예요.</li>
-</ul></div>
-<div class="card blue"><div class="big">(꼭)이 붙은 것만 끝내도 오늘은 통과예요</div><p style="margin-top:10px">P0 → W1 → P1 → P3 → P5 → P6 → P10 → W2. 테크 트랙은 P0 → T0 → P1 → T1 → T2 → T3 → W2. 나머지는 수업에서 같이 해 보는 것들이에요. 번호가 붙은 프롬프트(W1, W2, P0~P12, T0~T5)는 전부 실제로 돌려 보고 넣었어요. 붙이면 Claude가 되묻지 않고 끝까지 만들어요.</p></div>
-<div class="grid">
-<div class="card"><h3>MVP = 시식 코너</h3><p class="sub">가게를 다 짓기 전에 한 입만 내놓고 반응을 봐요. 오늘의 한 입은 랜딩페이지 한 장이에요.</p></div>
-<div class="card"><h3>계획 먼저 = 공사 전 도면 확인</h3><p class="sub">벽을 세운 뒤에 고치면 비싸요. 도면에서 고치면 한 줄이에요.</p></div>
-<div class="card"><h3>디자인 스킬 = 선배의 체크리스트</h3><p class="sub">잘하는 선배가 "이건 하지 마"라고 적어 준 종이예요. 폴더에 넣어 두면 Claude가 읽고 따라요.</p></div>
-</div>
-<div class="card"><h3>오늘 처음 나오는 말</h3>
-<ul><li><b>기획전</b> · 한 가지 주제로 묶어서 파는 행사예요. 예: 여름 한정, 첫 구매 세트. 병원, 은행, 영화처럼 물건을 파는 곳이 아니면 "이벤트 페이지"로 읽으면 돼요.</li><li><b>랜딩페이지</b> · 광고를 누른 사람이 처음 도착하는 페이지예요. 상세페이지가 제품 하나를 설명한다면, 랜딩페이지는 행사 하나로 설득해서 구매나 상세페이지로 보내요. 설득하는 순서는 금요일에 본 상세페이지와 같아요.</li><li><b>칸과 첫 화면</b> · 랜딩페이지는 위에서 아래로 여덟 칸으로 된 한 장이에요. 폰에서 맨 처음 보이는 맨 위 칸을 "첫 화면"이라고 불러요.</li><li><b>핵심 가설</b> · "이걸 보여 주면 산다"는 우리의 추측이에요. 아직 맞는지 몰라요.</li><li><b>약속 한 줄</b> · 고객에게 보여 줄 한 문장이에요. 광고와 첫 화면이 똑같이 말해요.</li><li><b>키비주얼</b> · 기획전의 대표 사진 한 장이에요.</li><li><b>시안</b> · 확정하기 전에 보여 주는 밑그림이에요.</li><li><b>프로토타입</b> · 버튼이 눌리고 결과가 바뀌는 시험용 화면이에요.</li><li><b>(가정)과 [채울 곳]</b> · (가정)은 Claude가 추측한 곳이라 내가 확인해요. [채울 곳]은 Claude가 지어내면 안 돼서 비워 둔 곳이에요. 목요일의 [실데이터 입력]과 같아요.</li></ul></div>
+</ul>
+<p>가이드에서 <b>"내 결정"</b>이라고 적힌 곳이 그 자리예요. 테크 트랙은 테크 트랙 상자 안에 "내 결정"이 따로 있어요. 약속 한 줄 대신 무엇을 넣고 뺄지 정하고, 이미지 대신 동료가 헷갈려한 곳 가운데 먼저 고칠 것을 정해요.</p></div></details>
+<h3 class="gap">용어</h3>
+<details><summary>오늘 처음 나오는 말</summary><div class="body">
+<ul><li><b>기획전</b> · 한 가지 주제로 묶어서 파는 행사예요. 예: 여름 한정, 첫 구매 세트. 병원, 은행, 영화처럼 물건을 파는 곳이 아니면 "이벤트 페이지"로 읽으면 돼요.</li><li><b>랜딩페이지</b> · 광고를 누른 사람이 처음 도착하는 페이지예요. 상세페이지가 제품 하나를 설명한다면, 랜딩페이지는 행사 하나로 설득해서 구매나 상세페이지로 보내요. 설득하는 순서는 금요일에 본 상세페이지와 같아요.</li><li><b>MVP</b> · 가장 작게 만들어 먼저 반응을 보는 첫 버전이에요.</li><li><b>칸과 첫 화면</b> · 랜딩페이지는 위에서 아래로 여덟 칸으로 된 한 장이에요. 폰에서 맨 처음 보이는 맨 위 칸을 "첫 화면"이라고 불러요.</li><li><b>핵심 가설</b> · "이걸 보여 주면 산다"는 우리의 추측이에요. 아직 맞는지 몰라요.</li><li><b>약속 한 줄</b> · 고객에게 보여 줄 한 문장이에요. 광고와 첫 화면이 똑같이 말해요.</li><li><b>키비주얼</b> · 기획전의 대표 사진 한 장이에요.</li><li><b>시안</b> · 확정하기 전에 보여 주는 밑그림이에요.</li><li><b>프로토타입</b> · 버튼이 눌리고 결과가 바뀌는 시험용 화면이에요.</li><li><b>(가정)과 [채울 곳]</b> · (가정)은 Claude가 추측한 곳이라 내가 확인해요. [채울 곳]은 Claude가 지어내면 안 돼서 비워 둔 곳이에요. 목요일의 [실데이터 입력]과 같아요.</li></ul></div></details>
 </section>
 
 <section id="s1">
-<span class="eyebrow">09:25–09:40 · 준비</span>
+<span class="eyebrow">시작 · 09:25–09:40 · 준비</span>
 <h2>규칙을 한 번 심어 두면 하루가 편해요</h2>
+<p class="why"><b>왜 해요?</b> Claude가 금요일처럼 멈추지 않게 규칙을 먼저 심어요. 그리고 오늘 하는 일이 채용 공고에 정말 나오는지 직접 확인해요.</p>
 <div class="grid">
 <div class="card red"><h3>금요일 가이드의 프롬프트</h3><p>"자료가 없으면 쓰지 마. 모르면 나에게 물어봐."</p><p class="sub">가이드가 이렇게 시켜서 Claude가 멈추고, 되묻고, 아무것도 만들지 않았어요. 여러분이 잘못한 게 아니에요.</p></div>
 <div class="card ok"><h3>오늘 가이드의 프롬프트</h3><p>"아는 만큼 먼저 만들어. 추측한 곳만 표시해."</p><p class="sub">초안이 먼저 나와요. 맞는지는 그다음에 사람이 봐요.</p></div>
@@ -194,7 +222,7 @@ a.link::after{content:" ↗";color:var(--blue)}
 <label class="check"><input type="checkbox" data-k="a3"><span><b>P0</b>을 실행했어요</span></label>
 </div>
 <div class="card"><h3>프롬프트 쓰는 법</h3>
-<ol><li>박스를 누르면 복사돼요. Claude Code 입력창에 붙여 넣고 보내요.</li><li>프롬프트 하나는 보통 30초에서 1분 걸려요. 웹을 찾아보는 W1과 P1은 1~2분 걸려요. 멈춘 게 아니에요.</li><li>landing.html 같은 화면 파일은 답에 나온 파일 이름을 누르면 옆 창에 열려요. 글 파일(.md)을 보고 싶으면 리모컨 <b>"파일 내용 보기"</b>를 보내요.</li><li>Claude의 답 끝에 "다음에 할 일"이 나와도, 이 페이지의 다음 박스를 따라가요.</li></ol></div>
+<ol><li>박스를 누르면 복사돼요. Claude Code 입력창에 붙여 넣고 보내요.</li><li>프롬프트 하나는 보통 30초에서 1분 걸려요. 웹을 찾아보는 W1과 P1은 1~2분 걸려요. 멈춘 게 아니에요.</li><li>landing.html 같은 화면 파일은 답에 나온 파일 이름을 누르면 옆 창에 열려요. 글 파일(.md)을 보고 싶으면 리모컨 <b>"파일 내용 보기"</b>를 보내요.</li><li>Claude의 답 끝에 "다음에 할 일"이 나와도, 이 페이지의 다음 박스를 따라가요.</li><li>번호가 붙은 프롬프트(W1, W2, P0~P12, T0~T5)는 전부 실제로 돌려 보고 넣었어요. 붙이면 Claude가 되묻지 않고 끝까지 만들어요.</li></ol></div>
 <div class="card warn"><h3>허락 창이 뜨면</h3>
 <p>"실행해도 될까요?"라는 창은 되묻는 게 아니에요. 파일 만들기와 고치기, 웹 검색, 웹 페이지 열기(Fetch), 스킬 파일 내려받기, 폴더 만들기와 열기, 브라우저 열기, 파일 복사는 <b>Yes</b>를 눌러요. 무엇을 지우겠다고 하거나 뜻을 모르겠으면 누르지 말고 강사를 불러요.</p></div>
 <div class="card" id="profileCard">
@@ -223,7 +251,7 @@ a.link::after{content:" ↗";color:var(--blue)}
 - 제품: <b data-v="product">저당 아이스크림</b>
 - 고객: <b data-v="customer">다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인</b></pre></button>
 <h3 class="gap">먼저 확인 · 오늘 하는 일이 채용 공고에 정말 나오는지 봐요</h3>
-<p class="sub">강사의 말만 믿지 말고 직접 확인해요. 오늘 하는 일 다섯 가지에 "AI 도구로 일하기"를 더한 여섯 가지가, 내가 가고 싶은 일의 채용 공고에 적혀 있는지 Claude가 찾아 줘요. 1~2분 걸려요. 하고 싶은 일을 아직 몰라도 돼요.</p>
+<p class="sub">직접 확인해 봐요. 오늘 하는 일 다섯 가지에 "AI 도구로 일하기"를 더한 여섯 가지가, 내가 가고 싶은 일의 채용 공고에 적혀 있는지 Claude가 찾아 줘요. 1~2분 걸려요. 하고 싶은 일을 아직 몰라도 돼요.</p>
 <div class="card"><div class="field" style="margin:0"><label for="v-role">내가 하고 싶은 일을 적어요. 아직 모르겠으면 그대로 두세요. 예: 콘텐츠 마케터, MD, 서비스 기획자, 데이터 분석가</label><input id="v-role" data-in="role" type="text" maxlength="40" placeholder="아직 모름" autocomplete="off"></div></div>
 <button class="copy" type="button" data-copy="w1"><div class="hd"><b>W1 · 채용 공고에서 오늘 하는 일 찾기 (꼭)</b><span class="btn">눌러서 복사</span></div>
 <pre id="w1">내가 하고 싶은 일의 채용 공고에, 오늘 수업에서 하는 일이 실제로 나오는지 찾아서 why.md로 정리해줘.
@@ -276,8 +304,9 @@ a.link::after{content:" ↗";color:var(--blue)}
 </section>
 
 <section id="s2">
-<span class="eyebrow">09:40–10:15 · 1교시</span>
+<span class="eyebrow">① 정하기 · 09:40–10:15 · 1교시</span>
 <h2>벤치마킹 한 장을 끝내요</h2>
+<p class="why"><b>왜 해요?</b> 남이 이미 시험해 본 것을 모르고 만들면, 남이 틀린 곳에서 똑같이 틀려요.</p>
 <span class="pill">짧은 강의</span>
 <div class="card" style="margin-top:12px"><p>금요일에 못 끝낸 사람도 여기서 한 번에 끝내요. <b>한 걸음 앞선 비슷한 브랜드 3곳</b>이 무엇을 약속하고 어떻게 말하는지 한 장으로 봐요.</p>
 <ul><li>우리보다 훨씬 큰 대기업이 아니라 <b>우리와 같은 고객을 두고 경쟁하는 브랜드</b>를 봐요.</li><li>금요일에 벤치마킹을 끝낸 사람도 P1을 한 번 돌려요. 오늘 뒤 단계가 benchmark.md를 읽어요. 금요일에 만든 파일은 지우지 말고 그대로 둬요.</li><li>Claude가 고른 브랜드는 사람마다 달라요. 달라도 괜찮아요.</li><li>Claude가 웹에서 찾은 내용이라 틀릴 수 있어요. <b>(가정)</b> 표시가 붙은 곳 중 하나는 내 눈으로 확인해요. 이게 오늘의 <b>내 결정 1 · 확인하기</b>예요.</li></ul></div>
@@ -306,8 +335,9 @@ a.link::after{content:" ↗";color:var(--blue)}
 </section>
 
 <section id="s3">
-<span class="eyebrow">10:15–11:00 · 2교시</span>
+<span class="eyebrow">① 정하기 · 10:15–11:00 · 2교시</span>
 <h2>무엇을 만들지 한 장으로 정해요</h2>
+<p class="why"><b>왜 해요?</b> 만들기 전에 "누구에게, 무엇을, 왜"를 한 장으로 정해요. 회사에서는 이 한 장으로 상사와 동료를 설득해요. MVP는 시식 코너와 같아요. 가게를 다 짓기 전에 한 입만 내놓고 반응을 봐요.</p>
 <span class="pill">짧은 강의</span>
 <div class="card" style="margin-top:12px"><h3>MVP 정의서에 적는 것</h3>
 <ul><li><b>기획전 주제</b> · 무엇을 묶어, 왜 지금 파는가</li><li><b>누구에게</b> · 고객 한 명의 장면</li><li><b>사지 않는 이유</b> · 이 사람이 망설이는 이유 3가지</li><li><b>핵심 가설</b> · "첫 화면에서 이걸 보여 주면 산다"는 우리의 추측</li><li><b>약속 한 줄</b> · 고객에게 보여 줄 문장</li><li><b>꼭 넣을 것</b> · 이번에 반드시 들어갈 5가지</li><li><b>만들지 않을 것</b> · 이번엔 뺄 3가지</li><li><b>성공 기준</b> · 5초 보고 알아보는가</li></ul>
@@ -353,8 +383,9 @@ benchmark.md, context 폴더, 퍼소나 파일이 이 폴더에 있으면 읽고
 </section>
 
 <section id="s4">
-<span class="eyebrow">11:00–12:00 · 3교시</span>
+<span class="eyebrow">② 만들기 · 11:00–12:00 · 3교시</span>
 <h2>계획부터 받고, 그다음에 만들어요</h2>
+<p class="why"><b>왜 해요?</b> AI에게 일을 시킬 때는 계획을 먼저 봐요. 공사 전에 도면을 확인하는 것과 같아요. 도면에서 고치면 한 줄이에요.</p>
 <span class="pill">짧은 강의</span>
 <div class="card" style="margin-top:12px"><h3>바로 만들라고 하지 않아요</h3>
 <p>현업은 <b>계획 확인 → 구현</b> 순서로 일해요. 계획은 30초면 읽고, 고칠 곳은 한 줄로 말할 수 있어요. 다 만든 뒤에 고치면 처음부터 다시 해야 해요.</p>
@@ -419,8 +450,9 @@ prototype_plan.md가 없으면 네가 정해서 만들어줘. 되묻지 말고 �
 </section>
 
 <section id="s5">
-<span class="eyebrow">12:00–13:00 · 4교시</span>
+<span class="eyebrow">② 만들기 · 12:00–13:00 · 4교시</span>
 <h2>첫 화면을 장면으로, 모양은 'AI가 만든 티'를 빼요</h2>
+<p class="why"><b>왜 해요?</b> 첫 화면에서 "내 얘기네" 하고 멈추게 만들고, AI가 만든 티를 빼요. 티가 나면 고객도 면접관도 넘겨요.</p>
 <span class="pill">짧은 강의</span>
 <div class="card" style="margin-top:12px"><h3>먼저 내용: 첫 화면은 고객의 장면</h3>
 <p>첫 화면에 제품부터 나오면 광고처럼 보여서 넘겨요. <b>고객의 짜증 나는 순간</b>이 먼저 보여야 "내 얘기네" 하고 멈춰요. 목요일에 퍼소나의 짜증 나는 순간을 장면으로 쓴 것과 같은 방법이에요.</p></div>
@@ -472,8 +504,9 @@ prototype_plan.md가 없으면 네가 정해서 만들어줘. 되묻지 말고 �
 </section>
 
 <section id="s6">
-<span class="eyebrow">14:00–17:00 · 오후</span>
+<span class="eyebrow">③ 내놓기 · 14:00–17:00 · 오후</span>
 <h2>키비주얼과 인스타그램 시안을 뽑아요</h2>
+<p class="why"><b>왜 해요?</b> 광고와 도착한 페이지가 같은 약속을 말해야 사요. 그래서 랜딩페이지의 첫 화면을 그대로 그림으로 옮겨요.</p>
 <span class="pill">짧은 강의</span>
 <div class="card" style="margin-top:12px"><p><b>키비주얼은 기획전의 대표 사진 한 장이에요.</b> 랜딩페이지 첫 화면의 장면을 그림으로 옮긴 거예요. 인스타그램 시안과 내일 만들 숏폼이 모두 이 한 장의 분위기를 따라가요. 그래서 랜딩페이지를 먼저 만들었어요. 광고가 한 약속을 첫 화면이 그대로 이어받아야 하니까요.</p></div>
 <div class="tablewrap"><table>
@@ -530,7 +563,7 @@ landing.html이 없으면 여덟 칸으로, kv.md가 없으면 큰 카피 4개�
 - 바꿔 넣어 볼 수 있게, 내용이 다른 sample2.csv도 5줄로 만들어줘.
 prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 3줄로만 알려줘.</pre></button>
 </div>
-<h3 class="gap">16:00부터 · 내 속도에 맞게</h3>
+<h3 class="gap" id="s6b">16:00부터 · 덜 끝난 것 끝내기</h3>
 <div class="grid">
 <div class="card"><h3>아직 덜 끝났다면</h3><p class="sub">세 가지만 남기면 돼요. mvp.md, landing.html, 키비주얼 1장. 테크 트랙은 mvp.md와 prototype.html. 17:00의 포트폴리오 한 장(W2)은 다 같이 해요.</p></div>
 <div class="card"><h3>먼저 끝났다면</h3><p class="sub">라라스윗으로 했다면, 준비 구간의 입력 칸 세 개를 내 회사로 바꾸고 새 폴더를 열어 P0 → P3 → P5 → P6 → P8 → P9를 한 번 더 해요. 이미 내 회사로 했다면, 키비주얼을 다른 분위기로 한 장 더 뽑아서 둘을 비교해요. 17:00의 포트폴리오 한 장(W2)은 아침부터 쓰던 폴더에서 해요.</p></div>
@@ -538,15 +571,16 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 </section>
 
 <section id="s7">
-<span class="eyebrow">17:00–18:00 · 마무리</span>
+<span class="eyebrow">③ 내놓기 · 17:00–18:00 · 마무리</span>
 <h2>보여 주고, 적고, 퇴근해요</h2>
+<p class="why"><b>왜 해요?</b> 만든 것은 남이 볼 수 있어야 내 것이 돼요. 내가 내린 결정까지 적어 두면 면접에서 말할 수 있어요.</p>
 <div class="card"><h3>조 공유 · 한 사람 1분</h3><ol>
 <li>조 안에서 한 사람씩 화면을 띄워요.</li>
 <li>한 문장으로 말해요: <b>누구에게, 무엇을, 왜.</b></li>
 <li>듣는 사람은 한마디만 해요. 첫 화면을 보고 바로 이해됐는지.</li>
 </ol></div>
 <div class="card"><h3>오늘을 포트폴리오 한 장으로 남겨요</h3>
-<p>아침에 물었죠. "오늘 하고 나면 뭐가 남아요?" 결과물만 남기면 절반이에요. <b>내가 무엇을 확인하고, 고르고, 고쳤는지</b>가 같이 남아야 면접에서 말할 수 있어요. 1월 6일 개인 발표도 이 내용으로 해요. 이 한 장은 그대로 내는 문서가 아니라, 12월 4일 포트폴리오 사이트에 넣을 재료예요.</p>
+<p>아침에 본 "오늘 남는 것"의 마지막 한 장이에요. 결과물만 남기면 절반이에요. <b>내가 무엇을 확인하고, 고르고, 고쳤는지</b>가 같이 남아야 면접에서 말할 수 있어요. 1월 6일 개인 발표도 이 내용으로 해요. 이 한 장은 그대로 내는 문서가 아니라, 12월 4일 포트폴리오 사이트에 넣을 재료예요.</p>
 <p><b>W2는 아침부터 쓰던 폴더와 대화에서 보내요.</b> 파란 글자(내가 하고 싶은 일)가 아침과 달라졌으면 준비 구간의 입력 칸에서 고쳐요.</p>
 <p><b>Claude가 못 본 결정은 덧붙여서 보내요.</b> W2를 입력창에 붙여 넣은 뒤, 보내기 전에 맨 아래에 한 줄씩 적어요. 이미지에서 정한 것, 동료에게 써 보게 하고 정한 것, 그리고 낮에 대화나 폴더를 바꿨다면 그 전에 확인하고, 고르고, 고친 것. 예: "덧붙임: 키비주얼은 배경이 어두워서 다시 뽑았어. 약속 한 줄은 그대로 갔어. 고객이 하는 말 같아서."</p>
 <button class="copy" type="button" data-copy="w2"><div class="hd"><b>W2 · 오늘을 포트폴리오 한 장으로 (꼭)</b><span class="btn">눌러서 복사</span></div>
@@ -600,7 +634,7 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 <section id="s8">
 <span class="eyebrow">막히면</span>
 <h2>긴 설명 대신 한 줄을 보내요</h2>
-<details><summary>하고 싶은 일을 아직 모르겠어요</summary><div class="body"><p>준비 구간의 "내가 하고 싶은 일" 칸을 그대로 두고 W1을 실행해요(테크 트랙은 T0). 오늘 하는 일들이 어떤 직무의 채용 공고에 나오는지 찾아 줘요.</p></div></details>
+<details><summary>하고 싶은 일을 아직 정하지 않았어요</summary><div class="body"><p>준비 구간의 "내가 하고 싶은 일" 칸을 그대로 두고 W1을 실행해요(테크 트랙은 T0). 오늘 하는 일들이 어떤 직무의 채용 공고에 나오는지 찾아 줘요.</p></div></details>
 <details><summary>W1이 찾은 공고 링크가 안 열려요</summary><div class="body"><p>마감된 공고일 수 있어요. 표의 다른 링크를 눌러요. 다 안 열리면 채용 사이트에서 표에 나온 직무 이름으로 직접 찾아 한 곳만 봐요.</p></div></details>
 <details><summary>W1 표에 "못 찾음"이 많아요</summary><div class="body"><p>찾아본 공고가 몇 개 안 돼서 그래요. "공고를 3개 더 찾아서 why.md에 보태줘"라고 하거나, 내가 본 공고의 주요 업무를 붙여 넣고 "이 공고로 다시 해줘"라고 해요. 그래도 없는 일은 그 직무에서 덜 하는 일일 수 있어요. 강사와 얘기해요.</p></div></details>
 <details><summary>포트폴리오의 "면접에서 말할 둘째 문장"이 빈칸으로 나왔어요</summary><div class="body"><p>결정을 말로 남기지 않았거나 대화를 새로 열면 이렇게 나와요. 잘못한 게 아니에요. 지금 말로 남기면 돼요. mvp.md의 약속 한 줄을 다시 읽고 "약속 한 줄은 그대로 갔어. 이유는 ○○."처럼 말해요. 테크 트랙은 "○○은 넣고 ○○은 뺐어. 이유는 ○○."처럼 말해요. 그다음 "방금 말한 것을 포트폴리오에 적어줘."라고 해요.</p></div></details>
