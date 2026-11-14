@@ -2,6 +2,7 @@
 # 단계 표기: p01 (새 대화) / p02+ (앞 대화에 이어서)
 # 환경 변수: BRAND='브랜드|제품|고객' (다른 브랜드로 바꿔 시험), TOOLS='허용 도구 목록', PMODE='권한 모드(기본 acceptEdits, 계획 모드는 plan)'
 #           FILL='{"p06":["계획에서 바꿀 것: 없음","계획에서 바꿀 것: 3번 칸은 빼줘"]}' (학생이 입력 칸을 채운 경우), 단계를 p05&p06처럼 쓰면 두 프롬프트를 한 번에 붙여 넣은 경우
+#           한 프롬프트의 여러 칸: FILL='{"m1":[["옛1","새1"],["옛2","새2"]]}'
 #           EXTRA='{"x1":"2번으로 바꿔줘. 이유는 ..."}' (가이드에 없는, 학생이 직접 친 한 줄. 단계에 x1+처럼 쓴다)
 # BRAND는 페이지의 입력 칸과 똑같이 파란 글자(data-v) 자리만 바꾼다. 프롬프트 본문에 적힌 예시 브랜드 이름은 그대로 둔다.
 import sys,re,json,html,subprocess,os,time
@@ -15,8 +16,10 @@ if os.environ.get('BRAND'):
 prompts={k:html.unescape(re.sub(r'<[^>]+>','',v)) for k,v in raw.items()}
 prompts.update(json.loads(os.environ.get('EXTRA','{}')))
 FILL=json.loads(os.environ.get('FILL','{}'))
-for k,(old,new) in FILL.items():
-    assert old in prompts[k],('FILL 대상 없음',k); prompts[k]=prompts[k].replace(old,new)
+for k,v in FILL.items():
+    pairs=v if v and isinstance(v[0],list) else [v]   # ["옛","새"] 하나 또는 [["옛","새"],["옛","새"]] 여러 개
+    for old,new in pairs:
+        assert old in prompts[k],('FILL 대상 없음',k,old); prompts[k]=prompts[k].replace(old,new)
 def tree():
     out={}
     for r,d,f in os.walk(work):
