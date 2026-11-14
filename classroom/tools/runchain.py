@@ -1,6 +1,6 @@
 # 수업 프롬프트를 실제로 돌려 보는 시험기. 사용: python3 runchain.py <guide.html> <작업폴더> <결과.json> <단계...>
 # 단계 표기: p01 (새 대화) / p02+ (앞 대화에 이어서)
-# 환경 변수: BRAND='브랜드|제품|고객' (다른 브랜드로 바꿔 시험), TOOLS='허용 도구 목록', PMODE='권한 모드(기본 acceptEdits, 계획 모드는 plan)'
+# 환경 변수: BRAND='브랜드|제품|고객' (다른 브랜드로 바꿔 시험), TOK='{"칸":"값"}' (다른 입력 칸), TOOLS='허용 도구 목록', PMODE='권한 모드(기본 acceptEdits, 계획 모드는 plan)'
 #           FILL='{"p06":["계획에서 바꿀 것: 없음","계획에서 바꿀 것: 3번 칸은 빼줘"]}' (학생이 입력 칸을 채운 경우), 단계를 p05&p06처럼 쓰면 두 프롬프트를 한 번에 붙여 넣은 경우
 #           한 프롬프트의 여러 칸: FILL='{"m1":[["옛1","새1"],["옛2","새2"]]}'
 #           EXTRA='{"x1":"2번으로 바꿔줘. 이유는 ..."}' (가이드에 없는, 학생이 직접 친 한 줄. 단계에 x1+처럼 쓴다)
@@ -10,6 +10,9 @@ guide,work,outp=sys.argv[1],sys.argv[2],sys.argv[3]; steps=sys.argv[4:]
 src=open(guide,encoding='utf-8').read()
 raw={m.group(1):m.group(2) for m in re.finditer(r'<pre id="([a-z]+\d*)">(.*?)</pre>',src,flags=re.S)}
 os.makedirs(work,exist_ok=True)
+if os.environ.get('TOK'):   # 입력 칸 아무거나: TOK='{"role":"운영 매니저(교육 회사)","task":"조퇴·외출 처리"}' (페이지처럼 그 파란 글자를 모든 프롬프트에서 바꾼다)
+    for key,val in json.loads(os.environ['TOK']).items():
+        raw={k:re.sub(r'<b[^>]*data-v="%s"[^>]*>.*?</b>'%key,lambda m,val=val:html.escape(val),v,flags=re.S) for k,v in raw.items()}
 if os.environ.get('BRAND'):
     for key,val in zip(('brand','product','customer'),os.environ['BRAND'].split('|')):
         raw={k:re.sub(r'<b[^>]*data-v="%s"[^>]*>.*?</b>'%key,lambda m,val=val:html.escape(val),v,flags=re.S) for k,v in raw.items()}
