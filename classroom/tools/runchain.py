@@ -8,7 +8,7 @@
 import sys,re,json,html,subprocess,os,time
 guide,work,outp=sys.argv[1],sys.argv[2],sys.argv[3]; steps=sys.argv[4:]
 src=open(guide,encoding='utf-8').read()
-raw={m.group(1):m.group(2) for m in re.finditer(r'<pre id="([a-z]+\d*)">(.*?)</pre>',src,flags=re.S)}
+raw={m.group(1):m.group(2) for m in re.finditer(r'<pre id="([a-z][a-z0-9]*)">(.*?)</pre>',src,flags=re.S)}
 os.makedirs(work,exist_ok=True)
 if os.environ.get('TOK'):   # 입력 칸 아무거나: TOK='{"role":"운영 매니저(교육 회사)","task":"조퇴·외출 처리"}' (페이지처럼 그 파란 글자를 모든 프롬프트에서 바꾼다)
     for key,val in json.loads(os.environ['TOK']).items():
