@@ -1,0 +1,194 @@
+<!-- 수업 가이드 공통 바탕: 스타일과 스크립트(입력 칸 → 파란 글자, 복사 상자, 체크 저장, 다크 모드). build_day16.py가 읽는다 -->
+<style>
+/* 레이아웃: 시간표 순서대로 내려가는 한 줄 가이드. 구간마다 짧은 강의 → 복사 박스 → 성공 체크 */
+:root{--bg:#f2f4f6;--card:#ffffff;--ink:#191f28;--sub:#6b7684;--blue:#3182f6;--blue-ink:#ffffff;--blue-soft:#e8f3ff;--line:#e5e8eb;--red:#f04452;--red-soft:#ffeeee;--ok:#03b26c;--ok-soft:#e6f8f0;--warn:#e69a00;--warn-soft:#fff6e0;--code:#f2f4f6;--tech:#6b4de6;--tech-ink:#ffffff;--tech-soft:#f0ecff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171c;--card:#202027;--ink:#f2f4f6;--sub:#a1a9b4;--blue:#4593fc;--blue-ink:#0b1220;--blue-soft:#1c2b42;--line:#2e2e36;--red:#ff6b77;--red-soft:#3a2024;--ok:#2fd18c;--ok-soft:#14302a;--warn:#f5b73b;--warn-soft:#352b14;--code:#2a2a33;--tech:#a391ff;--tech-ink:#140d33;--tech-soft:#27223d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17171c;--card:#202027;--ink:#f2f4f6;--sub:#a1a9b4;--blue:#4593fc;--blue-ink:#0b1220;--blue-soft:#1c2b42;--line:#2e2e36;--red:#ff6b77;--red-soft:#3a2024;--ok:#2fd18c;--ok-soft:#14302a;--warn:#f5b73b;--warn-soft:#352b14;--code:#2a2a33;--tech:#a391ff;--tech-ink:#140d33;--tech-soft:#27223d;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:22px;line-height:1.65;padding-block:0 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));word-break:keep-all;overflow-wrap:break-word}
+@media(max-width:600px){body{font-size:20px}}
+.wrap{max-width:860px;margin:0 auto}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;text-decoration:none;color:var(--sub);font-weight:700;font-size:18px;padding:10px 18px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+nav a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+section{padding:72px 0 8px;scroll-margin-top:72px}
+.eyebrow{display:inline-block;color:var(--blue);background:var(--blue-soft);font-weight:800;font-size:18px;border-radius:10px;padding:6px 14px}
+h1{font-size:clamp(38px,7vw,68px);line-height:1.25;font-weight:800;letter-spacing:-0.03em;margin:20px 0 16px;text-wrap:balance}
+h2{font-size:clamp(32px,5vw,50px);line-height:1.3;font-weight:800;letter-spacing:-0.02em;margin:16px 0 28px;text-wrap:balance}
+h3{font-size:clamp(24px,3.2vw,30px);line-height:1.4;font-weight:800;margin:0 0 10px}
+h3.gap{margin-top:40px}
+p{margin:0 0 12px}
+a{color:var(--blue)}
+.lead{font-size:clamp(22px,3vw,28px);color:var(--sub);line-height:1.6;margin-bottom:28px}
+.sub{color:var(--sub)}
+.card{background:var(--card);border-radius:24px;padding:32px;margin:0 0 16px}
+.card.blue{background:var(--blue);color:var(--blue-ink)}
+.card.blue .sub,.card.blue h3{color:var(--blue-ink)}
+.card.soft{background:var(--blue-soft)}
+.card.warn{background:var(--warn-soft)}
+.card.red{background:var(--red-soft)}
+.card.ok{background:var(--ok-soft)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));margin-bottom:16px}
+.grid .card{margin:0;min-width:0}
+.big{font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.4}
+.num{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--blue);color:var(--blue-ink);font-weight:800;font-size:22px;margin-bottom:12px}
+ul,ol{margin:8px 0 0;padding-left:1.2em}li{margin:8px 0}
+.copy{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:var(--card);border:2px solid var(--blue);border-radius:24px;padding:28px;margin:0 0 16px;cursor:pointer;transition:background .15s}
+.copy:hover{background:var(--blue-soft)}
+.copy:focus-visible,nav a:focus-visible,summary:focus-visible,button:focus-visible,a.link:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.copy .hd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.copy .hd b{font-size:24px;font-weight:800;min-width:0}
+.copy .btn{background:var(--blue);color:var(--blue-ink);border-radius:999px;padding:8px 20px;font-weight:800;font-size:18px;white-space:nowrap}
+.copy pre{margin:0;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;font:inherit;font-size:20px;line-height:1.65;background:var(--code);border-radius:16px;padding:20px}
+.copy pre b[data-v],.tok,.formula b[data-v]{color:var(--blue);font-weight:800}
+.copy.done{border-color:var(--ok)}
+.copy.done .btn{background:var(--ok)}
+.tech{background:var(--tech-soft);border-radius:28px;padding:28px 20px 12px;margin:32px 0 16px}
+.tech>.tag{display:inline-block;background:var(--tech);color:var(--tech-ink);font-weight:800;font-size:18px;border-radius:10px;padding:6px 14px;margin:0 8px 12px}
+.tech>p,.tech>h3{margin-left:8px;margin-right:8px}
+.tech>p{margin-bottom:16px}
+.tech .copy{border-color:var(--tech)}
+.tech .copy:hover{background:var(--card)}
+.tech .copy .btn{background:var(--tech);color:var(--tech-ink)}
+.tech .copy pre b[data-v]{color:var(--tech)}
+.tech .copy.done{border-color:var(--ok)}
+.tech .copy.done .btn{background:var(--ok)}
+.tablewrap{overflow-x:auto;margin:0 0 16px;border-radius:24px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:20px;min-width:560px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:18px 22px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--blue);font-weight:800;background:var(--blue-soft)}
+tr:last-child td{border-bottom:0}
+.check{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check:last-child{border-bottom:0}
+.check input{width:32px;height:32px;flex:none;margin:2px 0 0;accent-color:var(--blue)}
+.check span{flex:1;min-width:0}
+.check input:checked + span{color:var(--sub);text-decoration:line-through}
+.progress{height:12px;background:var(--line);border-radius:999px;overflow:hidden;margin:8px 0 20px}
+.progress i{display:block;height:100%;width:0;background:var(--blue);transition:width .3s}
+details{background:var(--card);border-radius:20px;margin:0 0 12px;padding:0 28px}
+summary{cursor:pointer;font-weight:800;font-size:24px;padding:24px 0;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--blue);font-size:32px;line-height:1}
+details[open] summary::after{content:"–"}
+details .body{padding:0 0 24px;color:var(--sub)}
+details .body b{color:var(--ink)}
+.card details{background:var(--code);margin:8px 0 20px}
+.card details summary{font-size:20px;padding:18px 0}
+.field{display:flex;flex-direction:column;gap:6px;margin:0 0 18px}
+.field label{font-weight:800;font-size:19px}
+.field input,.field select{font:inherit;font-size:20px;color:var(--ink);background:var(--code);border:2px solid var(--line);border-radius:14px;padding:14px 16px;width:100%;min-width:0}
+.card details .field input{background:var(--card)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--blue)}
+.ghost{font:inherit;font-weight:800;font-size:18px;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:999px;padding:12px 22px;cursor:pointer}
+.flow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));margin-bottom:16px}
+.flow .card{margin:0;padding:24px;min-width:0}
+.flow .tag{color:var(--blue);font-weight:800;font-size:18px}
+.tree{font-family:'Courier New',monospace;font-size:19px;line-height:1.8;background:var(--code);border-radius:16px;padding:20px;overflow-x:auto;white-space:pre;margin:0}
+.pill{display:inline-block;background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:4px 14px;font-weight:800;font-size:18px;margin-right:6px}
+.pill.deep{background:var(--tech-soft);color:var(--tech)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
+a.link{display:inline-block;text-decoration:none;background:var(--card);border:1px solid var(--line);color:var(--ink);font-weight:800;font-size:19px;border-radius:999px;padding:12px 22px}
+a.link::after{content:" ↗";color:var(--blue)}
+.formula{font-size:clamp(22px,3.4vw,32px);font-weight:800;line-height:1.5}
+.theme{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:25;border:0;background:var(--ink);color:var(--bg);font:inherit;font-weight:800;font-size:17px;padding:14px 22px;border-radius:999px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:88px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:14px 24px;border-radius:14px;font-weight:700;font-size:19px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:90%;text-align:center}
+.toast.show{opacity:1}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script>
+(function(){
+  var toast=document.getElementById('toast'),tm;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove('show')},1800)}
+  function fb(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);return ok}
+  function copy(b){
+    var t=document.getElementById(b.getAttribute('data-copy')).innerText;
+    function done(ok){
+      if(ok){b.classList.add('done');b.querySelector('.btn').textContent='복사 완료';show('복사됐어요. Claude Code에 붙여넣기');
+        setTimeout(function(){b.classList.remove('done');b.querySelector('.btn').textContent='눌러서 복사'},2500)}
+      else{show('복사가 안 됐어요. 글자를 길게 눌러 직접 선택해 주세요')}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},function(){done(fb(t))})}
+    else done(fb(t));
+  }
+  [].forEach.call(document.querySelectorAll('.copy'),function(b){b.addEventListener('click',function(){copy(b)})});
+
+  var store=null;try{store=window.localStorage}catch(e){}
+
+  // 내 회사로 바꾸기: 프롬프트의 재료(파란 글자)를 한꺼번에 바꿔요. 이 기기에만 저장
+  var DEF={brand:'라라스윗',product:'저당 아이스크림',customer:'다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인',moment:'밤에 죄책감 없는 디저트·간식을 찾을 때',ind:'식품'};
+  var PRESETS={
+    online:{f1:'노출 수',f2:'클릭률',m1:'방문자 수',f3:'구매 전환율',m2:'구매 건수',f4:'객단가',page:'상세페이지'},
+    offline:{f1:'지나가는 사람 수',f2:'들어오는 비율',m1:'방문객 수',f3:'구매율',m2:'구매 건수',f4:'객단가',page:'매장·행사 안내 페이지'},
+    app:{f1:'방문자 수',f2:'가입 전환율',m1:'가입자 수',f3:'유료 전환율',m2:'유료 고객 수',f4:'월 요금',page:'랜딩페이지'},
+    booking:{f1:'방문자 수',f2:'문의 전환율',m1:'문의 건수',f3:'계약 전환율',m2:'계약 건수',f4:'객단가',page:'예약·상담 신청 페이지'},
+    ip:{f1:'닿은 사람 수',f2:'관심 전환율',m1:'관심 고객 수',f3:'구매 전환율',m2:'구매 건수',f4:'객단가',page:'작품·굿즈 소개 페이지'},
+    b2b:{f1:'문의 수',f2:'미팅 전환율',m1:'미팅 건수',f3:'수주율',m2:'수주 건수',f4:'계약 단가',page:'서비스 소개 페이지'}
+  };
+  var MODEL_NAMES={online:'온라인 판매',offline:'오프라인 매장',app:'앱·구독',booking:'예약·상담·가입형',ip:'콘텐츠·IP',b2b:'B2B'};
+  var PIECES=['f1','f2','m1','f3','m2','f4','page'];
+  var prof={};
+  try{prof=JSON.parse((store&&store.getItem('l16-profile'))||'{}')||{}}catch(e){prof={}}
+  function val(v){return (typeof v==='string'&&v.replace(/\s+/g,' ').trim())||''}
+  function full(){
+    var m=PRESETS[prof.model]?prof.model:'online',o={model:m},k;
+    for(k in DEF)o[k]=val(prof[k])||DEF[k];
+    for(k in PRESETS[m])o[k]=val(prof[k])||PRESETS[m][k];
+    return o;
+  }
+  function saveProf(){try{store&&store.setItem('l16-profile',JSON.stringify(prof))}catch(e){}}
+  function render(){
+    var f=full();
+    [].forEach.call(document.querySelectorAll('[data-v]'),function(e){var k=e.getAttribute('data-v');if(f[k]!=null)e.textContent=f[k]});
+    var lab=document.getElementById('curLabel');if(lab)lab.textContent='지금 기준: '+f.brand+' · '+MODEL_NAMES[f.model];
+  }
+  function fillInputs(){
+    var f=full();
+    [].forEach.call(document.querySelectorAll('[data-in]'),function(i){i.value=f[i.getAttribute('data-in')]});
+  }
+  [].forEach.call(document.querySelectorAll('[data-in]'),function(i){
+    function on(){
+      var k=i.getAttribute('data-in');prof[k]=i.value;
+      if(k==='model'){PIECES.forEach(function(x){delete prof[x]});fillInputs()}
+      saveProf();render();
+    }
+    i.addEventListener('input',on);i.addEventListener('change',on);
+  });
+  var rs=document.getElementById('resetProfile');
+  if(rs)rs.addEventListener('click',function(){prof={};saveProf();fillInputs();render();show('라라스윗 기준으로 되돌렸어요')});
+  fillInputs();render();
+
+  // 체크리스트 (이 기기에만 저장)
+  function get(k){try{return store&&store.getItem('l16-'+k)==='1'}catch(e){return false}}
+  function set(k,v){try{store&&store.setItem('l16-'+k,v?'1':'0')}catch(e){}}
+  var groups=[].slice.call(document.querySelectorAll('.checks'));
+  function update(){
+    groups.forEach(function(g){
+      var boxes=g.querySelectorAll('input[data-k]'),n=0;
+      [].forEach.call(boxes,function(b){if(b.checked)n++});
+      var bar=g.querySelector('.progress i');if(bar&&boxes.length)bar.style.width=(n/boxes.length*100)+'%';
+    });
+  }
+  [].forEach.call(document.querySelectorAll('input[data-k]'),function(b){
+    b.checked=get(b.getAttribute('data-k'));
+    b.addEventListener('change',function(){set(b.getAttribute('data-k'),b.checked);update()});
+  });
+  update();
+
+  // 메뉴 강조
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=secs.indexOf(e.target);links.forEach(function(l,j){l.classList.toggle('on',i===j)});if(links[i]&&links[i].scrollIntoView){try{links[i].scrollIntoView({block:'nearest',inline:'center'})}catch(x){}}}})},{rootMargin:'-30% 0px -60% 0px'});
+    secs.forEach(function(s){io.observe(s)});
+  }
+  links[0].classList.add('on');
+
+  // 테마 전환
+  var root=document.documentElement,btn=document.getElementById('themeBtn');
+  function isDark(){var t=root.getAttribute('data-theme');if(t)return t==='dark';return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches}
+  function label(){btn.textContent=isDark()?'라이트 모드':'다크 모드'}
+  btn.addEventListener('click',function(){root.setAttribute('data-theme',isDark()?'light':'dark');label()});
+  label();
+})();
+</script>
