@@ -545,7 +545,7 @@ body='''
 <div class="card checks">
 <h3>이 세 가지가 되면 성공</h3>
 <div class="progress"><i></i></div>
-<label class="check"><input type="checkbox" data-k="d1"><span>mvp.html이 <b>화면에 열려요</b></span></label>
+<label class="check"><input type="checkbox" data-k="d1"><span>mvp.html이 <b>화면에 열려요</b>. 표와 버튼이 안 보이고 비어 있으면 맨 아래 "막히면"의 "화면이 통째로 비어 있어요"를 봐요</span></label>
 <label class="check"><input type="checkbox" data-k="d2"><span>출처 링크를 누르면 <b>그 페이지가 열려요</b></span></label>
 <label class="check"><input type="checkbox" data-k="d3"><span>걸러 보기 버튼을 누르면 <b>보이는 것이 바뀌어요</b></span></label>
 </div>
@@ -671,6 +671,7 @@ body='''
 <details><summary>P2가 끝났는데 research.csv가 없어요</summary><div class="body"><p>Claude 창에 허락 창이 떠 있으면 Yes를 눌러요. 표를 저장하는 명령이 허락을 기다리고 있는 거예요. 창이 없으면 그대로 P3를 보내요. P3가 research.csv부터 만들고 화면을 만들어요. 수업 전 시험에서는 앞에서 조사한 값을 그대로 썼어요.</p></div></details>
 <details><summary>엑셀에서 한글이 깨져요</summary><div class="body"><p>"research.csv를 엑셀에서 한글이 안 깨지게 UTF-8 BOM으로 다시 저장해줘"라고 해요.</p></div></details>
 <details><summary>화면에 표가 안 보여요</summary><div class="body"><p>"research.csv의 내용을 mvp.html 안에 넣어서 파일을 더블클릭해도 보이게 해줘"라고 해요.</p></div></details>
+<details><summary>화면이 통째로 비어 있어요, 버튼이 안 눌려요</summary><div class="body"><p>화면 파일의 스크립트에 오류가 있으면 표도 버튼도 안 보여요. "mvp.html을 열었더니 화면이 비어 있어. 표도 버튼도 안 보여. 스크립트 오류를 찾아 고쳐줘."라고 보내고, 끝나면 파일 이름을 다시 눌러 봐요. 수업 전 시험에서 이 한 줄로 고쳐졌어요.</p></div></details>
 <details><summary>스킬을 불렀는데 같은 일을 안 해요</summary><div class="body"><p>새 대화에서 "daily-research 스킬로 오늘 조사 돌려줘"라고 스킬 이름을 넣어 다시 보내요. 그래도 안 되면 P10을 다시 보내요.</p></div></details>
 <details><summary>W1이 찾은 공고 링크가 안 열려요</summary><div class="body"><p>마감된 공고일 수 있어요. 표의 다른 링크를 눌러요. 다 안 열리면 채용 사이트에서 표에 나온 직무 이름으로 직접 찾아 한 곳만 봐요.</p></div></details>
 <details><summary>Claude가 자꾸 되물어요</summary><div class="body"><p>리모컨 <b>"되물을 때"</b>를 보내요. 그래도 물으면 새 대화를 열고 P0을 다시 실행해요.</p></div></details>
