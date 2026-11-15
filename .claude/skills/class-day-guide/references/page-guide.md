@@ -2,7 +2,7 @@
 
 ## 빌더 쓰는 법
 
-`classroom/tools/build_day16.py`가 기준이다(저장소 안에서 그대로 돌고, 발행된 Day 16 가이드를 글자 하나 다르지 않게 다시 만든다).
+Day 17부터는 공통 부분을 `classroom/tools/guide_common.py`로 떼어 썼다(`from guide_common import *` 뒤 `PR`, `body`를 만들고 `build_page(제목, body, 처음값, 'l17-')` → `write_page`). 새 날짜는 `build_day17.py`나 `build_day18.py`를 복사하는 편이 짧다. `build_day16.py`는 발행된 Day 16 가이드를 글자 하나 다르지 않게 다시 만드는 기준으로 그대로 둔다.
 
 1. `cp classroom/tools/build_day16.py classroom/tools/build_dayNN.py` 후 맨 위 설명, `PATH`(출력 파일), 제목(`<title>`)을 바꾼다.
 2. 바탕(스타일과 스크립트)은 `classroom/tools/guide_base.html`에서 읽는다. 하루 지도, 카드 같은 덧붙인 스타일은 `EXTRA_CSS`.

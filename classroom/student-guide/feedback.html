@@ -1,0 +1,182 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>피칭 데이 피드백 카드</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<style>
+/* 토스 스타일 수업 가이드와 같은 바탕: 연회색 바탕, 흰 카드, 파란 강조. 위는 카드 쓰기, 아래는 받은 카드 모으기 */
+:root{--bg:#f2f4f6;--card:#ffffff;--ink:#191f28;--sub:#6b7684;--blue:#3182f6;--blue-ink:#ffffff;--blue-soft:#e8f3ff;--line:#e5e8eb;--code:#f9fafb;--star:#f5a524;
+--ui:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171c;--card:#202027;--ink:#f2f4f6;--sub:#a1a9b4;--blue:#4593fc;--blue-ink:#0b1220;--blue-soft:#1c2b42;--line:#2e2e36;--code:#26262e;--star:#f5b73b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17171c;--card:#202027;--ink:#f2f4f6;--sub:#a1a9b4;--blue:#4593fc;--blue-ink:#0b1220;--blue-soft:#1c2b42;--line:#2e2e36;--code:#26262e;--star:#f5b73b;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:18px;line-height:1.6;word-break:keep-all;overflow-wrap:break-word;padding-block:0 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:720px;margin:0 auto}
+header{padding:32px 0 8px}
+.eyebrow{color:var(--blue);font-weight:800;font-size:16px}
+h1{font-size:clamp(28px,5vw,38px);line-height:1.25;margin:6px 0 10px;text-wrap:balance}
+h2{font-size:24px;margin:0 0 6px}
+.lead{color:var(--sub);margin:0 0 8px}
+.tabs{display:flex;gap:8px;margin:18px 0 16px}
+.tabs button{flex:1;font:inherit;font-weight:800;padding:14px 10px;border-radius:14px;border:0;background:var(--card);color:var(--sub);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--blue);color:var(--blue-ink)}
+.card{background:var(--card);border-radius:22px;padding:22px;margin:0 0 14px}
+.sub{color:var(--sub);font-size:16px;margin:0 0 12px}
+label.lab{display:block;font-weight:800;margin:0 0 8px}
+input[type=text],textarea{font:inherit;width:100%;min-width:0;color:var(--ink);background:var(--code);border:2px solid var(--line);border-radius:14px;padding:12px 14px}
+textarea{resize:vertical;line-height:1.5}
+input:focus,textarea:focus{outline:none;border-color:var(--blue)}
+.field{margin:0 0 18px}
+.stars{display:grid;gap:14px}
+.star-row .q{font-weight:700;margin:0 0 6px}
+.star-row .q small{display:block;color:var(--sub);font-weight:500;font-size:15px}
+.pick{display:flex;gap:6px;flex-wrap:wrap}
+.pick button{font:inherit;font-weight:800;min-width:48px;padding:10px 0;flex:1;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--sub);cursor:pointer;font-variant-numeric:tabular-nums}
+.pick button[aria-pressed="true"]{border-color:var(--star);background:var(--star);color:#191f28}
+.out{white-space:pre-wrap;background:var(--code);border-radius:14px;padding:16px;font-size:16px;line-height:1.6;margin:0 0 12px;border:2px dashed var(--line)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:800;padding:14px 18px;border-radius:14px;border:0;cursor:pointer;background:var(--blue);color:var(--blue-ink)}
+.btn.ghost{background:var(--blue-soft);color:var(--blue)}
+.btn:focus-visible,.tabs button:focus-visible,.pick button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 12px}
+.sum div{background:var(--blue-soft);border-radius:14px;padding:12px 6px;text-align:center}
+.sum b{display:block;font-size:26px;color:var(--blue);font-variant-numeric:tabular-nums}
+.sum span{font-size:14px;color:var(--sub)}
+ul.list{margin:0 0 12px;padding-left:20px}
+ul.list li{margin:0 0 4px}
+.note{font-size:15px;color:var(--sub)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:999px;font-weight:700;opacity:0;transition:.2s;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+
+<div class="wrap">
+<header>
+<span class="eyebrow">Day 18 피칭 데이 · 조 안 발표</span>
+<h1>피드백 카드</h1>
+<p class="lead">발표를 듣고 카드 한 장을 써서 조 단톡방에 올려요. 발표자는 단톡방에서 내 카드를 복사해 "받은 카드 모으기"에 붙여 넣어요. 이 화면은 아무 데도 저장하거나 보내지 않아요.</p>
+</header>
+
+<div class="tabs" role="tablist">
+<button type="button" role="tab" id="tab-write" aria-selected="true" aria-controls="pane-write">카드 쓰기 (듣는 사람)</button>
+<button type="button" role="tab" id="tab-collect" aria-selected="false" aria-controls="pane-collect">받은 카드 모으기 (발표자)</button>
+</div>
+
+<section id="pane-write" role="tabpanel" aria-labelledby="tab-write">
+<div class="card">
+<div class="field"><label class="lab" for="who">누구의 발표인가요?</label><input id="who" type="text" maxlength="30" placeholder="발표자 이름" autocomplete="off"></div>
+<div class="stars">
+<div class="star-row" data-key="p"><p class="q">① 문제가 분명했어요<small>누가 매일 무엇에 시간을 쓰는지 바로 이해됐나요?</small></p><div class="pick" role="group" aria-label="문제 점수"></div></div>
+<div class="star-row" data-key="d"><p class="q">② 데모를 보고 믿음이 갔어요<small>화면이 정말 그 일을 줄여 줄 것 같았나요?</small></p><div class="pick" role="group" aria-label="데모 점수"></div></div>
+<div class="star-row" data-key="a"><p class="q">③ 요청사항이 분명했어요<small>발표자가 무엇을 바라는지 한 문장으로 말할 수 있나요?</small></p><div class="pick" role="group" aria-label="요청 점수"></div></div>
+</div>
+</div>
+<div class="card">
+<div class="field"><label class="lab" for="good">좋았던 점 하나</label><input id="good" type="text" maxlength="80" placeholder="예: 손으로 2시간 걸리던 걸 숫자로 보여 줘서 와닿았어요" autocomplete="off"></div>
+<div class="field"><label class="lab" for="fix">고치면 좋을 점 하나</label><input id="fix" type="text" maxlength="80" placeholder="예: 시장 칸의 숫자가 어디서 왔는지 모르겠어요" autocomplete="off"></div>
+<div class="field" style="margin:0"><label class="lab" for="ask">궁금한 것 하나</label><input id="ask" type="text" maxlength="80" placeholder="예: 경쟁사가 가격을 바꾸면 바로 알 수 있나요?" autocomplete="off"></div>
+</div>
+<div class="card">
+<h2>보낼 카드</h2>
+<p class="sub">아래 글을 복사해 조 단톡방에 올려요. 빈칸은 "없음"으로 들어가요.</p>
+<div class="out" id="cardOut" aria-live="polite"></div>
+<div class="btns"><button class="btn" type="button" id="copyCard">카드 복사</button><button class="btn ghost" type="button" id="nextCard">다음 발표자 (지우기)</button></div>
+</div>
+</section>
+
+<section id="pane-collect" role="tabpanel" aria-labelledby="tab-collect" hidden>
+<div class="card">
+<label class="lab" for="paste">받은 카드를 모두 붙여 넣어요</label>
+<p class="sub">조 단톡방에서 내 이름이 적힌 카드를 복사해 차례로 붙여 넣어요. 여러 장을 한 번에 붙여도 돼요. 이 기기에만 남아요.</p>
+<textarea id="paste" rows="8" placeholder="[피드백 카드] 발표자: …&#10;문제 4 · 데모 5 · 요청 3&#10;좋았던 점: …"></textarea>
+</div>
+<div class="card">
+<h2 id="cntTitle">받은 카드 0장</h2>
+<div class="sum"><div><b id="avgP">-</b><span>문제</span></div><div><b id="avgD">-</b><span>데모</span></div><div><b id="avgA">-</b><span>요청</span></div></div>
+<p class="lab">고치면 좋을 점</p><ul class="list" id="fixList"><li class="note">아직 없어요</li></ul>
+<p class="lab">궁금한 것</p><ul class="list" id="askList"><li class="note">아직 없어요</li></ul>
+<p class="lab">좋았던 점</p><ul class="list" id="goodList"><li class="note">아직 없어요</li></ul>
+<div class="btns"><button class="btn" type="button" id="copySum">프롬프트에 붙일 글 복사</button><button class="btn ghost" type="button" id="clearSum">모두 지우기</button></div>
+<p class="note" style="margin-top:12px">복사한 글은 가이드의 "P6 · 받은 피드백으로 고치기" 위 칸에 붙여 넣어요.</p>
+</div>
+</section>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var store=null;try{store=window.localStorage}catch(e){}
+  function sget(k){try{return store?store.getItem(k):null}catch(e){return null}}
+  function sset(k,v){try{store&&store.setItem(k,v)}catch(e){}}
+  var toast=document.getElementById('toast'),tm;
+  function show(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tm);tm=setTimeout(function(){toast.classList.remove('show')},1800)}
+  function copyText(t,okMsg){
+    function fb(){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}document.body.removeChild(a);show(ok?okMsg:'복사가 안 됐어요. 글을 길게 눌러 직접 선택해 주세요')}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){show(okMsg)},fb)}else fb();
+  }
+  // 탭
+  var tabs=[['tab-write','pane-write'],['tab-collect','pane-collect']];
+  tabs.forEach(function(p){document.getElementById(p[0]).addEventListener('click',function(){
+    tabs.forEach(function(q){var on=q[0]===p[0];document.getElementById(q[0]).setAttribute('aria-selected',on);document.getElementById(q[1]).hidden=!on});
+  })});
+  // 카드 쓰기
+  var score={p:0,d:0,a:0};
+  [].forEach.call(document.querySelectorAll('.star-row'),function(row){
+    var k=row.getAttribute('data-key'),g=row.querySelector('.pick');
+    for(var i=1;i<=5;i++){(function(n){var b=document.createElement('button');b.type='button';b.textContent=n;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',n+'점');
+      b.addEventListener('click',function(){score[k]=n;[].forEach.call(g.children,function(c,j){c.setAttribute('aria-pressed',String(j+1===n))});render()});g.appendChild(b)})(i)}
+  });
+  var ids=['who','good','fix','ask'];
+  function v(id){return document.getElementById(id).value.replace(/\s+/g,' ').trim()}
+  function cardText(){
+    function s(n){return n?String(n):'-'}
+    return '[피드백 카드] 발표자: '+(v('who')||'(이름 없음)')+'\n'+
+      '문제 '+s(score.p)+' · 데모 '+s(score.d)+' · 요청 '+s(score.a)+'\n'+
+      '좋았던 점: '+(v('good')||'없음')+'\n'+
+      '고칠 점: '+(v('fix')||'없음')+'\n'+
+      '궁금한 것: '+(v('ask')||'없음');
+  }
+  function render(){document.getElementById('cardOut').textContent=cardText()}
+  ids.forEach(function(id){document.getElementById(id).addEventListener('input',render)});
+  document.getElementById('copyCard').addEventListener('click',function(){copyText(cardText(),'복사됐어요. 조 단톡방에 올려요')});
+  document.getElementById('nextCard').addEventListener('click',function(){
+    ids.forEach(function(id){document.getElementById(id).value=''});score={p:0,d:0,a:0};
+    [].forEach.call(document.querySelectorAll('.pick button'),function(b){b.setAttribute('aria-pressed','false')});render();
+    document.getElementById('who').focus();show('지웠어요. 다음 발표자 카드를 써요');
+  });
+  render();
+  // 받은 카드 모으기
+  var paste=document.getElementById('paste');
+  paste.value=sget('l18-fb-paste')||'';
+  function parse(t){
+    var cards=t.split(/\[피드백 카드\]/).slice(1),out=[];
+    cards.forEach(function(c){
+      var m=c.match(/문제\s*(\d|-)\s*·\s*데모\s*(\d|-)\s*·\s*요청\s*(\d|-)/);
+      function line(label){var r=c.match(new RegExp(label+':\\s*(.*)'));var x=r?r[1].trim():'';return (x&&x!=='없음')?x:''}
+      out.push({p:m&&m[1]!=='-'?+m[1]:null,d:m&&m[2]!=='-'?+m[2]:null,a:m&&m[3]!=='-'?+m[3]:null,good:line('좋았던 점'),fix:line('고칠 점'),ask:line('궁금한 것')});
+    });
+    return out;
+  }
+  function avg(arr,k){var xs=arr.map(function(c){return c[k]}).filter(function(x){return x!=null});if(!xs.length)return null;return Math.round(xs.reduce(function(a,b){return a+b},0)/xs.length*10)/10}
+  function fill(id,items){var ul=document.getElementById(id);ul.textContent='';if(!items.length){var li=document.createElement('li');li.className='note';li.textContent='아직 없어요';ul.appendChild(li);return}
+    items.forEach(function(x){var li=document.createElement('li');li.textContent=x;ul.appendChild(li)})}
+  var cur=[];
+  function collect(){
+    cur=parse(paste.value);sset('l18-fb-paste',paste.value);
+    document.getElementById('cntTitle').textContent='받은 카드 '+cur.length+'장';
+    [['avgP','p'],['avgD','d'],['avgA','a']].forEach(function(x){var a=avg(cur,x[1]);document.getElementById(x[0]).textContent=a==null?'-':a.toFixed(1)});
+    fill('fixList',cur.map(function(c){return c.fix}).filter(Boolean));
+    fill('askList',cur.map(function(c){return c.ask}).filter(Boolean));
+    fill('goodList',cur.map(function(c){return c.good}).filter(Boolean));
+  }
+  function sumText(){
+    function f(a){return a==null?'-':a.toFixed(1)}
+    var L=['받은 피드백 카드 '+cur.length+'장 · 평균 문제 '+f(avg(cur,'p'))+' / 데모 '+f(avg(cur,'d'))+' / 요청 '+f(avg(cur,'a'))+' (5점 만점)'];
+    var fx=cur.map(function(c){return c.fix}).filter(Boolean),as=cur.map(function(c){return c.ask}).filter(Boolean),gd=cur.map(function(c){return c.good}).filter(Boolean);
+    L.push('고칠 점: '+(fx.length?fx.join(' / '):'없음'));L.push('궁금한 것: '+(as.length?as.join(' / '):'없음'));L.push('좋았던 점: '+(gd.length?gd.join(' / '):'없음'));
+    return L.join('\n');
+  }
+  paste.addEventListener('input',collect);
+  document.getElementById('copySum').addEventListener('click',function(){if(!cur.length){show('붙여 넣은 카드가 없어요');return}copyText(sumText(),'복사됐어요. 가이드의 P6 위 칸에 붙여 넣어요')});
+  document.getElementById('clearSum').addEventListener('click',function(){paste.value='';collect();show('지웠어요')});
+  collect();
+})();
+</script>
