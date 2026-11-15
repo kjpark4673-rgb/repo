@@ -1,7 +1,7 @@
 # Day 18 가이드 1판: 공식 일정표 11/18 [Lifestyle ⑩] "피칭 가이드 & Lifestyle 피칭 데이 - 인터랙티브 발표"
 # (인터랙티브 HTML 발표, 슬라이드 스킬로 개요 → HTML 피치덱, PDF 백업, 피치 구조 일곱 칸과 라이브 데모 요령, 오후 피칭·피드백, NotebookLM 리허설, Vercel 배포, [크] 숏폼 연출, [데] Chart.js 라이브 차트)
 # 강사 문답(11/15): 개인별 피칭, 조 안에서 먼저(3분) → 조 대표만 반 전체 앞(5분 + 3분 질문). 링크는 아티팩트가 기본, Vercel은 선택.
-#                  피드백은 전체 발표 = 구글 폼(강사가 만듦), 조 안 발표 = 피드백 카드 페이지. 숏폼 티저는 내 MVP 소개(Day 17 오후 A).
+#                  피드백은 전체 발표 = 구글 폼(강사가 만듦), 조 안 발표 = 피드백 카드 페이지. 숏폼 티저는 내 MVP 소개(Day 17 오후 C의 15초 소개 영상 콘티 teaser.md).
 # 저장소 안에서 그대로 돈다: python3 classroom/tools/build_day18.py [출력 경로]
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -21,7 +21,7 @@ PR['p00']='''오늘은 11/18 피칭 데이야. 어제 쓰던 이 폴더에서 �
 2. CLAUDE.md 맨 아래에 "# 오늘 규칙 (11/18 피칭 데이)"를 넣어줘. 같은 제목이 있으면 바꿔 넣어줘.
 - 발표 화면의 숫자는 이 폴더의 파일에서만 가져오고, 어느 파일에서 왔는지 적는다. 없는 숫자는 [채울 곳], 어림셈은 (가정).
 - 발표 화면을 고치기 전에는 그때의 화면을 pitch_backup_지금시각.html로 남긴다.
-3. pitch.md, test_result.md, mvp.html이 있는지 봐줘. mvp.html이 없으면 CLAUDE.md의 회사로 경쟁사 가격과 증정품·프로모션을 조사해 research.csv와 mvp.html부터 만들어줘. pitch.md가 없으면 폴더의 파일로 일곱 칸 뼈대(문제 / 해결 / 시장 / BM / MVP / 함께 만든 것 / 요청사항)를 만들어줘.
+3. pitch.md, test_report.md, mvp.html이 있는지 봐줘. mvp.html이 없으면 CLAUDE.md의 회사로 경쟁사 가격과 증정품·프로모션을 조사해 research.csv와 mvp.html부터 만들어줘. pitch.md가 없으면 폴더의 파일로 일곱 칸 뼈대(문제 / 해결 / 시장 / BM / MVP / 함께 만든 것 / 요청사항)를 만들어줘.
 되묻지 말고 끝까지 하고, 끝나면 "있던 파일 / 새로 만든 파일 / pitch.md에 남은 [채울 곳] 개수"를 3줄로만 알려줘.'''
 PR['p01']='''pitch.md로 내 MVP 발표 화면 pitch.html을 만들어줘. 브라우저에서 넘기며 발표하는 HTML 발표 자료야. 파일 하나로.
 - 슬라이드 9장: 표지(MVP 이름, 한 줄 약속, 발표자 '''+ME+''') / 문제 / 해결 / 시장 / BM / MVP 라이브 데모 / 사용자 테스트 결과 / 함께 만든 것 / 요청사항
@@ -202,7 +202,7 @@ body='''
 <label class="check"><input type="checkbox" data-k="b2"><span>차트 장에서 막대가 움직였어요 (안 보이면 숫자 글자로 보여도 괜찮아요)</span></label>
 <label class="check"><input type="checkbox" data-k="b3"><span>"MVP 열기" 버튼을 눌러 내 화면이 열렸어요</span></label>
 </div>
-<div class="card soft"><p><b>숏폼 티저를 만들었다면</b> 작업 폴더에 teaser.mp4로 저장해 두면 P1이 해결 장에 넣어요. 이미 P1을 보냈다면 "teaser.mp4를 해결 장에 넣어줘"라고 해요. 공식 일정표의 크리에이티브 트랙 과제("키비주얼·숏폼을 발표 흐름에 녹이는 연출")예요.</p></div>
+<div class="card soft"><p><b>어제 오후 C에서 15초 소개 영상 콘티(teaser.md)를 만들었다면</b> 영상 AI와 화면 녹화로 만든 영상을 작업 폴더에 teaser.mp4로 저장해 두면 P1이 해결 장에 넣어요. 이미 P1을 보냈다면 "teaser.mp4를 해결 장에 넣어줘"라고 해요. 영상이 없으면 그대로 발표해요. 공식 일정표의 크리에이티브 트랙 과제("키비주얼·숏폼을 발표 흐름에 녹이는 연출")예요.</p></div>
 </section>
 
 <section id="s3">
