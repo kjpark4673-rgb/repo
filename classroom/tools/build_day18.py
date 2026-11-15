@@ -100,21 +100,16 @@ def fieldwide(k,label,ph='',n=1500):
     return '<div class="card"><div class="field" style="margin:0"><label for="v-%s">%s</label><textarea id="v-%s" data-in="%s" rows="4" maxlength="%d" placeholder="%s" autocomplete="off"></textarea></div></div>'%(k,label,k,k,n,ph)
 PR={}
 PR['p00']='''이 폴더의 CLAUDE.md를 오늘 수업에 맞게 고쳐줘. 파일이 없으면 새로 만들어줘. 끝나면 3줄로만 알려줘.
-1. "되묻기", "멈추고 묻기"처럼 앞선 수업에서 넣은 규칙이 있으면 그 줄만 지워줘. 다른 내용은 건드리지 마.
-2. 아래 두 묶음을 맨 아래에 넣어줘. 같은 제목이 이미 있으면 바꿔 넣어줘.
-3. "# 나와 회사"가 이미 있으면, 그 안의 값이 처음 값이거나 이미 적힌 값이면 그대로 둬.
-
-# 수업 작업 규칙 (다른 규칙과 부딪히면 이 규칙이 먼저다)
-- 되묻지 않는다. 정보가 모자라면 스스로 가정하고 끝까지 만든다. 가정한 곳에는 (가정)이라고 표시한다.
-- 숫자, 가격, 후기, 시장 크기를 사실처럼 꾸미지 않는다. 근거 파일(research.csv, test_report.md, test_log.md, mvp.md)에 있는 숫자만 쓴다. 없으면 [채울 곳]으로 둔다.
-- 찾지 못한 값은 "못 찾음", 아직 하지 않은 테스트는 "사람 테스트 전"으로 적는다. 발표에서도 숨기지 않고 그대로 말할 수 있게 쓴다.
-- 결과는 파일로 저장하고, 끝나면 3줄로만 보고한다: 만든 파일 / 핵심 한 줄 / 내가 다음에 할 일 한 줄. 내용을 보여 달라고 하면 그대로 보여 준다.
-- 모든 결과는 한국어로, 쉬운 말로 쓴다.
+1. 기존 규칙(수업 작업 규칙, 사용자 테스트 규칙 등 앞선 수업에서 넣은 것)은 지우지도 바꾸지도 마. 같은 줄이 이미 있으면 그대로 둬.
+2. 아래 "# 발표 규칙"이 없으면 맨 아래에 넣어줘. 있으면 그대로 둬.
+3. "# 나와 회사"의 값이 처음 값이거나 이미 적힌 값이면 그대로 둬.
 
 # 발표 규칙 (피칭 데이)
 - 발표 페이지는 파일 하나짜리 HTML이다. 외부 라이브러리는 Chart.js 4.4.1 한 개만 https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js 에서 불러온다.
-- 발표는 5분 안에 끝나게 칸마다 시간을 정한다. 칸마다 말할 사람을 적는다.
-- 공개 자료로 만든 학습용 MVP(Minimum Viable Product)이며 조사한 회사와 관계없다는 말을 발표 파일 맨 아래에 넣는다.
+- 발표는 5분 안에 끝나게 칸마다 시간과 말할 사람을 정한다.
+- 숫자는 근거 파일(research.csv, test_report.md, test_log.md, mvp.md)에 있는 것만 쓴다. 없으면 [채울 곳]으로 둔다.
+- 못 찾은 값은 "못 찾음", 안 한 테스트는 "사람 테스트 전"으로 적는다. 발표에서도 숨기지 않는다.
+- 발표 파일 맨 아래에 "공개 자료로 만든 학습용 MVP(Minimum Viable Product)이며, 조사한 회사와 관계없습니다"를 넣는다.
 
 # 나와 회사 (오늘은 이 내용으로 작업한다)
 - 내가 하고 싶은 일: '''+ROLE+'''
@@ -316,7 +311,7 @@ body='''
 <div class="row"><span class="k">해결</span><span class="w"><b>20초 · 조 공통</b><small>조사를 AI 에이전트에게 맡긴 조사 도우미</small></span></div>
 <div class="row"><span class="k">시장</span><span class="w"><b>20초 · 조 공통</b><small>같은 조사를 매일 하는 직무와 회사, 몇 명인지 (근거가 없으면 [팀이 정할 곳])</small></span></div>
 <div class="row"><span class="k">BM</span><span class="w"><b>20초 · 조 공통</b><small>사내 도구면 아끼는 시간, 서비스면 받을 돈</small></span></div>
-<div class="row"><span class="k">MVP</span><span class="w"><b>조원마다 40초</b><small>내 장: 데모 30초와 테스트 숫자 10초</small></span></div>
+<div class="row"><span class="k">MVP</span><span class="w"><b>조원마다 40초</b><small>3인 1조면 장이 세 장이에요(나 포함). 장마다 데모 30초와 테스트 숫자 10초</small></span></div>
 <div class="row"><span class="k">팀</span><span class="w"><b>20초 · 조 공통</b><small>누가 무엇을 만들었나</small></span></div>
 <div class="row"><span class="k">요청사항</span><span class="w"><b>20초 · 조 공통</b><small>듣는 사람에게 바라는 것 하나</small></span></div>
 </div>
