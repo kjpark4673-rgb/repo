@@ -2,7 +2,7 @@
 
 > 강사용. 학생에게 주지 않습니다. 시험 결과는 `classroom/tests/day18-test-results.md`, 반의 상태와 검토는 `classroom/instructor/day18-모의수업.md`에 있습니다.
 
-- 학생용 가이드: 아티팩트 "Day 18 · 인터랙티브 HTML 발표(MVP)" <!--LINK--> (처음에는 비공개. 공유 메뉴에서 "링크가 있는 사람"으로 바꿔 주세요)
+- 학생용 가이드: 아티팩트 "Day 18 · 인터랙티브 HTML 발표(MVP)" https://claude.ai/artifact/KaRPsojJAQKBYHZUQjrPc3 (처음에는 비공개. 공유 메뉴에서 "링크가 있는 사람"으로 바꿔 주세요)
 - 원본: `classroom/student-guide/day18.html`, 빌더 `classroom/tools/build_day18.py`
 - 공식 줄: 11/18 수, 18일차, Lifestyle ⑩ 피칭 가이드 & 피칭 데이. 방식은 정적 PPT가 아니라 **브라우저에서 돌아가는 인터랙티브 HTML**, PDF는 백업. 결과물은 "HTML 인터랙티브 피치덱(URL)"과 "발표 피드백 시트".
 
