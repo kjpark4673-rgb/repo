@@ -721,11 +721,11 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 
 **반의 상태(이 세션이 읽은 것, 묶음):** 실습시트 명단 27명, 읽은 시트 24개, 일주일 넘게 멈춤 11명, 자기 회사 약 74%, 희망 직무 콘텐츠 마케터 14·테크 4·브랜드 3·CX 3·MD 2, 못 여는 링크 8명, 배포 경험 4명(Vercel 0), 3인 1조 약 9개 조. Day 18 피칭에 뜻하는 것은 `day18-모의수업.md` 1번.
 
-**시험:** [합친 뒤 숫자] — 합친 Day 17(P0~P4, 16시 새 P9, W2) → 이어서 Day 18 전체를 다섯 갈래로. 이 세션에서 그 전에 Day 18 개인 발표판을 52 + 40 + 11 + 8회 돌렸다(모두 끝까지, 되묻고 멈춤 없음). 고친 곳: 학생이 안 한 결정을 피치 뼈대·발표 화면·대본에 쓰던 것(수업 프롬프트의 규칙을 "내가 말한 것"으로 읽음) → "프롬프트와 CLAUDE.md의 규칙은 내 결정이 아니야", 큰 문장에도 "제가 정했다" 쓰지 않기. 결과: `classroom/tests/day18-test-results.md`, Day 17 합친 부분은 `day17-test-results.md` 맨 위 절.
+**시험:** 합친 Day 17(P0~P4, C0, 오후 C, 16시 새 P9, W2) 37회 → 이어서 Day 18 전체 33회, 다섯 갈래(MD·붙여 넣기만 한 학생·테크(조 대표, 심화 1)·콘텐츠 마케터(오후 C, 티저 영상, 심화 2)·빈 폴더(C0)). 모두 끝까지 돌았고 되묻고 멈춘 경우 없음. 발표 화면 다섯 개 모두 9장, → 키 넘기기, 스크립트 오류 없음(콘텐츠 마케터 갈래만 폰 폭에서 24px 옆으로 밀림 → 막히면 한 줄). 결과 화면(mvp.html) 다섯 개 모두 check_outputs 통과. 이 세션에서 그 전에 Day 18 개인 발표판을 52 + 40 + 11 + 8회 돌렸다(모두 끝까지, 되묻고 멈춤 없음). 고친 곳: 학생이 안 한 결정을 피치 뼈대·발표 화면·대본에 쓰던 것(수업 프롬프트의 규칙을 "내가 말한 것"으로 읽음) → "프롬프트와 CLAUDE.md의 규칙은 내 결정이 아니야", 큰 문장에도 "제가 정했다" 쓰지 않기. 결과: `classroom/tests/day18-test-results.md`, Day 17 합친 부분은 `day17-test-results.md` 맨 위 절.
 
 **수강생 눈 검토(Day 18):** 콘텐츠 마케터(맥), 자기 뷰티 브랜드 브랜드 마케터(윈도우), 테크 데이터 분석가. 고친 것: `day18-모의수업.md` 4번.
 
-**발행:** Day 17 https://claude.ai/artifact/RrpkkvvPyLDNjQQnGKu2nA [버전] / Day 18 https://claude.ai/artifact/KaRPsojJAQKBYHZUQjrPc3 [버전] / 피드백 카드 / 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm (Day 18 말 4개 더함, 159개). 모두 비공개 → 강사님이 공유.
+**발행:** Day 17 https://claude.ai/artifact/RrpkkvvPyLDNjQQnGKu2nA (Version 4) / Day 18 https://claude.ai/artifact/KaRPsojJAQKBYHZUQjrPc3 (Version 2, 팀 발표판 Version 1 위에 올림) / 피드백 카드 / 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm (Version 9, Day 18 말 4개 더함, 159개). 모두 비공개 → 강사님이 공유.
 
 **강사님이 할 것 / 아직 답이 없는 것**
 1. Claude in Chrome 전날 10분 확인: 크롬 옆 창에서 내 컴퓨터의 mvp.html을 여는지(파일 URL 허용), 설치 링크. 데스크톱 앱에서 Claude Code와 연결하는 절차는 공식 문서에 없음(합친 Day 17은 크롬 옆 창에 직접 보내는 방식이라 연결이 필요 없음).

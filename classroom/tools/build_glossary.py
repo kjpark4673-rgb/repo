@@ -366,7 +366,7 @@ add('thinkaloud','생각 말하기','Think-aloud','biz',[17],
     ['usertest','observe'])
 add('autocheck','자동 점검','Automated check','tools',[17],
     '사람이 써 보기 전에 에이전트가 화면을 먼저 확인하는 일이에요. 동작하지 않는 버튼, 열리지 않는 링크, 폰에서 넘치는 글자 같은 고장을 찾아요.',
-    '일정표 Day 17 · Claude in Chrome으로 사용 흐름 자동 점검. Day 17 가이드 · P2가 화면 파일의 코드를 읽고 과업대로 따라가 점검해요(auto_check.md). 크롬 확장은 강사님이 시연해요.',
+    '일정표 Day 17 · Claude in Chrome으로 사용 흐름 자동 점검. Day 17 가이드 · P2가 화면 파일의 코드를 읽고 과업대로 따라가 점검해요(auto_check.md). 크롬 확장으로는 다 같이 화면을 직접 눌러 봐요.',
     ['chrome','usertest'])
 add('priority','우선순위','Priority','biz',[17],
     '무엇부터 할지 정한 순서예요. 사용자 테스트에서는 여러 명이 겪었고 할 일을 막은 문제가 위로 가요.',

@@ -328,6 +328,7 @@ body='''
 <details><summary>pitch.md가 없어요 (어제 못 끝냈어요)</summary><div class="body"><p>P0을 보내면 먼저 만들어요. 3~5분 걸려요. 그사이 1교시 강의를 들어요.</p></div></details>
 <details><summary>차트가 안 보여요</summary><div class="body"><p>인터넷이 끊기면 차트 도구를 못 불러와서 숫자 글자로 보여요. 그대로 발표해도 돼요. 다시 그리려면 "차트가 안 보여. Chart.js를 불러오는지 확인하고 고쳐줘."라고 해요.</p></div></details>
 <details><summary>"MVP 열기" 버튼을 누르면 안 열려요</summary><div class="body"><p>버튼 주소가 mvp.html이면 내 노트북에서만 열려요. 4교시의 "어제 화면 링크 만들기"로 링크를 만들고 "MVP 열기 버튼 주소를 이 링크로 바꿔줘: (링크)"라고 해요.</p></div></details>
+<details><summary>폰에서 발표 화면이 옆으로 밀려요</summary><div class="body"><p>"폰 폭(390px)에서 발표 화면이 옆으로 밀려. 고쳐줘."라고 해요. 발표는 노트북으로 하니 급하지 않아요.</p></div></details>
 <details><summary>슬라이드가 안 넘어가요</summary><div class="body"><p>발표 화면을 한 번 누른 뒤 → 키를 눌러요. 그래도 안 되면 "키보드 →와 화면 오른쪽 누르기로 넘어가지 않아. 고쳐줘."라고 해요.</p></div></details>
 <details><summary>대본이 3분을 넘어요</summary><div class="body"><p>"script.md에서 시장과 BM 장을 한 문장씩으로 줄여서 3분 안에 맞춰줘."라고 해요.</p></div></details>
 <details><summary>영상이 발표 화면에 안 나와요</summary><div class="body"><p>teaser.mp4가 pitch.html과 <b>같은 폴더</b>에 있는지 봐요. 링크 버전에는 영상이 들어가지 않아요. 발표는 내 노트북의 pitch.html로 해요.</p></div></details>

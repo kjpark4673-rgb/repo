@@ -1,7 +1,7 @@
 # Day 18 강사 시연 카드 (11/18 수, 피칭 데이, 가이드 1판)
 
 > 학생용 자료가 아닙니다.
-> 학생용 가이드: [발행 후 채움] (아티팩트 이름 "Day 18 · 내 MVP(Minimum Viable Product) 3분 피칭")
+> 학생용 가이드: https://claude.ai/artifact/KaRPsojJAQKBYHZUQjrPc3 (아티팩트 이름 "Day 18 · 내 MVP(Minimum Viable Product) 3분 피칭", Version 2. 다른 세션의 팀 발표판이 Version 1. 비공개라 "링크가 있는 사람"으로 공유를 바꿔야 학생이 엽니다)
 > 피드백 카드 페이지(조 안 발표용): https://claude.ai/artifact/1qRcFTCRostToaCzG4iutz (아티팩트 이름 "피칭 데이 피드백 카드". 처음에는 비공개라 공유를 "링크가 있는 사람"으로 바꿔야 합니다)
 > 예상 질문은 `day18-모의수업.md`, 시험 결과는 `classroom/tests/day18-test-results.md`에 있습니다.
 
