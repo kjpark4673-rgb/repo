@@ -329,7 +329,7 @@ body='''
 <label class="check"><input type="checkbox" data-k="a4"><span>Claude에게 <b>"이 폴더에 mvp.html 있어?"</b>라고 물어봤어요. 없으면 P0 다음에 C0을 보냈어요</span></label>
 </div>
 <details><summary>프롬프트 쓰는 법과 허락 창 (어제 못 왔으면 꼭 펼쳐 봐요)</summary><div class="body">
-<ol><li>박스를 누르면 복사돼요. Claude Code 입력창에 붙여 넣고 보내요.</li><li>프롬프트 하나는 보통 30초에서 1분 걸려요. C0은 웹을 찾아봐서 2~3분 걸려요. 1분이 지나도 그대로면 허락 창이 떠 있는지 봐요.</li><li>mvp.html 같은 화면 파일은 답에 나온 파일 이름을 누르면 옆 창에 열려요. 글 파일(.md)은 리모컨 "파일 내용 보기"로 봐요.</li><li>Claude의 답 끝에 "다음에 할 일"이 나와도 이 가이드의 다음 박스를 따라가요.</li><li>번호가 붙은 프롬프트는 전부 수업 전에 실제로 돌려 보고 넣었어요. 크롬 확장 상자 하나만 돌려 보지 못했어요.</li></ol>
+<ol><li>박스를 누르면 복사돼요. Claude Code 입력창에 붙여 넣고 보내요.</li><li>프롬프트 하나는 보통 1분 안팎이에요. 화면과 링크를 확인하는 P1은 1~2분, P2는 3~6분, 웹을 찾아보는 C0은 2~3분 걸려요. 멈춘 게 아니에요. 다만 답이 한참 그대로면 허락 창이 떠 있는지 봐요.</li><li>mvp.html 같은 화면 파일은 답에 나온 파일 이름을 누르면 옆 창에 열려요. 글 파일(.md)은 리모컨 "파일 내용 보기"로 봐요.</li><li>Claude의 답 끝에 "다음에 할 일"이 나와도 이 가이드의 다음 박스를 따라가요.</li><li>번호가 붙은 프롬프트는 전부 수업 전에 실제로 돌려 보고 넣었어요. 크롬 확장 상자 하나만 돌려 보지 못했어요.</li></ol>
 <p><b>허락 창</b> · 방금 보낸 프롬프트가 시킨 일이면 Yes를 눌러요. 파일 만들기와 고치기, 웹 검색, 웹페이지 열기, 폴더 만들기, 브라우저 열기, 링크 만들기가 그래요. 고치기 전 파일을 남길 때 cp(파일 복사) 명령 창이 뜰 수 있어요. 파일이나 폴더를 통째로 지우겠다고 하면(rm, delete) 누르지 말고 강사를 불러요.</p></div></details>
 <div class="card" id="profileCard">
 <h3>내 일과 회사를 적어요</h3>
@@ -393,7 +393,8 @@ body='''
 <div class="card" style="margin-top:12px"><h3>자동 점검과 사람 테스트는 찾는 것이 달라요</h3>
 <ul><li><b>자동 점검(에이전트)</b> · 동작하지 않는 버튼, 열리지 않는 링크, 폰에서 넘치는 글자처럼 <b>고장</b>을 찾아요. 빨라요. 다만 P2는 화면 파일의 코드를 읽고 판단해서, 확인하지 못한 곳은 (확인 필요)로 남겨요. 그건 내가 직접 눌러 봐요.</li><li><b>사람 테스트</b> · "이 숫자가 뭐지?", "어디를 눌러야 하지?"처럼 <b>헷갈림</b>을 찾아요. 에이전트는 화면을 처음 보는 사람의 마음을 몰라요.</li><li>그래서 순서가 <b>자동 점검 → 막힘만 고치기 → 사람 테스트</b>예요. 막힘이 아닌 것은 사람 테스트 뒤에 한꺼번에 우선순위를 정해 고쳐요.</li></ul></div>
 <span class="pill">따라 하기</span>
-'''+box('p02','P2 · 사람 전에 자동 점검 (꼭)',PR['p02'],TOP)+'''
+<p class="sub" style="margin-top:12px"><b>P2는 3~6분 걸려요.</b> 과업마다 화면을 따라가고 링크도 확인해서 길어요. 도는 동안 종이 한 장을 준비하고, 리모컨 "정답과 질문 보기"로 본 정답과 질문을 옮겨 적어 둬요(3교시에 써요).</p>
+'''+box('p02','P2 · 사람 전에 자동 점검 (꼭)',PR['p02'])+'''
 <div class="card soft"><p><b>내 결정 2 · 진짜인지 확인하기.</b> 표에서 상태가 <b>"남음"</b>이거나 <b>(확인 필요)</b>인 줄 하나를 골라 mvp.html을 열고 직접 눌러 봐요. "고침"인 줄은 이미 고쳐져서 눌러 봐도 잘 돼요. 폰 폭 문제는 브라우저 창을 폰만큼 좁혀 봐요. 맞으면 "○○은 내가 눌러 봤어. 맞아.", 아니면 "○○은 눌러 보니 잘 돼. auto_check.md에 적어줘."라고 한 줄 말해요.</p></div>
 <div class="card"><h3>강사님 시연 · Claude in Chrome으로 직접 눌러 보며 점검</h3>
 <p>P2는 화면 파일의 코드를 읽고 점검해요. 크롬 확장(Claude in Chrome)은 화면을 <b>직접 눌러 보며</b> 점검해요. 강사님이 시연해요.</p>
@@ -458,7 +459,7 @@ body='''
 <p class="why"><b>왜 해요?</b> 테스트는 한 번으로 끝나지 않아요. 고친 것이 정말 나아졌는지, 다른 표를 넣어도 도는지, 남에게 어떻게 보여 줄지까지 가 봐요. 하나만 해도 되고, 여러 개를 해도 돼요.</p>
 <div class="grid">
 <div class="card path"><h3>A · 한 번 더 테스트</h3><p class="sub">고친 화면을 <b>새 사람</b> 한 명에게 같은 과업으로 테스트하고 1차와 비교해요.</p><p class="sub"><b>끝나면</b> test_report.md에 1차 → 2차 비교 표가 생겨요.</p><p><b>P5</b> · 테스트 10분 + 30초</p></div>
-<div class="card path"><h3>B · 검증 기준과 샘플 데이터</h3><p class="sub">쉼표가 든 값, 빈 칸, 100줄짜리 표를 넣어도 화면이 도는지 기준을 세우고 확인해요. 테크 트랙에 추천해요.</p><p class="sub"><b>끝나면</b> data_check.md(기준별 통과·실패)와 samples 폴더의 시험용 표 3개. 샘플을 화면에서 직접 골라 열어 보면 끝이에요.</p><p><b>P6</b> · 3~5분</p></div>
+<div class="card path"><h3>B · 검증 기준과 샘플 데이터</h3><p class="sub">쉼표가 든 값, 빈 칸, 100줄짜리 표를 넣어도 화면이 도는지 기준을 세우고 확인해요. 테크 트랙에 추천해요.</p><p class="sub"><b>끝나면</b> data_check.md(기준별 통과·실패)와 samples 폴더의 시험용 표 3개. 샘플을 화면에서 직접 골라 열어 보면 끝이에요.</p><p><b>P6</b> · 4~6분</p></div>
 <div class="card path"><h3>C · 15초 소개 영상 콘티</h3><p class="sub">수요일 발표 첫머리에 틀 15초 영상을 계획해요. 영상 AI(Google Flow, Kling)에 붙일 프롬프트까지. 마케터에게 추천해요.</p><p class="sub"><b>끝나면</b> teaser.md(컷 3개, 자막, 영상 AI 프롬프트 2개, 크레딧 계획).</p><p><b>P7</b> · 30초</p></div>
 <div class="card path"><h3>D · 테스트 순서를 스킬로</h3><p class="sub">오늘 한 테스트 순서를 스킬로 묶어, 다음부터 "테스트 준비해줘" 한 줄로 과업 카드가 나오게 해요.</p><p class="sub"><b>끝나면</b> 새 대화에서 "테스트 준비해줘" 한 줄로 test.md가 다시 나와요.</p><p><b>P8</b></p></div>
 </div>
@@ -571,7 +572,7 @@ body='''
 <button class="theme" id="themeBtn" type="button">다크 모드</button>
 <div class="toast" id="toast" role="status" aria-live="polite">복사됐어요</div>
 '''
-P4TIME='1분 30초 안팎(1~2분)'
+P4TIME='평균 1분 30초 안팎(40초~3분)'
 body=body.replace('<!--P4TIME-->',P4TIME)
 body=expand_mvp_html(body)
 out='<meta name="claude:viewport-fit-sides" content="cover">\n<title>Day 17 · 사용자 테스트와 MVP(Minimum Viable Product) v1</title>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">\n'+style+'\n'+body+'\n'+script+'\n'
