@@ -59,10 +59,10 @@ AskUserQuestion으로 한 번에 서너 개. 보기를 주고 기본값을 첫�
 `classroom/tools/runchain.py`로 가이드 HTML의 프롬프트를 뽑아 빈 폴더에서 학생처럼 이어서 보낸다. 갈래 짜는 법, 명령 예, 통과 기준, 이 환경에서만 생기는 일은 `references/testing.md`. 최소한: 보기마다 한 갈래 + 아무것도 안 바꾼 학생 + 보기에 없는 것을 직접 적은 학생 + 테크 트랙 + 회사를 바꾼 학생. 모든 상자를 한 번 이상 돌린다.
 
 ### 7. 화면 점검
-`node classroom/tools/check_guide.js <가이드.html>`: 폰 폭 넘침, 복사 상자, 메뉴 링크, 입력 칸 → 파란 글자를 본다. 걸린 것이 있으면 고치고 다시.
+`node classroom/tools/check_guide.js <가이드.html>`: 폰 폭 넘침, 복사 상자, 메뉴 링크, 입력 칸 → 파란 글자를 본다. 걸린 것이 있으면 고치고 다시. 시험에서 나온 학생 화면도 `node classroom/tools/check_outputs.js <화면.html>...`로 브라우저에서 열어 본다(빈 화면은 시험기가 못 잡는다).
 
 ### 8. 수강생 눈 검토
-`node classroom/tools/guide_to_text.js <가이드.html> <글.txt>`로 글로 옮긴 뒤, 반의 유형에 맞춘 세 사람(예: 비전공 콘텐츠 마케터 지망생, 현업 경력이 있는 학생, 테크 트랙)의 눈으로 서브에이전트에게 읽힌다. 지시문 틀은 `references/testing.md`. 돌아온 지적은 가이드 원문과 하나씩 대조하고 맞는 것만 고친다. 프롬프트를 고쳤으면 6단계로 돌아간다.
+`node classroom/tools/guide_to_text.js <가이드.html> <글.txt>`로 글로 옮긴 뒤, 반의 유형에 맞춘 세 사람(그리고 Day 17부터는 강사 한 명이 반 전체와 수업을 굴리는 눈, 전날 가이드와 나란히 놓은 눈)(예: 비전공 콘텐츠 마케터 지망생, 현업 경력이 있는 학생, 테크 트랙)의 눈으로 서브에이전트에게 읽힌다. 지시문 틀은 `references/testing.md`. 돌아온 지적은 가이드 원문과 하나씩 대조하고 맞는 것만 고친다. 프롬프트를 고쳤으면 6단계로 돌아간다.
 
 ### 9. 발행
 Artifact 도구로 발행한다. 이미 있는 날짜는 같은 링크(url)로 고쳐 올린다. 공유는 강사가 바꾼다("링크가 있는 사람"). 용어 사전(`build_glossary.py` → glossary.html)도 그날 말에 맞춰 고쳐 같은 링크로 올린다.
