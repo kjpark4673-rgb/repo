@@ -78,7 +78,7 @@ assert script.count(_d)==1
 _f="i.value=f[i.getAttribute('data-in')]"
 assert script.count(_f)==1
 script=script.replace(_f,"i.value=val(prof[i.getAttribute('data-in')])")
-script=script.replace(_d,"ind:'식품',role:'아직 모름',pick:'네가 정해줘',user:'네가 정해줘',obs1:'적지 않음',obs2:'적지 않음',fix:'네가 추천한 두 곳',obs3:'적지 않음',ask:'네가 정해줘',cards:'적지 않음'};")
+script=script.replace(_d,"ind:'식품',role:'아직 모름',pick:'네가 정해줘',user:'네가 정해줘',obs1:'적지 않음',obs2:'적지 않음',fix:'네가 추천한 두 곳',obs3:'적지 않음',ask:'네가 정해줘',cards:'적지 않음',clarity:'적지 않음',rec:'적지 않음'};")
 script=script.replace("'l16-","'l17-")
 def tok(k,d): return '<b data-v="%s">%s</b>'%(k,d)
 B=tok('brand','라라스윗'); P=tok('product','저당 아이스크림'); C=tok('customer','다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인')
@@ -189,6 +189,21 @@ PR['p08']='''오늘 한 사용자 테스트 순서를 다음에도 한 줄로 �
 - "테스트 결과 정리해줘"와 함께 붙인 기록: 기록을 고치지 않고 표로 옮기고, 고칠 순서(여러 명이 겪었고 시켜 볼 일을 막은 것이 위)를 test_log.md로. 이미 있으면 test_log_날짜.md로.
 - 기록에 없는 결과와 사용자의 말을 지어내지 않는 규칙을 넣어줘. 회사 이름은 넣지 말고 CLAUDE.md와 mvp.md를 읽어서 쓰게 해줘.
 되묻지 말고 끝까지 만들고, 끝나면 이 스킬을 부르는 두 줄만 알려줘.'''
+PR['p10']='''고친 mvp.html을 인터넷에 올려 Microsoft Clarity로 사용성 테스트를 녹화할 거야. 올릴 폴더를 만들어줘.
+- 내 Clarity 프로젝트 ID: '''+tok('clarity','적지 않음')+'''
+- deploy 폴더를 만들고 지금의 mvp.html을 deploy/index.html로 복사해줘. 이미 있으면 새로 덮어써. mvp.html은 건드리지 마.
+- index.html이 불러오는 파일(이미지, CSV, js)이 있으면 deploy 폴더에 같은 상대 경로로 복사해줘. 내 컴퓨터 주소(C:로 시작하는 경로, file://, localhost)로 불러오는 곳은 상대 경로로 바꿔줘.
+- index.html의 &lt;/head&gt; 바로 앞에 아래 코드를 그대로 넣고, "프로젝트ID" 자리만 내 프로젝트 ID로 바꿔줘:
+&lt;script type="text/javascript"&gt;(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "프로젝트ID");&lt;/script&gt;
+- 화면 맨 아래에 작은 글씨로 "이 화면은 사용성 개선을 위해 클릭과 화면 이동을 Microsoft Clarity로 기록해요."를 넣어줘.
+- 프로젝트 ID가 "적지 않음"이면 코드는 넣지 말고 그 자리에 &lt;!-- Clarity 코드 자리 --&gt;만 남겨줘. 끝에 "Clarity 프로젝트 ID를 칸에 적고 P10을 다시 보내요"라고만 알려줘.
+되묻지 말고 끝까지 하고, 끝나면 deploy 폴더의 파일 목록과 넣은 프로젝트 ID만 보여줘.'''
+PR['p11']='''Microsoft Clarity의 녹화와 히트맵에서 내가 본 것을 test_report.md에 더해줘.
+- 내가 본 것: '''+tok('rec','적지 않음')+'''
+- test_report.md 맨 아래에 "녹화로 본 것 (Microsoft Clarity)" 표: 본 것(내가 적은 말 그대로) / 종이 기록(test_log.md)에도 있던 것인지, 녹화로 새로 찾은 것인지 / 고칠 곳 후보
+- 녹화는 본 사람 수와 날짜가 종이 테스트와 달라서 숫자를 합치지 마. 내가 적지 않은 클릭 수, 비율, 시간은 지어내지 마.
+- 내가 본 것이 "적지 않음"이면 아무것도 더하지 말고, 녹화를 볼 때 확인할 것 3가지만 알려줘.
+test_report.md가 없으면 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 더한 표만 보여줘.'''
 PR['p09']='''내일(11/18) 피칭 데이에 쓸 내 MVP 피치 뼈대를 pitch.md로 써줘. 내일 이걸로 HTML 발표 화면을 만들어. 발표는 한 사람씩 해(조 안에서 3분, 조 대표는 반 전체 앞에서 5분).
 - 듣는 사람: 이 조사를 매일 하는 부서의 팀장과 동료
 - 일곱 칸, 칸마다 말할 문장 1~2개와 화면에 보여 줄 것 하나:
@@ -485,8 +500,9 @@ body='''
 <div class="card path"><h3>B · 통과 기준과 샘플 데이터</h3><p class="sub">쉼표가 든 값, 빈 칸, 100줄짜리 표를 넣어도 화면이 도는지 기준을 세우고 확인해요. 테크 트랙에 추천해요.</p><p class="sub"><b>끝나면</b> data_check.md(기준별 통과·실패)와 samples 폴더의 시험용 표 3개. 샘플을 화면에서 직접 골라 열어 보면 끝이에요.</p><p><b>P6</b> · 4~6분</p></div>
 <div class="card path"><h3>C · 15초 숏폼 티저 콘티</h3><p class="sub">수요일 발표 첫머리에 틀 15초 영상을 계획해요. 영상 AI(Google Flow, Kling)에 붙일 프롬프트까지. 마케터에게 추천해요.</p><p class="sub"><b>끝나면</b> teaser.md(컷 3개, 자막, 영상 AI 프롬프트 2개, 크레딧 계획).</p><p><b>P7</b> · 1분 10초</p></div>
 <div class="card path"><h3>D · 테스트 순서를 스킬로</h3><p class="sub">오늘 한 테스트 순서를 스킬로 묶어, 다음부터 "테스트 준비해줘" 한 줄로 시켜 볼 일 카드가 나오게 해요.</p><p class="sub"><b>끝나면</b> 새 대화에서 "테스트 준비해줘" 한 줄로 test.md가 다시 나와요.</p><p><b>P8</b></p></div>
+<div class="card path"><h3>E · 녹화로 동선 보기 (Clarity)</h3><p class="sub">무료 도구 Microsoft Clarity를 화면에 달아 인터넷에 올리고, 써 보는 사람이 어디를 누르고 어디서 헤맸는지 녹화와 히트맵으로 봐요.</p><p class="sub"><b>끝나면</b> 남이 여는 주소 하나, Clarity에 쌓이는 녹화, test_report.md의 "녹화로 본 것".</p><p><b>P10, P11</b> · 40분</p></div>
 </div>
-<p class="sub">고르기 어려우면 <b>A부터</b> 해요. 그다음 마케터·MD는 C, 테크 트랙은 B, 스킬 파일을 키우는 사람은 D를 해요. A와 B는 둘 다 mvp.html을 고쳐서, 둘 다 하면 A를 먼저 해요. 2차 테스트는 4교시에 고친 화면 그대로 봐야 1차와 비교가 돼요.</p>
+<p class="sub">고르기 어려우면 <b>A부터</b> 해요. 그다음 마케터·MD는 C, 테크 트랙은 B, 스킬 파일을 키우는 사람은 D, 클릭 동선을 녹화로 보고 싶은 사람은 E를 해요. E는 A와 같이 하면 좋아요(2차 테스트를 올린 주소로). A와 B는 둘 다 mvp.html을 고쳐서, 둘 다 하면 A를 먼저 해요. 2차 테스트는 4교시에 고친 화면 그대로 봐야 1차와 비교가 돼요.</p>
 <div class="card soft"><p><b>내 결정 4 · 메뉴 고르기.</b> 고른 메뉴와 이유를 Claude에게 한 줄로 말해 둬요. 예: "A를 골랐어. 이유는 두 사람 모두 2번 시켜 볼 일에서 멈춰서." 저녁 포트폴리오에 내 결정으로 남아요.</p></div>
 
 <h3 class="gap">A · 한 번 더 테스트</h3>
@@ -507,6 +523,22 @@ body='''
 '''+box('p08','P8 · 오늘 한 테스트 순서를 스킬로 묶기 (D)',PR['p08'])+'''
 <div class="card"><p><b>스킬이 되는지 확인해요.</b> Claude Code에서 <b>같은 작업 폴더</b>로 <b>새 대화</b>를 열고 아래 한 줄을 보내요. 오전의 test.md가 있으면 스킬이 test_날짜.md로 새로 써서 오전 파일은 그대로 남아요. 확인이 끝나면 <b>아침에 쓰던 대화로 돌아가요.</b> 왼쪽 대화 목록에서 아침 대화를 눌러요. 16시와 W2는 그 대화에서 해요.</p></div>
 '''+box('run','스킬로 테스트 준비하기 (새 대화에서)',RUN)+'''
+<h3 class="gap">E · 녹화로 동선 보기 (Clarity)</h3>
+<div class="card"><p><b>Clarity가 뭐예요?</b> 마이크로소프트가 무료로 주는 웹 분석 도구예요. 화면에 코드 한 덩어리를 달면, 들어온 사람이 무엇을 눌렀고 어디서 스크롤을 멈췄는지 <b>녹화</b>와 <b>히트맵</b>(많이 누른 곳이 빨갛게 보이는 지도)으로 보여 줘요. 매장 천장의 CCTV와 비슷해요. 그래서 내 컴퓨터 파일이 아니라 <b>인터넷 주소</b>에 올린 화면에만 달 수 있어요.</p><p class="sub">현업에서는 쇼핑몰 상세페이지, 이벤트 페이지, 신청서에 달아 두고 사람들이 어디서 멈추고 나가는지를 봐요. 오늘은 종이에 적은 기록과 녹화를 견줘요.</p></div>
+<div class="card"><h3>이렇게 해요</h3><ol class="steps">
+<li><b>clarity.microsoft.com</b>에 들어가 <b>마이크로소프트 계정</b>으로 가입해요(무료).</li>
+<li><b>새 프로젝트</b>를 만들어요. 이름은 "내 MVP", 웹사이트 주소는 아직 없으니 아무 주소나 넣고, 6번에서 받은 주소로 설정에서 고쳐요.</li>
+<li>설치 방법을 고르는 화면에서 <b>직접 설치(코드 복사)</b>를 골라요. 코드 맨 끝 <b>따옴표 안의 영문·숫자</b>가 프로젝트 ID예요. 아래 칸에 적어요. 강사님 화면을 같이 봐요.</li>
+<li><b>P10</b>을 보내요. deploy 폴더가 생기고, 그 안의 index.html에 Clarity 코드가 들어가요. 오늘의 mvp.html은 그대로예요.</li>
+<li>아래 "작업 폴더 열기"로 폴더를 열고, 브라우저에서 <b>app.netlify.com/drop</b>에 들어가 <b>deploy 폴더를 통째로 끌어다 놓아요.</b> 1분 안에 주소가 나와요.</li>
+<li>로그인하지 않고 올렸으면 <b>1시간 안에</b> 화면의 안내대로 무료 가입해 내 것으로 옮겨야 주소가 남아요. 처음부터 Netlify에 가입하고 올리면 편해요.</li>
+<li>받은 주소를 폰으로 열어 몇 번 눌러 보고, Clarity 화면에서 방문이 들어오는지 봐요. 실시간 방문은 곧 보이고, <b>녹화와 히트맵은 뜨는 데 최대 2시간쯤</b> 걸려요.</li>
+<li>2차 테스트(A)를 이 주소로 해요. 시작 전에 <b>"화면에서 누르는 것을 녹화해요. 괜찮아요?"</b>라고 묻고 동의를 받아요.</li>
+<li>17시나 내일 아침에 Clarity의 <b>녹화(Recordings)</b>와 <b>히트맵(Heatmaps)</b>을 보고, 본 것을 아래 칸에 적어 <b>P11</b>을 보내요. 히트맵 캡처는 내일 발표 화면에 넣어도 좋아요.</li>
+</ol></div>
+'''+box('fold2','작업 폴더 열기','이 작업 폴더를 파일 탐색기(맥은 Finder)로 열어줘.')+'\n'+field('clarity','Clarity 프로젝트 ID (코드 맨 끝 따옴표 안의 영문·숫자)','비워 두면: 적지 않음')+'\n'+box('p10','P10 · 올릴 폴더 만들고 Clarity 코드 넣기 (E)',PR['p10'])+'''
+<div class="card warn"><p><b>녹화는 개인정보예요.</b> 동의한 사람만 테스트하고, 수업이 끝나면 Netlify에서 사이트를 지우거나 Clarity 프로젝트를 지워도 돼요. 카드 번호, 주민번호처럼 민감한 값을 넣는 화면에는 달지 않아요.</p></div>
+'''+fieldwide('rec','녹화와 히트맵에서 본 것. 예: 2번 일에서 표 제목을 세 번 눌렀다 / 걸러 보기 버튼 옆 빈 곳을 누름 / 아래까지 내렸다 다시 올라옴','비워 두면: 적지 않음')+'\n'+box('p11','P11 · 녹화로 본 것을 결과서에 더하기 (E)',PR['p11'])+'''
 <div class="card checks">
 <h3>오후에 하나 이상 하면 성공</h3>
 <div class="progress"><i></i></div>
