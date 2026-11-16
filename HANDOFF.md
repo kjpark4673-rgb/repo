@@ -786,7 +786,7 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 | 용어 사전 | Version 11 → 12. Microsoft Clarity, 히트맵 |
 | day17 시연카드 | 오후 메뉴에 E, 전날 확인 4번(Clarity·Netlify 실제로 해 보기), 끝에 E 절(박자 14:30 전 올리기, 강사님용 공식 Clarity MCP, 뷰저블은 시연용) |
 
-시험 6회 모두 끝까지(tests/day17-test-results.md 맨 위). **실제 녹화는 이 환경에서 확인 못 함(clarity.ms, netlify.com 막힘). 강사님이 전날 직접 해 보는 것이 남음.**
+**이후 강사 지시 "클래어리티 설치는 테크 트랙만": Day 17 Version 9 → 10, 메뉴 카드·구간 제목·고르기 안내에 "테크 트랙만", 구간 맨 위에 "다른 트랙은 건너뛰어요" 카드. 프롬프트 상자는 그대로(시험본과 같음).** 시험 6회 모두 끝까지(tests/day17-test-results.md 맨 위). **실제 녹화는 이 환경에서 확인 못 함(clarity.ms, netlify.com 막힘). 강사님이 전날 직접 해 보는 것이 남음.**
 
 ## 8. 새 세션 첫 메시지 (그대로 붙여넣기)
 
