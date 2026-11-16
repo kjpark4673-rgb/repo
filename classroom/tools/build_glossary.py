@@ -669,11 +669,11 @@ add('fbcard','피드백 카드','Feedback card','course',[18],
     'Day 18 가이드 · 조 안 발표는 피드백 카드 페이지에서 써서 조 단톡방에 올리고, 전체 발표는 강사님의 구글 폼으로 받아요. 세 가지: 문제가 분명했나, 데모를 보고 믿음이 갔나, 요청사항이 분명했나. 공식 평가 점수가 아니라 서로 주는 피드백이에요. 일정표 Day 18 결과물 · 발표 피드백 시트.',
     ['pitching','qa'])
 
-add('clarity','Microsoft Clarity (클래리티)','Microsoft Clarity','course',[17],
+add('clarity','Microsoft Clarity (클래리티)','Microsoft Clarity','course',[17,18],
     '웹페이지에 코드 한 덩어리를 달면 들어온 사람이 무엇을 눌렀고 어디서 멈췄는지를 녹화와 히트맵으로 보여 주는 마이크로소프트의 무료 도구예요. 인터넷 주소에 올린 화면에만 달 수 있어요.',
-    'Day 17 가이드 오후 E(테크 트랙만) · P10이 deploy 폴더의 index.html에 Clarity 코드를 넣고, Netlify Drop(app.netlify.com/drop)에 올려 주소를 받아요. 녹화와 히트맵은 뜨는 데 최대 2시간쯤 걸려서 17시나 다음 날 아침에 보고 P11로 결과서에 더해요. 비슷한 한국 서비스로 뷰저블이 있어요(유료).',
+    'Day 17 가이드 오후 E(테크 트랙만) · P10이 deploy 폴더의 index.html에 Clarity 코드를 넣고, Netlify Drop(app.netlify.com/drop)에 올려 주소를 받아요. 녹화와 히트맵은 뜨는 데 최대 2시간쯤 걸려서 17시나 다음 날 아침에 보고 P11로 결과서에 더해요. Day 18 가이드 · 어제 녹화를 아직 못 봤다면 아침에 보고 P1이 발표 화면의 사용자 테스트 결과 장에 "녹화로 본 것"과 히트맵 그림(images/heatmap.png)을 넣어요. 비슷한 한국 서비스로 뷰저블이 있어요(유료).',
     ['heatmap'])
-add('heatmap','히트맵','Heatmap','course',[17],
+add('heatmap','히트맵','Heatmap','course',[17,18],
     '사람들이 많이 누르거나 오래 본 곳을 빨갛게, 적은 곳을 파랗게 칠한 화면 지도예요.',
     'Day 17 가이드 오후 E · Clarity의 클릭 히트맵으로 써 보는 사람이 누르지 않아야 할 곳(표 제목, 빈 곳)을 누른 자리를 찾아요.',
     ['clarity'])

@@ -12,7 +12,7 @@ FEEDBACK_URL='https://claude.ai/artifact/1qRcFTCRostToaCzG4iutz'
 CHARTJS='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.1/chart.umd.min.js'
 
 B=tok('brand','라라스윗'); P=tok('product','저당 아이스크림'); C=tok('customer','다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인')
-HAND=tok('hand','재지 않음'); MINE=tok('mine','재지 않음'); ROLE=tok('role','아직 모름'); ME=tok('me','[이름]'); LINK=tok('mvplink','mvp.html'); FB=tok('fb','적지 않음')
+HAND=tok('hand','재지 않음'); MINE=tok('mine','재지 않음'); ROLE=tok('role','아직 모름'); ME=tok('me','[이름]'); LINK=tok('mvplink','mvp.html'); FB=tok('fb','적지 않음'); REC=tok('rec','적지 않음')
 PR={}
 PR['p00']='''오늘은 11/18 피칭 데이야. 어제 쓰던 이 폴더에서 시작할게. 아래를 해줘.
 1. CLAUDE.md에 "수업 작업 규칙"과 "나와 회사"가 있으면 그대로 두고, 없으면 만들어줘.
@@ -23,12 +23,19 @@ PR['p00']='''오늘은 11/18 피칭 데이야. 어제 쓰던 이 폴더에서 �
 - 발표 화면을 고치기 전에는 그때의 화면을 pitch_backup_지금시각.html로 남긴다.
 3. pitch.md, test_report.md, mvp.html이 있는지 봐줘. mvp.html이 없으면 CLAUDE.md의 회사로 경쟁사 가격과 증정품·프로모션을 조사해 research.csv와 mvp.html부터 만들어줘. pitch.md가 없으면 폴더의 파일로 일곱 칸 뼈대(문제 / 해결 / 시장 / BM / MVP / 함께 만든 것 / 요청사항)를 만들어줘.
 되묻지 말고 끝까지 하고, 끝나면 "있던 파일 / 새로 만든 파일 / pitch.md에 남은 [채울 곳] 개수"를 3줄로만 알려줘.'''
+PR['c1']='''어제 Microsoft Clarity로 녹화한 것을 보고 내가 본 것이야. test_report.md에 더해줘.
+- 내가 본 것: '''+REC+'''
+- test_report.md 맨 아래에 "녹화로 본 것 (Microsoft Clarity)" 표가 없으면 만들고, 있으면 그 아래에 이어서 더해줘: 본 것(내가 적은 말 그대로) / 종이 기록(test_log.md)에도 있던 것인지, 녹화로 새로 찾은 것인지 / 고칠 곳 후보
+- 녹화는 본 사람 수와 날짜가 종이 테스트와 달라서 숫자를 합치지 마. 내가 적지 않은 클릭 수, 비율, 시간은 지어내지 마.
+- 내가 본 것이 "적지 않음"이면 아무것도 더하지 말고, 녹화를 볼 때 확인할 것 3가지만 알려줘.
+test_report.md가 없으면 먼저 만들고 이어서 해줘. 되묻지 말고 끝까지 하고, 끝나면 더한 표만 보여줘.'''
 PR['p01']='''pitch.md로 내 MVP 발표 화면 pitch.html을 만들어줘. 브라우저에서 넘기며 발표하는 HTML 발표 자료야. 파일 하나로.
 - 슬라이드 9장: 표지(MVP 이름, 한 줄 약속, 발표자 '''+ME+''') / 문제 / 해결 / 시장 / BM / MVP 라이브 데모 / 사용자 테스트 결과 / 함께 만든 것 / 요청사항
 - 장마다 큰 글자 한 문장과 보여 줄 것 하나. 글은 장마다 3줄 안.
 - 넘기기: 키보드 ←→와 스페이스, 화면 왼쪽·오른쪽 누르기, 폰에서는 밀기. 오른쪽 아래에 쪽 번호(3/9).
 - 숫자 하나는 움직이는 차트로: 하루 조사에 손으로 걸리던 시간과 내 MVP로 걸릴 시간을 같은 단위(분)로 막대 두 개(Chart.js '''+CHARTJS+'''). 잰 값이 아니면 차트에 (가정)이라고 적어줘. 차트가 안 뜨면 숫자 글자로 보이게.
 - 내가 직접 잰 시간(같은 질문 하나를 찾는 데): 손으로 '''+HAND+''' / 내 화면으로 '''+MINE+'''. 둘 다 적혀 있으면 차트를 이 두 값으로 그리고(같은 단위로) "직접 잼 · 질문 하나 · 1회"라고 적어줘. 문제 장에도 이 값을 쓰고 pitch.md의 문제 칸에 적어줘. 하나라도 "재지 않음"이면 위처럼 pitch.md의 값으로 그려줘.
+- 사용자 테스트 결과 장: test_report.md에 "녹화로 본 것 (Microsoft Clarity)" 표가 있으면 그 표의 본 것 한두 줄을 "녹화로 본 것"으로 더해줘(적힌 말 그대로, 숫자를 새로 만들지 마). images 폴더에 heatmap.png가 있으면 이 장에 같이 넣어줘. 표가 없으면 이 줄은 건너뛰어.
 - 라이브 데모 장: 데모 순서 3단계와 큰 버튼 "MVP 열기". 버튼 주소: '''+LINK+'''
 - 해결 장: 이 폴더에 teaser.mp4가 있으면 영상을 넣고(같은 폴더의 파일로), 없으면 영상 자리 없이 한 줄 약속만. landing.html이 있으면 "랜딩페이지 보기" 버튼도.
 - 함께 만든 것 장의 "내가 내린 결정"은 pitch.md에 적힌 것만 옮겨. pitch.md에 [채울 곳: 내가 내린 결정]이면 그 장의 큰 문장에도 "제가 정했다", "방향은 제가" 같은 말을 쓰지 말고, 결정 칸을 [채울 곳: 내가 내린 결정]으로 둬. 수업 프롬프트와 CLAUDE.md의 규칙은 내 결정이 아니야.
@@ -173,6 +180,10 @@ body='''
 <button class="ghost" id="resetProfile" type="button">처음 값으로 되돌리기</button>
 </div>
 '''+box('p00','P0 · 어제 폴더 확인하고 오늘 규칙 더하기 (꼭)',PR['p00'])+'''
+<div class="card path"><span class="pill deep">Clarity를 달았다면 · 테크 트랙</span><h3>어제 녹화를 아직 못 봤다면 지금 봐요</h3>
+<p class="sub">어제 오후 E에서 Clarity를 달았다면, 녹화와 히트맵은 뜨는 데 최대 2시간쯤 걸려서 어제 못 본 사람이 있어요. clarity.microsoft.com의 <b>녹화(Recordings)</b>와 <b>히트맵(Heatmaps)</b>을 열어 3분만 보고, 본 것을 칸에 적어요. 어제 P11까지 했다면 건너뛰어요. Clarity를 하지 않은 사람도 건너뛰어요.</p>
+<p class="sub">히트맵을 발표에 쓰고 싶으면 화면을 캡처해 images 폴더에 <b>heatmap.png</b>로 저장해요. P1이 사용자 테스트 결과 장에 넣어 줘요.</p>
+'''+fieldwide('rec','녹화와 히트맵에서 본 것. 예: 2번 일에서 표 제목을 세 번 눌렀다 / 걸러 보기 버튼 옆 빈 곳을 누름','비워 두면: 적지 않음')+'\n'+box('c1','녹화로 본 것을 결과서에 더하기 (Clarity)',PR['c1'])+'''</div>
 <div class="card warn"><h3>허락 창이 뜨면</h3>
 <p><b>방금 보낸 프롬프트가 시킨 일이면 Yes</b>를 눌러요. 오늘 자주 뜨는 것: 파일 만들기와 고치기, 파일 복사(cp, copy), 브라우저 열기(open, start), 링크 만들기(아티팩트 발행). 파일이나 폴더를 통째로 지우겠다고 하면(rm, delete) 누르지 말고 강사를 불러요.</p></div>
 <h3 class="gap" id="remote">리모컨 네 개 · 필요할 때만 꺼내 써요</h3>
@@ -355,5 +366,5 @@ body='''
 '''
 body=expand_mvp_html(body)
 out=build_page('Day 18 · 내 MVP(Minimum Viable Product) 3분 피칭',body,
-  {'role':'아직 모름','me':'[이름]','mvplink':'mvp.html','fb':'적지 않음','hand':'재지 않음','mine':'재지 않음'},'l18-')
+  {'role':'아직 모름','me':'[이름]','mvplink':'mvp.html','fb':'적지 않음','hand':'재지 않음','mine':'재지 않음','rec':'적지 않음'},'l18-')
 write_page(out,PATH)
