@@ -570,7 +570,7 @@ add('subagent','서브에이전트','Subagent','tools',[3,9,13,21],
     '팀장이 조사할 회사를 팀원 셋에게 나눠 주고, 보고를 모아 한 장으로 합치는 것이에요.')
 add('chrome','Claude in Chrome','Claude in Chrome','tools',[3,4,5,9,17,21],
     '크롬 브라우저에서 Claude가 웹페이지를 직접 열고, 읽고, 누르며 일하게 해 주는 확장 프로그램이에요.',
-    '일정표 Day 3 · 공공 사이트 탐색. Day 17 · 사용 흐름 자동 점검. Day 21 · 웹 수집. Day 17 가이드 · 준비 구간에서 다 같이 설치하고(Chrome, Claude Code와 같은 계정, 파일 URL 허용), 2교시에 크롬에서 mvp.html을 열어 과업 카드로 직접 눌러 보며 점검해요. 안 되면 P2의 자동 점검으로 충분해요.',
+    '일정표 Day 3 · 공공 사이트 탐색. Day 17 · 사용 흐름 자동 점검. Day 21 · 웹 수집. Day 17 가이드 · 2교시에 P2가 도는 동안 다 같이 설치하고(Chrome, Claude Code와 같은 계정, 파일 URL 허용), 2교시에 크롬에서 mvp.html을 열어 과업 카드로 직접 눌러 보며 점검해요. 안 되면 P2의 자동 점검으로 충분해요.',
     ['claudecode','usertest','autocheck'])
 add('claudedesign','Claude Design','Claude Design','tools',[7,8,14,16],
     'Claude와 대화하면서 화면 시안과 움직이는 프로토타입을 만드는 도구예요. 만든 시안을 Claude Code로 넘길 수 있어요.',
