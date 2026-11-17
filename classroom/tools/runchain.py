@@ -1,6 +1,6 @@
 # 수업 프롬프트를 실제로 돌려 보는 시험기. 사용: python3 runchain.py <guide.html> <작업폴더> <결과.json> <단계...>
 # 단계 표기: p01 (새 대화) / p02+ (앞 대화에 이어서)
-# 환경 변수: BRAND='브랜드|제품|고객' (다른 브랜드로 바꿔 시험), TOK='{"칸":"값"}' (다른 입력 칸), TOOLS='허용 도구 목록', PMODE='권한 모드(기본 acceptEdits, 계획 모드는 plan)'
+# 환경 변수: MAXT='최대 턴(기본 40)', TLIM='한 단계 시간 제한 초(기본 540)', BRAND='브랜드|제품|고객' (다른 브랜드로 바꿔 시험), TOK='{"칸":"값"}' (다른 입력 칸), TOOLS='허용 도구 목록', PMODE='권한 모드(기본 acceptEdits, 계획 모드는 plan)'
 #           FILL='{"p06":["계획에서 바꿀 것: 없음","계획에서 바꿀 것: 3번 칸은 빼줘"]}' (학생이 입력 칸을 채운 경우), 단계를 p05&p06처럼 쓰면 두 프롬프트를 한 번에 붙여 넣은 경우
 #           한 프롬프트의 여러 칸: FILL='{"m1":[["옛1","새1"],["옛2","새2"]]}'
 #           EXTRA='{"x1":"2번으로 바꿔줘. 이유는 ..."}' (가이드에 없는, 학생이 직접 친 한 줄. 단계에 x1+처럼 쓴다)
@@ -36,9 +36,9 @@ log=json.load(open(outp)) if os.environ.get('APPEND') and os.path.exists(outp) e
 for st in steps:
     cont=st.endswith('+'); pid=st.rstrip('+'); pr='\n\n'.join(prompts[x] for x in pid.split('&'))
     before=tree(); t0=time.time()
-    cmd=['claude']+(['-c'] if cont else [])+['-p',pr,'--permission-mode',PMODE,'--allowedTools',TOOLS,'--max-turns','40','--output-format','json']
+    cmd=['claude']+(['-c'] if cont else [])+['-p',pr,'--permission-mode',PMODE,'--allowedTools',TOOLS,'--max-turns',os.environ.get('MAXT','40'),'--output-format','json']
     try:
-        r=subprocess.run(cmd,cwd=work,capture_output=True,text=True,timeout=540)
+        r=subprocess.run(cmd,cwd=work,capture_output=True,text=True,timeout=int(os.environ.get('TLIM','540')))
         try: d=json.loads(r.stdout)
         except Exception: d={'subtype':'not_json','result':(r.stdout or r.stderr)[-600:]}
     except subprocess.TimeoutExpired:

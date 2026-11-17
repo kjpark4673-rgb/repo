@@ -1,5 +1,5 @@
-# AX 수업 용어 사전 (Day 1~21) 빌더
-# 출처: 공식 일정표 "상세 커리큘럼_최종" 탭의 10/26~11/23 행, Day 14·15·16 수업 가이드의 용어 칸.
+# AX 수업 용어 사전 (Day 1~22) 빌더
+# 출처: 공식 일정표 "상세 커리큘럼_최종" 탭의 10/26~11/23 행, Day 14~19 수업 가이드의 용어 칸(11/24 행은 강사님이 확정한 날짜 이름만).
 # "수업에서" 줄은 위 두 출처에 적힌 것만 옮긴다. 강사의 말로 꾸미지 않는다.
 import html, re
 
@@ -13,7 +13,8 @@ DAYS = {
  10:('11/6(금)','밸류체인'), 11:('11/9(월)','페인포인트'), 12:('11/10(화)','AX 이해'),
  13:('11/11(수)','AX 비즈니스 모델'), 14:('11/12(목)','서비스 시나리오와 스펙'), 15:('11/13(금)','시장 검증'),
  16:('11/16(월)','콘텐츠·서비스 제작 Ⅰ · 업무 간편화 MVP(Minimum Viable Product) 만들기'), 17:('11/17(화)','제작 Ⅱ · 사용자 테스트로 MVP(Minimum Viable Product) 고치기'), 18:('11/18(수)','피칭 데이 · 내 MVP(Minimum Viable Product) 3분 피칭'),
- 19:('11/19(목)','AI 이해 · 같은 일을 세 AI에 시켜 보고 고르기'), 20:('11/20(금)','컨텍스트 엔지니어링'), 21:('11/23(월)','산업 리포트 자동 생성'),
+ 19:('11/19(목)','산업 리포트 ① 첫 판 · 지원 회사의 산업 리포트 만들기'), 20:('11/20(금)','산업 리포트 ② 화면형 리포트와 지원 자료'), 21:('11/23(월)','산업 리포트 자동 생성'),
+ 22:('11/24(화)','이미지·브랜드 비주얼'),
 }
 UPCOMING_FROM = 17
 
@@ -74,18 +75,18 @@ add('primarysecondary','1차 자료와 2차 자료','Primary / secondary data','
     '1차 자료는 내가 직접 모은 자료(리뷰, 영상, 사진, 인터뷰)이고, 2차 자료는 남이 이미 정리해 둔 자료(통계, 공공데이터, 보고서)예요.',
     '일정표 Day 3 · 2차 자료(공공데이터포털, 지자체 통계, 한국관광 데이터랩). Day 4 · 1차 자료를 모을 곳(유튜브, 인스타그램, 블로그, 지도 리뷰).',
     ['publicdata','fieldwork'])
-add('publicdata','공공데이터포털과 KOSIS','Public data','research',[3,15],
+add('publicdata','공공데이터포털과 KOSIS','Public data','research',[3,15,19],
     '공공데이터포털은 공공기관이 공개한 데이터를 모아 둔 곳이고, KOSIS는 나라의 통계를 모아 둔 국가통계포털이에요.',
-    '일정표 Day 3 · 공공데이터포털, 한국관광 데이터랩, KOSIS에서 자료를 찾아요. Day 15에도 KOSIS가 나와요.',
+    '일정표 Day 3 · 공공데이터포털, 한국관광 데이터랩, KOSIS에서 자료를 찾아요. Day 15에도 KOSIS가 나와요. Day 19 가이드 · 선택 B(테크 트랙은 꼭)에서 이 산업의 5년 추이를 KOSIS나 공공데이터포털의 통계로 data.csv에 모아요. 금요일 차트의 재료예요.',
     ['primarysecondary','csv'])
 add('crosscheck','교차검증','Cross-check','research',[3],
     '한 출처만 믿지 않고, 다른 출처로 같은 사실을 한 번 더 확인하는 일이에요.',
     '일정표 Day 3 · 교차검증과 출처 기록 원칙. 출처와 검증 결과를 표로 모아요.',
     ['source','hallucination'],
     '길을 물을 때 한 사람 말만 믿지 않고 두 사람에게 더 묻는 것과 같아요.')
-add('source','출처 기록','Source','research',[2,3,5,16],
+add('source','출처 기록','Source','research',[2,3,5,16,19],
     '자료를 어디서 가져왔는지(사이트, 주소, 날짜)를 남기는 일이에요. 출처가 없으면 맞는지 확인할 수 없어요.',
-    '일정표 Day 2 · 출처와 할루시네이션 점검. Day 5 · 파일마다 소스, 주소, 일시, 저작권을 적어요. Day 16 가이드 · 표의 줄마다 조사일과 출처 링크를 붙이고, 출처 링크 한 곳을 열어 값을 확인해요(내 결정 2).',
+    '일정표 Day 2 · 출처와 할루시네이션 점검. Day 5 · 파일마다 소스, 주소, 일시, 저작권을 적어요. Day 16 가이드 · 표의 줄마다 조사일과 출처 링크를 붙이고, 출처 링크 한 곳을 열어 값을 확인해요(내 결정 2). Day 19 가이드 · 리포트의 숫자마다 출처 번호([S번호])를 붙이고, 출처는 근거 표(sources.csv)에 한 줄씩 모아요.',
     ['crosscheck','metadata','hallucination'])
 add('fieldwork','디지털 필드워크','Digital fieldwork','research',[4,5],
     '현장에 직접 가는 대신, 영상, SNS, 지도 리뷰, 로드뷰처럼 온라인에서 현장 자료를 모으는 조사예요.',
@@ -130,9 +131,9 @@ add('trendtools','네이버 데이터랩과 구글 트렌드','Search trends','r
     '사람들이 어떤 말을 얼마나 검색했는지 시간에 따라 보여 주는 무료 도구예요.',
     '일정표 Day 4 · 국내는 네이버 데이터랩, 해외와 외국인 관광 수요는 구글 트렌드로 봐요.',
     ['sociallistening'])
-add('disclosure','공시와 IR','Disclosure / Investor Relations','research',[9],
+add('disclosure','공시와 IR','Disclosure / Investor Relations','research',[9,19],
     '공시는 회사가 경영 정보를 법에 따라 공개하는 것이고, IR은 투자자에게 회사를 설명하는 자료와 활동이에요. DART는 금융감독원의 전자공시 사이트예요.',
-    '일정표 Day 9 · 공시와 보도자료를 AI로 요약하고 비교해서, 관심 기업 1곳의 산업 리서치 원페이지를 만들어요.',
+    '일정표 Day 9 · 공시와 보도자료를 AI로 요약하고 비교해서, 관심 기업 1곳의 산업 리서치 원페이지를 만들어요. Day 19 가이드 · 출처의 무게에서 정부 통계 다음이 공시예요. 산업 리포트의 회사 실적 숫자는 공시(사업보고서, 감사보고서)에서 먼저 찾아요.',
     ['onepager','subagent'])
 add('onepager','한 장 기획서(원페이지)','One-pager','research',[7,9],
     '핵심만 한 장에 담은 문서예요. 읽는 사람이 1~2분 안에 무엇을, 왜 하는지 알 수 있어요.',
@@ -487,27 +488,24 @@ add('genai','생성형 AI','Generative AI','ai',[12],
     ['llm','agent'])
 add('llm','LLM(대규모 언어 모델)','Large Language Model','ai',[19],
     '아주 많은 글을 학습해서, 다음에 올 말을 예측하며 글을 만드는 AI 모델이에요. Claude, ChatGPT, Gemini가 LLM이에요.',
-    '일정표 Day 19 · LLM의 원리(토큰, 컨텍스트, 확률적 생성)와 2026년 모델 지형. Day 19 가이드 · 1교시에 토큰, AI가 보는 책상, 다음 낱말 맞히기 세 가지로 배워요. 사실을 꺼내 오는 검색창이 아니라서 그럴듯하지만 틀린 말이 나올 수 있어요.',
-    ['token','context','nextword','model'])
+    '일정표 Day 19 · LLM의 원리(토큰, 컨텍스트, 확률적 생성)와 2026년 모델 지형.',
+    ['token','context','model'])
 add('model','AI 모델','AI model','ai',[19],
     'AI가 일을 하는 두뇌에 해당하는 프로그램이에요. 같은 회사에도 빠른 모델과, 답하기 전에 더 깊게 생각하는 추론 모델이 따로 있어요.',
-    '일정표 Day 19 · 같은 과제를 Claude, ChatGPT, Gemini에 시켜 이름 가리고 견주고, 작업마다 맞는 모델을 골라요. Day 19 가이드 · "어느 AI가 최고"보다 "이 일엔 이 AI"를 내 일로 직접 확인해요. 무료로 쓸 수 있는 범위는 자주 바뀌어요.',
-    ['llm','blindtest','reasoning'])
+    '일정표 Day 19 · 같은 과제를 Claude, ChatGPT, Gemini로 이름 가리고 견주고(블라인드 비교), 작업마다 맞는 모델을 골라요.',
+    ['llm','blindtest'])
 add('token','토큰','Token','ai',[19],
     'AI가 글을 읽고 쓰는 단위예요. 낱말보다 작은 조각이에요. 사용량과 한도도 토큰으로 계산해요.',
-    '일정표 Day 19 · LLM 원리에서 나와요. Day 19 가이드 · P1이 내 폴더의 글 파일마다 글자 수와 토큰 수를 표로 보여 줘요. 긴 파일을 통째로 읽히면 조각을 많이 써요.',
-    ['llm','context'],
-    '레고 조각이에요. AI는 글을 잘게 잘라 조각 단위로 읽고 써요.')
-add('context','AI가 보는 책상(컨텍스트)','Context','ai',[19,20],
+    '일정표 Day 19 · LLM 원리에서 나와요.',
+    ['llm','context'])
+add('context','컨텍스트','Context','ai',[19,20],
     'AI가 지금 답할 때 참고하는 모든 내용이에요. 내 지시, 지금까지의 대화, 읽은 파일이 다 들어가요. 한 번에 담을 수 있는 양에 한계가 있어요.',
-    '일정표 Day 19 · 긴 대화에서 성능이 떨어지는 이유. Day 20 · 컨텍스트 엔지니어링. Day 19 가이드 · 세 AI를 견줄 때 Claude도 claude.ai 새 채팅에 넣어요. 세 곳 모두 내 폴더를 못 보니 과제 글 안에 자료를 넣어요.',
-    ['contextdecay','contexteng','token'],
-    '책상이에요. AI는 책상 위에 올라온 것만 보고 답하고, 책상 크기는 정해져 있어요.')
+    '일정표 Day 19 · 긴 대화에서 성능이 떨어지는 이유. Day 20 · 컨텍스트 엔지니어링.',
+    ['contextdecay','contexteng','token'])
 add('contextdecay','앞 내용이 흐려져요(컨텍스트 열화)와 새 대화로 옮기기(세션 관리)','Context degradation / session management','ai',[16,19],
     '대화가 길어질수록 AI가 앞의 내용을 놓치거나 흐려지는 것이에요. 그래서 일이 크게 바뀔 때는 새 대화를 열어요.',
-    '일정표 Day 19 · 컨텍스트 열화와 세션 관리. Day 16 가이드 · 아침에 새 대화로 시작하고, 하루 동안은 같은 대화를 이어 써요. 저녁의 포트폴리오 한 장(W2)이 낮에 말로 남긴 결정을 읽어야 해서예요. 대화를 바꿨다면 W2 아래에 그 전에 정한 것을 한 줄씩 덧붙여요. Day 19 가이드 · 신호는 아까 정한 것을 다시 묻기, 규칙을 안 지키기, 답이 눈에 띄게 느려지고 길어지기예요. 인계 메모(handoff.md)를 남기고 같은 폴더의 새 대화에서 "handoff.md를 읽고 이어서 해줘"라고 해요.',
-    ['context','handoffmemo','claudemd'],
-    '책상에 종이가 계속 쌓이면 맨 아래 종이가 잘 안 보여요. 그때 교대 근무처럼 인수인계 한 장을 남기고 새 책상으로 옮겨요.')
+    '일정표 Day 19 · 앞 내용이 흐려지는 것(컨텍스트 열화)과 새 대화로 옮기기(세션 관리). Day 16 가이드 · 아침에 새 대화로 시작하고, 하루 동안은 같은 대화를 이어 써요. 저녁의 포트폴리오 한 장(W2)이 낮에 말로 남긴 결정을 읽어야 해서예요. 대화를 바꿨다면 W2 아래에 그 전에 정한 것을 한 줄씩 덧붙여요.',
+    ['context','claudemd'])
 add('contexteng','컨텍스트 엔지니어링','Context engineering','ai',[20],
     '프롬프트 한 줄을 잘 쓰는 것을 넘어, AI가 일할 때 볼 규칙과 자료(CLAUDE.md, 스킬, 파일)를 미리 갖춰 두는 일이에요.',
     '일정표 Day 20 · CLAUDE.md와 스킬 설계.',
@@ -536,41 +534,17 @@ add('humanloop','사람 검토','Human in the loop','ai',[12,16],
     ['mydecision','agent'])
 add('airisk','AI 리스크','AI risks','ai',[12,19],
     'AI를 쓸 때 조심할 위험이에요. 개인정보 유출, 저작권 침해, 편향된 결과, 잘못됐을 때 누가 책임지는지가 대표적이에요.',
-    '일정표 Day 12 · AI 도입 리스크. Day 19 · AI 결과물의 저작권, 개인정보, 상표. Day 19 가이드 · P5가 내 발표 화면과 MVP 화면에서 남의 이미지·로고·글, 실제 회사 이름과 상표, 사람 이름, "학습용" 문구를 점검해 고칠 곳 후보를 표로 보여 줘요. 법률 판단이 아니라 점검 목록이에요.',
-    ['copyright','hallucination','myairules'])
+    '일정표 Day 12 · AI 도입 리스크. Day 19 · AI 결과물의 저작권, 개인정보, 상표.',
+    ['copyright','hallucination'])
 add('api','API','Application Programming Interface','ai',[3,19],
     '프로그램끼리 정해진 방식으로 데이터를 주고받는 창구예요.',
-    '일정표 Day 3 · 공공데이터셋 구조(CSV, API). Day 19 · API로 모델을 부르는 구조. Day 19 가이드 오후 메뉴 4(테크 트랙은 꼭) · 채팅창은 사람이, API는 프로그램이 쓰는 문이에요. Claude Code도 API로 모델을 부르는 프로그램이에요. 실제 호출과 키 발급은 하지 않고 api.html 한 장으로 구조를 그려요.',
+    '일정표 Day 3 · 공공데이터셋 구조(CSV, API). Day 19 · API로 모델을 부르는 구조.',
     ['dataspec','structuredoutput'],
     '식당의 주문 창구예요. 주방에 들어가지 않아도 정해진 방식으로 주문하면 음식이 나와요.')
 add('blindtest','이름 가리고 견주기(블라인드 비교)','Blind comparison','ai',[19],
     '누가 만든 결과인지 가리고, 결과만 보고 비교하는 방법이에요. 이름 때문에 생기는 선입견을 줄여요.',
-    '일정표 Day 19 · 같은 과제를 세 모델로 블라인드 비교해 평가 기준표를 만들어요. Day 19 가이드 · 내 과제를 조원이 세 AI의 새 채팅에 한 번씩 돌리고, 돌린 순서와 다르게 A·B·C를 붙여 보내요. 나는 이름을 모른 채 점수를 매기고, 다 매긴 뒤 열쇠를 받아요. 점수는 Claude Code가 매기지 않아요.',
-    ['model','scorecard'],
-    '콜라 블라인드 테스트예요. 상표를 가리면 선입견 없이 맛으로만 골라요.')
-add('nextword','다음 낱말 맞히기(확률적 생성)','Probabilistic generation','ai',[19],
-    'AI가 앞 글을 보고 그럴듯한 다음 조각(토큰)을 하나씩 골라 이어 쓰는 방식이에요. 매번 후보 가운데서 고르니 같은 질문에도 답이 달라져요.',
-    'Day 19 가이드 · P1이 내 회사의 광고 문장 앞부분으로 다음에 올 말 후보 5개를 보여 줘요. 그래서 한 번 돌린 답으로 AI를 고르면 운이 섞여요(오후 메뉴 1).',
-    ['llm','token'],
-    '휴대폰 자판의 다음 낱말 추천을 아주 크게 키운 것이에요.')
-add('reasoning','추론 모델','Reasoning model','ai',[19],
-    '답하기 전에 속으로 풀이를 길게 써 보는 AI 모델이에요. 느리고 토큰을 더 쓰지만 복잡한 일에 강해요.',
-    '일정표 Day 19 · 추론·에이전트 모델. Day 19 가이드 1교시 카드.',
-    ['model','agent'],
-    '연습장에 풀이를 먼저 쓰고 답을 내는 학생이에요.')
-add('scorecard','점수 기준표(평가 기준표)','Evaluation rubric','ai',[19],
-    '무엇을 몇 점으로 볼지 결과를 보기 전에 미리 적은 표예요.',
-    '일정표 Day 19 · 결과물 "모델 비교 평가표". Day 19 가이드 · P2가 기준 4개(각 1~5점)와 기준마다 5점과 1점의 모습을 적어요. 기준에 꼭 넣을 것을 정하는 것이 내 결정 1이에요. 먼저 정해야 마음에 드는 답에 기준을 맞추지 않아요.',
-    ['blindtest','model'])
-add('myairules','내 AI 사용 규칙(개인 AI 사용 가이드라인)','Personal AI usage guideline','ai',[19,20],
-    '일마다 어떤 AI를 쓰고, 무엇을 넣지 않고, 내놓기 전에 무엇을 볼지 적은 나만의 한 장이에요.',
-    '일정표 Day 19 · 결과물 "개인 AI 사용 가이드라인". Day 19 가이드 · P5가 my_ai_rules.md로 써요: 일마다 고를 AI, 새 대화로 옮기기, AI에 넣지 않을 것, 내놓기 전에 볼 것(저작권·상표·개인정보), 내 다짐. Day 20의 CLAUDE.md와 스킬의 재료가 돼요.',
-    ['airisk','handoffmemo','claudemd'])
-add('handoffmemo','인계 메모','Handoff note','tools',[19],
-    '새 대화가 읽고 이어 갈 수 있게 지금까지(나와 회사, 파일, 정한 것, 남은 일)를 한 장에 적은 것이에요.',
-    'Day 19 가이드 · P5가 handoff.md를 만들고, 오후 메뉴 5에서 같은 폴더의 새 대화가 그것만 읽고 이어 갈 수 있는지 시험해요. Day 16의 핸드오프(Claude Design → Claude Code)와는 다른 말이에요.',
-    ['contextdecay','handoff'],
-    '교대 근무의 인수인계 한 장이에요.')
+    '일정표 Day 19 · 같은 과제를 세 모델로 이름 가리고 견줘(블라인드 비교) 점수 기준표(평가 기준표)를 만들어요.',
+    ['model'])
 
 # ── Claude와 도구
 add('claude','Claude','Claude','tools',[1],
@@ -581,14 +555,14 @@ add('claudecode','Claude Code','Claude Code','tools',[2],
     '내 컴퓨터의 작업 폴더 안에서 파일을 읽고, 만들고, 고치며 일하는 Claude예요. 데스크톱 앱의 Code 탭이나 웹(claude.ai/code)에서 써요.',
     '일정표 Day 2 · 설치와 첫 실행, 리서치 결과를 "파일"로 쌓는 습관. 그 뒤 거의 모든 실습에서 써요.',
     ['claudemd','skill','subagent','planmode'])
-add('claudemd','CLAUDE.md','CLAUDE.md','tools',[2,16,20],
+add('claudemd','CLAUDE.md','CLAUDE.md','tools',[2,16,19,20],
     '작업 폴더에 두는 규칙 파일이에요. Claude가 그 폴더에서 일할 때마다 먼저 읽어요.',
-    '일정표 Day 2 · 나는 누구, 목표, 선호를 적어요. Day 16 가이드 · P0이 오늘의 작업 규칙과 내가 하고 싶은 일, 회사를 심어요. Day 20 · 팀 CLAUDE.md.',
+    '일정표 Day 2 · 나는 누구, 목표, 선호를 적어요. Day 16 가이드 · P0이 오늘의 작업 규칙과 내가 하고 싶은 일, 회사를 심어요. Day 20 · 팀 CLAUDE.md. Day 19 가이드 · P0이 하고 싶은 일, 지원 회사, 산업과 오늘 규칙(숫자는 출처 번호와 조사일이 있는 것만, 못 찾으면 "못 찾음"·[채울 곳], 업계 평균으로 채우지 않음)을 심고, 앞 날짜의 "# 오늘 규칙"은 "# 지난 규칙"으로 제목만 바꿔요.',
     ['skill','contexteng'],
     '사무실 벽에 붙여 둔 업무 규칙표예요. 들어올 때마다 보고 일해요.')
-add('skill','스킬(SKILL.md)','Skill','tools',[4,7,14,16,20],
+add('skill','스킬(SKILL.md)','Skill','tools',[4,7,14,16,20,21],
     'Claude가 특정 일을 하는 방법을 적어 둔 파일(SKILL.md)이에요. 작업 폴더의 .claude/skills 안에 넣어 두면 그 일을 할 때 꺼내 써요. 남이 만들어 공개한 "공개 스킬"을 받아 쓸 수도 있어요.',
-    '일정표 Day 4 · /dataviz 스킬 시연. Day 7 · 브랜드 스킬 파일. Day 14 가이드 · 퍼소나·고객 여정 지도 스킬. Day 16 가이드 · 오후 E에서 오늘 한 조사를 스킬(daily-research)로 묶어 "오늘 조사 돌려줘" 한 줄로 다시 돌려요(P10). Day 20 · 스킬 만들기와 공개 스킬 설치.',
+    '일정표 Day 4 · /dataviz 스킬 시연. Day 7 · 브랜드 스킬 파일. Day 14 가이드 · 퍼소나·고객 여정 지도 스킬. Day 16 가이드 · 오후 E에서 오늘 한 조사를 스킬(daily-research)로 묶어 "오늘 조사 돌려줘" 한 줄로 다시 돌려요(P10). Day 20 · 스킬 만들기와 공개 스킬 설치. Day 21 · 산업 리포트를 만드는 순서를 리포트 스킬로 묶어 한 줄로 다시 돌려요.',
     ['claudemd','contexteng','prompt'],
     'Day 14 가이드는 "레시피 카드"로, Day 16 가이드는 "선배의 체크리스트"로 설명했어요. 한 번 써 두면 매번 설명하지 않아도 돼요.')
 add('subagent','서브에이전트','Subagent','tools',[3,9,13,21],
@@ -711,9 +685,9 @@ add('assume','(가정)','Assumption mark','marks',[14,15,16],
     'Claude가 확인하지 못하고 추측한 곳에 붙이는 표시예요. 내가 확인해요.',
     'Day 16 가이드 · 확인하지 못한 곳(예: 손으로 하면 하루 몇 분인지)은 (가정)으로 표시해요. (가정)은 Claude가 추측한 곳이라 내가 확인해요.',
     ['fillin','hallucination'])
-add('fillin','[채울 곳]과 [실데이터 입력]','Fill-in mark','marks',[14,16],
+add('fillin','[채울 곳]과 [실데이터 입력]','Fill-in mark','marks',[14,16,19],
     'Claude가 지어내면 안 돼서 비워 둔 자리예요. 가격, 성분, 후기 같은 진짜 값을 내가 넣어요. Day 14 가이드의 [실데이터 입력]과 같은 뜻이에요.',
-    'Day 16 가이드 · 대응안(plan.md)과 랜딩페이지에서 우리 쪽 가격, 후기처럼 Claude가 지어내면 안 되는 곳. 내가 확인해서 채워요.',
+    'Day 16 가이드 · 대응안(plan.md)과 랜딩페이지에서 우리 쪽 가격, 후기처럼 Claude가 지어내면 안 되는 곳. 내가 확인해서 채워요. Day 19 가이드 · 리포트에서 근거 표에 숫자가 없는 곳은 [채울 곳]으로 남겨요.',
     ['assume','hallucination'])
 add('remote','리모컨','Remote lines','marks',[16],
     'Claude가 마음에 안 들게 움직일 때, 긴 설명 대신 보내는 한 줄 프롬프트예요.',
@@ -737,9 +711,9 @@ add('bluetext','파란 글자와 입력 칸','Blue text','marks',[15,16],
     ['prompt'])
 
 # ── Day 16 6판(11/15)에서 새로 나온 말
-add('notfound','"못 찾음"','Not found mark','marks',[16],
+add('notfound','"못 찾음"','Not found mark','marks',[16,19],
     'Claude가 웹에서 찾지 못한 칸에 남기는 표시예요. 지어내지 않고 비워 둔 거라 실패가 아니에요.',
-    'Day 16 가이드 · 수업 전 시험에서 표 칸의 20~60%가 "못 찾음"이었고, 광고 소재 조사는 절반 안팎이었어요. 꼭 필요한 값은 P2-1로 내가 본 것을 붙이고, 나머지는 "못 찾은 칸을 찾기 쉬운 칸으로 바꿔서 다시 조사해줘. mvp.md의 칸도 같이 바꿔줘."라고 해요.',
+    'Day 16 가이드 · 수업 전 시험에서 표 칸의 20~60%가 "못 찾음"이었고, 광고 소재 조사는 절반 안팎이었어요. 꼭 필요한 값은 P2-1로 내가 본 것을 붙이고, 나머지는 "못 찾은 칸을 찾기 쉬운 칸으로 바꿔서 다시 조사해줘. mvp.md의 칸도 같이 바꿔줘."라고 해요. Day 19 가이드 · 근거 표에서 찾지 못한 숫자는 "못 찾음", 리포트에서는 [채울 곳]이에요. 업계 평균으로 채우지 않아요.',
     ['hallucination','source','assume'],
     '모르는 문제를 찍지 않고 비워 낸 답안지와 같아요. 다시 볼 곳이 바로 보여요.')
 add('dashboard','대시보드','Dashboard','research',[16],
@@ -761,6 +735,35 @@ add('popup','팝업스토어','Pop-up store','mkt',[16],
     'Day 16 가이드 · 조사 보기의 하나(팝업스토어 리서치: 장소, 기간, 콘셉트, 체험 거리, 굿즈·증정, 예약 방식). 브랜드·공간 마케터가 조사할 것 칸을 비우면 골라져요.',
     ['benchmarking','promo'])
 
+# ── Day 19 가이드(11/19 지원 회사의 산업 리포트 만들기)에서 새로 나온 말
+add('industryreport','산업 리포트','Industry report','research',[19,21],
+    '한 산업의 크기와 성장, 고객, 주요 회사, 앞으로의 기회와 위협을 숫자와 출처로 정리한 보고서예요. 회사에서는 시장 조사 보고서, 산업 분석이라고도 불러요.',
+    'Day 19 가이드 · 내가 지원하고 싶은 회사(못 정했으면 라라스윗)의 산업 리포트를 각자 한 편 써요. 목차 7칸은 산업 한눈에, 시장 규모와 성장, 고객과 트렌드, 주요 회사 비교, 지원 회사의 강점·약점, 앞으로 3년의 기회와 위협, 내 직무로 이 회사에서 할 수 있는 일이에요. 1판(report_v1.md)을 팀장 지적으로 고쳐 2판(report_v2.md)을 만들어요. 일정표 Day 21 · 산업 리포트 자동 생성.',
+    ['sourcetable','sourceno','reviewnote','report'],
+    '그 회사에 들어가기 전에 그려 보는 업계 지도예요.')
+add('sourcetable','근거 정리(근거 표)','Source table','research',[19],
+    '리포트에 쓸 숫자와 사실을 출처와 함께 한 줄씩 표로 모으는 일이에요. 현업에서는 출처 표, 레퍼런스 목록이라고도 불러요.',
+    'Day 19 가이드 · P2가 sources.csv로 16~24줄을 모아요. 줄마다 번호(S1, S2…), 조사일, 목차 칸, 내용 한 문장, 숫자, 단위, 기준 연도, 출처 이름과 링크, 출처 종류, 확인 상태, 확인한 사람을 적어요. 번호는 한 번 붙이면 바꾸지 않아요. 블로그·카페 글은 쓰지 않고, 리포트에는 이 표에 있는 숫자만 써요.',
+    ['sourceno','checkstatus','sourceweight','csv'])
+add('sourceno','숫자 출처 번호([S번호])','Source number','marks',[19],
+    '리포트의 숫자 뒤에 붙여 근거 표의 어느 줄에서 왔는지 알려 주는 꼬리표예요. [S1], [S2]처럼 써요.',
+    'Day 19 가이드 · 금액·비율·개수 같은 숫자 뒤에는 [S번호]를 붙이고, 근거 표(sources.csv)에 없는 숫자는 쓰지 않아요. 확인 상태가 "검색 요약만"인 숫자는 뒤에 (확인 필요), 근거가 없는 곳은 [채울 곳]이에요.',
+    ['sourcetable','checkstatus','fillin'],
+    '팀장이 "이 숫자 어디서?"라고 물으면 번호 하나로 바로 답할 수 있어요.')
+add('checkstatus','확인 상태','Verification status','marks',[19],
+    '근거 표의 숫자를 출처에서 직접 봤는지 적은 칸이에요. 열어 봄 / 검색 요약만 / 못 찾음 / 숫자 다름(다른 출처와 숫자가 달라 쓰지 않는 줄) 네 가지예요. 누가 열었는지는 옆 칸 "확인한 사람"(Claude, 조원, 나)에 적어요.',
+    'Day 19 가이드 · 웹페이지가 열리지 않으면 검색 결과 요약으로 채우고 "검색 요약만"으로 적어요. 조원이 내 숫자 3개를 출처에서 열어 보고, 오후에는 내가 숫자 3개를 직접 열어 맞춰 본 뒤(내 결정 3) 확인 상태와 확인한 사람을 고쳐요.',
+    ['sourcetable','crosscheck','notfound'])
+add('sourceweight','출처의 무게','Source reliability','research',[19],
+    '출처마다 믿을 수 있는 정도가 달라요. 정부 통계 > 공시 > 회사 발표 > 협회·연구소 자료 > 언론 순이고, 블로그와 카페 글은 쓰지 않아요.',
+    'Day 19 가이드 · 09:10 강사님 설명. 같은 숫자가 출처마다 다르면 기준 연도와 단위부터 보고, 그다음 무게가 무거운 쪽을 써요. 기사에 옮겨 실린 숫자면 원래 조사 기관을 적어요.',
+    ['disclosure','publicdata','crosscheck'])
+add('reviewnote','팀장 지적(리뷰)','Review','biz',[19],
+    '보고서의 약한 곳(근거 없는 숫자, 서로 안 맞는 숫자, 출처가 약함, 과장, 빠진 관점, 기준 연도 다름, 회사에 유리하게 쏠림, 결론이 근거와 안 이어짐)을 상사나 동료가 짚어 주는 것이에요.',
+    'Day 19 가이드 · P4에서 15년 차 팀장 역할의 Claude가 1판에 지적 12개를 심한 것부터 써요(review.md). 받아들일 것과 안 받아들일 것은 내가 정하고(내 결정 2), 안 받아들인 지적은 2판 맨 아래에 이유를 남겨요. 2판의 "바뀐 곳" 표에 이전 → 지금과 지적 번호가 남아요.',
+    ['industryreport','mydecision','checkstatus'],
+    '보고서를 올리기 전에 가장 깐깐한 선배에게 먼저 보여 주는 것이에요.')
+
 # ── MVP 표기(11/14 강사 지시: MVP는 약자라서 항상 괄호로 전체 영단어). 항목마다 뜻과 "수업에서"의 첫 MVP를 펼친다. 표제어에도 넣어서 함께 보기 링크에도 보인다
 def _exp_mvp(t):
     if 'Minimum Viable Product' in t: return t
@@ -775,7 +778,7 @@ for x in E:
     for r in x['r']:
         assert r in ids, (x['id'], r)
     assert re.fullmatch(r'[a-z0-9-]+', x['id']), x['id']
-    assert all(1<=d<=21 for d in x['days']), x['id']
+    assert all(1<=d<=22 for d in x['days']), x['id']
 names={x['id']:x['t'] for x in E}
 
 esc=html.escape
@@ -923,7 +926,7 @@ JS=r'''
   chips.forEach(function(b){ b.addEventListener('click', function(){ setCat(b.dataset.cat); }); });
   q.addEventListener('input', apply); day.addEventListener('change', apply);
   reset.addEventListener('click', function(){ clearAll(); q.focus(); });
-  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='16'; apply(); });
+  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='19'; apply(); });
   function show(id){
     var el=document.getElementById(id); if(!el||!el.classList.contains('entry')) return;
     if(el.hidden) clearAll();
@@ -951,22 +954,22 @@ page='''<meta name="claude:viewport-fit-sides" content="cover">
 <style>%s</style>
 <div class="wrap">
 <header class="top">
-<span class="eyebrow">Day 1–21 · 52일 과정</span>
+<span class="eyebrow">Day 1–22 · 52일 과정</span>
 <h1>AX 수업 용어 사전</h1>
-<p class="lead">Day 1부터 Day 21까지 수업에 나오는 말 %d개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
+<p class="lead">Day 1부터 Day 22까지 수업에 나오는 말 %d개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
 <p class="note">Day는 그 말이 공식 일정표나 수업 가이드에 나온 날이에요. 실제 수업 순서와 다를 수 있어요. "예정"은 아직 하지 않은 날이에요.</p>
 </header>
 <div class="bar">
 <div class="find"><label for="q" class="sr">말 찾기</label><input id="q" type="search" placeholder="예: MVP, 페르소나, 스킬" autocomplete="off"><label for="day" class="sr">날짜</label><select id="day">%s</select></div>
 <div class="chips" role="group" aria-label="분류">%s</div>
-<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 16에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
+<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 19에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
 </div>
 <main>
 <section id="results" hidden><h2>찾은 말</h2></section>
 %s
 <p class="empty" id="empty" hidden>찾는 말이 없어요. 다른 말로 쳐 보거나 "처음으로"를 눌러요.</p>
 </main>
-<footer>뜻은 쉬운 말로 옮긴 일반적인 정의예요. "수업에서"는 공식 일정표와 Day 14~16 수업 가이드에 적힌 내용이에요.</footer>
+<footer>뜻은 쉬운 말로 옮긴 일반적인 정의예요. "수업에서"는 공식 일정표와 수업 가이드(Day 14~19)에 적힌 내용이에요.</footer>
 </div>
 <script>%s</script>
 ''' % (CSS.replace('.status{','.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}\n.status{',1), len(E), '\n'.join(opts), '\n'.join(chips), '\n'.join(sections), JS)
