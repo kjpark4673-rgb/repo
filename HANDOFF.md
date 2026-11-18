@@ -939,13 +939,13 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 
 **용어 사전:** Day 20 규칙안 때문에 더한 말 9개(progdisclose, claudeimport, cchook, supplycheck, jsoncontract, testcase, triggeracc, leastpriv, measured)와 다른 항목의 "Day 20 가이드" 줄이 든 빌더를 `classroom/tools/build_glossary_day20_archive.py`(출력 glossary_day20_archive.html, 만들지는 않음)로 보관하고, 현재 빌더에서는 뺐어요(그 항목들은 Day 19 가이드 전 d2dda2b 판의 줄로 되돌림). DAYS: 19 "산업 리포트 ① 첫 판 · 지원 회사의 산업 리포트 만들기", 20 "산업 리포트 ② 화면형 리포트와 지원 자료", 21 "산업 리포트 자동 생성", 22(새로) "이미지·브랜드 비주얼". 새 말 6개: 산업 리포트, 근거 정리(근거 표), 숫자 출처 번호([S번호]), 확인 상태, 출처의 무게, 팀장 지적(리뷰). 이미 있는 말에 Day 19 줄: CLAUDE.md, 스킬(Day 21 리포트 스킬), 공공데이터포털과 KOSIS, 공시와 IR, 출처 기록, "못 찾음", [채울 곳]. 머리말 Day 1–22, "Day 19에 나오는 말" 단추. 항목 167개, 쉬운 말 점검 통과. 발행하지 않음.
 
-**발행:** 하지 않음(메인 세션이 함). 가이드·용어 사전 모두 아직 비공개 발행 전.
+**발행:** 11/17 밤 가이드를 새 아티팩트로 발행함(Version 1, 비공개): https://claude.ai/artifact/QyyyWwmE5HCLk3C2KKyb9x ("Day 19 · 지원 회사의 산업 리포트 만들기"). 강사님이 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 열어요. 용어 사전은 아직 발행 전이에요.
 
 **바뀐 곳**
 
 | 자료 | 이전 → 지금 |
 |---|---|
-| Day 19 학생 가이드 | 보관 · Day 19(AI 이해, Version 3) → 새 가이드 day19_report.html(발행 전, 새 아티팩트로 낼지 같은 링크로 낼지는 메인 세션·강사님) |
+| Day 19 학생 가이드 | 보관 · Day 19(AI 이해, Version 3)는 그대로 두고, 새 가이드 day19_report.html을 새 아티팩트로 발행(Version 1, https://claude.ai/artifact/QyyyWwmE5HCLk3C2KKyb9x) |
 | 용어 사전 빌더 | Day 20 규칙안 말 9개 포함 → 보관본으로 옮기고 Day 19 산업 리포트 말 6개, DAYS 19~22 |
 
 **강사 문서:** `classroom/instructor/day19-리포트-시연카드.md`(강사 지시, 공식 일정표와 이어지는 곳, 전날 밤 단톡방 한 줄, 하루 순서와 외칠 시각, 걸리는 시간, 웹 단계 살피기, 전날 10분, 한마디), `day19-리포트-모의수업.md`(반의 모습, 예상 대화, 검토 표).

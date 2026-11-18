@@ -1,7 +1,7 @@
 # Day 19 강사 시연 카드 (11/19 목, 산업 리포트 ① 첫 판 "지원 회사의 산업 리포트 만들기")
 
 > 학생용 자료가 아닙니다.
-> 학생용 가이드: [발행 뒤 채움] (아티팩트 이름 "Day 19 · 지원 회사의 산업 리포트 만들기"). 비공개로 발행되니 "링크가 있는 사람"으로 공유를 바꿔야 학생이 엽니다.
+> 학생용 가이드: https://claude.ai/artifact/QyyyWwmE5HCLk3C2KKyb9x (아티팩트 이름 "Day 19 · 지원 회사의 산업 리포트 만들기"). 비공개로 발행되니 "링크가 있는 사람"으로 공유를 바꿔야 학생이 엽니다.
 > 예상 대화와 수강생 눈 검토는 `day19-리포트-모의수업.md`, 시험 결과는 `classroom/tests/day19-report-test-results.md`, 빌더는 `classroom/tools/build_day19_report.py`(출력 `classroom/student-guide/day19_report.html`).
 > 보관본(수업에 쓰지 않음): Day 19 AI 이해 `day19-시연카드.md`·`build_day19.py`, Day 20 규칙 만들기 안 `day20-시연카드.md`·`build_day20.py`.
 
