@@ -106,9 +106,9 @@ add('metadata','메타데이터','Metadata','research',[5],
     '일정표 Day 5 · 아카이빙 규칙: 파일명, 태그, 메타데이터(소스, URL, 일시, 저작권).',
     ['archive','csv'],
     '도서관 책 등에 붙은 분류 스티커예요. 책을 다 읽지 않아도 무엇인지 알 수 있어요.')
-add('copyright','저작권과 공공누리','Copyright / KOGL','research',[4,5,19],
+add('copyright','저작권과 공공누리','Copyright / KOGL','research',[4,5],
     '저작권은 만든 사람이 자기 작품의 쓰임을 정할 권리예요. 공공누리는 공공기관의 사진이나 자료를 어떤 조건으로 써도 되는지 표시한 제도예요.',
-    '일정표 Day 4 · 이용약관, 개인정보, 저작권 유의. Day 5 · 공공누리로 저작권 확인. Day 19 · AI 결과물의 저작권 문제.',
+    '일정표 Day 4 · 이용약관, 개인정보, 저작권 유의. Day 5 · 공공누리로 저작권 확인.',
     ['airisk','source'])
 add('inventory','인벤토리','Inventory','research',[2,6],
     '가진 것을 빠짐없이 적은 목록이에요. 이 과정에서는 지역 자산을 한 표에 정리한 것이에요.',
@@ -154,9 +154,9 @@ add('worldview','세계관과 세계관 바이블','Worldview / bible','customer
     '세계관은 브랜드나 캐릭터가 사는 세상의 설정(배경, 인물, 갈등, 가치, 톤앤매너)이에요. 세계관 바이블은 그 설정을 한 문서에 모아 둔 기준서예요.',
     '일정표 Day 7 · 세계관 바이블을 브랜드 스킬 파일로 저장해요.',
     ['tone','skill','persona'])
-add('tone','톤앤매너','Tone & manner','customer',[7,20],
+add('tone','톤앤매너','Tone & manner','customer',[7],
     '말투와 분위기의 규칙이에요. 예: 존댓말, 짧은 문장, 이모지 쓰지 않기. "브랜드 보이스"라고도 해요.',
-    '일정표 Day 7 · 브랜드 스킬 파일에 톤, 금칙어, 핵심 메시지를 적어요. Day 20 · 브랜드 보이스 공개 스킬.',
+    '일정표 Day 7 · 브랜드 스킬 파일에 톤, 금칙어, 핵심 메시지를 적어요.',
     ['forbidden','worldview'])
 add('forbidden','금칙어','Forbidden words','customer',[7],
     '브랜드가 쓰지 않기로 정한 말이에요.',
@@ -485,41 +485,16 @@ add('aeo','AEO와 GEO','Answer / Generative Engine Optimization','mkt',[14,21],
 add('genai','생성형 AI','Generative AI','ai',[12],
     '글, 이미지, 영상, 코드를 새로 만들어 내는 AI예요.',
     '일정표 Day 12 · AI 역량 다섯 가지(생성, 예측, 추천, 자동화, 에이전트) 가운데 하나.',
-    ['llm','agent'])
-add('llm','LLM(대규모 언어 모델)','Large Language Model','ai',[19],
-    '아주 많은 글을 학습해서, 다음에 올 말을 예측하며 글을 만드는 AI 모델이에요. Claude, ChatGPT, Gemini가 LLM이에요.',
-    '일정표 Day 19 · LLM의 원리(토큰, 컨텍스트, 확률적 생성)와 2026년 모델 지형.',
-    ['token','context','model'])
-add('model','AI 모델','AI model','ai',[19],
-    'AI가 일을 하는 두뇌에 해당하는 프로그램이에요. 같은 회사에도 빠른 모델과, 답하기 전에 더 깊게 생각하는 추론 모델이 따로 있어요.',
-    '일정표 Day 19 · 같은 과제를 Claude, ChatGPT, Gemini로 이름 가리고 견주고(블라인드 비교), 작업마다 맞는 모델을 골라요.',
-    ['llm','blindtest'])
-add('token','토큰','Token','ai',[19],
-    'AI가 글을 읽고 쓰는 단위예요. 낱말보다 작은 조각이에요. 사용량과 한도도 토큰으로 계산해요.',
-    '일정표 Day 19 · LLM 원리에서 나와요.',
-    ['llm','context'])
-add('context','컨텍스트','Context','ai',[19,20],
-    'AI가 지금 답할 때 참고하는 모든 내용이에요. 내 지시, 지금까지의 대화, 읽은 파일이 다 들어가요. 한 번에 담을 수 있는 양에 한계가 있어요.',
-    '일정표 Day 19 · 긴 대화에서 성능이 떨어지는 이유. Day 20 · 컨텍스트 엔지니어링.',
-    ['contextdecay','contexteng','token'])
-add('contextdecay','앞 내용이 흐려져요(컨텍스트 열화)와 새 대화로 옮기기(세션 관리)','Context degradation / session management','ai',[16,19],
+    ['agent'])
+add('contextdecay','앞 내용이 흐려져요(컨텍스트 열화)와 새 대화로 옮기기(세션 관리)','Context degradation / session management','ai',[16],
     '대화가 길어질수록 AI가 앞의 내용을 놓치거나 흐려지는 것이에요. 그래서 일이 크게 바뀔 때는 새 대화를 열어요.',
-    '일정표 Day 19 · 앞 내용이 흐려지는 것(컨텍스트 열화)과 새 대화로 옮기기(세션 관리). Day 16 가이드 · 아침에 새 대화로 시작하고, 하루 동안은 같은 대화를 이어 써요. 저녁의 포트폴리오 한 장(W2)이 낮에 말로 남긴 결정을 읽어야 해서예요. 대화를 바꿨다면 W2 아래에 그 전에 정한 것을 한 줄씩 덧붙여요.',
-    ['context','claudemd'])
-add('contexteng','컨텍스트 엔지니어링','Context engineering','ai',[20],
-    '프롬프트 한 줄을 잘 쓰는 것을 넘어, AI가 일할 때 볼 규칙과 자료(CLAUDE.md, 스킬, 파일)를 미리 갖춰 두는 일이에요.',
-    '일정표 Day 20 · CLAUDE.md와 스킬 설계.',
-    ['prompt','claudemd','skill'],
-    '신입에게 매번 말로 설명하는 대신, 업무 매뉴얼과 자료철을 책상에 놓아 주는 것이에요.')
-add('prompt','프롬프트','Prompt','ai',[14,20],
+    'Day 16 가이드 · 아침에 새 대화로 시작하고, 하루 동안은 같은 대화를 이어 써요. 저녁의 포트폴리오 한 장(W2)이 낮에 말로 남긴 결정을 읽어야 해서예요. 대화를 바꿨다면 W2 아래에 그 전에 정한 것을 한 줄씩 덧붙여요.',
+    ['claudemd'])
+add('prompt','프롬프트','Prompt','ai',[14],
     'AI에게 보내는 지시문이에요.',
-    'Day 14 가이드 · 프롬프트와 스킬의 차이. 일정표 Day 20 · 기본 구조(역할, 맥락, 과업, 제약, 출력 형식, 예시).',
-    ['contexteng','skill','remote'],
+    'Day 14 가이드 · 프롬프트와 스킬의 차이.',
+    ['skill','remote'],
     '식당에서 하는 주문 한 번이에요. 대화가 끝나면 사라져요. 스킬은 파일로 남아요.')
-add('structuredoutput','구조화 출력과 JSON','Structured output / JSON','ai',[20],
-    'AI의 답을 표나 JSON처럼 정해진 모양으로 받는 것이에요. JSON은 "이름: 값"을 짝지어 적는 데이터 형식이에요.',
-    '일정표 Day 20 · 데이터·서비스 트랙은 상품 정보를 JSON으로 바꾸는 스킬을 만들어요.',
-    ['csv','api'])
 add('hallucination','할루시네이션','Hallucination','ai',[2,15,16],
     'AI가 사실이 아닌 내용을 그럴듯하게 지어내는 것이에요. 없는 숫자, 없는 후기, 없는 출처를 만들어 낼 수 있어요.',
     '일정표 Day 2 · 출처와 할루시네이션 점검. Day 15 · AI 리서치 숫자 검증법. Day 16 가이드 · 웹에서 찾지 못한 값은 "못 찾음"으로 두고 지어내지 않아요. 표의 출처 링크를 열어 값을 확인하는 것이 내 결정 2예요.',
@@ -532,38 +507,33 @@ add('humanloop','사람 검토','Human in the loop','ai',[12,16],
     'AI가 만든 결과를 사람이 확인하고 고치는 단계를 일 안에 넣는 것이에요.',
     '일정표 Day 12 · 2026년 AX의 흐름. Day 16 가이드 · 초안은 Claude가 만들고, 결정은 내가 해요(내 결정 1~4).',
     ['mydecision','agent'])
-add('airisk','AI 리스크','AI risks','ai',[12,19],
+add('airisk','AI 리스크','AI risks','ai',[12],
     'AI를 쓸 때 조심할 위험이에요. 개인정보 유출, 저작권 침해, 편향된 결과, 잘못됐을 때 누가 책임지는지가 대표적이에요.',
-    '일정표 Day 12 · AI 도입 리스크. Day 19 · AI 결과물의 저작권, 개인정보, 상표.',
+    '일정표 Day 12 · AI 도입 리스크.',
     ['copyright','hallucination'])
-add('api','API','Application Programming Interface','ai',[3,19],
+add('api','API','Application Programming Interface','ai',[3],
     '프로그램끼리 정해진 방식으로 데이터를 주고받는 창구예요.',
-    '일정표 Day 3 · 공공데이터셋 구조(CSV, API). Day 19 · API로 모델을 부르는 구조.',
-    ['dataspec','structuredoutput'],
+    '일정표 Day 3 · 공공데이터셋 구조(CSV, API).',
+    ['dataspec'],
     '식당의 주문 창구예요. 주방에 들어가지 않아도 정해진 방식으로 주문하면 음식이 나와요.')
-add('blindtest','이름 가리고 견주기(블라인드 비교)','Blind comparison','ai',[19],
-    '누가 만든 결과인지 가리고, 결과만 보고 비교하는 방법이에요. 이름 때문에 생기는 선입견을 줄여요.',
-    '일정표 Day 19 · 같은 과제를 세 모델로 이름 가리고 견줘(블라인드 비교) 점수 기준표(평가 기준표)를 만들어요.',
-    ['model'])
-
 # ── Claude와 도구
 add('claude','Claude','Claude','tools',[1],
     'Anthropic이 만든 AI예요. 대화하며 글쓰기, 분석, 코딩, 자료 정리를 도와요.',
     '일정표 Day 1 · 학습 목표와 자기소개 문장을 다듬어요.',
-    ['claudecode','llm'])
+    ['claudecode'])
 add('claudecode','Claude Code','Claude Code','tools',[2],
     '내 컴퓨터의 작업 폴더 안에서 파일을 읽고, 만들고, 고치며 일하는 Claude예요. 데스크톱 앱의 Code 탭이나 웹(claude.ai/code)에서 써요.',
     '일정표 Day 2 · 설치와 첫 실행, 리서치 결과를 "파일"로 쌓는 습관. 그 뒤 거의 모든 실습에서 써요.',
     ['claudemd','skill','subagent','planmode'])
-add('claudemd','CLAUDE.md','CLAUDE.md','tools',[2,16,19,20],
+add('claudemd','CLAUDE.md','CLAUDE.md','tools',[2,16,19],
     '작업 폴더에 두는 규칙 파일이에요. Claude가 그 폴더에서 일할 때마다 먼저 읽어요.',
-    '일정표 Day 2 · 나는 누구, 목표, 선호를 적어요. Day 16 가이드 · P0이 오늘의 작업 규칙과 내가 하고 싶은 일, 회사를 심어요. Day 20 · 팀 CLAUDE.md. Day 19 가이드 · P0이 하고 싶은 일, 지원 회사, 산업과 오늘 규칙(숫자는 출처 번호와 조사일이 있는 것만, 못 찾으면 "못 찾음"·[채울 곳], 업계 평균으로 채우지 않음)을 심고, 앞 날짜의 "# 오늘 규칙"은 "# 지난 규칙"으로 제목만 바꿔요.',
-    ['skill','contexteng'],
+    '일정표 Day 2 · 나는 누구, 목표, 선호를 적어요. Day 16 가이드 · P0이 오늘의 작업 규칙과 내가 하고 싶은 일, 회사를 심어요. Day 19 가이드 · P0이 하고 싶은 일, 지원 회사, 산업과 오늘 규칙(숫자는 출처 번호와 조사일이 있는 것만, 못 찾으면 "못 찾음"·[채울 곳], 업계 평균으로 채우지 않음)을 심고, 앞 날짜의 "# 오늘 규칙"은 "# 지난 규칙"으로 제목만 바꿔요.',
+    ['skill'],
     '사무실 벽에 붙여 둔 업무 규칙표예요. 들어올 때마다 보고 일해요.')
-add('skill','스킬(SKILL.md)','Skill','tools',[4,7,14,16,20,21],
+add('skill','스킬(SKILL.md)','Skill','tools',[4,7,14,16,21],
     'Claude가 특정 일을 하는 방법을 적어 둔 파일(SKILL.md)이에요. 작업 폴더의 .claude/skills 안에 넣어 두면 그 일을 할 때 꺼내 써요. 남이 만들어 공개한 "공개 스킬"을 받아 쓸 수도 있어요.',
-    '일정표 Day 4 · /dataviz 스킬 시연. Day 7 · 브랜드 스킬 파일. Day 14 가이드 · 퍼소나·고객 여정 지도 스킬. Day 16 가이드 · 오후 E에서 오늘 한 조사를 스킬(daily-research)로 묶어 "오늘 조사 돌려줘" 한 줄로 다시 돌려요(P10). Day 20 · 스킬 만들기와 공개 스킬 설치. Day 21 · 산업 리포트를 만드는 순서를 리포트 스킬로 묶어 한 줄로 다시 돌려요.',
-    ['claudemd','contexteng','prompt'],
+    '일정표 Day 4 · /dataviz 스킬 시연. Day 7 · 브랜드 스킬 파일. Day 14 가이드 · 퍼소나·고객 여정 지도 스킬. Day 16 가이드 · 오후 E에서 오늘 한 조사를 스킬(daily-research)로 묶어 "오늘 조사 돌려줘" 한 줄로 다시 돌려요(P10). Day 21 · 산업 리포트를 만드는 순서를 리포트 스킬로 묶어 한 줄로 다시 돌려요.',
+    ['claudemd','prompt'],
     'Day 14 가이드는 "레시피 카드"로, Day 16 가이드는 "선배의 체크리스트"로 설명했어요. 한 번 써 두면 매번 설명하지 않아도 돼요.')
 add('subagent','서브에이전트','Subagent','tools',[3,9,13,21],
     '메인 Claude가 일을 나눠 맡기는 보조 에이전트예요. 여러 개를 동시에 돌려 나란히 조사할 수 있어요. 여러 에이전트가 함께 일하는 방식을 멀티에이전트라고 해요.',
@@ -603,9 +573,9 @@ add('report','인터랙티브 HTML 리포트','Interactive report','tools',[21],
     '문서 파일 대신, 스크롤하며 읽고 차트를 눌러 볼 수 있는 웹페이지 형태의 리포트예요.',
     '일정표 Day 21 · 질문 설계 → 병렬 조사 → 근거 정리 → 리포트 순서로 산업 리포트를 발행해요.',
     ['subagent','schedule','aeo'])
-add('github','GitHub와 저장소','GitHub / repository','tools',[2,16,20],
+add('github','GitHub와 저장소','GitHub / repository','tools',[2,16],
     '코드와 파일을 저장하고, 바뀐 기록을 남기며 함께 작업하는 곳이에요. 저장소(repository)는 프로젝트 하나의 보관함이에요.',
-    '일정표 Day 2 · GitHub 계정과 팀 저장소. Day 20 · 스킬 저장소.',
+    '일정표 Day 2 · GitHub 계정과 팀 저장소.',
     ['deploy'])
 add('deploy','배포와 Vercel','Deploy','tools',[17,18],
     '만든 웹페이지를 인터넷 주소(URL)로 올려 누구나 열 수 있게 하는 일이에요. Vercel, Netlify는 그 일을 해 주는 서비스예요.',
