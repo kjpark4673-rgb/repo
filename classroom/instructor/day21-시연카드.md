@@ -1,7 +1,7 @@
 # Day 21 강사 시연 카드 (11/23 월, [Modeling ③] AI 기반 산업 리포트 자동 생성 · "AI 에이전트와 내 루프" 개념의 날)
 
 > 학생용 자료가 아닙니다. 공개 저장소라 학생 이름, 따라잡기 원본의 아티팩트 링크, 드라이브 식별자는 적지 않습니다.
-> 학생용 가이드: https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS (같은 링크에 11/21 밤 개념의 날 판으로 다시 올림. 아티팩트 이름 "Day 21 · AI 에이전트와 내 루프"). 발행하면 비공개로 올라가니 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 엽니다.
+> 학생용 가이드: https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS (같은 링크에 11/21 밤 개념의 날 판 Version 6으로 다시 올림. 5판은 Version 5. 아티팩트 이름 "Day 21 · AI 에이전트와 내 루프"). 발행하면 비공개로 올라가니 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 엽니다.
 > 11/24 만들기의 날은 `day22-시연카드.md`. 11/21 밤까지의 5판(월요일 하루에 개념과 만들기를 다 하던 판) 시연카드는 `day21-시연카드_v5.md`로 보관했어요.
 > 예상 대화와 수강생 눈 검토는 `day21-모의수업.md`, 시험 결과는 `classroom/tests/day21-test-results.md`(7차), 빌더는 `classroom/tools/build_day21.py`(출력 `classroom/student-guide/day21.html`).
 
