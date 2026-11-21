@@ -155,11 +155,11 @@ LOOP_SVG='''<figure class="agentfig loopfig"><svg viewBox="0 0 340 300" role="im
 <path class="ar" marker-end="url(#lh)" d="M78,96 Q88,74 122,62"/>
 <rect class="box hl" x="122" y="18" width="96" height="52" rx="12"/><text class="t b" x="170" y="40" text-anchor="middle">① 모으기</text><text class="lab" x="170" y="59" text-anchor="middle">11/24 내일</text>
 <rect class="box" x="222" y="98" width="108" height="52" rx="12"/><text class="t b" x="276" y="120" text-anchor="middle">② 찾기</text><text class="s" x="276" y="139" text-anchor="middle">11/24 첫 판 · 12/1</text>
-<rect class="box" x="186" y="222" width="104" height="52" rx="12"/><text class="t b" x="238" y="244" text-anchor="middle">③ 만들기</text><text class="s" x="238" y="263" text-anchor="middle">11/25 · 11/27</text>
+<rect class="box" x="186" y="222" width="104" height="52" rx="12"/><text class="t b" x="238" y="244" text-anchor="middle">③ 만들기</text><text class="s" x="238" y="263" text-anchor="middle">11/25 ~ 11/27</text>
 <rect class="box" x="50" y="222" width="104" height="52" rx="12"/><text class="t b" x="102" y="244" text-anchor="middle">④ 내보내기</text><text class="s" x="102" y="263" text-anchor="middle">11/30</text>
 <rect class="box" x="10" y="98" width="108" height="52" rx="12"/><text class="t b" x="64" y="120" text-anchor="middle">⑤ 재기</text><text class="s" x="64" y="139" text-anchor="middle">12/1</text>
 <text class="s" x="170" y="150" text-anchor="middle">한 바퀴 돌면</text><text class="t b" x="170" y="170" text-anchor="middle">다시 ①로</text>
-</svg><figcaption>오늘(11/23)은 이 그림을 내 MVP로 그려요 · 11/26 설계서(spec.md) · 12/2 내 루프 연결 · 12/3 점검과 데모.</figcaption></figure>'''
+</svg><figcaption>오늘(11/23)은 이 그림을 내 MVP로 그려요 · 11/26~27 화면 안 AI 버튼 · 12/2 내 루프 연결 · 12/3 점검과 데모.</figcaption></figure>'''
 
 EXTRA='''
 .lc{margin-top:6px}
@@ -243,14 +243,14 @@ body='''
 <div class="row"><span class="k">월 11/23 · 오늘</span><span class="w"><b>개념의 날 · 내 루프 그림</b><small>AI 에이전트, 내 루프, 루프 엔지니어링을 배우고 loop.html에 그려요</small></span></div>
 <div class="row"><span class="k">화 11/24</span><span class="w"><b>① 모으기 · ② 찾기 첫 판</b><small>모으기 스킬과 "이번 주 바뀐 것" 한 장</small></span></div>
 <div class="row"><span class="k">수 11/25</span><span class="w"><b>③ 만들기 · 선택의 날</b><small>광고 이미지 1장 또는 15초 영상 1개</small></span></div>
-<div class="row"><span class="k">목 11/26</span><span class="w"><b>설계서(spec.md)</b><small>오늘의 유저 스토리·병목·루프가 설계서의 재료예요</small></span></div>
-<div class="row"><span class="k">금 11/27</span><span class="w"><b>③ 만들기 · 화면 안 AI</b></span></div>
+<div class="row"><span class="k">목 11/26</span><span class="w"><b>③ 만들기 · 화면 안 AI 버튼</b><small>오전에 설계서(누구·무엇·성공 기준)를 짧게 쓰고 내 화면에 AI 버튼을 만들어요. 오늘의 유저 스토리·통과 기준이 재료예요</small></span></div>
+<div class="row"><span class="k">금 11/27</span><span class="w"><b>③ 만들기 · AI 버튼 다듬기</b><small>조원이 써 본 반응으로 고치고, 보내기 전 사람 확인을 더해요</small></span></div>
 <div class="row"><span class="k">월 11/30</span><span class="w"><b>④ 내보내기</b><small>올리기·보내기, 팀 공유 저장(구글 시트가 기본, Supabase라는 데이터베이스 서비스는 심화). "이번 주 모아줘" 한 번 더(두 번째 날짜가 생겨 바뀐 것이 보여요)</small></span></div>
 <div class="row"><span class="k">화 12/1</span><span class="w"><b>⑤ 재기 · ② 찾기</b><small>1주 동안 쌓인 기록으로 무엇이 먹혔나</small></span></div>
 <div class="row"><span class="k">수 12/2</span><span class="w"><b>내 루프 연결</b><small>각자 내 루프 한 바퀴, 내 AI 팀 키트 정리</small></span></div>
-<div class="row"><span class="k">목 12/3</span><span class="w"><b>점검과 데모</b></span></div>
+<div class="row"><span class="k">목 12/3</span><span class="w"><b>점검과 데모</b><small>28명 모두 반 전체 앞에서 3분 데모, 포트폴리오 한 장</small></span></div>
 </div>
-<p class="sub" style="margin-top:12px"><b>루프 점검표의 여섯 칸도 이 날들에 하나씩 올라가요</b> · 재료·기록 11/24 · 일 11/25·11/27 · 검사·멈춤 11/26(12/2에 한 번 더) · 기록(팀 공유) 11/30 · 되먹임 12/1 · 방아쇠 12/2(11/24 오후 예약 카드 A를 하면 그날 ✓) · 다시 점검 12/3</p>
+<p class="sub" style="margin-top:12px"><b>루프 점검표의 여섯 칸도 이 날들에 하나씩 올라가요</b> · 재료·기록 11/24 · 일 11/25~27 · 검사·멈춤 11/26 설계서의 통과 기준(12/2에 한 번 더) · 기록(팀 공유) 11/30 · 되먹임 12/1 · 방아쇠 12/2(11/24 오후 예약 카드 A를 하면 그날 ✓) · 다시 점검 12/3</p>
 <div class="two">
 <div><h4>조사형 MVP라면 (예: 콘텐츠 마케터)</h4><ol><li>① 경쟁사 광고·가격 모으기</li><li>② 바뀐 것·먹힌 것 찾기</li><li>③ 카피·이미지·영상 만들기</li><li>④ 올리기·공유</li><li>⑤ 성과(전환율, 매출) 재기</li></ol></div>
 <div><h4>운영형 MVP라면 (예: 운영 매니저)</h4><ol><li>① 입실·문의 기록 모으기</li><li>② 위험 신호 찾기</li><li>③ 안내문·답변 초안</li><li>④ 알림 보내기</li><li>⑤ 처리 시간·확인률 재기</li></ol></div>
