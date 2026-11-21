@@ -127,7 +127,7 @@ def build_page(title,body,defaults,prefix,extra_css='',extra_js=''):
 def write_page(out,default_path):
     dest=sys.argv[1] if len(sys.argv)>1 else default_path
     open(dest,'w',encoding='utf-8').write(out)
-    print('written',dest,len(out),'boxes',out.count('class="copy"'))
+    print('written',dest,len(out),'boxes',len(re.findall(r'class="copy[ "]',out)),'clipped',out.count('class="copy clip"'))
 
 # 쪽 번호(11/21 강사 지시 "페이지 넘버 나오게끔, 몇 페이지 헷갈려"): 섹션마다 차례로 "N/총쪽"을 머리 칩·위 메뉴·오늘 순서 줄에 붙인다.
 PAGE_CSS='''
@@ -213,3 +213,140 @@ def bn20_rows():
             out.append('<li><span class="cell">%s</span><b>%d. %s</b><small>AI 신입에게 맡길 첫 일 · %s</small></li>' % (cell, n, sym, task))
         out.append('</ol>')
     return '\n'.join(out)
+
+# ── 형광펜과 접기 (11/21 강사 지시 "중요 강조점. 형광펜 쳐줘. 그리고 너무 많은 내용 접어")
+# 쓰는 법(빌더 끝): body=finish(number_pages(expand_mvp_html(body)), FOLDS, HL)  /  extra_css에 FOLD_CSS, extra_js=FOLD_JS
+#  - 형광펜(HL): 쪽마다 꼭 기억할 문장 1~3개. 본문(상자 밖)에서 정확히 한 번 나오는 글자만 칠한다.
+#  - 접기(FOLDS): 지금 할 일·상자 제목과 설명·내 결정·입력 칸은 펴 두고, 예시·자세한 설명·고르는 카드·선택 활동을 접는다.
+#  - 긴 상자: 앞 몇 줄만 보이고 "상자 글 전체 보기"로 편다. 복사는 전체 글 그대로(innerText는 잘린 글도 읽는다).
+FOLD_CSS = '''
+:root{--hl:#ffe45c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--hl:rgba(255,214,10,.34)}}
+:root[data-theme="dark"]{--hl:rgba(255,214,10,.34)}
+mark.hl{background:linear-gradient(transparent 36%,var(--hl) 36%);color:inherit;padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+details.fold>.body,details.more>.body{color:var(--ink)}
+details.fold>.body>*:first-child,details.more>.body>*:first-child{margin-top:0}
+.card details.more{margin:12px 0 4px}
+.copy.clip pre{max-height:11.5em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 62%,transparent);mask-image:linear-gradient(#000 62%,transparent)}
+.copy pre[id]{scroll-margin-top:150px}
+.peek{display:block;margin:-4px 0 20px auto;background:none;border:0;color:var(--blue);font:inherit;font-weight:800;font-size:17px;cursor:pointer;padding:8px 4px}
+'''
+FOLD_JS = '''<script>
+(function(){
+  function openTo(id){var e=document.getElementById(id);for(var p=e;p;p=p.parentElement){if(p.tagName==='DETAILS')p.open=true}}
+  function fromHash(){var h=location.hash.slice(1);if(h){try{openTo(decodeURIComponent(h))}catch(e){}}}
+  document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(a){try{openTo(decodeURIComponent(a.getAttribute('href').slice(1)))}catch(e){}}},true);
+  window.addEventListener('hashchange',fromHash);fromHash();
+  [].forEach.call(document.querySelectorAll('.peek'),function(b){b.addEventListener('click',function(){
+    var c=b.previousElementSibling,on=c.classList.toggle('clip');b.textContent=on?'상자 글 전체 보기':'상자 글 접기';b.setAttribute('aria-expanded',on?'false':'true')})});
+})();
+</script>'''
+
+_VOID = {'br', 'img', 'input', 'hr', 'meta', 'link', 'source', 'wbr'}
+
+def _end_of(h, i):
+    """h[i]이 '<tag'인 요소의 끝(닫는 태그 다음 자리)을 돌려준다. 같은 이름 태그의 겹침을 센다."""
+    m = re.match(r'<([a-zA-Z][a-zA-Z0-9]*)', h[i:])
+    name = m.group(1).lower()
+    gt = h.index('>', i)
+    if name in _VOID or h[gt - 1] == '/':
+        return gt + 1
+    depth, k = 1, gt + 1
+    pat = re.compile(r'<(/?)%s\b[^>]*>' % name, re.I)
+    while depth:
+        mm = pat.search(h, k)
+        if not mm:
+            raise ValueError('닫는 태그 없음: ' + name)
+        depth += -1 if mm.group(1) else 1
+        k = mm.end()
+    return k
+
+def _children(h, start, end):
+    """h[start:end] 안의 바로 아래 자식 요소들 [(시작, 끝, 태그)]"""
+    out, k = [], start
+    while True:
+        j = h.find('<', k, end)
+        if j < 0:
+            break
+        if h.startswith('</', j):
+            raise ValueError('뜻밖의 닫는 태그: ' + h[j:j + 30])
+        e = _end_of(h, j)
+        out.append((j, e, re.match(r'<([a-zA-Z0-9]+)', h[j:]).group(1).lower()))
+        k = e
+    return out
+
+def _protected(h):
+    """상자(pre)·그림(svg)·스크립트·스타일 자리"""
+    return [(m.start(), m.end()) for m in re.finditer(r'<(pre|svg|script|style)\b.*?</\1>', h, flags=re.S)]
+
+def _find_text(h, text):
+    """태그 밖·보호 자리 밖에서 text가 정확히 한 번 나오는 자리"""
+    prot = _protected(h)
+    hits = []
+    for m in re.finditer(re.escape(text), h):
+        s = m.start()
+        if any(a <= s < b for a, b in prot):
+            continue
+        lt, gt = h.rfind('<', 0, s), h.rfind('>', 0, s)
+        if lt > gt:
+            continue   # 태그 안
+        hits.append(s)
+    if len(hits) != 1:
+        raise ValueError('"%s" 가 본문에 %d번' % (text[:40], len(hits)))
+    return hits[0]
+
+def _card(h, locator):
+    """locator 글자를 품은 가장 안쪽 카드(div class="card…")의 (시작, 여는 태그 끝, 닫는 태그 시작, 끝)"""
+    pos = _find_text(h, locator)
+    k = pos
+    while True:
+        s = h.rfind('<div class="card', 0, k)
+        if s < 0:
+            raise ValueError('카드 없음: ' + locator[:40])
+        e = _end_of(h, s)
+        if e > pos:
+            return s, h.index('>', s) + 1, h.rindex('</div>', s, e), e
+        k = s
+
+def _wrap(inner, summary, cls, ident=''):
+    return '<details class="%s"%s><summary>%s</summary><div class="body">%s</div></details>' % (cls, (' id="%s"' % ident) if ident else '', summary, inner)
+
+def fold_range(h, locator, i, j, summary):
+    """locator가 든 카드의 자식 i~j번(0부터, 둘 다 포함)을 접는 칸 하나로"""
+    s, o, c, e = _card(h, locator)
+    kids = _children(h, o, c)
+    j = len(kids) - 1 if j is None else j
+    if not (0 <= i <= j < len(kids)):
+        raise ValueError('자식 번호 밖: %s %d~%d / %d' % (locator[:30], i, j, len(kids)))
+    a, b = kids[i][0], kids[j][1]
+    return h[:a] + _wrap(h[a:b], summary, 'more') + h[b:]
+
+def fold_whole(h, locator, summary):
+    """locator가 든 카드 전체를 접는 칸으로(첫 h3는 접는 칸의 제목이 된다)"""
+    s, o, c, e = _card(h, locator)
+    tag = h[s:o]
+    ident = (re.search(r'\bid="([^"]+)"', tag) or [None, ''])[1]
+    kids = _children(h, o, c)
+    inner = ''.join(h[a:b] for a, b, t in kids if not (t == 'h3' and (a, b, t) == kids[0]) and not (t == 'h3' and kids[0][2] == 'span' and (a, b, t) == kids[1]))
+    return h[:s] + _wrap(inner, summary, 'fold', ident) + h[e:]
+
+def clip_boxes(h, min_chars=330):
+    """긴 복사 상자는 앞 몇 줄만 보이게. 학생이 고칠 ○○가 든 상자는 그대로 펴 둔다."""
+    def rep(m):
+        txt = re.sub(r'<[^>]+>', '', m.group(3))
+        if len(txt) < min_chars or '○○' in txt:
+            return m.group(0)
+        return m.group(1).replace('class="copy"', 'class="copy clip"', 1) + m.group(2) + m.group(3) + m.group(4) + '<button type="button" class="peek" aria-expanded="false">상자 글 전체 보기</button>'
+    return re.sub(r'(<button class="copy"[^>]*>)(.*?<pre id="[^"]+">)(.*?)(</pre></button>)', rep, h, flags=re.S)
+
+def highlight(h, phrases):
+    for t in phrases:
+        p = _find_text(h, t)
+        h = h[:p] + '<mark class="hl">' + t + '</mark>' + h[p + len(t):]
+    return h
+
+def finish(h, folds=(), hl=()):
+    """folds: ('range', 찾을 글자, i, j, 제목) 또는 ('whole', 찾을 글자, 제목)"""
+    for f in folds:
+        h = fold_range(h, f[1], f[2], f[3], f[4]) if f[0] == 'range' else fold_whole(h, f[1], f[2])
+    return highlight(clip_boxes(h), hl)
