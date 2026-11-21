@@ -1033,11 +1033,15 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 
 **용어 사전:** DAYS 21을 "AI 기반 산업 리포트 자동 생성 · 병목 찾기와 그로스 루프 첫 고리"로, UPCOMING_FROM 21, "Day 21에 나오는 말" 단추. 새 말 6개(그로스 루프, 모으기 고리, GitHub Actions, RSS, 트래픽 주간, 따라잡기), Day 21 줄을 더한 말(퍼소나, 페인포인트, 5Why, 병목, 유저 스토리, 스킬, 서브에이전트, Claude in Chrome, 예약 작업, 인터랙티브 HTML 리포트, GitHub와 저장소, Clarity, AI 에이전트). 항목 166개, 쉬운 말 점검 통과. 발행하지 않음.
 
-**발행:** 11/21 메인 세션이 발행(강사 지시 "끝나면 화면 보여주고 발행해"). 가이드 https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS (Version 1, 비공개 — 강사님이 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 열어요). 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm (Version 17, 같은 링크, 166개).
+**발행:** 11/21 메인 세션이 발행(강사 지시 "끝나면 화면 보여주고 발행해"). 가이드 https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS (Version 1, 비공개 — 강사님이 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 열어요). 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm (Version 17, 같은 링크, 166개 → 11/21 Version 18, 161개, 아래 "용어 사전 11/21 수정").
 
 **강사 문서:** `classroom/instructor/day21-시연카드.md`(공식 결과물 대응 한 줄, 따라잡기 운영, 트래픽 주간 짝 돌리는 법, 시연 폴더, 외칠 시각, 걸리는 시간, 웹 단계 살피기, 전날 10분, 반 현황판 틀, 한마디), `day21-모의수업.md`(반의 모습, 예상 대화, 검토 표), `classroom/tests/day21-test-results.md`.
 
-**아직 강사 답이 없는 것 / 전날 확인:** 시연카드 "전날 10분"(Claude in Chrome 옆 창과 표 복사, GitHub 로그인·Actions·Workflow permissions 기본값, 학원 망에서 구글 뉴스 RSS·유튜브 RSS·"웹에 게시" 시트 CSV, 아티팩트 Share 단추, Netlify Drop 비로그인 보존 시간) / Claude가 정한 운영 기본값(16:30 A·B·C 고르는 기준, 트래픽 주간 하루 한 사람 순서, 숙제 상자 17:20) / 용어 사전 DAYS 19·20 이름이 실제 진행(11/19 MVP 수정안 발표, 11/20 디벨롭)과 다름 / 7-30까지의 목록.
+**아직 강사 답이 없는 것 / 전날 확인:** 시연카드 "전날 10분"(Claude in Chrome 옆 창과 표 복사, GitHub 로그인·Actions·Workflow permissions 기본값, 학원 망에서 구글 뉴스 RSS·유튜브 RSS·"웹에 게시" 시트 CSV, 아티팩트 Share 단추, Netlify Drop 비로그인 보존 시간) / 트래픽 주간 방식(강사님이 뜻을 다시 물어 쉬운 설명을 드림. 답이 오기 전까지 가이드의 "하루 한 사람" 그대로) / 7-30까지의 목록.
+
+**강사 답(11/21, 클릭):** 16:30 A 고르는 기준 = 기본값 그대로("P6까지 끝냈고 MVP v2 이상") / 숙제 상자 17:20 = 기본값 그대로 / 트래픽 주간 = "무슨 말인지 몰라, 다시 설명해" → 설명함(가이드는 3인 조 1→2→3→1, 2인 조 서로. "조원 둘 다 20분"으로 바꾸라는 답이 오면 가이드·시연카드를 고치고 그 부분 시험을 다시 해서 같은 링크로 다시 발행) / 용어 사전 Day 19·20 이름 = 실제 진행으로 바꿈.
+
+**용어 사전 11/21 수정(Version 18, 같은 링크, 161개):** DAYS 19 "MVP(Minimum Viable Product) 수정안 발표", 20 "MVP(Minimum Viable Product) 수정안 디벨롭 · 유저 스토리, 병목, 그로스 루프". 11/19 리포트 가이드에서 온 말 5개(근거 표, 숫자 출처 번호, 확인 상태, 출처의 무게, 팀장 지적)와 다른 항목의 "Day 19 가이드" 줄 6개(공공데이터포털과 KOSIS, 출처 기록, 공시와 IR, CLAUDE.md, [채울 곳], "못 찾음")는 지우지 않고 `classroom/tools/build_glossary_day19_report_archive.py`(출력 glossary_day19_report_archive.html, 166개)에 보관. 산업 리포트는 Day 21 일정표 이름 줄만 남김. 7-31의 11/20 수업 맥락으로 "Day 20 수업(11/20)" 줄을 더함(유저 스토리, 퍼소나, 페인포인트, 5Why, 병목, 그로스 루프 — 강사님 예시는 Day 21 줄에서 옮김. MVP에는 Day 19 수정안 발표 줄도). 쉬운 말 점검 통과, 브라우저에서 Day 19 1개·Day 20 7개 보임, 페이지 오류 0. `classroom/standards/easy-words.md`의 리포트 말 5줄(근거 표 등)은 그대로 둠.
 
 **다음 작업:** Day 22(11/24 화) 자료 — 루프 ③ 만들기 첫날(공식 모듈 "이미지·브랜드 비주얼"). 7-31 계획 조정대로 입력은 11/23에 모은 것(research.csv 또는 records.csv, weekly.html, loop.html)으로 고정하고 카피 → 이미지, 출력은 직무별. 09:00 트래픽 주간 2일차, 11/24 숙제(외부 배포 + Clarity) 확인. 7-31 자료 제작 순서의 ③ Remotion 사전 리허설·오류표(11/23)와 ⑤ "내 AI 팀 키트" 체크리스트 초안(11/24)도 남아 있어요. 강사 명령 전에는 만들지 않아요.
 
