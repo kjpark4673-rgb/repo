@@ -1111,7 +1111,7 @@ prototype.html이 없으면 네가 먼저 만들고 이어서 해줘. 되묻지 
 
 **시험(5차, `classroom/tests/day21-test-results.md`):** 가상 학생 셋(상위·중위·따라잡기) 오전 사슬 21회, 2.54달러. 세 사람 모두 스토리마다 통과 기준, 원인 갈래와 고른 갈래 표시, 5Why 근거 없는 줄 (가정), P3-0 "검사·멈춤"(7·5·6/12), loop.html에 "그로스 루프" 0번·"내 루프" 들어감, CLAUDE.md 규칙 제목 "(11/23 내 루프)", 폰 폭 390px 통과. 중위가 원인 갈래를 4개 씀(2~3보다 하나 많음, 그대로 둠).
 
-**발행:** 가이드 https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS Version 3(아직 비공개 — 강사님이 Share에서 "링크가 있는 사람"으로), 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm Version 20(166개, 링크가 있는 사람). 상자 46개, check_guide 390·1280 통과, 쉬운 말 점검 통과.
+**발행:** 가이드 https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS Version 4(11/21 밤 정정: P1 통과 기준 문장 "늘" → "보통". 그 전은 Version 3, 아직 비공개 — 강사님이 Share에서 "링크가 있는 사람"으로), 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm Version 21(166개, 같은 정정, 링크가 있는 사람). 상자 46개, check_guide 390·1280 통과, 쉬운 말 점검 통과.
 
 **다음 작업:** Day 22(11/24) — 내 루프 ③ 만들기, 점검표의 "일" 칸. 11/26 자료 후보: 평가 세트(정답 아는 예시 5개로 매번 시험), 통과 기준 → spec.md. 12/1 자료 후보: 조원 방문(트래픽 주간)과 진짜 방문을 나눠 보기. 강사 명령 전에는 만들지 않아요.
 
