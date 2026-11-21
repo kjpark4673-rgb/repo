@@ -162,7 +162,8 @@ F={'f1':'방금 하던 일을 이어서 끝까지 해줘. 이미 만든 파일�
 'f14':'방금 고친 파일 목록을 보여줘. 이 폴더 밖의 파일을 고쳤으면 원래대로 되돌려줘.'}
 
 def what(happens, mins, look):
-    return '<p class="sub"><b>붙여 넣으면</b> %s <b>걸리는 시간</b> %s. <b>끝나면 볼 것:</b> %s</p>'%(happens,mins,look)
+    # 세 줄로 나눠 보이기(11/21 강사 지시 "다닥다닥 붙어 있지 않게")
+    return '<div class="what"><p><b>붙여 넣으면</b> %s</p><p><b>걸리는 시간</b> %s</p><p><b>끝나면 볼 것</b> %s</p></div>'%(happens,mins,look)
 
 # 2주 지도: 루프 다섯 칸(인라인 SVG, 폰 폭에서 viewBox로 줄어들고 어두운 화면은 CSS 변수로). 날짜는 11/21 밤 강사 결정으로 하루씩 밀림
 LOOP_SVG='''<figure class="agentfig loopfig"><svg viewBox="0 0 340 300" role="img" aria-label="내 루프 다섯 칸: 모으기, 찾기, 만들기, 내보내기, 재기, 다시 모으기">
@@ -202,7 +203,8 @@ body='''
 <section id="s0">
 <span class="eyebrow">Day 22 / 52 · 11/24(화)</span>
 <h1>Day 22 · 첫 고리 만들기</h1>
-<p class="lead">어제 그린 내 루프의 첫 고리, 곧 다섯 칸 가운데 첫 칸 "① 모으기"를 오늘 실제로 만들어요. 모으는 순서를 스킬로 적어 두면 다음 주부터는 "이번 주 모아줘" 한 줄로 다시 돌아요. 모은 자료로 "이번 주 바뀐 것" 한 장(weekly.html)을 만들고, 끝나면 루프 점검표의 ✓가 늘었는지 다시 봐요. 파란 상자를 붙여 넣으면 Claude가 만들고, 여러분은 읽고 정해요.</p>
+<p class="lead">어제 그린 내 루프의 첫 고리, 곧 다섯 칸 가운데 첫 칸 "① 모으기"를 오늘 실제로 만들어요. 모으는 순서를 스킬로 적어 두면 다음 주부터는 "이번 주 모아줘" 한 줄로 다시 돌아요.</p>
+<p class="lead">모은 자료로 "이번 주 바뀐 것" 한 장(weekly.html)을 만들고, 끝나면 루프 점검표에서 올라간 칸을 다시 봐요. 파란 상자를 붙여 넣으면 Claude가 만들고, 여러분은 읽고 정해요.</p>
 <div class="card soft"><p><b>지금 할 일</b> · 아래 카드를 훑어보고 <a href="#s1">준비</a>로 가서 P0을 보내요. 어제 쓰던 폴더면 입력 칸은 비워 둬도 돼요.</p><ul><li><b>오늘의 작은 성공:</b> 이번 주 자료와 "바뀐 것" 한 장(P5·P6). 꼭 하는 것만 해도 이것이 생겨요.</li><li><b>어제 못 왔어도 괜찮아요.</b> 이 순서로 가요: P0(지난주부터 쓰던 작업 폴더에서) → P0이 "MVP 없음"이라고 할 때만 따라잡기 → 09:30부터 같이 → 14:00 숙제와 B 카드(어제 loop.html 채우기) → 16:30 P7. P5·P6는 어제 파일 없이도 돌아요.</li><li><b>상자 번호는 어제부터 이어져요.</b> P1~P4는 어제(11/23) 상자라 오늘은 보내지 않아요(상자 안 날짜가 11/23이에요). 오늘은 P0, P5, P6, P7이에요.</li><li><b>MVP가 아직 없으면</b> P0이 "따라잡기부터 해요"라고 해요. 반의 우수 사례를 복사해 내 회사로 바꿔 시작해요.</li></ul></div>
 
 <div class="card"><h3>내 취업에 이렇게 도움이 돼요</h3>
@@ -473,7 +475,7 @@ body='''
 <button class="theme" id="themeBtn" type="button">다크 모드</button>
 <div class="toast" id="toast" role="status" aria-live="polite">복사됐어요</div>
 '''
-body=expand_mvp_html(body)
+body=number_pages(expand_mvp_html(body))
 out=build_page('Day 22 · 첫 고리 만들기',body,
-  {'role':'적지 않음','brand':'적지 않음','product':'적지 않음','customer':'적지 않음','kind':'네가 정해줘','data':'적지 않음','clarity':'적지 않음'},'l22-',extra_css=EXTRA)
+  {'role':'적지 않음','brand':'적지 않음','product':'적지 않음','customer':'적지 않음','kind':'네가 정해줘','data':'적지 않음','clarity':'적지 않음'},'l22-',extra_css=EXTRA+PAGE_CSS)
 write_page(out,PATH)

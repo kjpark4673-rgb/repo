@@ -128,3 +128,32 @@ def write_page(out,default_path):
     dest=sys.argv[1] if len(sys.argv)>1 else default_path
     open(dest,'w',encoding='utf-8').write(out)
     print('written',dest,len(out),'boxes',out.count('class="copy"'))
+
+# 쪽 번호(11/21 강사 지시 "페이지 넘버 나오게끔, 몇 페이지 헷갈려"): 섹션마다 차례로 "N/총쪽"을 머리 칩·위 메뉴·오늘 순서 줄에 붙인다.
+PAGE_CSS='''
+.pg{display:inline-block;background:var(--ink);color:var(--bg);border-radius:8px;padding:1px 10px;margin-right:10px;font-size:16px;font-weight:800;vertical-align:1px}
+nav a .pgn{font-weight:800;margin-right:6px;opacity:.8}
+.pgtag{display:inline-block;font-size:15px;font-weight:800;color:var(--blue);background:var(--blue-soft);border-radius:8px;padding:0 8px;margin-left:8px;vertical-align:2px;white-space:nowrap}
+.what{color:var(--sub);font-size:19px;line-height:1.6;margin:18px 0 10px}
+.what p{margin:4px 0}
+.what b{color:var(--ink)}
+.card li{margin:10px 0}
+.card p + p,.card p + ul,.card p + ol,.card ul + p,.card ol + p{margin-top:14px}
+.sub{line-height:1.75}
+'''
+def number_pages(body):
+    """<section id> 순서대로 쪽 번호를 매기고, 머리 칩·메뉴·오늘 순서 줄에 표시한다. 상자(pre) 글은 건드리지 않는다."""
+    pos=[(m.start(),m.group(1)) for m in re.finditer(r'<section id="([^"]+)">',body)]
+    total=len(pos); page={sid:i+1 for i,(p,sid) in enumerate(pos)}
+    owner={}
+    for m in re.finditer(r'\bid="([^"]+)"',body):
+        cur=None
+        for p,sid in pos:
+            if p<=m.start(): cur=sid
+        if cur: owner[m.group(1)]=page[cur]
+    body=re.sub(r'(<section id="([^"]+)">\s*<span class="eyebrow">)',lambda m:m.group(1)+'<span class="pg">%d/%d쪽</span>'%(page[m.group(2)],total),body)
+    nav=re.search(r'<nav id="nav".*?</nav>',body,flags=re.S).group(0)
+    nav2=re.sub(r'<a href="#([^"]+)">([^<]+)</a>',lambda m:('<a href="#%s"><b class="pgn">%d</b>%s</a>'%(m.group(1),page[m.group(1)],m.group(2)) if m.group(1) in page else m.group(0)),nav)
+    body=body.replace(nav,nav2,1)
+    body=re.sub(r'(<a class="row" href="#([^"]+)"><span class="t">[^<]*</span><span class="w"><b>)(.*?)(</b>)',lambda m:m.group(1)+m.group(3)+('<span class="pgtag">%d쪽</span>'%owner[m.group(2)] if m.group(2) in owner else '')+m.group(4),body)
+    return body

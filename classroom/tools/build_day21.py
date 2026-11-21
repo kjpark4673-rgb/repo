@@ -136,7 +136,8 @@ F={'f1':'방금 하던 일을 이어서 끝까지 해줘. 이미 만든 파일�
 'f14':'방금 고친 파일 목록을 보여줘. 이 폴더 밖의 파일을 고쳤으면 원래대로 되돌려줘.'}
 
 def what(happens, mins, look):
-    return '<p class="sub"><b>붙여 넣으면</b> %s <b>걸리는 시간</b> %s. <b>끝나면 볼 것:</b> %s</p>'%(happens,mins,look)
+    # 세 줄로 나눠 보이기(11/21 강사 지시 "다닥다닥 붙어 있지 않게")
+    return '<div class="what"><p><b>붙여 넣으면</b> %s</p><p><b>걸리는 시간</b> %s</p><p><b>끝나면 볼 것</b> %s</p></div>'%(happens,mins,look)
 
 def quiz(title, qs, answers, close):
     """퀴즈 카드: 문제는 번호 목록, 정답은 펴 보기(점수 없음). close는 정답 아래 격려 한 줄."""
@@ -220,7 +221,8 @@ body='''
 <section id="s0">
 <span class="eyebrow">Day 21 / 52 · 11/23(월)</span>
 <h1>Day 21 · AI 에이전트와 내 루프</h1>
-<p class="lead">오늘은 만들기보다 이해하는 날이에요. 오전에는 AI 에이전트, 내 루프, 루프 엔지니어링을 회사 신입 사원에 빗대어 쉽게 배우고 퀴즈로 확인해요. 오후에는 배운 것을 내 MVP에 대어 보며 한 장짜리 설계도 loop.html에 "내 루프 그림"을 그리고, 이미 되고 있는 칸에 ✓를 표시해요. 내일은 이 그림의 첫 칸을 실제로 만들어요.</p>
+<p class="lead">오늘은 만들기보다 이해하는 날이에요. 오전에는 AI 에이전트, 내 루프, 루프 엔지니어링을 회사 신입 사원에 빗대어 쉽게 배우고 퀴즈로 확인해요.</p>
+<p class="lead">오후에는 배운 것을 내 MVP에 대어 보며 한 장짜리 설계도 loop.html에 "내 루프 그림"을 그리고, 이미 되고 있는 칸에 ✓를 표시해요. 내일은 이 그림의 첫 칸을 실제로 만들어요.</p>
 <div class="card soft"><p><b>지금 할 일</b> · <a href="#s1">준비</a>로 가서 P0을 보내요. 지난주에 쓰던 폴더면 입력 칸은 비워 둬도 돼요.</p><ul><li><b>오늘의 작은 성공:</b> 내 루프 그림 한 장(오후 P1 → P3 → P4). 꼭 하는 것만 해도 이것이 생겨요.</li><li><b>오전은 듣고 생각하는 시간이에요.</b> 퀴즈는 점수를 매기지 않아요. 틀려도 "정답 보기"를 펴서 읽으면 충분해요.</li><li><b>MVP가 아직 없어도 괜찮아요.</b> P0이 "따라잡기부터 해요"라고 하면 반의 우수 사례를 복사해 내 회사로 바꿔 시작해요.</li></ul></div>
 
 <div class="card"><h3>오늘 배우는 순서가 회사에서 업무 흐름을 설계하는 순서예요</h3>
@@ -599,7 +601,7 @@ body='''
 <button class="theme" id="themeBtn" type="button">다크 모드</button>
 <div class="toast" id="toast" role="status" aria-live="polite">복사됐어요</div>
 '''
-body=expand_mvp_html(body)
+body=number_pages(expand_mvp_html(body))
 out=build_page('Day 21 · AI 에이전트와 내 루프',body,
-  {'role':'적지 않음','brand':'적지 않음','product':'적지 않음','customer':'적지 않음','kind':'네가 정해줘','clarity':'적지 않음'},'l21-',extra_css=EXTRA)
+  {'role':'적지 않음','brand':'적지 않음','product':'적지 않음','customer':'적지 않음','kind':'네가 정해줘','clarity':'적지 않음'},'l21-',extra_css=EXTRA+PAGE_CSS)
 write_page(out,PATH)
