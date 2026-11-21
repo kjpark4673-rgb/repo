@@ -145,6 +145,12 @@ WPUB='weekly.html을 아티팩트로 발행하고 링크를 알려줘. 이번 �
 FOLD='이 작업 폴더를 파일 탐색기(맥은 Finder)로 열어줘.'
 # 11/21 강사 지시 "폴더 저장·불러오기 헷갈리는 것 적게": 만든 화면 보기는 이 상자 하나로(폴더 열고 더블클릭하던 두 단계를 하나로)
 SHOW='방금 만들거나 고친 화면(.html 파일)을 내 컴퓨터의 기본 브라우저로 열어줘. 열기만 하고 파일은 고치지 마. 내용을 채팅에 옮겨 적지 말고, 연 파일 이름만 한 줄로 알려줘. 브라우저가 안 열리면 다른 방법을 찾지 말고, 작업 폴더에서 그 파일을 더블클릭하면 열린다고만 알려줘.'
+# 11/21 강사 지시 "업무 직무마다 병목 증상 20가지 추려서 추가해": 어제 못 온 학생이 B 상자 앞에서 보는 접힌 칸(목록은 guide_common.BN20)
+BN_CARD = ('<details id="bn20"><summary>병목이 떠오르지 않으면 · 직무별 병목 증상 20가지</summary><div class="body">'
+    '<p class="sub">병원 증상표처럼 봐요. 내 직무에서 "나도 이래요" 하는 줄을 고르고, 그 일이 일주일에 몇 번 × 한 번에 몇 분인지 어림해요. 시간이 가장 큰 줄이 내 병목 후보예요.</p>'
+    + BN20_DECODER + bn20_rows() +
+    '<p class="sub">B 상자가 고른 병목이 내 일과 다르면, B 상자 다음에 한 줄 보내요(어제 가이드의 "내 결정 1"과 같은 방식). 예: "병목은 ○○로 할게. 이유는 일주일에 ○번 × ○분이라서. loop.html에서 병목이 적힌 곳(루프 설계도의 병목 표시 포함)을 모두 이것으로 맞추고, decisions.md에 \"내가 정함\"으로 적어줘."</p>'
+    '</div></details>\n')
 R={'r1':'되묻지 말고 네가 가정해서 끝까지 만들어줘. 가정한 곳만 (가정)이라고 표시해줘.',
 'r2':'너무 길어. 3줄로만 다시 말해줘.',
 'r4':'방금 답을 쉬운 말로 다시 설명해줘. 회사 일에 견줘서 세 줄로, 그리고 내가 다음에 할 일 한 줄.',
@@ -403,7 +409,7 @@ body='''
 <ol class="steps"><li>actions_guide.md의 순서대로 GitHub에 <b>Private 저장소</b>(나만 보는 저장소)를 만들고 작업 폴더의 파일을 올려요. git이 낯설면 actions_guide.md에 적힌 저장소 화면의 Add file로 올리는 길을 따라요. 개인정보가 든 파일은 올리지 않아요.</li><li>저장소의 <b>Actions</b> 탭 → 왼쪽 <b>weekly-collect</b> → 오른쪽 <b>Run workflow</b>(손으로 한 번 돌리는 버튼)를 눌러 첫 실행을 해요. run_log.md에는 "수동(GitHub Actions 버튼)"으로 남아요.</li><li>초록 체크가 뜨면 research.csv(또는 records.csv)와 run_log.md에 새 줄이 생겼는지 봐요. 빨간 X면 <a href="#m8">막히면 8번</a>.</li><li>이제 모으기는 GitHub이 매주 해요. 내 컴퓨터에서 "이번 주 모아줘"는 다시 돌리지 않아요(표가 두 갈래로 갈라져요). GitHub이 모은 표를 내 컴퓨터로 가져오는 일은 11/30 가이드의 상자 하나로 해요.</li><li>맥 Finder에서 .github 폴더가 안 보이면 Cmd+Shift+.(마침표)를 눌러요. 숨은 폴더가 보여요.</li><li>A가 끝나면 16:30 P7로 가요.</li></ol></div>
 <div class="card path"><span class="pill">B · 어제 것 채우기</span><h3>어제 못 왔거나 loop.html이 비어 있으면</h3><p>어제(11/23)는 개념을 배우고 loop.html에 내 루프 그림을 그린 날이에요. 아래 상자를 보내면 loop.html의 빈 부분(유저 스토리, 병목, 루프 설계도, 2주 진행표)만 채워요. 이미 쓴 부분은 그대로예요. 다 되면 loop.html을 열어 유저 스토리를 소리 내 읽어 보고, 내 일과 다른 곳을 한 줄로 고치게 해요. <b>끝나면 보이는 것:</b> 채운 부분 표 · 약 2~5분</p>
 <p class="sub">어제 배운 개념(AI 에이전트, 내 루프, 루프 엔지니어링)은 위 "어제 배운 것 세 줄"과 강사님이 올린 어제 가이드에서 읽어요. B 상자가 끝나면 16:30 P7 ✓ 다시 보기로 오늘 내 루프의 ✓를 처음 봐요.</p>
-'''+box('low','B · 어제 loop.html의 빈 부분 채우기',PR['low'])+'''</div>
+'''+BN_CARD+box('low','B · 어제 loop.html의 빈 부분 채우기',PR['low'])+'''</div>
 <div class="card path"><span class="pill">C · 테크 트랙 · 교실 AX팀</span><h3>다른 조의 예약·저장·배포를 돕고, 내 루프도 한 칸</h3><p>테크 트랙 8명은 교실 안의 AX팀이에요. 먼저 A로 내 예약을 만들고, 손 든 조를 돌며 아래 순서로 봐요. 고치는 손은 그 조 학생이 직접 써요(남의 노트북에서 내 계정으로 로그인하지 않아요).</p>
 <ol class="steps"><li><b>파일 자리</b> · scripts/collect.py, .github/workflows/weekly-collect.yml, research.csv(또는 records.csv)가 저장소 맨 위 기준 같은 자리에 있나</li><li><b>cron</b> · "30 23 * * 0"인가(UTC). 한국 시간으로 적었으면 9시간 어긋나요</li><li><b>권한</b> · 푸시가 403으로 막히면 Settings → Actions → General → Workflow permissions가 "Read and write"인가</li><li><b>출처</b> · 로그에 "못 가져옴"만 있으면 그 주소가 로그인 없이 열리는 RSS·CSV인가</li><li><b>개인정보</b> · 올린 파일에 실제 이름·연락처·출결이 없나(가명만), 저장소가 Private인가</li><li><b>배포</b> · 숙제 상자를 보낸 사람의 deploy/index.html에 Clarity 코드(또는 자리)와 입력칸 가리기 표시가 있나</li></ol>
 <p class="sub">도운 조와 막힌 원인은 한 줄씩 적어 두었다가 16:40 자랑 때 말해요. 자주 나온 원인은 반 전체에 도움이 돼요.</p></div>
@@ -480,5 +486,5 @@ body='''
 '''
 body=number_pages(expand_mvp_html(body))
 out=build_page('Day 22 · 첫 고리 만들기',body,
-  {'role':'적지 않음','brand':'적지 않음','product':'적지 않음','customer':'적지 않음','kind':'네가 정해줘','data':'적지 않음','clarity':'적지 않음'},'l22-',extra_css=EXTRA+PAGE_CSS)
+  {'role':'적지 않음','brand':'적지 않음','product':'적지 않음','customer':'적지 않음','kind':'네가 정해줘','data':'적지 않음','clarity':'적지 않음'},'l22-',extra_css=EXTRA+PAGE_CSS+BN20_CSS)
 write_page(out,PATH)
