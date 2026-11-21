@@ -1,5 +1,5 @@
 # AX 수업 용어 사전 (Day 1~22) 빌더
-# 출처: 공식 일정표 "상세 커리큘럼_최종" 탭의 10/26~11/23 행, Day 14~19 수업 가이드의 용어 칸(11/24 행은 강사님이 확정한 날짜 이름만).
+# 출처: 공식 일정표 "상세 커리큘럼_최종" 탭의 10/26~11/23 행, Day 14~19·21 수업 가이드의 용어 칸(11/24 행은 강사님이 확정한 날짜 이름만).
 # "수업에서" 줄은 위 두 출처에 적힌 것만 옮긴다. 강사의 말로 꾸미지 않는다.
 import html, re
 
@@ -13,10 +13,10 @@ DAYS = {
  10:('11/6(금)','밸류체인'), 11:('11/9(월)','페인포인트'), 12:('11/10(화)','AX 이해'),
  13:('11/11(수)','AX 비즈니스 모델'), 14:('11/12(목)','서비스 시나리오와 스펙'), 15:('11/13(금)','시장 검증'),
  16:('11/16(월)','콘텐츠·서비스 제작 Ⅰ · 업무 간편화 MVP(Minimum Viable Product) 만들기'), 17:('11/17(화)','제작 Ⅱ · 사용자 테스트로 MVP(Minimum Viable Product) 고치기'), 18:('11/18(수)','피칭 데이 · 내 MVP(Minimum Viable Product) 3분 피칭'),
- 19:('11/19(목)','산업 리포트 ① 첫 판 · 지원 회사의 산업 리포트 만들기'), 20:('11/20(금)','산업 리포트 ② 화면형 리포트와 지원 자료'), 21:('11/23(월)','산업 리포트 자동 생성'),
+ 19:('11/19(목)','산업 리포트 ① 첫 판 · 지원 회사의 산업 리포트 만들기'), 20:('11/20(금)','산업 리포트 ② 화면형 리포트와 지원 자료'), 21:('11/23(월)','AI 기반 산업 리포트 자동 생성 · 병목 찾기와 그로스 루프 첫 고리'),
  22:('11/24(화)','이미지·브랜드 비주얼'),
 }
-UPCOMING_FROM = 17
+UPCOMING_FROM = 21
 
 CATS = [
  ('course','과정과 수업'), ('research','리서치와 자료'), ('customer','고객과 브랜드'), ('biz','사업과 기획'),
@@ -141,9 +141,9 @@ add('onepager','한 장 기획서(원페이지)','One-pager','research',[7,9],
     ['spec','mvpdoc'])
 
 # ── 고객과 브랜드
-add('persona','페르소나(퍼소나)','Persona','customer',[2,7,14],
+add('persona','페르소나(퍼소나)','Persona','customer',[2,7,14,21],
     '우리가 겨냥하는 사람을 실제 한 사람처럼 구체적으로 그린 인물이에요. 고객 페르소나는 고객을, 브랜드 페르소나는 브랜드를 한 사람처럼 그려요.',
-    '일정표 Day 7 · 브랜드 페르소나와 고객 페르소나. Day 14 가이드 · 퍼소나와 고객 여정 지도를 스킬로 만들어요. 가이드에서는 "퍼소나"라고 써요.',
+    '일정표 Day 7 · 브랜드 페르소나와 고객 페르소나. Day 14 가이드 · 퍼소나와 고객 여정 지도를 스킬로 만들어요. 가이드에서는 "퍼소나"라고 써요. Day 21 가이드 · 새로 만들지 않고 내 MVP를 쓰는 팀장·같은 팀 동료·부사수 세 사람에 적용해 유저 스토리를 써요.',
     ['segment','cjm','worldview'],
     '단골손님 일기장이에요. "25~34세 여성"이 아니라 "밤 10시 냉동실 앞에서 10분째 서성이는 29살"처럼 장면이 보여야 해요.')
 add('segment','고객 세그먼트','Customer segment','customer',[7,13],
@@ -184,10 +184,10 @@ add('churn','이탈','Drop-off','customer',[14],
     '고객이 여정 중간에 떠나는 것이에요. 사지 않거나, 다시 오지 않아요.',
     'Day 14 가이드 · 단계마다 손님이 내리려는 이유와, 그 이유를 붙잡는 훅 카피를 적어요.',
     ['cjm','hook'])
-add('painpoint','페인포인트','Pain point','customer',[11,16],
+add('painpoint','페인포인트','Pain point','customer',[11,16,21],
     '고객이나 일하는 사람이 불편하거나 짜증 나는 지점이에요. Day 16 가이드에서는 "불편"이라고 불러요.',
-    '일정표 Day 11 · 리뷰, 댓글 같은 VOC로 근거를 만들고 빈도, 강도, 해결 가능성으로 우선순위를 정해요. Day 16 가이드 · 오늘의 불편은 신입이 매일 손으로 하던 조사예요. 그 조사 하나를 AI 에이전트로 줄이는 첫 버전을 만들어요.',
-    ['voc','cjm','jtbd','mvp'])
+    '일정표 Day 11 · 리뷰, 댓글 같은 VOC로 근거를 만들고 빈도, 강도, 해결 가능성으로 우선순위를 정해요. Day 16 가이드 · 오늘의 불편은 신입이 매일 손으로 하던 조사예요. 그 조사 하나를 AI 에이전트로 줄이는 첫 버전을 만들어요. Day 21 가이드 · 유저 스토리의 "부족한 것"에서 페인포인트 3개를 뽑아 병목을 찾아요(P2).',
+    ['voc','cjm','jtbd','mvp','bottleneck'])
 add('voc','VOC','Voice of Customer','customer',[11],
     '고객의 목소리예요. 리뷰, 문의, 댓글처럼 고객이 직접 한 말이에요.',
     '일정표 Day 11 · VOC를 분류해서 페인포인트의 근거로 써요.',
@@ -201,10 +201,10 @@ add('jtbd','JTBD','Jobs To Be Done','customer',[11,12],
     '일정표 Day 12 · JTBD에서 출발해 AI를 쓸 기회를 찾아요.',
     ['painpoint','opportunitymatrix'],
     '드릴을 사는 사람은 드릴보다 벽에 난 구멍을 원해요.')
-add('fivewhys','5-Whys','Five Whys','customer',[14],
+add('fivewhys','5Why(5-Whys)','Five Whys','customer',[14,21],
     '"왜?"를 반복해서 겉으로 보이는 행동 밑의 진짜 이유까지 내려가는 방법이에요.',
-    'Day 14 가이드 · 퍼소나의 속마음 찾기.',
-    ['persona','hook'],
+    'Day 14 가이드 · 퍼소나의 속마음 찾기. Day 21 가이드 · 가장 큰 불편 하나에 "왜?"를 다섯 번 물어 근본 문제 한 문장까지 내려간 뒤 병목 1개를 골라요(P2).',
+    ['persona','hook','bottleneck'],
     '양파 껍질 벗기기예요. 마지막 답이 감정이면 성공이에요. 꼭 다섯 번일 필요는 없어요.')
 
 # ── 사업과 기획
@@ -213,10 +213,10 @@ add('valuechain','밸류체인','Value chain','biz',[10],
     '일정표 Day 10 · 팀별 밸류체인 맵. 크리에이티브 예: 로컬 IP → 콘텐츠 → 캠페인 → 뷰티 커머스 기획전 → 구매.',
     ['bottleneck','stakeholder','opportunitymatrix'],
     '빵 한 개가 밀밭에서 빵집 진열대까지 오는 길이에요. 길목마다 누가 무엇을 더했는지 봐요.')
-add('bottleneck','병목','Bottleneck','biz',[10],
-    '흐름이 막혀 전체 속도를 늦추는 한 지점이에요.',
-    '일정표 Day 10 · 밸류체인 단계별로 병목, 비용, 기회를 찾아요.',
-    ['valuechain'],
+add('bottleneck','병목','Bottleneck','biz',[10,21],
+    '흐름이 막혀 전체 속도를 늦추는 한 지점이에요. 현업에서는 "보틀넥"이라고도 불러요.',
+    '일정표 Day 10 · 밸류체인 단계별로 병목, 비용, 기회를 찾아요. Day 21 가이드 · 페인포인트 → 해 본 것 → 못 푼 것 → 5Why → 근본 문제 → 병목 1개(일주일에 몇 번·한 번에 몇 분, 어림은 가정) 순서로 찾고, 내 결정 1에서 하나를 골라 그로스 루프 설계도에 표시해요. AI 에이전트에게 맡기기 좋은 병목은 매주 반복되고, 규칙이 있고, 사람이 옮겨 적는 일이에요.',
+    ['valuechain','fivewhys','growthloop'],
     '병의 좁은 목처럼, 거기서 막히면 병이 아무리 커도 천천히 나와요.')
 add('stakeholder','이해관계자','Stakeholder','biz',[10],
     '그 일에 영향을 주거나 받는 사람과 조직이에요. 고객, 직원, 협력사, 지역 주민이 모두 해당할 수 있어요.',
@@ -255,10 +255,10 @@ add('scenario','서비스 시나리오(As-Is → To-Be)','Service scenario','biz
     '서비스를 쓰는 장면을 이야기처럼 적은 것이에요. As-Is는 지금의 모습, To-Be는 바뀐 뒤의 모습이에요.',
     '일정표 Day 14 · To-Be 시나리오, 유저 플로우, spec.md를 만들어요.',
     ['userstory','userflow','spec'])
-add('userstory','유저 스토리','User story','biz',[14],
-    '"(누구)로서 (무엇)을 하고 싶다. 왜냐하면 (이유)"처럼 사용자 입장에서 쓴 기능 한 줄이에요.',
-    '일정표 Day 14 · 서비스 시나리오와 함께 써요.',
-    ['scenario','spec'])
+add('userstory','유저 스토리','User story','biz',[14,21],
+    '"(누구)로서 (무엇)을 하고 싶다. 왜냐하면 (이유)"처럼 사용자 입장에서 쓴 기능 한 줄이에요. 그 사람이 화면을 쓰는 장면 하나를 그린 것은 유스케이스라고 해요.',
+    '일정표 Day 14 · 서비스 시나리오와 함께 써요. Day 21 가이드 · 내 MVP를 쓰는 팀장·같은 팀 동료·부사수 세 사람마다 하루 시나리오, 유저 스토리 한 문장, 가장 만족할 기능·화면, 부족한 것을 loop.html에 써요(P1). 기능 목록이 아니라 사람과 이유가 들어가야 해요.',
+    ['scenario','spec','persona','bottleneck'])
 add('userflow','유저 플로우','User flow','biz',[14],
     '사용자가 목적을 이루려고 화면을 어떤 순서로 지나가는지 그린 흐름이에요.',
     '일정표 Day 14 · 유저 플로우와 정보 구조(IA).',
@@ -499,10 +499,10 @@ add('hallucination','할루시네이션','Hallucination','ai',[2,15,16],
     'AI가 사실이 아닌 내용을 그럴듯하게 지어내는 것이에요. 없는 숫자, 없는 후기, 없는 출처를 만들어 낼 수 있어요.',
     '일정표 Day 2 · 출처와 할루시네이션 점검. Day 15 · AI 리서치 숫자 검증법. Day 16 가이드 · 웹에서 찾지 못한 값은 "못 찾음"으로 두고 지어내지 않아요. 표의 출처 링크를 열어 값을 확인하는 것이 내 결정 2예요.',
     ['crosscheck','assume','fillin'])
-add('agent','AI 에이전트','AI agent','ai',[2,12,16],
+add('agent','AI 에이전트','AI agent','ai',[2,12,16,21],
     '목표를 주면 스스로 계획을 세우고, 검색, 파일, 프로그램 같은 도구를 써서 여러 단계의 일을 끝내는 AI예요. 챗봇은 대답하고, 에이전트는 일을 해요.',
-    '일정표 Day 2 · 검색형 AI와 에이전트형 리서치의 차이. Day 12 · 실제 업무 하나를 에이전트에게 맡기는 라이브 데모. Day 16 가이드 · 내 에이전트(학생 폴더의 Claude Code)가 매일 하던 조사를 웹에서 찾아 표로 정리하고 화면으로 보여 줘요. 비유는 "폴더에 사는 신입 사원".',
-    ['subagent','claudecode','dxax'])
+    '일정표 Day 2 · 검색형 AI와 에이전트형 리서치의 차이. Day 12 · 실제 업무 하나를 에이전트에게 맡기는 라이브 데모. Day 16 가이드 · 내 에이전트(학생 폴더의 Claude Code)가 매일 하던 조사를 웹에서 찾아 표로 정리하고 화면으로 보여 줘요. 비유는 "폴더에 사는 신입 사원". Day 21 가이드 · 그로스 루프 다섯 칸마다 맡을 에이전트 이름(collect-agent처럼)과 하는 일·입력·출력을 설계도에 적고, 첫 칸은 스킬로 실제로 만들어요.',
+    ['subagent','claudecode','dxax','growthloop'])
 add('humanloop','사람 검토','Human in the loop','ai',[12,16],
     'AI가 만든 결과를 사람이 확인하고 고치는 단계를 일 안에 넣는 것이에요.',
     '일정표 Day 12 · 2026년 AX의 흐름. Day 16 가이드 · 초안은 Claude가 만들고, 결정은 내가 해요(내 결정 1~4).',
@@ -532,18 +532,18 @@ add('claudemd','CLAUDE.md','CLAUDE.md','tools',[2,16,19],
     '사무실 벽에 붙여 둔 업무 규칙표예요. 들어올 때마다 보고 일해요.')
 add('skill','스킬(SKILL.md)','Skill','tools',[4,7,14,16,21],
     'Claude가 특정 일을 하는 방법을 적어 둔 파일(SKILL.md)이에요. 작업 폴더의 .claude/skills 안에 넣어 두면 그 일을 할 때 꺼내 써요. 남이 만들어 공개한 "공개 스킬"을 받아 쓸 수도 있어요.',
-    '일정표 Day 4 · /dataviz 스킬 시연. Day 7 · 브랜드 스킬 파일. Day 14 가이드 · 퍼소나·고객 여정 지도 스킬. Day 16 가이드 · 오후 E에서 오늘 한 조사를 스킬(daily-research)로 묶어 "오늘 조사 돌려줘" 한 줄로 다시 돌려요(P10). Day 21 · 산업 리포트를 만드는 순서를 리포트 스킬로 묶어 한 줄로 다시 돌려요.',
+    '일정표 Day 4 · /dataviz 스킬 시연. Day 7 · 브랜드 스킬 파일. Day 14 가이드 · 퍼소나·고객 여정 지도 스킬. Day 16 가이드 · 오후 E에서 오늘 한 조사를 스킬(daily-research)로 묶어 "오늘 조사 돌려줘" 한 줄로 다시 돌려요(P10). Day 21 · 리포트 생성 스킬. Day 21 가이드 · 그로스 루프 ① 모으기를 weekly-collect 스킬로 만들어 "이번 주 모아줘" 한국어 한 줄로 다시 돌려요(P5). 슬래시(/weekly-collect)로 부르지 않아요.',
     ['claudemd','prompt'],
     'Day 14 가이드는 "레시피 카드"로, Day 16 가이드는 "선배의 체크리스트"로 설명했어요. 한 번 써 두면 매번 설명하지 않아도 돼요.')
 add('subagent','서브에이전트','Subagent','tools',[3,9,13,21],
     '메인 Claude가 일을 나눠 맡기는 보조 에이전트예요. 여러 개를 동시에 돌려 나란히 조사할 수 있어요. 여러 에이전트가 함께 일하는 방식을 멀티에이전트라고 해요.',
-    '일정표 Day 3 · 병렬 리서치 시연. Day 9 · 기업별 병렬 리서치. Day 13 · 레드팀 서브에이전트. Day 21 · 리포트 자동화.',
+    '일정표 Day 3 · 병렬 리서치 시연. Day 9 · 기업별 병렬 리서치. Day 13 · 레드팀 서브에이전트. Day 21 · 리포트 자동화. Day 21 가이드 · 모으기 자동화 흐름(질문 → 동시 조사 → 근거 정리 → 리포트)에서 출처 여러 곳을 나눠 한꺼번에 찾는 일로 설명해요.',
     ['agent','redteam','report'],
     '팀장이 조사할 회사를 팀원 셋에게 나눠 주고, 보고를 모아 한 장으로 합치는 것이에요.')
 add('chrome','Claude in Chrome','Claude in Chrome','tools',[3,4,5,9,17,21],
     '크롬 브라우저에서 Claude가 웹페이지를 직접 열고, 읽고, 누르며 일하게 해 주는 확장 프로그램이에요.',
-    '일정표 Day 3 · 공공 사이트 탐색. Day 17 · 사용 흐름 자동 점검. Day 21 · 웹 수집. Day 17 가이드 · 2교시에 P2가 도는 동안 다 같이 설치하고(Chrome, Claude Code와 같은 계정, 파일 URL 허용), 2교시에 크롬에서 mvp.html을 열어 시켜 볼 일 카드로 직접 눌러 보며 점검해요. 안 되면 P2의 자동 점검으로 충분해요.',
-    ['claudecode','usertest','autocheck'])
+    '일정표 Day 3 · 공공 사이트 탐색. Day 17 · 사용 흐름 자동 점검. Day 21 · 웹 수집. Day 17 가이드 · 2교시에 P2가 도는 동안 다 같이 설치하고(Chrome, Claude Code와 같은 계정, 파일 URL 허용), 2교시에 크롬에서 mvp.html을 열어 시켜 볼 일 카드로 직접 눌러 보며 점검해요. 안 되면 P2의 자동 점검으로 충분해요. Day 21 가이드 · 14시에 다 같이 크롬 옆 창에서 조사형은 내 MVP가 보는 사이트의 오늘 보이는 것 10개를, 운영형은 구글 시트·폼 응답의 이번 주 기록을 표로 만들고, Claude Code에 붙여 chrome_1123.csv로 저장해요(P4). 웹사이트 로그인은 Claude가 대신 하지 않아요.',
+    ['claudecode','usertest','autocheck','collectloop'])
 add('claudedesign','Claude Design','Claude Design','tools',[7,8,14,16],
     'Claude와 대화하면서 화면 시안과 움직이는 프로토타입을 만드는 도구예요. 만든 시안을 Claude Code로 넘길 수 있어요.',
     '일정표 Day 7 · 첫 사용 시연. Day 14 · 핵심 화면 시안. Day 16 · 시안을 Claude Code로 넘기기(핸드오프).',
@@ -567,16 +567,42 @@ add('permission','허락 창','Permission prompt','tools',[16],
     ['claudecode'])
 add('schedule','예약 작업','Scheduled task','tools',[21],
     '정해 둔 시간마다 Claude가 같은 일을 자동으로 하도록 걸어 두는 기능이에요.',
-    '일정표 Day 21 · 리포트 스킬과 예약 작업으로 주간 리포트를 자동 발행해요.',
-    ['report','skill'])
+    '일정표 Day 21 · 리포트 스킬과 예약 작업으로 주간 리포트를 자동 발행해요. Day 21 가이드 · 오늘 통과 기준은 "수동 1회 실행 + 기록(run_log.md)"이에요. 16:30 A 카드(상위)에서 GitHub Actions로 수집 스크립트만 매주 월요일 08:30(한국 시간)에 돌게 걸고, 리포트는 수업 때 Claude Code로 만들어요. 화면에는 "수동 1회 실행(11/23)"처럼 사실대로 적어요.',
+    ['report','skill','ghactions','collectloop'])
 add('report','인터랙티브 HTML 리포트','Interactive report','tools',[21],
     '문서 파일 대신, 스크롤하며 읽고 차트를 눌러 볼 수 있는 웹페이지 형태의 리포트예요.',
-    '일정표 Day 21 · 질문 설계 → 병렬 조사 → 근거 정리 → 리포트 순서로 산업 리포트를 발행해요.',
+    '일정표 Day 21 · 질문 설계 → 병렬 조사 → 근거 정리 → 리포트 순서로 산업 리포트를 발행해요. Day 21 가이드 · "이번 주 바뀐 것" 화면(weekly.html): 맨 위 한 줄 결론, Top 5 바뀐 것, 숫자마다 출처·조사일, 팩트체크 표, 자동 여부(P6).',
     ['subagent','schedule','aeo'])
-add('github','GitHub와 저장소','GitHub / repository','tools',[2,16],
+add('growthloop','그로스 루프','Growth loop','biz',[21],
+    '결과(성과 숫자)가 다음 기획의 재료가 되어 계속 도는 업무 흐름이에요. 돌 때마다 좋아지는 선순환을 노려요.',
+    'Day 21 가이드 · 다섯 칸의 표준 이름 ① 모으기 → ② 찾기 → ③ 만들기 → ④ 내보내기 → ⑤ 재기 → 다시 ①. 칸마다 맡을 에이전트의 이름·하는 일·입력·출력·만드는 날을 적고, 병목이 든 칸을 표시한 설계도를 loop.html에 그려요(P3). 12/2까지 날마다 한 칸씩 만들어 각자 내 루프를 완성해요. 11/20 수업에서 강사님이 든 예: 경쟁사 리뷰 분석 → 유스케이스 → USP → 카피 10개 → 영상 자동 연결 → 업로드 → 성과분석(전환율, 매출) → 다시 기획.',
+    ['bottleneck','collectloop','agent'],
+    '깔때기는 한 번 내려가면 끝나지만, 고리는 성과가 다시 처음으로 돌아와요. 한 번 내고 끝나는 보고서가 아니라 매주 도는 일이에요.')
+add('collectloop','모으기 고리','Collect loop','tools',[21],
+    '그로스 루프의 첫 칸이에요. 이번 주 자료를 모아 표에 더하고 지난번과 견줘 NEW, 바뀜, 사라짐을 붙여요.',
+    'Day 21 가이드 · 조사형 MVP는 웹 수집(검색, Claude in Chrome)으로 research.csv에, 운영형은 구글 시트·폼에 쌓인 기록을 records.csv로 모아 이번 주를 요약해요. weekly-collect 스킬로 만들어 한 번 돌리고 run_log.md에 "수동 1회"로 기록해요(P5).',
+    ['growthloop','skill','schedule','chrome'])
+add('ghactions','GitHub Actions','GitHub Actions','tools',[21],
+    '깃허브 저장소에 올린 스크립트를 정해진 시각이나 버튼 한 번에 깃허브가 대신 돌려 주는 기능이에요. 설정은 저장소의 .github/workflows 폴더에 있는 .yml 파일에 적어요.',
+    'Day 21 가이드 · 16:30 A 카드(상위)에서 API 키 없이 열리는 공개 RSS와 "웹에 게시"한 구글 시트 CSV만 모으는 scripts/collect.py를 매주 월요일 08:30(한국 시간)에 돌려요. 시각은 UTC로 적어서 cron이 "30 23 * * 0"(일요일 23:30 UTC)이에요. 로그인이나 자바스크립트가 필요한 곳(메타 광고 라이브러리, 쇼핑몰 화면)은 못 가져와요. 실패하면 Actions 탭에 빨간 X와 로그가 남아요.',
+    ['github','schedule','rss'],
+    '매주 월요일 아침 먼저 출근해 자료를 모아 두는 동료 같아요. 다만 동료의 시계는 한국보다 9시간 늦은 UTC예요.')
+add('rss','RSS','Really Simple Syndication','research',[21],
+    '웹사이트가 새 글·새 영상 목록을 정해진 모양(XML)으로 내놓는 주소예요. 로그인 없이 읽을 수 있어 자동 수집에 알맞아요.',
+    'Day 21 가이드 · 16:30 A 카드의 주간 예약은 구글 뉴스 검색 RSS, 유튜브 채널 RSS(채널 ID가 필요), 블로그 RSS, 앱스토어 리뷰 RSS(앱 ID가 필요)처럼 키 없이 열리는 출처만 모아요.',
+    ['ghactions','collectloop'])
+add('trafficweek','트래픽 주간','Traffic week','course',[21],
+    '11/23~11/30 수업 날 09:00 10분, 조원끼리 서로의 MVP를 "오늘 할 일 3개" 카드대로 써 주는 시간이에요.',
+    'Day 21 가이드 · 첫날은 내 MVP의 카드부터 만들어 조 단톡방에 붙이고(MVP가 없으면 따라잡기 먼저), 하루에 한 사람 것만 카드대로 써 본 뒤 한 줄로 답해요(막힌 번호 / 가장 쓸모 있던 화면). 3인 조는 1→2→3→1 순서, 2인 조는 서로. 이름·연락처 칸에는 가명만, Clarity는 입력칸 가리기를 기본으로 해요. 쌓인 기록은 12/1 데이터 분석의 재료가 돼요.',
+    ['clarity','usertest'])
+add('catchup','따라잡기','Catch-up','course',[21],
+    'MVP가 아직 없는 학생이 반의 우수 사례 원본을 복사해 내 회사·직무로 바꿔 시작하는 길이에요. 원본은 그대로 두고 복사본만 고쳐요.',
+    'Day 21 가이드 · 강사님이 아침에 단톡방에 올린 두 파일(조사형 "광고영상 제작 작업실", 운영형 "운영관리를 한큐에") 가운데 내 일에 맞는 것을 작업 폴더에 넣고 따라잡기 상자를 보내요. 화면 제목과 회사 이름, 예시 사람·기록을 내 회사에 맞는 가명·예시로 바꿔요. 파일이 없으면 Claude가 내 회사로 가장 작은 조사형 MVP를 만들어요. 만든 두 학생에게 강사님이 동의를 받았어요.',
+    ['mvp','trafficweek'])
+add('github','GitHub와 저장소','GitHub / repository','tools',[2,16,21],
     '코드와 파일을 저장하고, 바뀐 기록을 남기며 함께 작업하는 곳이에요. 저장소(repository)는 프로젝트 하나의 보관함이에요.',
-    '일정표 Day 2 · GitHub 계정과 팀 저장소.',
-    ['deploy'])
+    '일정표 Day 2 · GitHub 계정과 팀 저장소. Day 21 가이드 · 16:30 A 카드에서 Private 저장소를 만들어 작업 폴더를 올리고(push) GitHub Actions로 주간 예약을 돌려요. 개인정보가 든 파일은 올리지 않아요.',
+    ['deploy','ghactions'])
 add('deploy','배포와 Vercel','Deploy','tools',[17,18],
     '만든 웹페이지를 인터넷 주소(URL)로 올려 누구나 열 수 있게 하는 일이에요. Vercel, Netlify는 그 일을 해 주는 서비스예요.',
     '일정표 Day 18 · HTML 피치덱을 URL로 배포해요(Vercel). Day 18 가이드 · 기본은 아티팩트 발행으로 링크를 만들고, 심화로 Vercel Drop(폴더를 끌어다 놓기)을 써요. 계정 없이 올린 링크는 1시간 뒤 사라져요.',
@@ -641,10 +667,10 @@ add('fbcard','피드백 카드','Feedback card','course',[18],
     'Day 18 가이드 · 조 안 발표는 피드백 카드 페이지에서 써서 조 단톡방에 올리고, 전체 발표는 강사님의 구글 폼으로 받아요. 세 가지: 문제가 분명했나, 데모를 보고 믿음이 갔나, 요청사항이 분명했나. 공식 평가 점수가 아니라 서로 주는 피드백이에요. 일정표 Day 18 결과물 · 발표 피드백 시트.',
     ['pitching','qa'])
 
-add('clarity','Microsoft Clarity (클래리티)','Microsoft Clarity','course',[17,18],
+add('clarity','Microsoft Clarity (클래리티)','Microsoft Clarity','course',[17,18,21],
     '웹페이지에 코드 한 덩어리를 달면 들어온 사람이 무엇을 눌렀고 어디서 멈췄는지를 녹화와 히트맵으로 보여 주는 마이크로소프트의 무료 도구예요. 인터넷 주소에 올린 화면에만 달 수 있어요.',
-    'Day 17 가이드 오후 E(테크 트랙만) · P10이 deploy 폴더의 index.html에 Clarity 코드를 넣고, Netlify Drop(app.netlify.com/drop)에 올려 주소를 받아요. 녹화와 히트맵은 뜨는 데 최대 2시간쯤 걸려서 17시나 다음 날 아침에 보고 P11로 결과서에 더해요. Day 18 가이드 · 어제 녹화를 아직 못 봤다면 아침에 보고 P1이 발표 화면의 사용자 테스트 결과 장에 "녹화로 본 것"과 히트맵 그림(images/heatmap.png)을 넣어요. 비슷한 한국 서비스로 뷰저블이 있어요(유료).',
-    ['heatmap'])
+    'Day 17 가이드 오후 E(테크 트랙만) · P10이 deploy 폴더의 index.html에 Clarity 코드를 넣고, Netlify Drop(app.netlify.com/drop)에 올려 주소를 받아요. 녹화와 히트맵은 뜨는 데 최대 2시간쯤 걸려서 17시나 다음 날 아침에 보고 P11로 결과서에 더해요. Day 18 가이드 · 어제 녹화를 아직 못 봤다면 아침에 보고 P1이 발표 화면의 사용자 테스트 결과 장에 "녹화로 본 것"과 히트맵 그림(images/heatmap.png)을 넣어요. 비슷한 한국 서비스로 뷰저블이 있어요(유료). Day 21 가이드 · 11/24까지 숙제로 외부 배포 + Clarity(입력칸에 data-clarity-mask를 붙여 적은 글자는 녹화하지 않음) + 짝꿍 폰에서 열림을 확인해요. 트래픽 주간에 쌓인 기록이 12/1 데이터 분석의 재료가 돼요.',
+    ['heatmap','trafficweek'])
 add('heatmap','히트맵','Heatmap','course',[17,18],
     '사람들이 많이 누르거나 오래 본 곳을 빨갛게, 적은 곳을 파랗게 칠한 화면 지도예요.',
     'Day 17 가이드 오후 E · Clarity의 클릭 히트맵으로 써 보는 사람이 누르지 않아야 할 곳(표 제목, 빈 곳)을 누른 자리를 찾아요.',
@@ -896,7 +922,7 @@ JS=r'''
   chips.forEach(function(b){ b.addEventListener('click', function(){ setCat(b.dataset.cat); }); });
   q.addEventListener('input', apply); day.addEventListener('change', apply);
   reset.addEventListener('click', function(){ clearAll(); q.focus(); });
-  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='19'; apply(); });
+  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='21'; apply(); });
   function show(id){
     var el=document.getElementById(id); if(!el||!el.classList.contains('entry')) return;
     if(el.hidden) clearAll();
@@ -932,7 +958,7 @@ page='''<meta name="claude:viewport-fit-sides" content="cover">
 <div class="bar">
 <div class="find"><label for="q" class="sr">말 찾기</label><input id="q" type="search" placeholder="예: MVP, 페르소나, 스킬" autocomplete="off"><label for="day" class="sr">날짜</label><select id="day">%s</select></div>
 <div class="chips" role="group" aria-label="분류">%s</div>
-<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 19에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
+<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 21에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
 </div>
 <main>
 <section id="results" hidden><h2>찾은 말</h2></section>
