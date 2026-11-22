@@ -354,10 +354,11 @@ def finish(h, folds=(), hl=()):
 # ── 맨 앞 "오늘 만들 결과물" 예시 카드 (11/22 강사 지시 "결과물이 어떤 형태인지 예시로 보여 주고, 어떻게 활용될지 안내")
 # 예시 그림은 classroom/tools/day21_gallery/에 둔다(수업 예시 회사로 같은 상자를 돌려 만든 화면, 마스터프롬프트-결과물예시.md).
 EX_CSS = '''
+.card details .excode{background:var(--card)}
 .shot{margin:16px 0 8px}
 .shot img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);background:#fff}
 .shot figcaption{color:var(--sub);font-size:16px;line-height:1.6;margin-top:8px}
-.excode{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;line-height:1.6;white-space:pre-wrap;word-break:break-all;background:var(--code);border-radius:12px;padding:14px 16px;margin:8px 0 14px;color:var(--ink)}
+.excode{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;line-height:1.6;white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere;background:var(--code);border-radius:12px;padding:14px 16px;margin:8px 0 14px;color:var(--ink)}
 '''
 def gallery_img(name):
     import base64, os
