@@ -61,10 +61,10 @@ AskUserQuestion으로 한 번에 서너 개. 보기를 주고 기본값을 첫�
 `classroom/tools/build_day18.py`(공통 부분은 `guide_common.py`)를 `build_dayNN.py`로 복사해 프롬프트(PR)와 본문(body)만 바꾼다. 페이지 규칙과 빌더 쓰는 법은 `references/page-guide.md`. 요점: 아티팩트 이름 "Day N · 주제", 머리말 "Day N / 52 · 날짜", 맨 앞은 하루 지도(덩어리 세 개와 시간표), 구간 머리는 "덩어리 · 시간 · 교시 / 제목 / 왜 해요?", 입력 칸은 비워 두고 흐린 글씨로 처음 값.
 
 ### 6. 가상 학생으로 돌려 보기
-`classroom/tools/runchain.py`로 가이드 HTML의 프롬프트를 뽑아 빈 폴더에서 학생처럼 이어서 보낸다. 갈래 짜는 법, 명령 예, 통과 기준, 이 환경에서만 생기는 일은 `references/testing.md`. 최소한: 보기마다 한 갈래 + 아무것도 안 바꾼 학생 + 보기에 없는 것을 직접 적은 학생 + 테크 트랙 + 회사를 바꾼 학생. 모든 상자를 한 번 이상 돌린다.
+`classroom/tools/runchain.py`로 가이드 HTML의 프롬프트를 뽑아 빈 폴더에서 학생처럼 이어서 보낸다. 갈래 짜는 법, 명령 예, 통과 기준, 이 환경에서만 생기는 일은 `references/testing.md`. 최소한: 보기마다 한 갈래 + 아무것도 안 바꾼 학생 + 보기에 없는 것을 직접 적은 학생 + 테크 트랙 + 회사를 바꾼 학생. 모든 상자를 한 번 이상 돌린다. **앞날을 끝낸 폴더가 필요하면** `classroom/tests/fixtures/day22_end/`(네 직무, `restore.sh`)를 쓴다(새 창에는 앞 세션의 시험 폴더가 없다). 새 날짜를 끝낸 뒤에는 같은 방식으로 `dayNN_end/`를 저장소에 남긴다(학생 자료 없이).
 
 ### 7. 화면 점검
-`node classroom/tools/check_guide.js <가이드.html>`: 폰 폭 넘침, 복사 상자, 메뉴 링크, 입력 칸 → 파란 글자를 본다. 걸린 것이 있으면 고치고 다시. 시험에서 나온 학생 화면도 `node classroom/tools/check_outputs.js <화면.html>...`로 브라우저에서 열어 본다(빈 화면은 시험기가 못 잡는다). 이어서 `python3 classroom/tools/easy_words.py check <가이드.html>`로 옛말이 남았는지 본다(통과면 종료 코드 0).
+`node classroom/tools/check_guide.js <가이드.html>`: 폰 폭 넘침, 복사 상자, 메뉴 링크, 입력 칸 → 파란 글자를 본다. 걸린 것이 있으면 고치고 다시. 시험에서 나온 학생 화면도 `node classroom/tools/check_outputs.js <화면.html>...`로 브라우저에서 열어 본다(빈 화면은 시험기가 못 잡는다). 이어서 `python3 classroom/tools/easy_words.py check <가이드.html>`로 옛말이 남았는지 본다(통과면 종료 코드 0). 접기·형광펜을 쓴 가이드는 `node classroom/tools/verify_fold.js <가이드.html>`(쪽 높이, 형광펜 수, 잘린 상자의 복사 글)도 본다(`references/testing.md`).
 
 ### 8. 수강생 눈 검토
 `node classroom/tools/guide_to_text.js <가이드.html> <글.txt>`로 글로 옮긴 뒤, 반의 유형에 맞춘 세 사람(그리고 Day 17부터는 강사 한 명이 반 전체와 수업을 굴리는 눈, 전날 가이드와 나란히 놓은 눈)(예: 비전공 콘텐츠 마케터 지망생, 현업 경력이 있는 학생, 테크 트랙)의 눈으로 서브에이전트에게 읽힌다. 지시문 틀은 `references/testing.md`. 돌아온 지적은 가이드 원문과 하나씩 대조하고 맞는 것만 고친다. 프롬프트를 고쳤으면 6단계로 돌아간다.
@@ -74,6 +74,8 @@ Artifact 도구로 발행한다. 이미 있는 날짜는 같은 링크(url)로 �
 
 ### 10. 강사 문서와 커밋
 `references/instructor-docs.md`의 틀로 시연카드, 모의수업(예상 대화·검토 기록), 시험 결과, `HANDOFF.md`의 새 7-xx, 필요하면 `prompt-standard.md`를 고친다. 그다음 커밋·푸시한다(작업 브랜치, 공개 저장소라 개인정보가 없는지 한 번 더 본다).
+- **커밋 끝줄:** `Co-Authored-By: Claude <noreply@anthropic.com>`과 `Claude-Session: <세션 주소>` 두 줄. **모델 이름은 넣지 않는다.** 이 저장소는 커밋에 모델 이름을 쓰지 않는 규칙이고, 이름을 넣은 커밋은 자동 검사가 막은 적이 있다(11/21, 11/22).
+- 묶어 쓴 긴 명령(add + commit + push를 한 번에)이 막히면 파일 고치기, `git add`, `git commit`, `git push`를 나눠서 보낸다. 커밋 메시지는 `-m "..."` 한 번이나 `-F -`로 넣는다.
 
 ## 강사에게 보고하는 틀
 

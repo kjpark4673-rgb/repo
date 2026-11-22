@@ -15,6 +15,19 @@ python3 classroom/tools/runchain.py <가이드.html> <작업 폴더> <결과.jso
 - 결과 json의 줄마다: 단계, 모델, 성공 여부, 걸린 초, 턴 수, 사용량, 막힌 도구(denials), 새로 생긴 파일과 바뀐 파일, 답.
 - 갈래 여러 개는 쉘 스크립트에서 `( ... ) &`로 나란히 돌리고 마지막에 `wait`. 오래 걸리면 Bash의 run_in_background로 돌리고 끝나면 알림을 받는다.
 
+## 앞날을 끝낸 폴더(출발점)
+
+새 날짜 가이드는 앞날을 끝낸 학생 폴더에서 시험한다. 시험 폴더는 세션 임시 폴더라 **새 창에는 없다.** 그래서 학생 자료 없이 최신 가이드로 만든 "11/24(Day 22)를 끝낸 폴더" 네 직무(MD · 콘텐츠 마케터 · 운영 매니저 · 데이터 분석가)를 `classroom/tests/fixtures/day22_end/`에 두었다(README.md).
+
+```bash
+classroom/tests/fixtures/day22_end/restore.sh fx_md <빈 폴더>        # 되살리고 입력 칸 값(TOK)을 알려 줌
+classroom/tests/fixtures/day22_end/make_day22_end.sh <출력 폴더>     # 가이드가 바뀌어 낡았을 때 네 폴더를 처음부터 다시(10~15분, 약 4~5달러)
+```
+
+- 학생 작업물로 만든 출발점(`mkfix21.py` 같은 것)은 저장소에 두지 않는다(따라잡기 원본이 학생 작업물). 새 날짜를 끝낸 뒤에는 같은 방식으로 `dayNN_end/`를 만들어 둔다.
+- 폴더 안의 `(검색 요약)` 값은 시험용이다. 웹페이지를 열어 확인한 값이 아니라 틀린 곳이 있을 수 있어(제조사를 다른 회사로 적은 일이 있었다) 학생 화면에 그대로 싣지 않는다.
+- 결석생·회사를 바꾼 학생·테크 트랙은 이 폴더들에 `TOK`(다른 직무·회사)만 바꿔 새 대화로 시작하거나, 빈 폴더에서 21일·22일 가이드를 처음부터 돌려 만든다.
+
 ## 갈래 짜는 법
 
 | 갈래 | 왜 |
@@ -51,6 +64,15 @@ node classroom/tools/check_outputs.js <작업 폴더>/mvp.html [다른 화면.ht
 node classroom/tools/check_guide.js classroom/student-guide/dayNN.html
 ```
 폰 폭(390)과 PC(1280, 어두운 화면)에서 넘침, 복사 상자 이름, 메뉴 링크, 처음부터 글자가 든 입력 칸, 체크 키, 입력 칸 → 파란 글자를 본다. 통과면 종료 코드 0.
+
+## 접기·형광펜 점검
+
+```bash
+node classroom/tools/verify_fold.js classroom/student-guide/dayNN.html          # 쪽 높이, 형광펜 수, 잘린 상자의 복사 글, 리모컨 링크
+node classroom/tools/verify_box_copy.js classroom/student-guide/dayNN.html <상자 id>   # 접힌 칸 안 상자를 눌러 복사한 글이 전체 글과 같은지
+node classroom/tools/measure_blocks.js classroom/student-guide/dayNN.html <출력.txt>   # 어느 덩어리가 얼마나 긴지(접을 곳 찾기)
+```
+폰 폭 기준이다. 접은 뒤에도 상자 글은 시험본과 글자 단위로 같아야 한다(`<pre id>` 비교).
 
 ## 수강생 눈 검토
 
