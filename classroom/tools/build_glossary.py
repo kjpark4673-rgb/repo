@@ -1,4 +1,4 @@
-# AX 수업 용어 사전 (Day 1~23) 빌더
+# AX 수업 용어 사전 (Day 1~24) 빌더
 # 출처: 공식 일정표 "상세 커리큘럼_최종" 탭의 10/26~11/23 행, Day 14~18·21 수업 가이드의 용어 칸, 강사님이 알려 준 11/19·11/20 실제 수업(HANDOFF 7-31), 11/24 행은 강사님이 확정한 날짜 이름만.
 # 11/21 강사 결정: Day 19·20 이름을 실제 진행(MVP 수정안 발표·디벨롭)으로 바꿈. 11/19 리포트 가이드에서 온 말 5개는 build_glossary_day19_report_archive.py에 보관.
 # "수업에서" 줄은 위 출처에 적힌 것만 옮긴다. 강사의 말로 꾸미지 않는다.
@@ -17,6 +17,7 @@ DAYS = {
  19:('11/19(목)','MVP(Minimum Viable Product) 수정안 발표'), 20:('11/20(금)','MVP(Minimum Viable Product) 수정안 디벨롭 · 유저 스토리, 병목, 그로스 루프'), 21:('11/23(월)','AI 기반 산업 리포트 자동 생성 · AI 에이전트와 내 루프(개념의 날)'),
  22:('11/24(화)','첫 고리 만들기 · 리서치 스킬과 "이번 주 바뀐 것"'),
  23:('11/25(수)','멀티모달 AI Ⅱ · 성과 데이터로 광고 시안 라인 만들기'),
+ 24:('11/26(목)','에이전틱 코딩 입문 · 설계서로 만드는 AI 버튼'),
 }
 UPCOMING_FROM = 21
 
@@ -270,10 +271,10 @@ add('ia','정보 구조(IA)','Information Architecture','biz',[14],
     '일정표 Day 14 · 유저 플로우와 함께 나와요.',
     ['userflow'],
     '마트의 코너 배치예요. 손님이 우유를 어디서 찾을지 미리 정해 두는 일이에요.')
-add('spec','스펙(spec.md, PRD)','Specification','biz',[14],
+add('spec','설계서·스펙(spec.md, PRD)','Specification','biz',[14,24],
     '무엇을 만들지 적은 설계 문서예요. 목표, 사용자, 기능, 제약, 완료 기준을 적어요. 회사에서는 PRD(제품 요구사항 문서)라고도 해요.',
-    '일정표 Day 14 · Claude Code가 질문하고 내가 답하는 인터뷰 방식으로 spec.md를 써요. 일정표는 "프롬프트에서 스펙으로"를 2026년의 흐름으로 소개해요.',
-    ['mvpdoc','scenario'])
+    '일정표 Day 14 · Claude Code가 질문하고 내가 답하는 인터뷰 방식으로 spec.md를 써요. 일정표는 "프롬프트에서 스펙으로"를 2026년의 흐름으로 소개해요. 일정표 Day 24 · 표준 루프 spec.md → CLAUDE.md → 계획 모드 → 구현 → 확인 → 커밋. Day 24 가이드 · AI 버튼 하나의 설계서를 한 장으로 써요(P13): 한 줄 요약, 누구, 입력, 기준 여섯 개, AI 답의 모양(판정 셋), 성공 기준, 하지 않는 것, 정답 아는 예시 3개. 가이드에서는 "설계서"라고 불러요.',
+    ['mvpdoc','scenario','agentic','evalset'])
 add('kpi','KPI','Key Performance Indicator','biz',[14],
     '목표를 얼마나 이뤘는지 재는 핵심 숫자예요.',
     '일정표 Day 14 · 콘텐츠 기획안은 목적, 타깃, 메시지, 채널, KPI로 짜요.',
@@ -569,10 +570,10 @@ add('handoff','핸드오프','Handoff','tools',[16],
     '만든 것을 다음 사람이나 다음 도구에 넘겨주는 일이에요.',
     '일정표 Day 16 · Claude Design 시안을 Claude Code로 넘겨 동작하는 프로토타입을 만들어요.',
     ['claudedesign','planmode'])
-add('planmode','계획 모드','Plan mode','tools',[16],
+add('planmode','계획 모드','Plan mode','tools',[16,24],
     'Claude Code가 바로 만들지 않고, 먼저 계획을 보여 준 뒤 내가 승인하면 만드는 모드예요.',
-    '일정표 Day 16 · 디자인 넘기기 → 계획 확인 → 구현.',
-    ['handoff','claudecode'],
+    '일정표 Day 16 · 디자인 넘기기 → 계획 확인 → 구현. Day 24 가이드 · P14를 계획 모드로 보내 AI 버튼을 어디에 어떻게 넣을지 계획을 먼저 받고, 읽어 본 뒤 승인 창에서 Yes(바꿀 것이 있으면 No를 고르고 한 줄로)를 눌러요. 모드는 입력창 아래 모드 표시에서 바꾸고, 터미널에서는 Shift+Tab, 못 찾으면 상자 맨 앞에 /plan을 붙여요.',
+    ['handoff','claudecode','checkpoint'],
     '공사 전 도면 확인이에요. 벽을 세운 뒤에 고치면 비싸요. 도면에서 고치면 한 줄이에요.')
 add('artifact','아티팩트','Artifact','tools',[16],
     'Claude가 만든 결과물을 링크로 열어 볼 수 있게 올린 페이지예요. 처음에는 나만 볼 수 있고, 공유 설정을 바꿔야 남이 열 수 있어요.',
@@ -639,16 +640,41 @@ add('winning','패턴(위닝 소재)','Winning creative pattern','mkt',[23],
     '오래 돈 광고에 짧게 끝난 광고보다 더 자주 나오는 공통점이에요(첫 문장 유형, 형식, 제안). 업계에서는 오래 돌아 성과가 좋다고 보는 광고를 "위닝 소재"라고 불러요.',
     'Day 23 가이드 · P8이 patterns_1125.md에 패턴마다 "오래 돈 묶음 ○개 중 ○개 · 짧게 끝난 묶음 ○개 중 ○개"와 대표 예를 적어요. P9가 패턴 하나에 시안 하나를 설계해요. 다른 회사 문구는 패턴만 배우고 그대로 옮기지 않아요.',
     ['signal','draft','copy'])
-add('judgeagent','심사 에이전트','Reviewer agent','tools',[23],
+add('judgeagent','심사 에이전트','Reviewer agent','tools',[23,24],
     '시안을 만든 에이전트와 따로 띄워, 정해 둔 기준으로 심사만 하는 에이전트(서브에이전트)예요. 자기 숙제를 자기가 채점하지 않게 하는 장치예요.',
-    'Day 23 가이드 · P10에서 시안 그림을 직접 열어 보고 기준 여섯 개(첫 1초에 무엇을 파는지, 폰에서 읽히는지, 패턴이 보이는지, 문구 규칙, 피드에 섞여도 어색하지 않은지, 회사 이름·"수업용 시안")마다 ✓ 또는 "고칠 것"으로 답해요. 두 번 고쳐도 남는 시안은 "보류: 사람 확인"으로 멈춰요. 결과는 review_1125.md. 루프 점검표의 검사·멈춤 칸이에요.',
-    ['subagent','loopcheck','draft'],
+    'Day 23 가이드 · P10에서 시안 그림을 직접 열어 보고 기준 여섯 개(첫 1초에 무엇을 파는지, 폰에서 읽히는지, 패턴이 보이는지, 문구 규칙, 피드에 섞여도 어색하지 않은지, 회사 이름·"수업용 시안")마다 ✓ 또는 "고칠 것"으로 답해요. 두 번 고쳐도 남는 시안은 "보류: 사람 확인"으로 멈춰요. 결과는 review_1125.md. 루프 점검표의 검사·멈춤 칸이에요. Day 24 가이드 · P15가 같은 방법으로 AI 버튼을 시험해요. 정답 아는 예시마다 새 서브에이전트에게 버튼이 만든 글만 넘겨 답하게 해요.',
+    ['subagent','loopcheck','draft','evalset'],
     '공장의 품질 검사 담당 같아요. 만든 사람이 아니라 검사 담당이 통과시켜야 출하돼요.')
 add('remotion','Remotion(리모션)','Remotion','tools',[23],
     '코드로 영상을 조립하는 도구예요. 개인과 직원 3명 이하 회사는 무료이고, 그보다 큰 회사에서 일로 쓰면 회사 라이선스(유료)가 필요해요. 자막·숫자·그림을 정해진 자리에 놓고 영상 파일(mp4)로 그려요. 컴퓨터에 Node.js(20.19 이상, 22번대는 22.13 이상, 또는 24 이상)가 있어야 해요.',
     '일정표 Day 23 · Remotion 스킬로 타이틀·자막·데이터 애니메이션을 9:16 쇼츠로 렌더. Day 23 가이드 · 영상 시안을 고른 사람이 "영상 준비"로 프로젝트(ad15)를 만들고, ChatGPT로 만든 사진을 장면으로 넣어 카피만 바꿔 15초 영상 3개를 뽑아요(P10). 14:00 A 카드는 패턴의 숫자로 다시 렌더되는 15초 패턴 브리핑 영상이에요.',
     ['videoai','skill','judgeagent'],
     '자막과 숫자를 자로 재서 붙이는 편집기 같아요. 틀은 그대로 두고 재료만 바꿔 여러 개를 뽑아요.')
+add('agentic','에이전틱 코딩과 바이브코딩','Agentic coding / vibe coding','tools',[24],
+    '바이브코딩은 말로 대충 시키고 결과를 보며 고치는 방식이고, 에이전틱 코딩은 설계서와 규칙을 먼저 주고 AI가 계획 → 만들기 → 확인을 하게 하는 방식이에요.',
+    '일정표 Day 24 · 바이브코딩 → 에이전틱 코딩 입문, 스펙으로 일 시키기. 작업은 작게, 세션은 짧게. Day 24 가이드 · 1교시에 표준 루프 여섯 단계(spec.md → CLAUDE.md → 계획 모드 → 구현 → 확인 → 커밋)를 오늘 상자(P13 · P0 · P14 · P15 · B 카드)에 대어 봐요. 짧은 일은 바이브코딩도 빨라서 좋고, 남이 쓰는 화면이나 매주 다시 쓰는 기능은 설계서로 시켜요.',
+    ['spec','planmode','checkpoint'],
+    '인테리어를 "예쁘게 해 주세요"로 맡기는 것(바이브코딩)과 도면을 건네고 견적서를 먼저 받는 것(에이전틱 코딩)의 차이예요.')
+add('checkpoint','되돌리기(체크포인트)','Checkpoint / rewind','tools',[24],
+    'AI가 파일을 고치기 전 상태로 돌아가는 기능이에요. Claude Code는 고칠 때마다 저장 지점(체크포인트)을 남겨요.',
+    '일정표 Day 24 · Claude Code의 체크포인트·되돌리기. Day 24 가이드 · 되돌리기 연습으로 버튼 글자를 일부러 바꾼 뒤, 입력창이 빈 채로 Esc를 두 번 누르거나 /rewind를 보내 바로 전 지점의 코드로 돌아가요. 목록이 안 뜨면 우리 반 규칙인 고치기 전 판(_v)으로 되돌리는 상자를 보내요.',
+    ['planmode','claudecode','agentic'],
+    '게임의 저장 지점이에요. 잘못 가면 저장한 곳에서 다시 시작해요.')
+add('evalset','정답 아는 예시(평가 예시)','Eval set','ai',[24],
+    '답이 미리 정해진 예시로, 만든 것이 늘 맞게 도는지 확인하는 방법이에요. 업계에서는 평가 예시, eval이라고 불러요.',
+    'Day 24 가이드 · 설계서에 예시 3개(보내도 돼요 · 고쳐서 다시 · 보류(사람 확인))와 걸려야 할 기준을 적고(P13), P15가 버튼이 만든 글을 예시마다 새 서브에이전트에게 보내 판정이 기대와 같은지 견줘요. 결과는 button_test_1126.md. 같은 AI라도 보낼 때마다 판정이 조금씩 달라질 수 있어서, 다른 곳이 어디인지 아는 것이 목적이에요.',
+    ['spec','judgeagent','aibutton'],
+    '새 검수 담당에게 답이 정해진 샘플 세 장(통과, 고쳐서 다시, 보류)을 주고 맞히는지 보는 것과 같아요.')
+add('aibutton','화면 안 AI 버튼','In-app AI button','tools',[24],
+    '내 화면(MVP)에 붙여 AI의 도움을 그 자리에서 받게 하는 버튼이에요. Day 24의 버튼은 AI에게 보낼 글을 정확하게 만들어 복사해 주는 데까지 해요.',
+    'Day 24 가이드 · 화면 맨 위 "AI 보내기 전 확인" 칸에 보내기 전의 글(광고 카피, 상세페이지 문구, 안내 문자)을 붙이고 "AI 확인 글 복사"를 누르면, 기준 여섯 개와 답 모양이 든 글이 복사돼요(P14). Claude나 ChatGPT 새 채팅에 붙이면 기준마다 ✓ 또는 고칠 것과 판정이 와요. 화면에서 바로 답을 받는 것은 테크 트랙 D 카드(서버 함수)예요.',
+    ['evalset','serverfn','spec'],
+    '결재 서류 양식을 자동으로 채워 주는 버튼이에요. 도장은 AI가 찍고, 보낼지는 사람이 정해요.')
+add('serverfn','서버 함수와 API 키','Serverless function / API key','tools',[24],
+    'API 키는 AI 회사에 "내가 쓴다"를 증명하는 비밀번호이고, 서버 함수는 그 키를 숨겨 두고 화면 대신 AI를 불러 주는 작은 서버 프로그램이에요.',
+    'Day 24 가이드 · 14:00 D 카드(테크 트랙)에서 site/api/check.js(Vercel 서버 함수)가 Gemini API 무료 등급을 불러요. 키는 Vercel 화면의 환경 변수(GEMINI_API_KEY)에만 넣고 채팅·화면·GitHub에는 붙이지 않아요. 화면(HTML)에 키를 넣으면 누구나 소스 보기로 가져갈 수 있어요.',
+    ['api','aibutton','deploy'],
+    '가게 금고 비밀번호는 간판(화면)이 아니라 금고(서버)에 둬요.')
 add('collectloop','리서치 고리','Research loop','tools',[22],
     '내 루프의 첫 칸 ① 리서치하기예요. 이번 주 동향과 자료를 찾아 표에 더하고 지난번과 견줘 NEW, 바뀜, 사라짐을 붙여요.',
     'Day 22 가이드 · 조사형 MVP는 웹 리서치(검색, Claude in Chrome)로 경쟁사·업계 동향(신제품, 캠페인, 기사)을 research.csv에, 운영형은 구글 시트·폼에 쌓인 기록을 records.csv로 모아 이번 주를 요약해요. weekly-research 스킬로 만들어 한 번 돌리고 run_log.md에 "수동 1회"로 기록해요(P5).',
@@ -670,14 +696,14 @@ add('catchup','따라잡기','Catch-up','course',[21,22],
     'MVP가 아직 없는 학생이 반의 우수 사례 원본을 복사해 내 회사·직무로 바꿔 시작하는 길이에요. 원본은 그대로 두고 복사본만 고쳐요.',
     'Day 21 가이드 · 강사님이 아침에 단톡방에 올린 두 파일(조사형 "광고영상 제작 작업실", 운영형 "운영관리를 한큐에") 가운데 내 일에 맞는 것을 작업 폴더에 넣고 따라잡기 상자를 보내요. 화면 제목과 회사 이름, 예시 사람·기록을 내 회사에 맞는 가명·예시로 바꿔요. 파일이 없으면 Claude가 내 회사로 가장 작은 조사형 MVP를 만들어요. 만든 두 학생에게 강사님이 동의를 받았어요. Day 22 가이드 · 11/23에 못 온 학생도 같은 상자로 시작하고, 어제 loop.html은 14:00 B 카드가 채워요.',
     ['mvp','trafficweek'])
-add('github','GitHub와 저장소','GitHub / repository','tools',[2,16,22],
+add('github','GitHub와 저장소','GitHub / repository','tools',[2,16,22,24],
     '코드와 파일을 저장하고, 바뀐 기록을 남기며 함께 작업하는 곳이에요. 저장소(repository)는 프로젝트 하나의 보관함이에요.',
-    '일정표 Day 2 · GitHub 계정과 팀 저장소. Day 22 가이드 · 14:00 A 카드에서 Private 저장소를 만들어 작업 폴더를 올리고(push) GitHub Actions로 주간 예약을 돌려요. 개인정보가 든 파일은 올리지 않아요.',
+    '일정표 Day 2 · GitHub 계정과 팀 저장소. Day 22 가이드 · 14:00 A 카드에서 Private 저장소를 만들어 작업 폴더를 올리고(push) GitHub Actions로 주간 예약을 돌려요. 개인정보가 든 파일은 올리지 않아요. Day 24 가이드 · 14:00 B 카드에서 오늘 바뀐 것을 커밋(바뀐 것 + 한 줄 메모로 저장)해요. 공통광고 표와 따라잡기 원본은 .gitignore에 넣어 올리지 않아요.',
     ['deploy','ghactions'])
-add('deploy','배포와 Vercel','Deploy','tools',[17,18],
+add('deploy','배포와 Vercel','Deploy','tools',[17,18,24],
     '만든 웹페이지를 인터넷 주소(URL)로 올려 누구나 열 수 있게 하는 일이에요. Vercel, Netlify는 그 일을 해 주는 서비스예요.',
-    '일정표 Day 18 · HTML 피치덱을 URL로 배포해요(Vercel). Day 18 가이드 · 기본은 아티팩트 발행으로 링크를 만들고, 심화로 Vercel Drop(폴더를 끌어다 놓기)을 써요. 계정 없이 올린 링크는 1시간 뒤 사라져요.',
-    ['artifact','github','html'])
+    '일정표 Day 18 · HTML 피치덱을 URL로 배포해요(Vercel). Day 18 가이드 · 기본은 아티팩트 발행으로 링크를 만들고, 심화로 Vercel Drop(폴더를 끌어다 놓기)을 써요. 계정 없이 올린 링크는 1시간 뒤 사라져요. Day 24 가이드 · 14:00 B 카드가 deploy/index.html을 AI 버튼이 든 새 판으로 바꾸고(Clarity 코드는 그대로), Netlify의 내 사이트 Deploys에 다시 올리면 주소가 그대로예요. D 카드(테크 트랙)는 site 폴더를 Vercel에 올려요(npx vercel).',
+    ['artifact','github','html','serverfn'])
 add('html','HTML','HyperText Markup Language','tools',[14,16],
     '웹페이지를 만드는 언어이자 파일 형식(.html)이에요.',
     'Day 14 가이드에서 처음 설명했어요. Day 16 가이드 · 보는 화면 mvp.html. 표 내용을 파일 안에 넣어서 더블클릭해도 보여요.',
@@ -823,7 +849,7 @@ for x in E:
     for r in x['r']:
         assert r in ids, (x['id'], r)
     assert re.fullmatch(r'[a-z0-9-]+', x['id']), x['id']
-    assert all(1<=d<=23 for d in x['days']), x['id']
+    assert all(1<=d<=24 for d in x["days"]), x["id"]
 names={x['id']:x['t'] for x in E}
 
 esc=html.escape
@@ -999,15 +1025,15 @@ page='''<meta name="claude:viewport-fit-sides" content="cover">
 <style>%s</style>
 <div class="wrap">
 <header class="top">
-<span class="eyebrow">Day 1–23 · 52일 과정</span>
+<span class="eyebrow">Day 1–24 · 52일 과정</span>
 <h1>AX 수업 용어 사전</h1>
-<p class="lead">Day 1부터 Day 23까지 수업에 나오는 말 %d개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
+<p class="lead">Day 1부터 Day 24까지 수업에 나오는 말 %d개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
 <p class="note">Day는 그 말이 공식 일정표나 수업 가이드에 나온 날이에요. 실제 수업 순서와 다를 수 있어요. "예정"은 아직 하지 않은 날이에요.</p>
 </header>
 <div class="bar">
 <div class="find"><label for="q" class="sr">말 찾기</label><input id="q" type="search" placeholder="예: MVP, 페르소나, 스킬" autocomplete="off"><label for="day" class="sr">날짜</label><select id="day">%s</select></div>
 <div class="chips" role="group" aria-label="분류">%s</div>
-<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 23에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
+<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 24에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
 </div>
 <main>
 <section id="results" hidden><h2>찾은 말</h2></section>
