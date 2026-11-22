@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라라스윗 저당 아이스크림 경쟁 동향 5곳</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#6b6b70;--line:#e2e2e6;--warn:#fff4d6;--acc:#d6336c}
+@media (prefers-color-scheme:dark){:root{--bg:#18181b;--fg:#f2f2f4;--mut:#a0a0a8;--line:#3a3a40;--warn:#3d3416;--acc:#ff7aa8}}
+body{margin:0;padding:0 16px 32px;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+.top{background:var(--warn);margin:0 -16px 16px;padding:10px 16px;font-weight:600;font-size:14px}
+h1{font-size:20px;margin:0 0 6px}
+p{margin:4px 0;color:var(--mut)}
+.scroll{overflow-x:auto;margin-top:14px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;min-width:640px;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14px}
+th{color:var(--mut);font-weight:600;white-space:nowrap}
+a{color:var(--acc)}
+#ai-check{margin:14px 0;padding:12px;border:1px solid var(--line);border-radius:8px;box-sizing:border-box;max-width:100%;word-break:keep-all}
+#ai-check *{box-sizing:border-box;max-width:100%}
+#ai-check .aic-title{font-size:17px;font-weight:700;margin:0 0 4px}
+#ai-check .aic-desc{margin:0 0 8px;color:var(--mut);font-size:14px}
+#ai-check textarea{display:block;width:100%;min-height:120px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:14px/1.5 system-ui,sans-serif;resize:vertical}
+#ai-check .aic-btn{margin-top:8px;padding:10px 14px;border:0;border-radius:6px;background:var(--acc);color:#fff;font:600 15px system-ui,sans-serif;cursor:pointer}
+#ai-check .aic-msg{display:inline-block;margin-left:8px;font-size:14px;font-weight:600}
+#ai-check .aic-note{margin:8px 0 0;font-size:13px;color:var(--mut)}
+#ai-check .aic-warn{margin:6px 0 0;font-size:13px;color:var(--fg)}
+#ai-check details{margin-top:8px}
+#ai-check summary{cursor:pointer;font-size:14px;color:var(--mut)}
+#ai-check .aic-out{min-height:200px;margin-top:6px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="top">임시 화면(가정) · 따라잡기 원본 없이 만듦</div>
+<h1>라라스윗 저당 아이스크림 경쟁 동향 5곳</h1>
+<section id="ai-check">
+<h2 class="aic-title">AI 보내기 전 확인</h2>
+<p class="aic-desc">MD 동료가 기획전 배너와 상세페이지 첫 화면 문구를 팀장에게 보내기 전에, 글을 붙이고 버튼을 눌러 "기준대로 확인해 줘" 글을 복사해 AI 새 채팅에서 ✓/고칠 것과 판정을 받아요.</p>
+<textarea id="aic-input" placeholder="[배너] 숟가락이 멈칫하는 꾸덕함" aria-label="확인할 글"></textarea>
+<button type="button" class="aic-btn" id="aic-copy">AI 확인 글 복사</button><span class="aic-msg" id="aic-ok" aria-live="polite"></span>
+<p class="aic-warn" id="aic-warn" aria-live="polite"></p>
+<p class="aic-note">복사한 글을 Claude나 ChatGPT 새 채팅에 붙여 넣으면 기준마다 ✓와 판정이 와요. <a href="https://claude.ai/new" target="_blank" rel="noopener">claude.ai 새 채팅 열기</a></p>
+<details id="aic-details"><summary>만들어진 글 펴 보기</summary>
+<textarea id="aic-out" class="aic-out" readonly aria-label="AI에게 보낼 글"></textarea></details>
+<script type="text/plain" id="aic-prompt">
+너는 꼼꼼한 검수 담당이야. 아래 글을 보내기 전에 기준대로 확인해 줘.
+
+[회사·고객] 라라스윗 / 저당 아이스크림 / 다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인
+[참고 자료]
+- 이번 주 패턴: 식감 첫 문장 / 한 메시지 여러 소재 / 가격 제안
+- 고객에게 할 말: "늦은 밤 한 스푼도 쫀득하고 진하게"
+- 문구에 넣지 않는 말은 아래 ④를 따라. 모르는 사실은 지어내지 말고 사람 확인으로 돌려.
+
+[기준 여섯 개]
+① 첫 줄에 무엇을 파는지 보인다: 제품(저당 아이스크림)이 배너 또는 첫 화면 문구에 나온다.
+② 읽기 쉽다: 헤드라인은 한 문장·짧고, 설명은 한 줄, 행동 버튼은 한 가지 말이다.
+③ 이번 주 패턴 가운데 하나가 보인다: 식감 첫 문장 / 여러 소재로 돌릴 한 메시지 / 가격 제안 중 하나.
+④ 넣지 않는 말이 없다: 최고·1위·100%·완벽·무조건·최저가·역대급·단독·완치·부작용 없음, 경쟁사 이름, 효능을 암시하는 말(살 안 찌는·다이어트·체중·혈당·피부 재생), 출처 없는 숫자, 실제 행사인지 모르는 오늘만·품절 임박. [할인율](가정)·[행사 기간](가정) 같은 자리 표시가 남아 있으면 "사람 확인"으로 센다.
+⑤ 말투가 자연스럽고 앞뒤가 맞는다: 배너와 첫 화면 문구가 같은 약속을 하고, 지어낸 후기 문장이 없다.
+⑥ 회사 이름은 글자로만 쓰고, 다른 회사 문구를 옮기지 않는다.
+
+[답 모양]
+1. 잘된 점 한 줄.
+2. 기준마다 한 줄: "① ✓" 또는 "① 고칠 것: 한 줄".
+3. 고칠 것이 있으면 고친 글 한 번(없으면 생략).
+4. 마지막 줄은 셋 중 하나. 보류가 먼저다.
+- "판정: 보류(사람 확인)" — 출처 없는 숫자, 효능·건강을 암시하는 말, 실제 행사인지 모르는 기간·수량 한정(오늘만·품절 임박), 자리 표시처럼 사람이 사실을 확인해야 하는 것이 하나라도 있을 때
+- "판정: 고쳐서 다시" — 글만 고치면 되는 고칠 것이 있을 때
+- "판정: 보내도 돼요" — 여섯 개 모두 ✓
+판정은 붙여 준 글만 보고 정한다(네가 고친 글은 판정에 넣지 않는다).
+
+확인할 글:
+{{글}}
+</script>
+<script>
+(function(){
+  var input=document.getElementById('aic-input');
+  var out=document.getElementById('aic-out');
+  var det=document.getElementById('aic-details');
+  var ok=document.getElementById('aic-ok');
+  var warn=document.getElementById('aic-warn');
+  var timer=null;
+  function showOk(){
+    ok.textContent='복사됐어요';
+    if(timer){clearTimeout(timer);}
+    timer=setTimeout(function(){ok.textContent='';},2000);
+  }
+  function fallback(){
+    det.open=true;
+    out.focus();
+    out.select();
+    try{out.setSelectionRange(0,out.value.length);}catch(e){}
+    var done=false;
+    try{done=document.execCommand('copy');}catch(e2){done=false;}
+    if(done){warn.textContent='';showOk();}
+    else{warn.textContent='Ctrl+C(맥은 Cmd+C)로 복사해요';}
+  }
+  document.getElementById('aic-copy').addEventListener('click',function(){
+    var text=input.value;
+    if(!text.replace(/\s/g,'')){
+      warn.textContent='확인할 글을 먼저 붙여요';
+      return;
+    }
+    warn.textContent='';
+    var tpl=document.getElementById('aic-prompt').textContent.replace(/^\n/,'').replace(/\n$/,'');
+    var full=tpl.split('{{글}}').join(text);
+    out.value=full;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(full).then(showOk,fallback);
+    }else{fallback();}
+  });
+})();
+</script>
+</section>
+
+<p>고객: 다이어트 중이지만 밤마다 디저트가 당기는 2534 직장인을 두고 경쟁하는 곳 (경쟁 5곳 선정은 가정)</p>
+<p>조사일 2026-11-22 · 검색 결과 요약 기준이며 기사 원문은 직접 열어 확인하지 못함</p>
+<div class="scroll">
+<table>
+<thead><tr><th>회사</th><th>종류</th><th>최근 소식 한 줄</th><th>소식 날짜</th><th>조사일</th><th>출처</th></tr></thead>
+<tbody>
+<tr><td>배스킨라빈스</td><td>캠페인</td><td>산리오 '마이멜로디 ♡ 쿠로미 아이스크림 모드' 캠페인 (11/1~11/30)</td><td>2026-11-01</td><td>2026-11-22</td><td><a href="https://haveagood-holiday.com/ko/articles/baskin-robbins-my-melody-kuromi-ice-cream-mode-2026">링크</a></td></tr>
+<tr><td>요아정</td><td>신제품</td><td>'프레시 프루트 요거트 찹쌀떡'이 SNS에서 화제</td><td>2026-09-21</td><td>2026-11-22</td><td><a href="https://mbiz.heraldcorp.com/article/10880423">링크</a></td></tr>
+<tr><td>롯데웰푸드</td><td>신제품</td><td>모나카 아이스크림 '돼지바빵' 출시</td><td>2026-04-13</td><td>2026-11-22</td><td><a href="https://news.bizwatch.co.kr/article/consumer/2026/04/13/0006">링크</a></td></tr>
+<tr><td>하겐다즈</td><td>신제품</td><td>깊어진 카카오 풍미의 벨지안 초콜릿 파인트 출시</td><td>2026-08-04</td><td>2026-11-22</td><td><a href="https://www.mt.co.kr/living/2026/08/04/2026080422331130482">링크</a></td></tr>
+<tr><td>빙그레</td><td>못 찾음</td><td>못 찾음 (2026년 소식으로 날짜가 확인된 기사를 못 찾음)</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td></tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

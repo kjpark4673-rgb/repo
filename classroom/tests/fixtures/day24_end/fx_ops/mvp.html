@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>출결·문의 현황</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#ffffff; --ink:#1d2330; --sub:#5b6474; --line:#e3e6eb; --blue:#2f5bea; --blue-soft:#e8eefe; --red:#c4372d; --red-soft:#fdecea; --amber:#9a6200; --amber-soft:#fff4dc; --green:#1f7a4d; }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin:0; background:var(--bg); color:var(--ink); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 14px 16px 40px; }
+  .tag { display:inline-block; font-size:12px; font-weight:700; color:var(--amber); background:var(--amber-soft); border:1px solid #f0d9a6; border-radius:999px; padding:3px 10px; }
+  h1 { font-size: 21px; line-height:1.35; margin: 10px 0 2px; word-break: keep-all; }
+  .base { color: var(--sub); font-size: 13px; margin: 0 0 14px; }
+  h2 { font-size: 16px; margin: 22px 0 8px; }
+  .tiles { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+  .tile { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px; min-width:0; }
+  .tile .k { font-size:13px; color:var(--sub); }
+  .tile .v { font-size:30px; font-weight:800; line-height:1.15; margin-top:2px; }
+  .tile .v small { font-size:15px; font-weight:700; margin-left:2px; }
+  .tile.abs .v { color: var(--red); }
+  .tile.open .v { color: var(--amber); }
+  .tile .d { font-size:12px; color:var(--sub); margin-top:4px; word-break: keep-all; }
+  .week { margin:10px 0 0; font-size:13px; color:var(--sub); background:var(--card); border:1px dashed var(--line); border-radius:10px; padding:8px 12px; }
+  .filters { display:flex; flex-wrap:wrap; gap:6px; }
+  .filters button { font: inherit; font-size:14px; border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:999px; padding:6px 13px; cursor:pointer; }
+  .filters button[aria-pressed="true"] { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:700; }
+  .count { font-size:13px; color:var(--sub); margin:8px 0 6px; }
+  table { width:100%; border-collapse:collapse; table-layout:fixed; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; font-size:13px; }
+  th, td { padding:7px 5px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+  th { background:#eef1f5; font-size:12px; color:var(--sub); font-weight:700; }
+  col.c-date { width: 46px; } col.c-name { width: 48px; } col.c-kind { width: 38px; } col.c-state { width: 76px; }
+  td .wd { display:block; font-size:11px; color:var(--sub); }
+  .pill { display:inline-block; font-size:11.5px; border-radius:6px; padding:1px 5px; white-space:nowrap; }
+  .pill.done { color:var(--green); background:#e6f4ec; }
+  .pill.todo { color:var(--red); background:var(--red-soft); font-weight:700; }
+  tr.is-abs td.what { color:var(--red); font-weight:700; }
+  tr.is-late td.what { color:var(--amber); }
+  .src { margin-top:14px; font-size:12px; color:var(--sub); line-height:1.6; }
+  #ai-check { background:#fff; border:2px solid var(--blue); border-radius:12px; padding:14px; margin:12px 0 16px; word-break:keep-all; }
+  #ai-check .aic-title { margin:0 0 4px; font-size:17px; }
+  #ai-check .aic-lead { margin:0 0 10px; color:var(--sub); font-size:14px; }
+  #ai-check textarea { display:block; width:100%; min-height:130px; padding:10px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:16px; resize:vertical; }
+  #ai-check .aic-btn { display:block; width:100%; margin-top:10px; padding:12px; border:0; border-radius:8px; background:var(--blue); color:#fff; font:inherit; font-weight:700; cursor:pointer; }
+  #ai-check .aic-msg { min-height:1.5em; margin:8px 0 0; font-size:14px; font-weight:700; color:var(--red); }
+  #ai-check .aic-ok { color:var(--green); }
+  #ai-check .aic-note { margin:4px 0 0; font-size:12px; color:var(--sub); }
+  #ai-check details { margin-top:8px; font-size:13px; }
+  #ai-check details textarea { min-height:160px; font-size:13px; background:var(--bg); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">가상 회사 · 가명 예시 데이터</span>
+  <h1>예시 교육센터(가상) · 출결·문의 현황</h1>
+  <section id="ai-check">
+    <h2 class="aic-title">AI 보내기 전 확인</h2>
+    <p class="aic-lead">수강생에게 보낼 휴강·보강 안내 문자를 붙이고 누르면, "기준대로 확인해 줘" 글이 복사돼요.</p>
+    <textarea id="aic-input" placeholder="[예시 교육센터] 목요일 저녁, 퇴근 뒤 일정을 비워 두셨나요?" aria-label="확인할 글"></textarea>
+    <button type="button" class="aic-btn" id="aic-btn">AI 확인 글 복사</button>
+    <p class="aic-msg" id="aic-msg" aria-live="polite"></p>
+    <p class="aic-note">복사한 글을 Claude나 ChatGPT 새 채팅에 붙여 넣으면 기준마다 ✓와 판정이 와요. <a href="https://claude.ai/new" target="_blank" rel="noopener">Claude 새 채팅 열기</a></p>
+    <details id="aic-det"><summary>만들어진 글 펴 보기</summary>
+      <textarea id="aic-out" readonly aria-label="AI에게 보낼 글"></textarea>
+    </details>
+  </section>
+<script type="text/plain" id="aic-prompt">
+너는 꼼꼼한 검수 담당이야. 아래 글을 보내기 전에 기준대로 확인해 줘.
+
+회사·고객: 예시 교육센터(가상)·직장인 AI 실무 과정 / 퇴근 뒤 수업을 듣는 직장인 수강생
+
+참고 자료:
+1. 이번 주 패턴: 질문으로 연다 / 읽는 사람 쪽에서 시작한다 / 결과물·후기 자리를 둔다(후기 문장은 지어내지 않고 [실제 후기 자리](가정)로만)
+2. 이번 주 고객에게 할 말: 수업에 못 오면 전날까지 알려 주세요
+3. 수업 날짜·시간처럼 보내는 사람이 아는 우리 일정은 출처 없는 숫자로 치지 않아.
+4. 글에 적힌 휴강·보강 일정은 보내는 사람이 확인한 사실로 보고 확정 여부를 따지지 마. [날짜](가정) 같은 자리 표시가 있을 때만 사람 확인이 필요해.
+
+기준 여섯 개:
+① 첫 두 줄 안에 무엇을 알리는지 보인다: 휴강인지 보강인지(과정이 하나뿐이라 "수업"이라고만 써도 어느 수업인지는 따지지 않음)
+② 폰 문자로 한눈에 읽힌다: 짧은 문장 몇 줄이고 길게 늘어지지 않음("목요일"·"같은 시간"처럼 받는 사람이 알아볼 정도면 되고, 정확한 날짜·시간·장소가 없어도 지적하지 않음)
+③ 이번 주 패턴 가운데 하나가 보인다
+④ 문구 규칙을 지킨다: 최고·1위·100%·완벽·무조건·최저가·역대급·단독·완치·부작용 없음·경쟁사 이름이 없고, 효능을 암시하는 말(살 안 찌는, 다이어트, 체중, 혈당, 피부 재생 같은 것)이 없고, 출처 없는 통계·효과 숫자가 없고, [할인율](가정) 같은 자리 표시는 그대로 남아 있다
+⑤ 받는 사람이 할 일과 앞뒤가 맞고, 센터가 확인하지 않은 약속이 없다
+⑥ 보낸 곳(예시 교육센터)이 보이고, 받는 사람이 할 행동이 한 줄로 있다
+
+답 모양(이 순서로, 한국어로 쉽게):
+1. 잘된 점 한 줄
+2. 기준마다 한 줄: "① ✓" 또는 "① 고칠 것: 한 줄" (①~⑥)
+3. 고칠 것이 있으면 고친 글을 한 번만
+4. 마지막 줄은 셋 가운데 하나:
+   - "판정: 보내도 돼요": 여섯 개 모두 ✓
+   - "판정: 고쳐서 다시": 글만 고치면 되는 것
+   - "판정: 보류(사람 확인)": 출처 없는 숫자, 효능·건강을 암시하는 말, 실제 행사인지 모르는 기간·수량 한정(오늘만·품절 임박), 자리 표시처럼 사람이 사실을 확인해야 하는 것이 하나라도 있을 때. 이것이 먼저야.
+판정은 아래 붙여 준 글만 보고 정해(네가 고친 글은 판정에 넣지 마).
+
+확인할 글:
+{{글}}
+</script>
+  <p class="base" id="base"></p>
+
+  <h2>오늘 요약</h2>
+  <div class="tiles">
+    <div class="tile abs"><div class="k">결석</div><div class="v" id="absN"></div><div class="d" id="absD"></div></div>
+    <div class="tile open"><div class="k">미처리 문의</div><div class="v" id="openN"></div><div class="d" id="openD"></div></div>
+  </div>
+  <p class="week" id="week"></p>
+
+  <h2>구분별로 보기</h2>
+  <div class="filters" id="filters">
+    <button type="button" data-f="all" aria-pressed="true">전체</button>
+    <button type="button" data-f="출결" aria-pressed="false">출결</button>
+    <button type="button" data-f="문의" aria-pressed="false">문의</button>
+    <button type="button" data-f="결석" aria-pressed="false">결석만</button>
+    <button type="button" data-f="미처리" aria-pressed="false">미처리 문의</button>
+  </div>
+  <p class="count" id="count"></p>
+  <table>
+    <colgroup><col class="c-date"><col class="c-name"><col class="c-kind"><col><col class="c-state"></colgroup>
+    <thead><tr><th>날짜</th><th>이름</th><th>구분</th><th>내용</th><th>상태</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <p class="src">출처: 구글 시트 내려받기(예시). 모든 줄이 같은 시트에서 왔어요(records.csv와 같은 기록).<br>가상 회사의 가명 예시 데이터라 실제 사람·실제 출결이 아니에요. 화면의 숫자는 모두 아래 기록을 센 값이에요.</p>
+</div>
+<script>
+// 예시 데이터: [날짜, 이름, 구분, 내용, 상태] · 출처는 모두 "구글 시트 내려받기(예시)"
+const RECORDS = [
+  ["2026-11-02","가명4","문의","수업 자료: 첫 수업 준비물 문의","처리 완료"],
+  ["2026-11-02","가명7","문의","기타: 주차 등록 가능 여부 문의","처리 완료"],
+  ["2026-11-03","가명1","출결","출석","처리 완료"],
+  ["2026-11-03","가명2","출결","출석","처리 완료"],
+  ["2026-11-03","가명3","출결","출석","처리 완료"],
+  ["2026-11-03","가명4","출결","출석","처리 완료"],
+  ["2026-11-03","가명5","출결","출석","처리 완료"],
+  ["2026-11-03","가명6","출결","지각","처리 완료"],
+  ["2026-11-03","가명7","출결","출석","처리 완료"],
+  ["2026-11-03","가명8","출결","출석","처리 완료"],
+  ["2026-11-03","가명1","문의","수업 자료: 1회차 실습 파일 다시 요청","처리 완료"],
+  ["2026-11-04","가명3","문의","수강 변경: 목요반만 온라인으로 들을 수 있는지 문의","처리 완료"],
+  ["2026-11-05","가명1","출결","출석","처리 완료"],
+  ["2026-11-05","가명2","출결","출석","처리 완료"],
+  ["2026-11-05","가명3","출결","결석: 사전 연락 있음","처리 완료"],
+  ["2026-11-05","가명4","출결","출석","처리 완료"],
+  ["2026-11-05","가명5","출결","출석","처리 완료"],
+  ["2026-11-05","가명6","출결","출석","처리 완료"],
+  ["2026-11-05","가명7","출결","출석","처리 완료"],
+  ["2026-11-05","가명8","출결","출석","처리 완료"],
+  ["2026-11-05","가명8","문의","기타: 수료 기준 문의","처리 완료"],
+  ["2026-11-06","가명2","문의","수업 자료: 2회차 녹화본 요청","처리 완료"],
+  ["2026-11-07","가명6","문의","수강 변경: 다음 기수로 연기 가능 여부 문의","처리 완료"],
+  ["2026-11-09","가명5","문의","수업 자료: 실습 계정 로그인이 안 됨","처리 완료"],
+  ["2026-11-10","가명1","출결","출석","처리 완료"],
+  ["2026-11-10","가명2","출결","지각","처리 완료"],
+  ["2026-11-10","가명3","출결","출석","처리 완료"],
+  ["2026-11-10","가명4","출결","출석","처리 완료"],
+  ["2026-11-10","가명5","출결","출석","처리 완료"],
+  ["2026-11-10","가명6","출결","출석","처리 완료"],
+  ["2026-11-10","가명7","출결","결석: 사전 연락 있음","처리 완료"],
+  ["2026-11-10","가명8","출결","출석","처리 완료"],
+  ["2026-11-10","가명4","문의","기타: 강의실 와이파이 접속 문의","처리 완료"],
+  ["2026-11-11","가명7","문의","수강 변경: 화요반에서 목요반으로 이동 요청","처리 완료"],
+  ["2026-11-11","가명1","문의","수업 자료: 3회차 프롬프트 예시 요청","처리 완료"],
+  ["2026-11-12","가명1","출결","출석","처리 완료"],
+  ["2026-11-12","가명2","출결","출석","처리 완료"],
+  ["2026-11-12","가명3","출결","출석","처리 완료"],
+  ["2026-11-12","가명4","출결","출석","처리 완료"],
+  ["2026-11-12","가명5","출결","결석: 연락 없음","처리 완료"],
+  ["2026-11-12","가명6","출결","지각","처리 완료"],
+  ["2026-11-12","가명7","출결","출석","처리 완료"],
+  ["2026-11-12","가명8","출결","출석","처리 완료"],
+  ["2026-11-12","가명3","문의","환불: 중도 환불 기준 문의","처리 완료"],
+  ["2026-11-13","가명8","문의","수업 자료: 4회차 녹화본 요청","처리 완료"],
+  ["2026-11-13","가명2","문의","기타: 영수증 다시 발급 요청","처리 완료"],
+  ["2026-11-14","가명6","문의","환불: 남은 회차 환불 절차 문의","미처리"],
+  ["2026-11-16","가명5","문의","수강 변경: 수강 일시 중지 가능 여부 문의","처리 완료"],
+  ["2026-11-16","가명1","문의","수업 자료: 5회차 실습 파일 다시 요청","처리 완료"],
+  ["2026-11-17","가명1","출결","출석","처리 완료"],
+  ["2026-11-17","가명2","출결","출석","처리 완료"],
+  ["2026-11-17","가명3","출결","결석: 사전 연락 있음","처리 완료"],
+  ["2026-11-17","가명4","출결","출석","처리 완료"],
+  ["2026-11-17","가명5","출결","결석: 연락 없음","처리 완료"],
+  ["2026-11-17","가명6","출결","출석","처리 완료"],
+  ["2026-11-17","가명7","출결","출석","처리 완료"],
+  ["2026-11-17","가명8","출결","지각","처리 완료"],
+  ["2026-11-17","가명4","문의","기타: 수료증 발급 일정 문의","처리 완료"],
+  ["2026-11-18","가명3","문의","환불: 결석 회차 보강 또는 환불 문의","처리 완료"],
+  ["2026-11-18","가명7","문의","수업 자료: 6회차 녹화본 요청","처리 완료"],
+  ["2026-11-19","가명1","출결","출석","처리 완료"],
+  ["2026-11-19","가명2","출결","지각","처리 완료"],
+  ["2026-11-19","가명3","출결","출석","처리 완료"],
+  ["2026-11-19","가명4","출결","출석","처리 완료"],
+  ["2026-11-19","가명5","출결","결석: 연락 없음","처리 완료"],
+  ["2026-11-19","가명6","출결","지각","처리 완료"],
+  ["2026-11-19","가명7","출결","출석","처리 완료"],
+  ["2026-11-19","가명8","출결","결석: 연락 없음","처리 완료"],
+  ["2026-11-19","가명8","문의","수강 변경: 다음 주 온라인 참여 요청","미처리"],
+  ["2026-11-20","가명2","문의","수업 자료: 녹화본 링크가 열리지 않음","처리 완료"],
+  ["2026-11-20","가명6","문의","환불: 환불 처리 진행 상황 다시 문의","미처리"],
+  ["2026-11-21","가명5","문의","수강 변경: 남은 수업 연기 요청","미처리"],
+  ["2026-11-21","가명4","문의","기타: 마지막 주 수업 시간 변경 여부 문의","처리 완료"]
+];
+const WD = ['일','월','화','수','목','금','토'];
+function md(d) { return d.slice(5).replace('-', '/'); }
+function wd(d) { return WD[new Date(d + 'T00:00:00').getDay()]; }
+function kind(r) { return r[3].split(':')[0]; }
+
+const base = RECORDS.reduce((m, r) => r[0] > m ? r[0] : m, RECORDS[0][0]);
+const lastClass = RECORDS.filter(r => r[2] === '출결').reduce((m, r) => r[0] > m ? r[0] : m, '');
+const absToday = RECORDS.filter(r => r[0] === lastClass && kind(r) === '결석');
+const open = RECORDS.filter(r => r[2] === '문의' && r[4] === '미처리');
+const weekStart = (() => { const t = new Date(base + 'T00:00:00'); t.setDate(t.getDate() - 6); const p = n => String(n).padStart(2, '0'); return t.getFullYear() + '-' + p(t.getMonth() + 1) + '-' + p(t.getDate()); })();
+const inWeek = RECORDS.filter(r => r[0] >= weekStart && r[0] <= base);
+
+document.getElementById('base').textContent = '기준일 ' + base + '(' + wd(base) + ') · 예시 데이터의 마지막 기록일 · 기록 ' + RECORDS.length + '줄';
+document.getElementById('absN').innerHTML = absToday.length + '<small>명</small>';
+document.getElementById('absD').textContent = '최근 수업 ' + md(lastClass) + '(' + wd(lastClass) + ') · ' + absToday.map(r => r[1]).join(', ');
+document.getElementById('openN').innerHTML = open.length + '<small>건</small>';
+document.getElementById('openD').textContent = '가장 오래된 것 ' + md(open.map(r => r[0]).sort()[0]) + ' · 아직 답하지 않은 문의';
+document.getElementById('week').textContent = '최근 7일(' + md(weekStart) + '~' + md(base) + '): 결석 ' + inWeek.filter(r => kind(r) === '결석').length + '건 · 지각 ' + inWeek.filter(r => kind(r) === '지각').length + '건 · 문의 ' + inWeek.filter(r => r[2] === '문의').length + '건';
+
+const pass = {
+  all: () => true,
+  '출결': r => r[2] === '출결',
+  '문의': r => r[2] === '문의',
+  '결석': r => kind(r) === '결석',
+  '미처리': r => r[2] === '문의' && r[4] === '미처리'
+};
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function show(f) {
+  const list = RECORDS.filter(pass[f]).slice().reverse();
+  document.getElementById('rows').innerHTML = list.map(r => {
+    const k = kind(r);
+    const cls = k === '결석' ? 'is-abs' : (k === '지각' ? 'is-late' : '');
+    const st = r[4] === '미처리' ? '<span class="pill todo">미처리</span>' : '<span class="pill done">처리 완료</span>';
+    return '<tr class="' + cls + '"><td>' + md(r[0]) + '<span class="wd">' + wd(r[0]) + '</span></td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td><td class="what">' + esc(r[3]) + '</td><td>' + st + '</td></tr>';
+  }).join('');
+  document.getElementById('count').textContent = '전체 ' + RECORDS.length + '줄 중 ' + list.length + '줄 · 최근 날짜부터';
+  document.querySelectorAll('#filters button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === f)));
+}
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (b) show(b.dataset.f);
+});
+show('all');
+</script>
+<script>
+(function () {
+  var box = document.getElementById('ai-check');
+  if (!box) return;
+  var btn = document.getElementById('aic-btn');
+  var src = document.getElementById('aic-input');
+  var out = document.getElementById('aic-out');
+  var msg = document.getElementById('aic-msg');
+  var det = document.getElementById('aic-det');
+  var tpl = document.getElementById('aic-prompt').textContent.replace(/^\n/, '').replace(/\n$/, '');
+  var timer = null;
+
+  function say(text, ok) {
+    msg.textContent = text;
+    msg.className = 'aic-msg' + (ok ? ' aic-ok' : '');
+  }
+  function selectOut() {
+    out.focus();
+    out.select();
+    try { out.setSelectionRange(0, out.value.length); } catch (e) {}
+  }
+  function fallback() {
+    det.open = true;
+    selectOut();
+    var done = false;
+    try { done = document.execCommand('copy'); } catch (e) { done = false; }
+    if (done) { good(); } else { say('Ctrl+C(맥은 Cmd+C)로 복사해요', false); selectOut(); }
+  }
+  function good() {
+    say('복사됐어요', true);
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(function () { if (msg.textContent === '복사됐어요') say('', false); }, 2000);
+  }
+  btn.addEventListener('click', function () {
+    var text = src.value.trim();
+    if (!text) { say('확인할 글을 먼저 붙여요', false); src.focus(); return; }
+    out.value = tpl.split('{{글}}').join(text);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(out.value).then(good, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>

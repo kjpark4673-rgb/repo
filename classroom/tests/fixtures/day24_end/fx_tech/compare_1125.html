@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시안 세 개 비교</title>
+<style>
+:root{--bg:#f4f3f6;--card:#fff;--fg:#1d1d1f;--mute:#6b6b70;--line:#e2e2e6;--accent:#5f0080;--warn:#fff4d6;--warnfg:#5c4300;--hold:#fde8e8;--holdfg:#8a1c1c}
+@media (prefers-color-scheme:dark){:root{--bg:#121214;--card:#1c1c1f;--fg:#f2f2f4;--mute:#a0a0a8;--line:#333338;--accent:#d9a3ee;--warn:#3a3016;--warnfg:#f3deaa;--hold:#3a1c1c;--holdfg:#f5b5b5}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 "Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+.band{background:var(--warn);color:var(--warnfg);padding:10px 16px;font-weight:700;font-size:14px;text-align:center}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:8px 0 4px;color:var(--accent)}
+.sub{color:var(--mute);font-size:13px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.head{display:flex;align-items:center;gap:8px;padding:10px 12px}
+.av{width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--card);display:grid;place-items:center;font-size:12px;font-weight:800}
+.who{font-weight:700;font-size:13px}.who small{display:block;font-weight:400;color:var(--mute);font-size:11px}
+.cap{padding:0 12px 10px;font-size:14px}
+img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--line)}
+.body{padding:12px}
+.body p{margin:0 0 8px}
+.lab{color:var(--mute);font-size:12px;font-weight:700;display:block}
+.res{display:inline-block;padding:3px 10px;border-radius:99px;font-weight:700;font-size:13px;background:var(--hold);color:var(--holdfg)}
+.note{color:var(--mute);font-size:13px;margin-top:16px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="band">수업용 시안 · 실제 회사의 광고가 아니에요</div>
+<main>
+<h1>11/25 ③ 만들기 · 시안 A·B·C</h1>
+<p class="sub">먹힌 광고 패턴 3개(patterns_1125.md)로 만든 이미지 시안 · 인스타그램 피드 4:5 · 심사: 새로 띄운 심사 에이전트 · 자세한 내용 <a href="review_1125.md">review_1125.md</a></p>
+<div class="grid">
+
+<article class="card">
+<div class="head"><div class="av">컬</div><div class="who">컬리<small>광고 · 수업용 시안</small></div></div>
+<div class="cap">지금 담으면, 내일 아침 문 앞에</div>
+<img src="ad_1125_a.png" alt="시안 A: 지금 담고 아침에 받기" width="1080" height="1350">
+<div class="body">
+<p><span class="lab">잘된 점</span>짙은 배경 위 흰 글자 두 줄이 크고, 맨 앞 "지금"이 바로 할 일을 알려 줘요.</p>
+<p><span class="lab">쓴 패턴과 근거 숫자</span>패턴 1 첫 문장에 '지금·오늘' · 오래 돈 묶음 3개 중 3개 · 나머지 묶음 12개 중 1개</p>
+<p><span class="lab">심사 결과</span><span class="res">보류: 사람 확인</span> 2번 고침 · 배경 사진에 장바구니 장면이 없음</p>
+</div>
+</article>
+
+<article class="card">
+<div class="head"><div class="av">컬</div><div class="who">컬리<small>광고 · 수업용 시안</small></div></div>
+<div class="cap">장 보는 시간, 아침으로 돌려받기</div>
+<img src="ad_1125_b.png" alt="시안 B: 장 보는 시간은 빼고" width="1080" height="1350">
+<div class="body">
+<p><span class="lab">잘된 점</span>헤드라인이 한 줄이고 메시지가 하나뿐이라 깔끔하고 편하게 읽혀요.</p>
+<p><span class="lab">쓴 패턴과 근거 숫자</span>패턴 2 이미지 한 장(메시지 하나) · 오래 돈 묶음 3개 중 3개 · 나머지 묶음 12개 중 5개</p>
+<p><span class="lab">심사 결과</span><span class="res">보류: 사람 확인</span> 2번 고침 · 제품이 주인공인 사진이 없음</p>
+</div>
+</article>
+
+<article class="card">
+<div class="head"><div class="av">컬</div><div class="who">컬리<small>광고 · 수업용 시안</small></div></div>
+<div class="cap">첫 장보기 [쿠폰 금액](가정) 쿠폰</div>
+<img src="ad_1125_c.png" alt="시안 C: 첫 장보기 쿠폰 금액 자리 표시 쿠폰" width="1080" height="1350">
+<div class="body">
+<p><span class="lab">잘된 점</span>혜택 자리를 점선 상자로 뚜렷하게 두었고, "쿠폰 받기" 버튼이 헤드라인과 바로 이어져요.</p>
+<p><span class="lab">쓴 패턴과 근거 숫자</span>패턴 3 구체적 혜택 자리 · 오래 돈 묶음 3개 중 2개 · 나머지 묶음 12개 중 3개</p>
+<p><span class="lab">심사 결과</span><span class="res">보류: 사람 확인</span> 2번 고침 · 배경 사진에 손과 장바구니 장면이 없음</p>
+</div>
+</article>
+
+</div>
+<p class="note">(표본 적음) 패턴은 광고 15줄에서 뽑았어요. 회사 이름은 글자로만 썼고, [ ](가정)은 사람이 실제 숫자를 확인해 채울 자리예요.</p>
+</main>
+</body>
+</html>

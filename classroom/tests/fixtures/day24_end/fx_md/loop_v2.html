@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라라스윗 내 루프</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#6b6b70;--line:#e2e2e6;--card:#f6f6f8;--acc:#d6336c}
+@media (prefers-color-scheme:dark){:root{--bg:#18181b;--fg:#f2f2f4;--mut:#a0a0a8;--line:#3a3a40;--card:#232328;--acc:#ff7aa8}}
+*{box-sizing:border-box}
+body{margin:0;padding:0 16px 40px;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,sans-serif;overflow-wrap:anywhere}
+header{padding:16px 0 8px;border-bottom:1px solid var(--line)}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:18px;margin:28px 0 8px;color:var(--acc)}
+h3{font-size:16px;margin:0 0 6px}
+p,li{margin:4px 0}
+.mut{color:var(--mut);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;margin:12px 0}
+dt{font-weight:600;margin-top:8px}
+dd{margin:2px 0 0}
+.nd{fill:var(--card);stroke:var(--line);stroke-width:1.5}
+.bn{stroke:var(--acc);stroke-width:4}
+.ln{stroke:var(--mut);stroke-width:2;fill:none}
+.arh{fill:var(--mut)}
+.t1{fill:var(--fg);font-size:12px;font-weight:700}
+.t2{fill:var(--mut);font-size:10px}
+.bd{fill:var(--acc)}
+.bt{fill:#fff;font-size:12px;font-weight:700}
+.big{display:inline-block;background:var(--acc);color:#fff;font-weight:800;font-size:18px;padding:2px 12px;border-radius:14px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;margin:10px 0}
+table{border-collapse:collapse;min-width:560px;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14px}
+th{color:var(--mut);white-space:nowrap}
+.hot{border:3px solid var(--acc)}
+</style>
+</head>
+<body>
+<header>
+<h1>회사: 라라스윗 (저당 아이스크림)</h1>
+<p>MVP: mvp.html — 라라스윗 저당 아이스크림 경쟁 동향 5곳 (조사형)</p>
+<p class="mut">MVP는 따라잡기 원본 없이 만든 임시 화면(가정)이고, 화면에는 메뉴·버튼이 없고 표 하나만 있어요. 그래서 아래는 화면 제목, 표 이름과 열 이름, 출처 링크로 썼어요. 횟수·시간은 모두 (가정). 직무: MD(상품기획).</p>
+</header>
+
+<h2>유저 스토리</h2>
+
+<div class="card">
+<h3>팀장</h3>
+<p><b>하루 시나리오</b></p>
+<ol>
+<li>출근해서 커피를 마시고, 아침 회의 전에 경쟁사가 뭘 했는지 보려고 해요.</li>
+<li>mvp.html을 열면 "라라스윗 저당 아이스크림 경쟁 동향 5곳" 표가 바로 보여요.</li>
+<li>"회사"와 "소식 날짜" 열을 훑어 이번 달에 새로 움직인 곳을 찾아요(하루 1번, 3분 가정).</li>
+<li>그다음 회의에서 "최근 소식 한 줄"을 읽고 우리 신제품 일정에 영향이 있는지 물어요.</li>
+</ol>
+<dl>
+<dt>유저 스토리</dt>
+<dd>MD 팀장으로서 경쟁 5곳의 최근 소식을 한 표에서 보고 싶다, 왜냐하면 회의 전에 따로 검색하지 않고 바로 판단하고 싶기 때문이다.</dd>
+<dt>가장 만족할 기능·화면</dt>
+<dd>"소식 날짜" 열. 오래된 소식과 새 소식을 한눈에 가를 수 있어서요.</dd>
+<dt>부족한 것</dt>
+<dd>소식이 새로 생겨도 표가 저절로 바뀌지 않아요. 그때는 손으로 검색해 한 줄을 고쳐 적어요.</dd>
+<dt>통과 기준</dt>
+<dd>mvp.html을 열면 5곳 모두의 "소식 날짜"와 "조사일"이 표에 보이고, 못 찾은 칸에는 "못 찾음"이 보인다.</dd>
+</dl>
+</div>
+
+<div class="card">
+<h3>동료</h3>
+<p><b>하루 시나리오</b></p>
+<ol>
+<li>출근해서 메일을 보고, 이번 주 기획안에 넣을 경쟁 근거를 정리하려고 해요.</li>
+<li>mvp.html을 열어 "종류" 열에서 신제품인 줄과 캠페인인 줄을 구분해 봐요.</li>
+<li>기획안에 쓸 줄의 "출처" 링크를 열어 원문을 확인해요(주 3번, 줄마다 5분 가정).</li>
+<li>그다음 확인한 내용을 기획안 초안에 옮겨 적고, 링크도 같이 붙여요.</li>
+</ol>
+<dl>
+<dt>유저 스토리</dt>
+<dd>MD 동료로서 줄마다 출처 링크가 달린 경쟁 소식을 보고 싶다, 왜냐하면 기획안에 근거를 쓸 때 출처를 다시 찾는 시간을 줄이고 싶기 때문이다.</dd>
+<dt>가장 만족할 기능·화면</dt>
+<dd>"출처" 열의 링크. 원문으로 바로 가서 날짜와 내용을 확인할 수 있어서요.</dd>
+<dt>부족한 것</dt>
+<dd>소식이 한 회사에 한 줄뿐이에요. 그때는 그 회사 이름으로 직접 검색해 이전 소식을 찾아봐요.</dd>
+<dt>통과 기준</dt>
+<dd>"출처"의 링크를 누르면 표에 적힌 "최근 소식 한 줄"과 같은 내용의 원문이 열린다.</dd>
+</dl>
+</div>
+
+<div class="card">
+<h3>부사수(신입)</h3>
+<p><b>하루 시나리오</b></p>
+<ol>
+<li>출근해서 팀장이 준 "경쟁사 동향 정리해 와" 일을 받아요.</li>
+<li>mvp.html을 열면 표의 "조사일" 열이 먼저 눈에 들어와 얼마나 지난 자료인지 알 수 있어요.</li>
+<li>"회사" 열의 5곳을 하나씩 검색해 새 소식이 있으면 표에 줄을 고쳐 적어요(주 2번, 1회 30분 가정).</li>
+<li>그다음 못 찾은 칸은 "못 찾음"으로 두고, 어디까지 찾았는지 동료에게 알려요.</li>
+</ol>
+<dl>
+<dt>유저 스토리</dt>
+<dd>MD 부사수로서 어느 칸이 비었고 언제 조사했는지 표에서 바로 보고 싶다, 왜냐하면 무엇부터 다시 찾아야 하는지 물어보지 않고 알고 싶기 때문이다.</dd>
+<dt>가장 만족할 기능·화면</dt>
+<dd>"못 찾음" 표시와 "조사일" 열. 내가 할 일이 어디인지 바로 보여서요.</dd>
+<dt>부족한 것</dt>
+<dd>표를 화면에서 고칠 수 있는 버튼이 없어요. 그때는 파일을 열어 글자를 직접 고쳐 적고 팀장에게 말해요.</dd>
+<dt>통과 기준</dt>
+<dd>표에서 "못 찾음"이 적힌 칸을 보면 그 줄의 "조사일"도 같이 보인다.</dd>
+</dl>
+</div>
+
+<h2>병목</h2>
+<p><span class="big">병목</span> ① 리서치하기</p>
+<p>이유: 팀장·동료·부사수 모두 mvp.html 표가 저절로 갱신되지 않아 손으로 검색해 고쳐 적어야 하고, 이 일이 늦으면 분석 이후 모든 칸이 멈춰요(횟수·시간은 (가정)).</p>
+
+<h2>지금 내 루프</h2>
+<p><b>지난 점검 11/23 ✓ 3칸 → 오늘 ✓ 4칸 · 올라간 칸 재료·일</b></p>
+<p class="mut">11/24 · 따라잡기 원본 없이 만든 임시 화면(mvp.html) 기준 · 파일과 화면에서 찾은 근거만 썼어요. 돈 흔적: run_log.md 1줄, research.csv 15줄, weekly.html, 스킬 파일은 있고, 예약 파일(.github/workflows)은 없어요.</p>
+<div class="card">
+<h3>✓ 이미 된 칸</h3>
+<ul>
+<li><b>재료 — 됨</b> (오늘 시작 → 됨)<br>이미 한 것: weekly-research 스킬로 경쟁 5곳을 같은 칸(조사일·이름·항목·값·출처 링크·상태)으로 research.csv에 쌓았어요.<br>근거: .claude/skills/weekly-research/SKILL.md, research.csv 15줄, run_log.md의 수동 1회 줄.<br>다음 한 걸음: 다음 주에 한 번 더 돌려 상태(바뀜·같음)가 채워지는지 봐요.</li>
+<li><b>일 — 시작</b> (오늘 새로 ✓)<br>이미 한 것: research.csv를 Claude가 읽고 한 줄 결론·Top 5·팩트체크 표가 있는 weekly.html로 정리해 줬어요(대화에서 시킴).<br>근거: weekly.html의 결론·Top 5·팩트체크 표.<br>다음 한 걸음: 스킬 한 번으로 weekly.html까지 바로 만들어지게 이어요(11/25).</li>
+<li><b>검사·멈춤 — 시작</b><br>이미 한 것: 출처 링크·조사일·"못 찾음"에 더해 weekly.html 팩트체크 표(중복·재계산·못 찾음 수)로 사람이 확인할 수 있어요. 멈추는 규칙은 아직 없어요.<br>근거: research.csv의 "못 찾음" 9줄, weekly.html 팩트체크 표.<br>다음 한 걸음: 걸러 내는 기준과 멈추는 규칙을 spec.md에 적어요(11/26).</li>
+<li><b>기록 — 시작</b><br>이미 한 것: 날짜가 붙은 run_log.md·decisions.md가 쌓이고 지난 판(CLAUDE_v2.md, loop_v4.html)이 남아요. 팀 공유는 아직이에요.<br>근거: run_log.md, decisions.md, CLAUDE_v1~v2.md, loop_v1~v4.html.<br>다음 한 걸음: 팀이 같이 보는 곳에 쌓이게 옮겨요(11/30).</li>
+</ul>
+</div>
+<div class="card hot">
+<h3>다음 칸 하나: 일 (11/25에 올려요)</h3>
+<p>이유: 지금은 weekly.html을 대화에서 따로 만들어 붙여서, 스킬 한 번으로 결과까지 나오면 병목인 ① 리서치하기가 한 줄로 끝나요.</p>
+</div>
+<div class="card">
+<h3>앞으로 채울 칸</h3>
+<ul>
+<li>방아쇠 — 12/2</li>
+<li>되먹임 — 12/1</li>
+</ul>
+</div>
+<p><b>12/3에 다시 봐서 ✓가 늘어난 것을 확인해요.</b></p>
+
+<h2>루프 설계도</h2>
+<p class="mut">갈래는 조사형이에요. ③~⑤ 파일은 (예정)이에요.</p>
+<svg viewBox="0 0 360 340" role="img" aria-label="루프 그림: 리서치하기, 분석하기, 만들기, 내보내기, 반응 보기를 둥글게 잇고 다시 리서치하기로 돌아간다" style="width:100%;height:auto;display:block">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="arh"/></marker></defs>
+<line x1="216.3" y1="91.4" x2="257.9" y2="121.6" class="ln" marker-end="url(#ar)"/>
+<line x1="285.1" y1="175.7" x2="259.6" y2="254.3" class="ln" marker-end="url(#ar)"/>
+<line x1="198.5" y1="282.1" x2="161.5" y2="282.1" class="ln" marker-end="url(#ar)"/>
+<line x1="100.4" y1="254.3" x2="74.9" y2="175.7" class="ln" marker-end="url(#ar)"/>
+<line x1="102.1" y1="121.6" x2="143.7" y2="91.4" class="ln" marker-end="url(#ar)"/>
+<rect x="132.0" y="41.0" width="96" height="48" rx="8" class="nd bn"/>
+<text x="180.0" y="62.0" text-anchor="middle" class="t1">① 리서치하기</text>
+<text x="180.0" y="79.0" text-anchor="middle" class="t2">research-agent</text>
+<rect x="246.1" y="123.9" width="96" height="48" rx="8" class="nd"/>
+<text x="294.1" y="144.9" text-anchor="middle" class="t1">② 분석하기</text>
+<text x="294.1" y="161.9" text-anchor="middle" class="t2">analysis-agent</text>
+<rect x="202.5" y="258.1" width="96" height="48" rx="8" class="nd"/>
+<text x="250.5" y="279.1" text-anchor="middle" class="t1">③ 만들기</text>
+<text x="250.5" y="296.1" text-anchor="middle" class="t2">content-agent</text>
+<rect x="61.5" y="258.1" width="96" height="48" rx="8" class="nd"/>
+<text x="109.5" y="279.1" text-anchor="middle" class="t1">④ 내보내기</text>
+<text x="109.5" y="296.1" text-anchor="middle" class="t2">publish-agent</text>
+<rect x="17.9" y="123.9" width="96" height="48" rx="8" class="nd"/>
+<text x="65.9" y="144.9" text-anchor="middle" class="t1">⑤ 반응 보기</text>
+<text x="65.9" y="161.9" text-anchor="middle" class="t2">feedback-agent</text>
+<rect x="158.0" y="13.0" width="44" height="20" rx="10" class="bd"/>
+<text x="180.0" y="27.0" text-anchor="middle" class="bt">병목</text>
+<text x="180" y="181" text-anchor="middle" class="t1">내 루프</text><text x="180" y="199" text-anchor="middle" class="t2">한 바퀴 → 다시 ①</text>
+</svg>
+<div class="card hot">
+<h3>① 리서치하기</h3>
+<p><span class="big">병목</span> 리서치가 손으로만 돼서 표가 늦게 바뀌고, 뒤 칸 전부가 이 칸을 기다려요.</p><dl>
+<dt>에이전트</dt><dd>research-agent</dd>
+<dt>하는 일</dt><dd>경쟁사·업계 동향을 찾아 한 줄씩 표에 적는다(출처 링크와 조사일 포함).</dd>
+<dt>입력</dt><dd>mvp.html 표의 "회사" 열 5곳</dd>
+<dt>출력</dt><dd>research.csv, run_log.md</dd>
+<dt>만드는 날</dt><dd>11/24</dd>
+<dt>상태</dt><dd><b>완료(수동)</b> · <a href="weekly.html">weekly.html</a></dd>
+</dl></div><div class="card">
+<h3>② 분석하기</h3>
+<dl>
+<dt>에이전트</dt><dd>analysis-agent</dd>
+<dt>하는 일</dt><dd>바뀐 것·먹힌 것을 찾아 한 장 화면으로 정리한다.</dd>
+<dt>입력</dt><dd>research.csv</dd>
+<dt>출력</dt><dd>weekly.html</dd>
+<dt>만드는 날</dt><dd>11/24, 12/1</dd>
+</dl></div><div class="card">
+<h3>③ 만들기</h3>
+<dl>
+<dt>에이전트</dt><dd>content-agent</dd>
+<dt>하는 일</dt><dd>분석을 바탕으로 카피·이미지·영상을 만든다.</dd>
+<dt>입력</dt><dd>weekly.html</dd>
+<dt>출력</dt><dd>content_draft.md (예정), 이미지 또는 영상 파일 (예정)</dd>
+<dt>만드는 날</dt><dd>11/25 이미지 또는 영상, 11/27 화면 안 AI</dd>
+<dt>상태</dt><dd><b>첫 판(11/25, 수동 1회)</b> · <a href="compare_1125.html">compare_1125.html</a></dd>
+</dl></div><div class="card">
+<h3>④ 내보내기</h3>
+<dl>
+<dt>에이전트</dt><dd>publish-agent</dd>
+<dt>하는 일</dt><dd>만든 것을 올리고 팀에 공유한 기록을 저장한다.</dd>
+<dt>입력</dt><dd>content_draft.md (예정)</dd>
+<dt>출력</dt><dd>share_log.md (예정)</dd>
+<dt>만드는 날</dt><dd>11/30</dd>
+</dl></div><div class="card">
+<h3>⑤ 반응 보기</h3>
+<dl>
+<dt>에이전트</dt><dd>feedback-agent</dd>
+<dt>하는 일</dt><dd>올린 뒤 성과(전환율, 매출)를 보고 다음 ①에 넘길 것을 적는다.</dd>
+<dt>입력</dt><dd>share_log.md (예정)</dd>
+<dt>출력</dt><dd>reaction.csv (예정)</dd>
+<dt>만드는 날</dt><dd>12/1</dd>
+</dl></div>
+
+<h2>2주 진행표</h2>
+<div class="scroll"><table>
+<thead><tr><th>날짜</th><th>할 일</th><th>올릴 칸</th><th>상태</th></tr></thead>
+<tbody><tr><td>11/23</td><td>내 루프 그림</td><td>지금 상태 점검</td><td>오늘</td></tr><tr><td><b>11/24</b></td><td><b>① 리서치하기·② 분석하기 첫 판</b></td><td><b>재료·기록(A 카드를 하면 방아쇠도)</b></td><td><b>① 완료(수동) · <a href="weekly.html">weekly.html</a> / ② 예정</b></td></tr><tr><td><b>11/25</b></td><td><b>③ 이미지 또는 영상(선택)</b></td><td><b>일</b></td><td><b>첫 판(11/25, 수동 1회) · <a href="compare_1125.html">compare_1125.html</a></b></td></tr><tr><td>11/26</td><td>설계서(spec.md)</td><td>검사·멈춤</td><td>예정</td></tr><tr><td>11/27</td><td>③ 화면 안 AI</td><td>일</td><td>예정</td></tr><tr><td>11/30</td><td>④ 내보내기·공유 저장(리서치 한 번 더)</td><td>기록</td><td>예정</td></tr><tr><td>12/1</td><td>②·⑤ 분석하기·반응 보기</td><td>되먹임</td><td>예정</td></tr><tr><td>12/2</td><td>루프 연결</td><td>방아쇠·검사·멈춤</td><td>예정</td></tr><tr><td>12/3</td><td>점검·데모</td><td>다시 점검</td><td>예정</td></tr></tbody></table></div>
+</body>
+</html>

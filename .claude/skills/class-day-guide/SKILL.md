@@ -61,7 +61,7 @@ AskUserQuestion으로 한 번에 서너 개. 보기를 주고 기본값을 첫�
 `classroom/tools/build_day18.py`(공통 부분은 `guide_common.py`)를 `build_dayNN.py`로 복사해 프롬프트(PR)와 본문(body)만 바꾼다. 페이지 규칙과 빌더 쓰는 법은 `references/page-guide.md`. 요점: 아티팩트 이름 "Day N · 주제", 머리말 "Day N / 52 · 날짜", 맨 앞은 하루 지도(덩어리 세 개와 시간표), 구간 머리는 "덩어리 · 시간 · 교시 / 제목 / 왜 해요?", 입력 칸은 비워 두고 흐린 글씨로 처음 값.
 
 ### 6. 가상 학생으로 돌려 보기
-`classroom/tools/runchain.py`로 가이드 HTML의 프롬프트를 뽑아 빈 폴더에서 학생처럼 이어서 보낸다. 갈래 짜는 법, 명령 예, 통과 기준, 이 환경에서만 생기는 일은 `references/testing.md`. 최소한: 보기마다 한 갈래 + 아무것도 안 바꾼 학생 + 보기에 없는 것을 직접 적은 학생 + 테크 트랙 + 회사를 바꾼 학생. 모든 상자를 한 번 이상 돌린다. **앞날을 끝낸 폴더가 필요하면** `classroom/tests/fixtures/day22_end/`(네 직무, `restore.sh`)를 쓴다(새 창에는 앞 세션의 시험 폴더가 없다). 새 날짜를 끝낸 뒤에는 같은 방식으로 `dayNN_end/`를 저장소에 남긴다(학생 자료 없이).
+`classroom/tools/runchain.py`로 가이드 HTML의 프롬프트를 뽑아 빈 폴더에서 학생처럼 이어서 보낸다. 갈래 짜는 법, 명령 예, 통과 기준, 이 환경에서만 생기는 일은 `references/testing.md`. 최소한: 보기마다 한 갈래 + 아무것도 안 바꾼 학생 + 보기에 없는 것을 직접 적은 학생 + 테크 트랙 + 회사를 바꾼 학생. 모든 상자를 한 번 이상 돌린다. **앞날을 끝낸 폴더가 필요하면** `classroom/tests/fixtures/`의 가장 최근 `dayNN_end/`(11/22 기준 `day24_end`, 네 직무, `restore.sh`)를 쓴다(새 창에는 앞 세션의 시험 폴더가 없다). 계획 모드로 보내는 상자는 `PMODE=plan`으로 따로 보내고, 승인 대신 보내는 상자를 일반 모드로 이어 보낸다(11/26 Day 24). 화면에 버튼을 넣는 상자는 `node classroom/tools/check_aibutton.js <화면.html>`로 진짜 브라우저에서 눌러 본다. 새 날짜를 끝낸 뒤에는 같은 방식으로 `dayNN_end/`를 저장소에 남긴다(학생 자료 없이).
 
 ### 7. 화면 점검
 `node classroom/tools/check_guide.js <가이드.html>`: 폰 폭 넘침, 복사 상자, 메뉴 링크, 입력 칸 → 파란 글자를 본다. 걸린 것이 있으면 고치고 다시. 시험에서 나온 학생 화면도 `node classroom/tools/check_outputs.js <화면.html>...`로 브라우저에서 열어 본다(빈 화면은 시험기가 못 잡는다). 이어서 `python3 classroom/tools/easy_words.py check <가이드.html>`로 옛말이 남았는지 본다(통과면 종료 코드 0). 접기·형광펜을 쓴 가이드는 `node classroom/tools/verify_fold.js <가이드.html>`(쪽 높이, 형광펜 수, 잘린 상자의 복사 글)도 본다(`references/testing.md`).
