@@ -1,0 +1,251 @@
+<title>11월 넷째 주 수업 큐시트</title><meta name="claude:viewport-fit-sides" content="cover"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style id="app-css">
+/* 무대 감독 큐시트: 위에 저장 상태와 날짜별 진행, 아래로 날짜 칸이 이어지고 줄마다 시각 태그 + 할 일 + 체크 */
+:root{--bg:#f3f5f8;--card:#ffffff;--ink:#17202b;--sub:#5d6876;--line:#dfe4ea;--accent:#1d5fd6;--accent-soft:#e7efff;--cue:#9a4a00;--cue-soft:#fdf0d8;--done:#1f7a4d;--done-soft:#e3f4ea;--warn:#8a5a00;--warn-soft:#fff4d6;
+--ui:'IBM Plex Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;--mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111418;--card:#1a1e24;--ink:#e8ebef;--sub:#a3acb8;--line:#2c323b;--accent:#78a6ff;--accent-soft:#1c2a44;--cue:#f2b25c;--cue-soft:#3a2a12;--done:#6fd19e;--done-soft:#163324;--warn:#f1c45a;--warn-soft:#3a3013;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#111418;--card:#1a1e24;--ink:#e8ebef;--sub:#a3acb8;--line:#2c323b;--accent:#78a6ff;--accent-soft:#1c2a44;--cue:#f2b25c;--cue-soft:#3a2a12;--done:#6fd19e;--done-soft:#163324;--warn:#f1c45a;--warn-soft:#3a3013;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:17px;line-height:1.6;word-break:keep-all;overflow-wrap:break-word;padding-block:20px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main{max-width:760px;margin:0 auto;display:grid;gap:18px}
+header{display:grid;gap:10px}
+.eyebrow{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--sub)}
+h1{font-size:clamp(26px,6vw,36px);line-height:1.25;margin:0;font-weight:700;text-wrap:balance}
+.lead{margin:0;color:var(--sub);font-size:16px}
+.status{display:flex;align-items:baseline;gap:8px;font-size:14px;color:var(--sub)}
+.status span:last-child{min-width:0}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--sub);flex:none;transform:translateY(-1px)}
+.status[data-s="shared"] .dot{background:var(--done)}
+.status[data-s="soon"] .dot,.status[data-s="saving"] .dot{background:var(--cue)}
+.status[data-s="local"] .dot{background:var(--warn)}
+.banner{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--warn-soft);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:15px}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.daychip{flex:none;display:grid;gap:2px;text-align:left;font:inherit;font-size:13px;line-height:1.3;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;min-width:84px}
+.daychip b{font-size:14px}
+.daychip .n{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--sub)}
+.daychip.today{border-color:var(--accent);background:var(--accent-soft)}
+.daychip.all .n{color:var(--done)}
+.links{background:var(--card);border-radius:16px;padding:14px 16px;display:grid;gap:6px}
+.links h2,.day h2{font-size:15px;margin:0 0 4px;color:var(--sub);font-weight:600;letter-spacing:.02em}
+.linkrow{display:grid;grid-template-columns:minmax(0,7.5em) minmax(0,1fr);gap:8px;align-items:baseline;font-size:15px;padding:6px 0;border-top:1px solid var(--line)}
+.linkrow:first-of-type{border-top:0}
+.linkrow span{color:var(--sub);font-family:var(--mono);font-size:13px}
+.linkrow a{color:var(--accent);font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+.linkrow a:hover{text-decoration:underline}
+.note{font-size:13px;color:var(--sub);margin:4px 0 0}
+details.day{background:var(--card);border-radius:16px;overflow:hidden}
+details.day>summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center}
+details.day>summary::-webkit-details-marker{display:none}
+.sumtitle{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;min-width:0}
+.sumtitle b{font-size:18px}
+.sumtitle small{color:var(--sub);font-size:14px}
+.badge{font-size:12px;font-weight:700;border-radius:999px;padding:2px 8px;background:var(--accent-soft);color:var(--accent)}
+.count{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14px;color:var(--sub);white-space:nowrap}
+.count.all{color:var(--done)}
+.bar{grid-column:1/-1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--done);width:0;transition:width .25s}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+.items{list-style:none;margin:0;padding:0 8px 10px;display:grid;gap:2px}
+.item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;padding:10px 8px;border-radius:10px;align-items:start}
+.item:hover{background:var(--bg)}
+.item input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--done);cursor:pointer}
+.item label{cursor:pointer;display:grid;gap:4px;min-width:0}
+.item .t{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--cue);background:var(--cue-soft);border-radius:6px;padding:1px 7px;justify-self:start}
+.item .x{font-size:16px}
+.item.done .x{color:var(--sub);text-decoration:line-through;text-decoration-color:var(--line)}
+.item .more{font-size:14px;color:var(--sub)}
+.item a{color:var(--accent);font-weight:600;font-size:14px;text-decoration:none;overflow-wrap:anywhere}
+.quote{font-size:14.5px;line-height:1.6;background:var(--bg);border-radius:10px;padding:10px 12px;margin:2px 0 0;white-space:pre-wrap;user-select:text}
+.btn{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:10px;padding:7px 12px;background:var(--accent);color:#fff;cursor:pointer;justify-self:start}
+.btn.ghost{background:var(--accent-soft);color:var(--accent)}
+.daynote{margin:0 16px 12px;font-size:14px;color:var(--sub)}
+button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+footer{font-size:13px;color:var(--sub)}
+</style>
+<main id="app"></main>
+<script type="application/json" id="data">{"title":"11월 넷째 주 수업 큐시트","sections":[
+{"id":"d0","date":"2026-11-22","label":"11/22 일","name":"오늘 밤","theme":"21회차 전날","items":[
+{"id":"d0-share","t":"밤","x":"Day 21~24 가이드 넷을 Share → \"링크가 있는 사람\"으로","more":"넷 다 비공개로 발행됐어요. 용어 사전은 이미 공유돼 있어요.","links":[["Day 21","https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS"],["Day 22","https://claude.ai/artifact/MhhZZnnHoh486yVg2CcGBT"],["Day 23","https://claude.ai/artifact/CfU8SXHoTg8dFfR2wqCzKM"],["Day 24","https://claude.ai/artifact/Dr4LtBPaNTPRTZWVmmuz8W"]]},
+{"id":"d0-msg","t":"밤","x":"단톡방에 Day 21 전날 밤 한 줄","quote":"내일은 AI 에이전트와 내 루프를 개념부터 쉽게 배우고, 오후에 내 MVP로 '내 루프 그림' 한 장을 그려요. 모레(화)는 그 그림의 첫 칸을 실제로 만들어요. 지난주에 쓰던 폴더를 그대로 두세요. MVP가 아직 없어도 괜찮아요. 아침에 따라잡기 파일 두 개를 올릴게요."},
+{"id":"d0-pre","t":"밤","x":"Day 21 전날 10분","more":"리모컨 \"화면 열기\"로 브라우저가 뜨는지 · 아티팩트 Share 단추 자리 · Netlify Drop · 퀴즈 \"정답 보기\"가 폰에서 눌리는지"},
+{"id":"d0-catch","t":"밤","x":"따라잡기 파일 두 개 5분 확인","more":"실제 이름·연락처·출결, 실제 시트 주소, 만든 학생 이름이 화면에 없는지"}]},
+{"id":"d1","date":"2026-11-23","label":"11/23 월","name":"21회차","theme":"AI 에이전트와 내 루프 (개념의 날)","link":["Day 21 가이드","https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS"],"items":[
+{"id":"d1-0850","t":"08:50","x":"따라잡기 파일 두 개를 단톡방에","more":"이름 그대로. \"따라잡기_\"로 시작해야 P0이 MVP로 잡지 않아요."},
+{"id":"d1-0900","t":"09:00","x":"아침 30초 멘트 → 트래픽 주간 첫날","more":"MVP가 있는 학생만 카드. 3인 조 1→2→3→1(1번이 2번 것을), 2인 조는 서로."},
+{"id":"d1-0905","t":"09:05","x":"\"아티팩트 링크는 Share에서 '링크가 있는 사람'으로\" 한 번 외치기"},
+{"id":"d1-demo","t":"14:00","x":"오후 시연 폴더 준비","more":"빈 폴더에 조사형 따라잡기 파일만, 입력 칸 비우고 P0 → 따라잡기 → P1 → P3 → P4. 이 폴더를 화요일에도 써요."},
+{"id":"d1-1750","t":"17:50","x":"실습시트 링크 1개 + 한 줄"},
+{"id":"d1-msg","t":"저녁","x":"단톡방에 Day 22 전날 밤 한 줄","quote":"내일은 어제 그린 내 루프의 첫 칸(① 리서치하기)을 실제로 만들어요. 어제 폴더를 그대로 두세요. 어제 못 온 사람도 괜찮아요. 오늘 상자는 어제 파일 없이도 돌고, 어제 것은 오후에 채워요. 숙제(외부 배포)를 아직 못 했으면 내일 오후에 같이 해요."},
+{"id":"d1-pre","t":"저녁","x":"Day 22 전날 10분","more":"강사님 크롬에서 Claude in Chrome 옆 창 · GitHub Private 저장소와 Actions 탭 · 학원 망에서 구글 뉴스·유튜브 RSS와 \"웹에 게시\" 시트 CSV"}]},
+{"id":"d2","date":"2026-11-24","label":"11/24 화","name":"22회차","theme":"첫 고리 만들기","link":["Day 22 가이드","https://claude.ai/artifact/MhhZZnnHoh486yVg2CcGBT"],"items":[
+{"id":"d2-0850","t":"08:50","x":"따라잡기 파일 두 개를 단톡방에 다시(결석생용)"},
+{"id":"d2-0900","t":"09:00","x":"트래픽 주간 2일차","more":"3인 조 1→3→2→1(어제와 거꾸로), 2인 조는 서로."},
+{"id":"d2-demo","t":"시연","x":"어제 시연 폴더에서 새 대화로","more":"클라우드 세션은 쇼핑몰이 막혀 \"못 찾음\"이 많을 수 있어요. \"정상이에요, 꼭 필요한 곳은 내 크롬으로\"."},
+{"id":"d2-1730","t":"17:30","x":"weekly.html 링크 → 17:50 실습시트"},
+{"id":"d2-msg","t":"저녁","x":"단톡방에 Day 23 전날 밤 한 줄","quote":"내일은 광고가 며칠 동안 돌았는지(게재 일수)로 먹힌 패턴을 뽑고, 그 패턴으로 실제 광고 수준 시안 3개를 만들어 AI 심사까지 받아요. 같은 작업 폴더를 그대로 두세요. 아침 08:50에 업종별 공통광고 표를 올릴게요. 사진 3장은 ChatGPT(GPT 에듀)로 만들어요."},
+{"id":"d2-pre","t":"저녁","x":"Day 23 전날 10분","more":"GPT 에듀 사진이 하루 몇 장까지인지 · 학원 망에서 Remotion · 서브에이전트 허락 창 · 크롬·엣지로 PNG 찍기 · 사진이 든 비교 화면 발행 · Google Flow"},
+{"id":"d2-photo","t":"저녁","x":"시연 사진 3장을 ChatGPT로 미리 만들어 두기"}]},
+{"id":"d3","date":"2026-11-25","label":"11/25 수","name":"23회차","theme":"성과 데이터로 광고 시안 라인","link":["Day 23 가이드","https://claude.ai/artifact/CfU8SXHoTg8dFfR2wqCzKM"],"items":[
+{"id":"d3-0850","t":"08:50","x":"공통광고 표 10개 + 공통광고_읽는법.md + 따라잡기 파일 두 개","more":"11/22에 받은 zip을 풀어서 올려요."},
+{"id":"d3-0900","t":"09:00","x":"아침 30초 멘트 → 트래픽 주간 3일차","more":"3인 조 1→2→3→1."},
+{"id":"d3-0930","t":"09:30","x":"\"시안 모양 먼저, 모르면 이미지. 영상이면 지금 '영상 준비'\""},
+{"id":"d3-1200","t":"12:00","x":"영상이 아직이면 이미지로 바꿔 P9부터"},
+{"id":"d3-1630","t":"16:30","x":"조 안 시안 리뷰(좋았던 점 먼저) → 내보낼 시안 고르기"},
+{"id":"d3-1750","t":"17:50","x":"실습시트 / 내일 화면 안 AI 버튼 예고"},
+{"id":"d3-d25","t":"오늘까지","x":"Day 25(11/27) 가이드 명령","more":"새 창을 열고 HANDOFF 8절 글을 붙여요."},
+{"id":"d3-msg","t":"저녁","x":"단톡방에 Day 24 전날 밤 한 줄","quote":"내일은 설계서 한 장을 먼저 쓰고, 계획 모드로 내 MVP 화면에 'AI 보내기 전 확인' 버튼을 붙여요. 오늘 시안 심사 기준을 글에 맞게 바꿔 버튼의 기준으로 써요. 같은 작업 폴더를 그대로 두세요. 오늘 못 왔어도 시작할 수 있어요."},
+{"id":"d3-pre","t":"저녁","x":"Day 24 전날 10분","more":"데스크톱 앱의 계획 모드 위치와 승인 창 · 입력창을 비운 채 Esc 두 번·/rewind · 학생 노트북에서 내 컴퓨터 파일 화면의 버튼 복사 · 버튼 화면을 아티팩트로 올려 다른 계정으로 열기 · 서브에이전트 허락 창 · (테크) Gemini 무료 키와 Flash 모델 이름"}]},
+{"id":"d4","date":"2026-11-26","label":"11/26 목","name":"24회차","theme":"설계서로 일 시키기 · 내 화면에 AI 버튼","link":["Day 24 가이드","https://claude.ai/artifact/Dr4LtBPaNTPRTZWVmmuz8W"],"items":[
+{"id":"d4-0850","t":"08:50","x":"따라잡기 파일 두 개만","more":"공통광고 표는 필요 없어요(C 카드 학생은 어제 표를 다시 써요)."},
+{"id":"d4-0900","t":"09:00","x":"아침 30초 멘트 → 트래픽 주간 4일차","more":"3인 조 1→3→2→1."},
+{"id":"d4-0930","t":"09:30","x":"1교시 15분","more":"말로 시키기 → 설계서로 시키기, 표준 루프 여섯 단계, \"API 키는 간판이 아니라 금고에\"."},
+{"id":"d4-1100","t":"11:00","x":"계획 모드 시연 5분 → 11:10 테크 8명이 짝 돕기"},
+{"id":"d4-1200","t":"12:00","x":"되돌리기 연습 다 같이 2분"},
+{"id":"d4-1400","t":"14:00","x":"P15 \"다 '같음'이 아니어도 괜찮아요, 어디가 다른지 아는 게 목적\""},
+{"id":"d4-1630","t":"16:30","x":"조원이 내 버튼 써 보기 → 내일 고칠 것(꼭)","more":"3인 조 1→2→3→1(1번이 2번 버튼을, 아침과 반대). 만든 사람은 말없이 메모."},
+{"id":"d4-1730","t":"17:30","x":"화면 링크 → 17:50 실습시트","more":"링크가 안 되면 화면 파일 이름 + 버튼 칸 캡처."},
+{"id":"d4-night","t":"저녁","x":"Day 25 가이드가 발행됐으면 Share, 단톡방에 전날 밤 한 줄"}]},
+{"id":"d5","date":"2026-11-27","label":"11/27 금","name":"25회차","theme":"AI 버튼 다듬기","note":"가이드는 11/25까지 명령하면 만들어요. 2주 계획: 조원이 써 본 반응으로 버튼 고치기, 더 하기는 보내기 전 사람 확인과 보안 점검.","items":[
+{"id":"d5-share","t":"아침","x":"Day 25 가이드 Share와 아침 링크 확인"}]},
+{"id":"ev","date":"","label":"매일","name":"수업이 끝나면","theme":"Claude에게 맡길 수 있는 일","items":[
+{"id":"ev-board","t":"저녁","x":"실습시트 링크를 Claude에게 넘겨 반 현황판 숫자 채우기","more":"이름 없이 묶음 숫자로. 다음 날 아침에 보여 줘요."},
+{"id":"ev-stuck","t":"저녁","x":"막힌 상자와 메시지를 메모해 Claude에게 전달","more":"다음 날 가이드를 고치고 다시 시험한 뒤 같은 링크로 올려요."}]}],
+"glossary":["용어 사전","https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm"]}</script>
+<script type="application/json" id="state">{"checked":{},"saved":""}</script>
+<script id="app-js">
+(function(){
+  var HEAD='<title>11월 넷째 주 수업 큐시트</title><meta name="claude:viewport-fit-sides" content="cover"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">';
+  var RESET=':root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}';
+  var DATA=JSON.parse(document.getElementById('data').textContent);
+  var state={checked:{},saved:''};
+  try{var s0=JSON.parse(document.getElementById('state').textContent||'{}');if(s0&&s0.checked)state=s0;}catch(e){}
+  var LKEY='cuesheet-1123-local',PKEY='cuesheet-1123-pending';
+  var mode='wait',art=null,timer=null,queued=false,retried=false;
+  function store(kind){try{return kind==='s'?window.sessionStorage:window.localStorage;}catch(e){return null;}}
+  function rd(kind,key){try{var st=store(kind);var v=st&&st.getItem(key);return v?JSON.parse(v):null;}catch(e){return null;}}
+  function wr(kind,key,val){try{var st=store(kind);if(st)st.setItem(key,JSON.stringify(val));}catch(e){}}
+  function rm(kind,key){try{var st=store(kind);if(st)st.removeItem(key);}catch(e){}}
+  function keys(o){return Object.keys(o||{}).filter(function(k){return o[k];}).sort().join('|');}
+  var pending=rd('s',PKEY);
+  if(pending&&pending.checked&&keys(pending.checked)===keys(state.checked)){rm('s',PKEY);pending=null;}
+  function seoulToday(){try{return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());}catch(e){return '';}}
+  var today=seoulToday();
+  var dated=DATA.sections.filter(function(s){return s.date;});
+  var todayId=(dated.filter(function(s){return s.date===today;})[0]||(today&&today<dated[0].date?dated[0]:null)||{}).id||'';
+  function el(tag,attrs,kids){var n=document.createElement(tag);if(attrs)for(var k in attrs){if(k==='text')n.textContent=attrs[k];else if(k==='cls')n.className=attrs[k];else n.setAttribute(k,attrs[k]);}(kids||[]).forEach(function(c){if(c)n.appendChild(typeof c==='string'?document.createTextNode(c):c);});return n;}
+  function link(label,href){return el('a',{href:href,target:'_blank',rel:'noopener',text:label});}
+  var app=document.getElementById('app');
+  var statusEl,statusTxt,bannerEl,chipBox,secEls={};
+  function count(sec){var d=0;sec.items.forEach(function(it){if(state.checked[it.id])d++;});return [d,sec.items.length];}
+  function fmtSaved(){if(!state.saved)return '';try{return new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(state.saved));}catch(e){return '';}}
+  function setStatus(s,txt){statusEl.setAttribute('data-s',s);statusTxt.textContent=txt;}
+  function idleStatus(){
+    if(mode==='shared'){var t=fmtSaved();setStatus('shared','체크하면 저장돼요 · 휴대폰과 노트북에서 같이 보여요'+(t?' · 마지막 저장 '+t:''));}
+    else if(mode==='local')setStatus('local','이 화면에서는 체크가 이 기기에만 남아요');
+    else setStatus('wait','저장 연결 중…');
+  }
+  function build(){
+    var head=el('header',null,[
+      el('div',{cls:'eyebrow',text:'21~25회차 · 11/22 밤 ~ 11/27'}),
+      el('h1',{text:'이번 주 큐시트'}),
+      el('p',{cls:'lead',text:'날짜마다 전날 밤 → 08:50 → 09:00 → 17:50 순서로 꼭 할 것만 모았어요. 자세한 것은 그날 시연카드에 있어요.'})
+    ]);
+    statusEl=el('div',{cls:'status',role:'status','aria-live':'polite'},[el('span',{cls:'dot'})]);
+    statusTxt=el('span');statusEl.appendChild(statusTxt);head.appendChild(statusEl);
+    bannerEl=el('div',{cls:'banner'});bannerEl.hidden=true;
+    chipBox=el('nav',{cls:'days','aria-label':'날짜별 진행'});
+    var links=el('section',{cls:'links'},[el('h2',{text:'링크 한눈에'})]);
+    DATA.sections.forEach(function(s){if(s.link)links.appendChild(el('div',{cls:'linkrow'},[el('span',{text:s.label+' · '+s.name}),link(s.link[0],s.link[1])]));});
+    links.appendChild(el('div',{cls:'linkrow'},[el('span',{text:'매일'}),link(DATA.glossary[0],DATA.glossary[1])]));
+    links.appendChild(el('p',{cls:'note',text:'공유는 강사님만 바꿀 수 있어요. 가이드를 열고 Share → "링크가 있는 사람".'}));
+    app.appendChild(head);app.appendChild(bannerEl);app.appendChild(chipBox);
+    DATA.sections.forEach(function(s){app.appendChild(section(s));});
+    app.appendChild(links);
+    app.appendChild(el('footer',{text:'저장소 classroom/instructor/이번주-강사체크리스트.md와 같은 내용이에요.'}));
+  }
+  function section(s){
+    var det=el('details',{cls:'day',id:s.id});
+    if(s.id===todayId||(!todayId&&s.id==='ev'))det.open=true;
+    var cnt=el('span',{cls:'count'});var bar=el('i');
+    var title=el('div',{cls:'sumtitle'},[el('b',{text:s.label+' · '+s.name}),el('small',{text:s.theme})]);
+    if(s.id===todayId)title.appendChild(el('span',{cls:'badge',text:'오늘'}));
+    det.appendChild(el('summary',null,[title,cnt,el('div',{cls:'bar'},[bar])]));
+    if(s.note)det.appendChild(el('p',{cls:'daynote',text:s.note}));
+    var ul=el('ul',{cls:'items'});
+    s.items.forEach(function(it){ul.appendChild(item(it));});
+    det.appendChild(ul);
+    secEls[s.id]={det:det,cnt:cnt,bar:bar};
+    return det;
+  }
+  function item(it){
+    var li=el('li',{cls:'item'+(state.checked[it.id]?' done':'')});
+    var cb=el('input',{type:'checkbox',id:'c-'+it.id});cb.checked=!!state.checked[it.id];
+    cb.addEventListener('change',function(){toggle(it.id,cb.checked,li);});
+    var lab=el('label',{'for':'c-'+it.id},[it.t?el('span',{cls:'t',text:it.t}):null,el('span',{cls:'x',text:it.x}),it.more?el('span',{cls:'more',text:it.more}):null]);
+    var body=el('div',{style:'display:grid;gap:6px;min-width:0'},[lab]);
+    if(it.links){var row=el('div',{style:'display:flex;flex-wrap:wrap;gap:6px 14px'});it.links.forEach(function(l){row.appendChild(link(l[0]+' 열기',l[1]));});body.appendChild(row);}
+    if(it.quote){var q=el('p',{cls:'quote',text:it.quote});var b=el('button',{cls:'btn ghost',type:'button',text:'단톡방 글 복사'});
+      b.addEventListener('click',function(){copy(it.quote,q,b);});body.appendChild(q);body.appendChild(b);}
+    li.appendChild(cb);li.appendChild(body);return li;
+  }
+  function copy(text,q,b){
+    function sel(){try{var r=document.createRange();r.selectNodeContents(q);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}b.textContent='글을 골라 두었어요 · 복사해서 붙여요';}
+    try{navigator.clipboard.writeText(text).then(function(){b.textContent='복사됐어요';setTimeout(function(){b.textContent='단톡방 글 복사';},2000);},sel);}catch(e){sel();}
+  }
+  function refresh(){
+    var chips=[];
+    DATA.sections.forEach(function(s){var c=count(s),e=secEls[s.id];e.cnt.textContent=c[0]+'/'+c[1];e.cnt.className='count'+(c[0]===c[1]?' all':'');e.bar.style.width=(c[1]?Math.round(c[0]/c[1]*100):0)+'%';
+      var chip=el('button',{type:'button',cls:'daychip'+(s.id===todayId?' today':'')+(c[0]===c[1]?' all':'')},[el('b',{text:s.label}),el('span',{cls:'n',text:c[0]+'/'+c[1]})]);
+      chip.addEventListener('click',function(){e.det.open=true;e.det.scrollIntoView({block:'start'});});chips.push(chip);});
+    chipBox.textContent='';chips.forEach(function(c){chipBox.appendChild(c);});
+  }
+  function showBanner(){
+    if(!pending){bannerEl.hidden=true;return;}
+    bannerEl.textContent='';bannerEl.hidden=false;
+    bannerEl.appendChild(el('span',{text:'저장되지 않은 체크가 있어요(다른 화면에서 먼저 저장했을 때 생겨요).'}));
+    var b=el('button',{cls:'btn',type:'button',text:'내 체크로 저장'});
+    b.addEventListener('click',function(){state.checked=pending.checked;pending=null;bannerEl.hidden=true;rerenderChecks();changed();});
+    bannerEl.appendChild(b);
+  }
+  function rerenderChecks(){DATA.sections.forEach(function(s){s.items.forEach(function(it){var cb=document.getElementById('c-'+it.id);if(cb){cb.checked=!!state.checked[it.id];cb.closest('.item').classList.toggle('done',cb.checked);}});});refresh();}
+  function toggle(id,on,li){if(on)state.checked[id]=true;else delete state.checked[id];li.classList.toggle('done',on);refresh();changed();}
+  function changed(){
+    if(mode==='local'){wr('l',LKEY,state.checked);return;}
+    if(mode==='wait'){queued=true;setStatus('soon','저장 연결이 되면 바로 저장해요');return;}
+    wr('s',PKEY,{checked:state.checked});
+    clearTimeout(timer);setStatus('soon','곧 저장해요…');timer=setTimeout(save,2500);
+  }
+  function goLocal(msg){mode='local';wr('l',LKEY,state.checked);setStatus('local',msg||'이 화면에서는 체크가 이 기기에만 남아요');}
+  function save(){
+    if(!art){goLocal();return;}
+    setStatus('saving','저장 중… 저장되면 화면을 새로 불러와요');
+    state.saved=new Date().toISOString();
+    art.publish(buildDoc()).then(function(){rm('s',PKEY);}).catch(function(err){
+      var c=err&&err.code;
+      if(c==='conflict'){setStatus('soon','다른 화면에서 먼저 저장해서 새로 불러와요');return;}
+      if(c==='rate_limited'){setStatus('soon','잠시 뒤에 다시 저장해요');clearTimeout(timer);timer=setTimeout(save,12000);return;}
+      if(c==='upstream_error'&&!retried){retried=true;clearTimeout(timer);timer=setTimeout(save,2000+Math.random()*2000);return;}
+      if(c==='too_large'||c==='invalid_content'||c==='transform_error'){goLocal('저장하지 못해서 이 기기에만 남겼어요');return;}
+      goLocal('이 화면은 읽기 전용이라 체크가 이 기기에만 남아요');
+    });
+  }
+  function esc(s){return String(s).replace(/</g,'\\u003c');}
+  function buildDoc(){
+    var css=document.getElementById('app-css').textContent;
+    var data=document.getElementById('data').textContent;
+    var js=document.getElementById('app-js').textContent;
+    var st=esc(JSON.stringify({checked:state.checked,saved:state.saved}));
+    var E='</'+'script>';
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>'+RESET+'</style></head><body>'+
+      HEAD+'\n<style id="app-css">'+css+'</style>\n<main id="app"></main>\n<script type="application/json" id="data">'+data+E+'\n<script type="application/json" id="state">'+st+E+'\n<script id="app-js">'+js+E+'\n</body></html>';
+  }
+  build();refresh();idleStatus();showBanner();
+  var usePromise=(window.claude&&typeof window.claude.use==='function')?window.claude.use('artifact'):Promise.resolve(null);
+  Promise.resolve(usePromise).then(function(a){
+    art=a;
+    if(!a){var loc=rd('l',LKEY);if(loc){state.checked=loc;rerenderChecks();}mode='local';idleStatus();return;}
+    mode='shared';idleStatus();if(queued){queued=false;changed();}
+  },function(){mode='local';idleStatus();});
+})();
+</script>
