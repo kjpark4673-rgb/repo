@@ -128,7 +128,7 @@ SHOW='방금 만들거나 고친 화면(.html 파일)을 내 컴퓨터의 기본
 # 그림: 수업 예시 회사로 오늘 상자를 그대로 돌려 만든 화면(classroom/instructor/마스터프롬프트-결과물예시.md)
 EX_CARD = ('<div class="card" id="example"><h3>오늘 만들 결과물 · loop.html 한 장은 이렇게 생겼어요</h3>'
   '<p class="sub">수업 예시 회사(라라스윗, 하고 싶은 일 MD)로 오늘 상자를 그대로 보내 미리 만든 화면이에요. 여러분 화면은 내 회사와 내 MVP로 채워져요. 숫자 옆 (가정)은 어림이에요.</p>'
-  + shot('ex_research_loop_design.jpg', 'loop.html 예시 화면: 다섯 칸 루프 그림, 칸마다 맡을 AI 에이전트, 병목이 든 칸 표시', '예시 · loop.html의 루프 설계도 (라라스윗 · MD). 병목이 든 칸에 빨간 표시가 붙고, 칸마다 맡을 에이전트가 적혀요') +
+  + shot('ex_research_loop_design.jpg', 'loop.html 예시 화면: 다섯 칸 루프 그림, 칸마다 맡을 AI 에이전트, 병목이 든 칸 표시', '예시 · loop.html의 루프 설계도 (라라스윗 · MD). 병목이 든 칸에 표시가 붙고, 칸마다 맡을 에이전트와 파일이 적혀요. ①·②의 파일(research.csv, weekly.html)은 내일 실제로 생겨요') +
   '<p style="margin-top:18px"><b>한 장에 들어가는 것</b></p>'
   '<ol class="steps"><li><b>유저 스토리 세 개</b> · 팀장·동료·부사수가 내 화면을 왜 여는지</li><li><b>병목 하나</b> · 일주일에 시간이 가장 많이 새는 일</li>'
   '<li><b>루프 설계도</b> · 다섯 칸과 칸마다 맡을 AI 에이전트</li><li><b>2주 진행표</b> · 어느 날 어느 칸을 만드나</li><li><b>지금 내 루프</b> · 이미 된 칸에 ✓</li></ol>'

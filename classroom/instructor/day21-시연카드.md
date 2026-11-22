@@ -1,12 +1,20 @@
 # Day 21 강사 시연 카드 (11/23 월, [Modeling ③] AI 기반 산업 리포트 자동 생성 · "AI 에이전트와 내 루프" 개념의 날)
 
 > 학생용 자료가 아닙니다. 공개 저장소라 학생 이름, 따라잡기 원본의 아티팩트 링크, 드라이브 식별자는 적지 않습니다.
-> 학생용 가이드: https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS (같은 링크에 11/21 밤 개념의 날 판 Version 6으로 다시 올림. 쪽 번호·줄 간격은 Version 7, 2주 지도 확정은 Version 8, 폴더 정리·"반응 보기"는 Version 9, 직무별 병목 증상 20가지는 Version 10, 형광펜과 접기는 Version 11, 맨 앞 결과물 예시는 Version 12. 5판은 Version 5. 아티팩트 이름 "Day 21 · AI 에이전트와 내 루프"). 발행하면 비공개로 올라가니 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 엽니다.
+> 학생용 가이드: https://claude.ai/artifact/KeoK7kxEiTMupcg5vaCiMS (같은 링크에 11/21 밤 개념의 날 판 Version 6으로 다시 올림. 쪽 번호·줄 간격은 Version 7, 2주 지도 확정은 Version 8, 폴더 정리·"반응 보기"는 Version 9, 직무별 병목 증상 20가지는 Version 10, 형광펜과 접기는 Version 11, 맨 앞 결과물 예시는 Version 12, 사람 이름·파일 이름 고침은 Version 13. 5판은 Version 5. 아티팩트 이름 "Day 21 · AI 에이전트와 내 루프"). 발행하면 비공개로 올라가니 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 엽니다.
 > **아침에 보여 줄 링크 (11/21 강사 확정, 52회 가운데 21회차):** ① 이 가이드 ② 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm (둘 다 Share 확인). 따라잡기 파일 두 개는 단톡방으로 보내요.
 > 11/24 만들기의 날은 `day22-시연카드.md`. 11/21 밤까지의 5판(월요일 하루에 개념과 만들기를 다 하던 판) 시연카드는 `day21-시연카드_v5.md`로 보관했어요.
 > 예상 대화와 수강생 눈 검토는 `day21-모의수업.md`, 시험 결과는 `classroom/tests/day21-test-results.md`(7차), 빌더는 `classroom/tools/build_day21.py`(출력 `classroom/student-guide/day21.html`).
 
 ## 이번 판에서 바뀐 것 (5판 → 개념의 날)
+
+**11/22 지시 (Version 13):** "두 개 다 고치고 다시 시험해" (13차 시험, 82회 모두 성공)
+
+| 바뀐 곳 | 이전 | 지금 |
+|---|---|---|
+| 유저 스토리 사람 이름 | P1이 "한도윤"처럼 실제 사람 같은 이름을 지음 | P1·P2·P3: "사람 이름은 짓지 말고 팀장·동료·부사수로만" |
+| 루프 설계도 파일 이름 | ① 출력이 prices.csv·inbox.csv처럼 제각각 | P3: ① research.csv(운영형 records.csv)와 run_log.md, ② weekly.html은 실제 이름 그대로, ③~⑤는 (예정) |
+| 첫 쪽 예시 그림 | 고치기 전 상자로 만든 그림 | 고친 상자로 다시 만든 그림(①·② 파일 이름이 내일 생기는 파일과 같음) |
 
 **11/22 지시 (Version 12):** "21, 22일차 맨 첫 페이지쯤에 우리가 만든 결과물이 어떤 형태인지 예시로 보여 주고, 어떻게 활용될지 안내하고 싶어. 내 맥락 기반 마스터 프롬프트 작성해서 에이전트들한테 시켜."
 
