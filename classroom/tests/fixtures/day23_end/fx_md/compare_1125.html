@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시안 비교 11/25</title>
+<style>
+:root{--bg:#f6f4f1;--card:#fff;--fg:#1d1d1f;--mut:#6b6b70;--line:#e2e2e6;--warn:#fff4d6;--ok:#1f7a3f;--okbg:#e5f5ea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141416;--card:#1f1f23;--fg:#f2f2f4;--mut:#a0a0a8;--line:#36363c;--warn:#3d3416;--ok:#7fd69a;--okbg:#1d3326}}
+:root[data-theme="dark"]{--bg:#141416;--card:#1f1f23;--fg:#f2f2f4;--mut:#a0a0a8;--line:#36363c;--warn:#3d3416;--ok:#7fd69a;--okbg:#1d3326}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 "Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;word-break:keep-all}
+.band{background:var(--warn);padding:10px 16px;font-weight:700;font-size:14px;text-align:center}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:20px;margin:0 0 4px}
+.lead{color:var(--mut);margin:0 0 18px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+.post{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.head{display:flex;align-items:center;gap:8px;padding:10px 12px}
+.av{width:28px;height:28px;border-radius:50%;background:#5a3a24;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
+.who b{display:block;font-size:13px}.who span{font-size:11px;color:var(--mut)}
+.body1{padding:0 12px 10px;font-size:14px}
+.post img{display:block;width:100%;height:auto;aspect-ratio:4/5}
+.meta{padding:12px;border-top:1px solid var(--line);font-size:13.5px}
+.meta dt{color:var(--mut);font-size:12px;margin-top:8px}
+.meta dd{margin:2px 0 0}
+.badge{display:inline-block;background:var(--okbg);color:var(--ok);font-weight:700;padding:2px 10px;border-radius:99px;font-size:13px}
+.ph{border:1px dashed currentColor;border-radius:4px;padding:0 4px}
+.note{margin-top:20px;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<div class="band">수업용 시안 · 실제 회사의 광고가 아니에요</div>
+<main>
+<h1>라라스윗 저당 아이스크림 시안 3개 (11/25)</h1>
+<p class="lead">인스타그램 피드 4:5 이미지 · 새 눈 심사 결과 통과 3, 보류 0 · 자세한 기록은 review_1125.md</p>
+<div class="grid">
+
+<article class="post">
+<div class="head"><div class="av">라</div><div class="who"><b>라라스윗</b><span>광고 · 시안 A</span></div></div>
+<p class="body1">숟가락이 쭉 늘어나는 꾸덕함, 오늘 밤 한 스푼 어때요?</p>
+<img src="ad_1125_a.png" alt="시안 A: 숟가락에 늘어나는 아이스크림 위에 '숟가락이 멈칫하는 꾸덕함' 헤드라인">
+<dl class="meta">
+<dt>잘된 점</dt><dd>숟가락에서 쭉 늘어나는 아이스크림이 헤드라인 "꾸덕함"을 그림으로 그대로 보여 줘요.</dd>
+<dt>쓴 패턴과 근거 숫자</dt><dd>식감 첫 문장 · 오래 돈 묶음 5개 중 2개 · 나머지 묶음 21개 중 4개 (표본 적음)</dd>
+<dt>심사 결과</dt><dd><span class="badge">통과</span> 고친 횟수 0</dd>
+</dl>
+</article>
+
+<article class="post">
+<div class="head"><div class="av">라</div><div class="who"><b>라라스윗</b><span>광고 · 시안 B</span></div></div>
+<p class="body1">퇴근하고 불 하나만 켠 책상, 나를 위한 한 스푼.</p>
+<img src="ad_1125_b.png" alt="시안 B: 스탠드 불빛 아래 책상과 아이스크림 컵 위에 '퇴근 후, 나를 위한 한 스푼' 헤드라인">
+<dl class="meta">
+<dt>잘된 점</dt><dd>따뜻한 스탠드 불빛과 뚜껑을 여는 손이 "퇴근 후 나만의 시간"과 잘 맞고, 글자가 깔끔하게 읽혀요.</dd>
+<dt>쓴 패턴과 근거 숫자</dt><dd>한 메시지 여러 소재 · 오래 돈 묶음 5개 중 3개 · 나머지 묶음 21개 중 2개 (표본 적음)</dd>
+<dt>심사 결과</dt><dd><span class="badge">통과</span> 고친 횟수 2</dd>
+</dl>
+</article>
+
+<article class="post">
+<div class="head"><div class="av">라</div><div class="who"><b>라라스윗</b><span>광고 · 시안 C</span></div></div>
+<p class="body1">좋아하는 맛으로 한 통 더 담아 두세요 <span class="ph">[할인율](가정)</span></p>
+<img src="ad_1125_c.png" alt="시안 C: 세 가지 맛 아이스크림 컵 아래에 '한 통 더 담으면 [할인율](가정)' 헤드라인">
+<dl class="meta">
+<dt>잘된 점</dt><dd>서로 다른 맛 세 컵이 크게 놓여 있어 "맛 골라 한 통 더"가 한눈에 보여요.</dd>
+<dt>쓴 패턴과 근거 숫자</dt><dd>가격 제안 · 오래 돈 묶음 5개 중 2개 · 나머지 묶음 21개 중 10개 (내가 정함)</dd>
+<dt>심사 결과</dt><dd><span class="badge">통과</span> 고친 횟수 1</dd>
+</dl>
+</article>
+
+</div>
+<p class="note">근거 숫자: patterns_1125.md (공통광고_디저트.csv 35줄 → 28줄, 판단 보류 2줄, 게재 일수 위 20%를 오래 돈 묶음으로). 할인율·행사 기간은 사람이 확인해서 넣어요.</p>
+</main>
+</body>
+</html>

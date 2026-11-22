@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이번 주 바뀐 것</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mut:#6b6b70;--line:#e2e2e6;--acc:#d6336c;--card:#f6f6f8}
+@media (prefers-color-scheme:dark){:root{--bg:#18181b;--fg:#f2f2f4;--mut:#a0a0a8;--line:#3a3a40;--acc:#ff7aa8;--card:#232327}}
+*{box-sizing:border-box}
+body{margin:0;padding:16px;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif;max-width:760px;margin-inline:auto}
+h1{font-size:20px;margin:0 0 4px} h2{font-size:16px;margin:24px 0 8px} p,small{color:var(--mut)}
+.top{background:var(--card);border-left:4px solid var(--acc);padding:12px;border-radius:6px;font-weight:600}
+ol{padding-left:20px} li{margin:0 0 10px} a{color:var(--acc)}
+.scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:6px;text-align:left;vertical-align:top;word-break:break-word}
+button{font:inherit;font-size:13px;margin:0 4px 6px 0;padding:6px 10px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:14px}
+button[aria-pressed=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
+</style></head><body>
+<h1>이번 주 바뀐 것</h1>
+<p>라라스윗 저당 아이스크림 · 경쟁 5곳 · 조사일 2026-11-22 · 출처: research.csv</p>
+<div class="top">첫 조사라 비교는 다음 실행부터. 이번에 눈에 띄는 것: 요아정이 수능 시즌 소식을 2건(11/4 응원 패키지, 11/16 초코 쉘 찹쌀떡)으로 가장 최근 움직였고, 배스킨라빈스(산리오 캠페인, 10/28)·빙그레(부라보 수능 패키지, 10/23)가 뒤를 이었어요.</div>
+<h2>Top 5 바뀐 것</h2>
+<p>최근 30일 안이고 소식 날짜가 있는 NEW만 넣었어요. 조건에 맞는 것이 4건뿐이라 4건만 보여요.</p>
+<ol><li><b>요아정 · 신제품</b><br>겹겹의 초코 쉘 찹쌀떡·멜론 쉘 찹쌀떡 소개<br><small>이전 → 지금: 첫 조사 → 겹겹의 초코 쉘 찹쌀떡·멜론 쉘 찹쌀떡 소개 · 소식 날짜 2026-11-16 · 조사일 2026-11-22 · <a href="https://mbiz.heraldcorp.com/article/10940598">링크</a> · 검색 요약</small></li><li><b>요아정 · 캠페인·프로모션</b><br>2027학년도 수능 응원 패키지 2종(매장 판매 11/4~)<br><small>이전 → 지금: 첫 조사 → 2027학년도 수능 응원 패키지 2종(매장 판매 11/4~) · 소식 날짜 2026-11-04 · 조사일 2026-11-22 · <a href="https://mbiz.heraldcorp.com/article/10938332">링크</a> · 검색 요약</small></li><li><b>배스킨라빈스 · 캠페인·프로모션</b><br>산리오 &#x27;마이멜로디 ♡ 쿠로미 아이스크림 모드&#x27; 캠페인(11/1~11/30)<br><small>이전 → 지금: 첫 조사 → 산리오 &#x27;마이멜로디 ♡ 쿠로미 아이스크림 모드&#x27; 캠페인(11/1~11/30) · 소식 날짜 2026-10-28 · 조사일 2026-11-22 · <a href="https://haveagood-holiday.com/ko/articles/baskin-robbins-my-melody-kuromi-ice-cream-mode-2026">링크</a> · 검색 요약</small></li><li><b>빙그레 · 캠페인·프로모션</b><br>수능 앞두고 부라보 한정판 패키지 기획<br><small>이전 → 지금: 첫 조사 → 수능 앞두고 부라보 한정판 패키지 기획 · 소식 날짜 2026-10-23 · 조사일 2026-11-22 · <a href="https://economist.co.kr/article/view/ecn202610230050">링크</a> · 검색 요약</small></li></ol>
+<h2>전체 줄 표</h2>
+<div id="btns"><button type="button" data-f="전체">전체</button><button type="button" data-f="NEW">NEW 15</button><button type="button" data-f="바뀜">바뀜 0</button><button type="button" data-f="사라짐">사라짐 0</button><button type="button" data-f="같음">같음 0</button><button type="button" data-f="확인 필요">확인 필요 0</button></div>
+<div class="scroll"><table id="tbl"><thead><tr><th>이름</th><th>항목</th><th>값</th><th>조사일</th><th>출처</th><th>상태</th></tr></thead><tbody><tr data-s="NEW"><td>배스킨라빈스</td><td>신제품</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>배스킨라빈스</td><td>캠페인·프로모션</td><td>산리오 &#x27;마이멜로디 ♡ 쿠로미 아이스크림 모드&#x27; 캠페인(11/1~11/30) / 소식 날짜 2026-10-28 (검색 요약)</td><td>2026-11-22</td><td><a href="https://haveagood-holiday.com/ko/articles/baskin-robbins-my-melody-kuromi-ice-cream-mode-2026">링크</a></td><td>NEW</td></tr><tr data-s="NEW"><td>배스킨라빈스</td><td>기사·보도자료</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>요아정</td><td>신제품</td><td>겹겹의 초코 쉘 찹쌀떡·멜론 쉘 찹쌀떡 소개 / 소식 날짜 2026-11-16 (검색 요약)</td><td>2026-11-22</td><td><a href="https://mbiz.heraldcorp.com/article/10940598">링크</a></td><td>NEW</td></tr><tr data-s="NEW"><td>요아정</td><td>캠페인·프로모션</td><td>2027학년도 수능 응원 패키지 2종(매장 판매 11/4~) / 소식 날짜 2026-11-04 (검색 요약)</td><td>2026-11-22</td><td><a href="https://mbiz.heraldcorp.com/article/10938332">링크</a></td><td>NEW</td></tr><tr data-s="NEW"><td>요아정</td><td>기사·보도자료</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>롯데웰푸드</td><td>신제품</td><td>&#x27;젤리 먹은 죠스바·스크류바&#x27; 출시 / 소식 날짜 2026-07-22 (30일 넘음) (검색 요약)</td><td>2026-11-22</td><td><a href="https://economist.co.kr/article/view/ecn202607220017">링크</a></td><td>NEW</td></tr><tr data-s="NEW"><td>롯데웰푸드</td><td>캠페인·프로모션</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>롯데웰푸드</td><td>기사·보도자료</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>하겐다즈</td><td>신제품</td><td>깊어진 카카오 풍미의 벨지안 초콜릿 파인트 출시 / 소식 날짜 2026-08-04 (30일 넘음) (mvp.html 기존 값)</td><td>2026-11-22</td><td><a href="https://www.mt.co.kr/living/2026/08/04/2026080422331130482">링크</a></td><td>NEW</td></tr><tr data-s="NEW"><td>하겐다즈</td><td>캠페인·프로모션</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>하겐다즈</td><td>기사·보도자료</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>빙그레</td><td>신제품</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr><tr data-s="NEW"><td>빙그레</td><td>캠페인·프로모션</td><td>수능 앞두고 부라보 한정판 패키지 기획 / 소식 날짜 2026-10-23 (검색 요약)</td><td>2026-11-22</td><td><a href="https://economist.co.kr/article/view/ecn202610230050">링크</a></td><td>NEW</td></tr><tr data-s="NEW"><td>빙그레</td><td>기사·보도자료</td><td>못 찾음</td><td>2026-11-22</td><td>못 찾음</td><td>NEW</td></tr></tbody></table></div>
+<h2>팩트체크</h2>
+<div class="scroll"><table><thead><tr><th>확인</th><th>결과</th></tr></thead><tbody>
+<tr><td>중복 줄 수(조사일·이름·항목 같은 줄)</td><td>0</td></tr>
+<tr><td>다시 계산한 줄 수</td><td>값 6 + 못 찾음 9 = 15 (표 줄 수 15)</td></tr>
+<tr><td>상태별 합</td><td>NEW 15 + 바뀜 0 + 사라짐 0 + 같음 0 + 확인 필요 0 = 15</td></tr>
+<tr><td>지난번보다 두 배 넘게 바뀐 숫자</td><td>비교할 지난 조사일 없음(0)</td></tr>
+<tr><td>못 찾음 수</td><td>9</td></tr>
+<tr><td>확인 필요 수</td><td>0</td></tr>
+</tbody></table></div>
+<p><small>값은 모두 검색 결과 요약 기준이며 기사 원문은 직접 열어 확인하지 못했어요. 요아정 두 줄의 링크는 추정이에요.</small></p>
+<h2>자동 여부</h2>
+<p>2026-11-22 04:23 | 수동 1회 | 더한 줄 15 | 못 찾음 9 (NEW 15, 바뀜 0, 사라짐 0, 확인 필요 0)<br>수동 1회 실행(11/24 수업 · 시스템 날짜 11/22). 자동 예약 없음.</p>
+<script>
+(function(){
+  var box=document.getElementById('btns');
+  var trList=document.querySelectorAll('#tbl tbody tr');
+  function show(f){
+    for(var i=0;i<trList.length;i++){trList[i].hidden=!(f==='전체'||trList[i].getAttribute('data-s')===f);}
+    var bs=box.querySelectorAll('button');
+    for(var j=0;j<bs.length;j++){bs[j].setAttribute('aria-pressed',bs[j].getAttribute('data-f')===f?'true':'false');}
+  }
+  box.addEventListener('click',function(ev){
+    var b=ev.target.closest('button'); if(b){show(b.getAttribute('data-f'));}
+  });
+  show('전체');
+})();
+</script>
+</body></html>
