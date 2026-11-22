@@ -1,8 +1,8 @@
 # Day 23 강사 시연 카드 (11/25 수, 공식 "멀티모달 AI Ⅱ · 생성형 영상 × 코드형 모션그래픽" 자리 · "성과 데이터로 광고 시안 라인 만들기")
 
 > 학생용 자료가 아닙니다. 공개 저장소라 학생 이름, 따라잡기 원본의 아티팩트 링크, 드라이브 식별자는 적지 않습니다.
-> 학생용 가이드: [발행 링크 자리] (아티팩트 이름 "Day 23 · 성과 데이터로 광고 시안 라인"). 발행하면 비공개로 올라가니 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 엽니다.
-> **아침에 보여 줄 링크 (23회차):** ① 이 가이드 ② 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm ③ (어제 못 온 학생용) Day 22 가이드 https://claude.ai/artifact/MhhZZnnHoh486yVg2CcGBT
+> 학생용 가이드: https://claude.ai/artifact/CfU8SXHoTg8dFfR2wqCzKM (아티팩트 이름 "Day 23 · 성과 데이터로 광고 시안 라인", Version 1). 발행하면 비공개로 올라가니 Share에서 "링크가 있는 사람"으로 바꿔야 학생이 엽니다.
+> **아침에 보여 줄 링크 (23회차):** ① 이 가이드 https://claude.ai/artifact/CfU8SXHoTg8dFfR2wqCzKM ② 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm ③ (어제 못 온 학생용) Day 22 가이드 https://claude.ai/artifact/MhhZZnnHoh486yVg2CcGBT
 > **단톡방에 올릴 파일 (08:50):** 공통광고 표 10개 + 공통광고_읽는법.md(11/22에 Claude가 보낸 zip), 따라잡기 파일 두 개(결석생용).
 > 예상 대화와 수강생 눈 검토는 `day23-모의수업.md`, 시험 결과는 `classroom/tests/day23-test-results.md`, 빌더는 `classroom/tools/build_day23.py`, 2주 계획은 `2주-완료기준.md` 1-4절.
 

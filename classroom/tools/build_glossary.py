@@ -971,7 +971,7 @@ JS=r'''
   chips.forEach(function(b){ b.addEventListener('click', function(){ setCat(b.dataset.cat); }); });
   q.addEventListener('input', apply); day.addEventListener('change', apply);
   reset.addEventListener('click', function(){ clearAll(); q.focus(); });
-  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='21'; apply(); });
+  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='23'; apply(); });
   function show(id){
     var el=document.getElementById(id); if(!el||!el.classList.contains('entry')) return;
     if(el.hidden) clearAll();
@@ -999,15 +999,15 @@ page='''<meta name="claude:viewport-fit-sides" content="cover">
 <style>%s</style>
 <div class="wrap">
 <header class="top">
-<span class="eyebrow">Day 1–22 · 52일 과정</span>
+<span class="eyebrow">Day 1–23 · 52일 과정</span>
 <h1>AX 수업 용어 사전</h1>
-<p class="lead">Day 1부터 Day 22까지 수업에 나오는 말 %d개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
+<p class="lead">Day 1부터 Day 23까지 수업에 나오는 말 %d개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
 <p class="note">Day는 그 말이 공식 일정표나 수업 가이드에 나온 날이에요. 실제 수업 순서와 다를 수 있어요. "예정"은 아직 하지 않은 날이에요.</p>
 </header>
 <div class="bar">
 <div class="find"><label for="q" class="sr">말 찾기</label><input id="q" type="search" placeholder="예: MVP, 페르소나, 스킬" autocomplete="off"><label for="day" class="sr">날짜</label><select id="day">%s</select></div>
 <div class="chips" role="group" aria-label="분류">%s</div>
-<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 21에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
+<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 23에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
 </div>
 <main>
 <section id="results" hidden><h2>찾은 말</h2></section>

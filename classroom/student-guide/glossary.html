@@ -58,9 +58,9 @@ footer{margin-top:40px;font-size:15px;color:var(--sub)}
 </style>
 <div class="wrap">
 <header class="top">
-<span class="eyebrow">Day 1–22 · 52일 과정</span>
+<span class="eyebrow">Day 1–23 · 52일 과정</span>
 <h1>AX 수업 용어 사전</h1>
-<p class="lead">Day 1부터 Day 22까지 수업에 나오는 말 175개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
+<p class="lead">Day 1부터 Day 23까지 수업에 나오는 말 175개를 모았어요. 모르는 말은 검색창에 쳐 보세요.</p>
 <p class="note">Day는 그 말이 공식 일정표나 수업 가이드에 나온 날이에요. 실제 수업 순서와 다를 수 있어요. "예정"은 아직 하지 않은 날이에요.</p>
 </header>
 <div class="bar">
@@ -97,7 +97,7 @@ footer{margin-top:40px;font-size:15px;color:var(--sub)}
 <button type="button" class="chip" data-cat="ai" aria-pressed="false">AI 기본 <span>11</span></button>
 <button type="button" class="chip" data-cat="tools" aria-pressed="false">Claude와 도구 <span>34</span></button>
 <button type="button" class="chip" data-cat="marks" aria-pressed="false">가이드 표시 <span>8</span></button></div>
-<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 21에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
+<div class="status"><span id="count"></span><span><button type="button" class="today" id="today">Day 23에 나오는 말</button> <button type="button" id="reset" hidden>처음으로</button></span></div>
 </div>
 <main>
 <section id="results" hidden><h2>찾은 말</h2></section>
@@ -333,7 +333,7 @@ footer{margin-top:40px;font-size:15px;color:var(--sub)}
   chips.forEach(function(b){ b.addEventListener('click', function(){ setCat(b.dataset.cat); }); });
   q.addEventListener('input', apply); day.addEventListener('change', apply);
   reset.addEventListener('click', function(){ clearAll(); q.focus(); });
-  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='21'; apply(); });
+  document.getElementById('today').addEventListener('click', function(){ q.value=''; setCat('all'); day.value='23'; apply(); });
   function show(id){
     var el=document.getElementById(id); if(!el||!el.classList.contains('entry')) return;
     if(el.hidden) clearAll();
