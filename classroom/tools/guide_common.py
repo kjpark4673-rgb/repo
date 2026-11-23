@@ -367,3 +367,23 @@ def gallery_img(name):
 
 def shot(name, alt, caption):
     return '<figure class="shot"><img src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>' % (gallery_img(name), alt, caption)
+
+# 설계 먼저(design-first) 스킬 · 11/23 강사 지시("에이전트 구축할 때" 현장 조사 → 설계서 승인 → 제작, 승인 전에는 멈춤).
+# 원본은 classroom/student-kit/design-first/SKILL.md 하나. Day 22·23·24 가이드의 설치 상자(dfi)가 이 글을 그대로 싣는다.
+DF_SKILL=open(os.path.join(REPO,'classroom','student-kit','design-first','SKILL.md'),encoding='utf-8').read().strip()
+DFI='''설계 먼저 스킬을 이 작업 폴더에 설치해줘. 아래 "---"부터 끝까지를 한 글자도 바꾸지 말고 .claude/skills/design-first/SKILL.md로 저장하고, docs/design 폴더도 만들어. 같은 글이 이미 있으면 그대로 두고, 다른 글이 있으면 SKILL_v번호.md로 남긴 뒤 새로 저장해. 다른 파일은 고치지 마.
+끝나면 저장한 자리와 부르는 한 줄("설계 먼저 해줘: ○○")만 보여줘.
+
+'''+DF_SKILL
+def df_ask(name):
+    '1단계 상자 첫머리 뒤에 붙는 한 줄: 스킬이 안 불리거나 없을 때도 멈추게'
+    return ('오늘은 1단계 현장 조사만 하고 멈춰. design-first 스킬이 안 불리면 .claude/skills/design-first/SKILL.md를 읽고 그 순서대로 하고, '
+            '그 파일도 없으면 아래 요청 조건과 읽은 것을 docs/design/%s_조사.md에 적고 멈춰.'%name)
+def df_spec(name):
+    '2단계 상자: 설계서 써줘'
+    return ('설계서 써줘. 파일 이름은 docs/design/%s_설계서.md야. 새 대화에서 보내면 docs/design/%s_조사.md와 .claude/skills/design-first/SKILL.md를 먼저 읽고 2단계대로 해줘. '
+            '그 스킬 파일이 없으면 칸은 한 줄 요약, 기능(줄마다 [필수]/[선택]/[빼도 됨], 요청 조건은 모두 [필수]), 바꿀 파일, 하지 않을 것, 위험, 완료 기준으로 쓰고 멈춰.')%(name,name)
+def df_red(name):
+    '빨간펜 상자(설계서를 승인 전에 고치기)'
+    return ('설계서를 이렇게 고칠게: ○○. 이유는 ○○. docs/design/%s_설계서.md만 고치고 바뀐 곳을 이전 → 지금으로 보여줘. '
+            '첫 문장에 ○○가 그대로 남아 있으면 아무것도 고치지 말고 "○○를 내 말로 바꿔 다시 보내요"라고만 말해줘.'%name)
