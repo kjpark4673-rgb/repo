@@ -6,7 +6,7 @@
 > **단톡방에 올릴 파일 (08:50):** 공통광고 표 10개 + 공통광고_읽는법.md(11/22에 Claude가 보낸 zip), 따라잡기 파일 두 개(결석생용).
 > 예상 대화와 수강생 눈 검토는 `day23-모의수업.md`, 시험 결과는 `classroom/tests/day23-test-results.md`, 빌더는 `classroom/tools/build_day23.py`, 2주 계획은 `2주-완료기준.md` 1-4절.
 
-## 11/23 판에서 바뀐 것 · "설계 먼저" (Version 2)
+## 11/23 판에서 바뀐 것 · "설계 먼저" (Version 2, 학생 눈 검토 반영 Version 3)
 
 > 강사 지시(11/23, Day 21 수업 날): "이걸 우리 최근 강의 자료에 다 반영해. 에이전트 구축할 때" + 클릭 답(Day 21~24 모두 / 스킬 설치 + 만드는 상자만 세 단계로 / 한국어 한 줄 + 슬래시도 / 개인 스킬 폴더 복사는 12/2). 시험은 `classroom/tests/design-first-test-results.md`.
 

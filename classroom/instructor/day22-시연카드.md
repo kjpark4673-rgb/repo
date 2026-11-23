@@ -5,7 +5,7 @@
 > **아침에 보여 줄 링크 (11/21 강사 확정, 22회차):** ① 이 가이드 ② 용어 사전 https://claude.ai/artifact/EFCtEa6VMwL22xNHEPqHBm (둘 다 Share 확인).
 > 11/23 개념의 날은 `day21-시연카드.md`. 예상 대화와 수강생 눈 검토는 `day22-모의수업.md`, 시험 결과는 `classroom/tests/day21-test-results.md`(7차, 11/23과 같은 폴더에서 이어 돌림), 빌더는 `classroom/tools/build_day22.py`(출력 `classroom/student-guide/day22.html`).
 
-## 11/23 판에서 바뀐 것 · "설계 먼저" (Version 10)
+## 11/23 판에서 바뀐 것 · "설계 먼저" (Version 10, 학생 눈 검토 반영 Version 11)
 
 > 강사 지시(11/23, Day 21 수업 날): "이걸 우리 최근 강의 자료에 다 반영해. 에이전트 구축할 때" + 클릭 답(Day 21~24 모두 / 스킬 설치 + 만드는 상자만 세 단계로 / 한국어 한 줄 + 슬래시도 / 개인 스킬 폴더 복사는 12/2). 시험은 `classroom/tests/design-first-test-results.md`.
 
