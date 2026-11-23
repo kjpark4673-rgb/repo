@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라네즈 MVP 루프</title>
+<style>
+body{font-family:sans-serif;margin:0;padding:16px;background:#fff;color:#222;line-height:1.6}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:18px;margin:24px 0 8px;border-bottom:2px solid #ddd;padding-bottom:4px}
+h3{font-size:16px;margin:16px 0 4px}
+.meta{font-size:14px;color:#555;margin:0}
+.card{border:1px solid #ddd;border-radius:6px;padding:8px 12px;margin-bottom:12px;overflow-wrap:anywhere}
+.todo{color:#888}
+li{margin-bottom:2px}
+b.k{color:#0b5ed7}
+svg{max-width:420px;display:block;margin:8px auto}
+.edge{stroke:currentColor;stroke-width:2;fill:none}
+.arrow{fill:currentColor}
+.node{fill:#f5f5f5;stroke:#888;stroke-width:1.5}
+.node.bott{fill:#fff3cd;stroke:#d9480f;stroke-width:4}
+.t1{font-size:13px;font-weight:bold;fill:#222}
+.t2{font-size:10px;fill:#444}
+.tag{font-size:13px;font-weight:bold;fill:#d9480f}
+.big{font-size:18px;font-weight:bold;color:#d9480f}
+.wrap{overflow-x:auto;border:1px solid #ddd;border-radius:6px;margin-bottom:12px}
+table{border-collapse:collapse;min-width:600px;width:100%;font-size:14px}
+th,td{border-bottom:1px solid #eee;padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#f5f5f5;color:#222}
+@media (prefers-color-scheme:dark){
+body{background:#111;color:#eee}
+h2{border-color:#444}.meta{color:#bbb}.card{border-color:#444}.todo{color:#aaa}
+.node{fill:#222;stroke:#aaa}.node.bott{fill:#4a3000;stroke:#ff922b}
+.t1{fill:#fff}.t2{fill:#ddd}.tag{fill:#ffa94d}.big{color:#ffa94d}
+th{background:#222;color:#eee}th,td{border-color:#333}.wrap{border-color:#444}
+b.k{color:#74c0fc}}
+</style>
+</head>
+<body>
+<h1>라네즈 · 수분 크림</h1>
+<p class="meta">MVP: mvp.html ("라네즈 수분 크림 경쟁사 동향" 화면, 조사형) · 직무: 콘텐츠 마케터 · 고객: 건조함이 고민인 2030 직장인</p>
+<p class="meta">화면에 있는 것: "경쟁사 동향" 표(회사 · 최근 소식 한 줄 · 소식 날짜 · 조사일 · 출처 링크). 메뉴와 버튼은 아직 없음. 횟수·시간은 모두 (가정).</p>
+
+<h2>유저 스토리</h2>
+
+<div class="card">
+<h3>팀장</h3>
+<ul>
+<li>출근해서 커피를 마시며 오늘 회의에서 쓸 경쟁사 이야기를 챙긴다.</li>
+<li>mvp.html을 열자마자 "경쟁사 동향" 표의 맨 위 줄이 보인다.</li>
+<li>"소식 날짜"와 "조사일" 칸을 보고 얼마나 오래된 소식인지 가늠하고, "못 찾음" 줄은 따로 표시한다.</li>
+<li>그다음 "출처" 링크 한두 개를 눌러 본문을 확인한 뒤 회의 자료에 한 줄로 옮긴다. (하루 1번, 10분 (가정))</li>
+</ul>
+<p><b class="k">유저 스토리:</b> 콘텐츠 마케터 팀장으로서 경쟁사 최근 소식을 한 표에서 날짜와 출처까지 보고 싶다, 왜냐하면 회의에서 근거 없이 말하지 않으려고.</p>
+<p><b class="k">가장 만족할 기능:</b> "소식 날짜"와 "조사일" 칸. 소식이 얼마나 최신인지 바로 판단돼서.</p>
+<p><b class="k">부족한 것:</b> 어느 소식이 새로 바뀌었는지 표시가 없다. 그때는 어제 표를 손으로 기억해 비교한다.</p>
+<p><b class="k">통과 기준:</b> 표를 열면 모든 줄에 "소식 날짜"와 "조사일"이 보이고, 못 찾은 칸은 "못 찾음"으로 보인다.</p>
+</div>
+
+<div class="card">
+<h3>동료 (같은 팀 콘텐츠 마케터)</h3>
+<ul>
+<li>출근해서 오늘 올릴 수분 크림 콘텐츠 주제를 고민한다.</li>
+<li>mvp.html을 열어 "최근 소식 한 줄" 칸에서 경쟁사가 요즘 무슨 말을 하는지 훑는다.</li>
+<li>겹치지 않는 주제를 고르고, 필요하면 "출처" 링크로 원문 표현을 확인한다.</li>
+<li>그다음 고른 주제를 콘텐츠 일정표에 적는다. (주 3번, 15분 (가정))</li>
+</ul>
+<p><b class="k">유저 스토리:</b> 콘텐츠 마케터 동료로서 경쟁사가 지금 내세우는 메시지를 한눈에 보고 싶다, 왜냐하면 우리 콘텐츠 주제가 겹치지 않게 정하려고.</p>
+<p><b class="k">가장 만족할 기능:</b> "최근 소식 한 줄" 칸. 읽는 데 10초면 돼서 주제 고르기가 빨라진다.</p>
+<p><b class="k">부족한 것:</b> 소식을 광고·신제품·기사로 나눠 보는 칸이 없다. 그때는 한 줄을 읽고 종류를 직접 메모한다.</p>
+<p><b class="k">통과 기준:</b> "최근 소식 한 줄" 칸을 보면 회사마다 소식 한 줄이 보이거나 "못 찾음"이 보인다.</p>
+</div>
+
+<div class="card">
+<h3>부사수 (신입 콘텐츠 마케터)</h3>
+<ul>
+<li>출근해서 팀장이 시킨 "경쟁사 조사"를 어디서부터 할지 막막해한다.</li>
+<li>mvp.html을 열고 "회사" 칸의 5곳 이름을 보며 조사 범위를 안다.</li>
+<li>"출처" 링크로 들어가 기사를 읽고, 표에 없는 소식은 따로 적어 둔다.</li>
+<li>그다음 적은 것을 동료에게 보여 주고 표에 넣어도 되는지 묻는다. (주 2번, 30분 (가정))</li>
+</ul>
+<p><b class="k">유저 스토리:</b> 신입 콘텐츠 마케터 부사수로서 조사할 회사와 출처가 정리된 표를 보고 싶다, 왜냐하면 처음 해도 어디서 시작할지 헤매지 않으려고.</p>
+<p><b class="k">가장 만족할 기능:</b> "출처" 링크. 어디서 가져온 말인지 바로 눌러 확인할 수 있어서.</p>
+<p><b class="k">부족한 것:</b> 표에 소식을 직접 더하는 버튼이 없다. 그때는 메모장에 적어 동료에게 전달한다.</p>
+<p><b class="k">통과 기준:</b> "출처" 칸을 보면 소식이 있는 줄마다 눌러 볼 수 있는 링크가 보인다.</p>
+</div>
+
+<h2>병목</h2>
+<p class="big">② 분석하기: 어제 표와 비교해 "무엇이 바뀌었는지"를 손으로 찾는 일</p>
+<p>팀장은 어느 소식이 새로 바뀌었는지 표시가 없어 어제 표를 기억해 비교한다(유저 스토리 · 팀장의 부족한 것). 이 일이 매번 사람 손에 걸려 있어서 ③~⑤가 늦어진다.</p>
+
+<h2>루프 설계도</h2>
+<svg viewBox="0 0 360 370" width="100%" role="img" aria-label="루프 다섯 칸: 리서치하기, 분석하기, 만들기, 내보내기, 반응 보기, 다시 리서치하기">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrow"/></marker></defs>
+<line x1="217.2" y1="97.0" x2="257.0" y2="125.9" class="edge" marker-end="url(#ar)"/>
+<line x1="285.4" y1="179.9" x2="259.3" y2="260.1" class="edge" marker-end="url(#ar)"/>
+<line x1="191.5" y1="287.1" x2="168.5" y2="287.1" class="edge" marker-end="url(#ar)"/>
+<line x1="100.7" y1="260.1" x2="74.6" y2="179.9" class="edge" marker-end="url(#ar)"/>
+<line x1="103.0" y1="125.9" x2="142.8" y2="97.0" class="edge" marker-end="url(#ar)"/>
+<rect x="125.0" y="47.0" width="110" height="46" rx="8" class="node"/>
+<text x="180.0" y="67.0" text-anchor="middle" class="t1">① 리서치하기</text>
+<text x="180.0" y="83.0" text-anchor="middle" class="t2">research-agent</text>
+<rect x="239.1" y="129.9" width="110" height="46" rx="8" class="node bott"/>
+<text x="294.1" y="149.9" text-anchor="middle" class="t1">② 분석하기</text>
+<text x="294.1" y="165.9" text-anchor="middle" class="t2">analysis-agent</text>
+<rect x="195.5" y="264.1" width="110" height="46" rx="8" class="node"/>
+<text x="250.5" y="284.1" text-anchor="middle" class="t1">③ 만들기</text>
+<text x="250.5" y="300.1" text-anchor="middle" class="t2">content-agent</text>
+<rect x="54.5" y="264.1" width="110" height="46" rx="8" class="node"/>
+<text x="109.5" y="284.1" text-anchor="middle" class="t1">④ 내보내기</text>
+<text x="109.5" y="300.1" text-anchor="middle" class="t2">publish-agent</text>
+<rect x="10.9" y="129.9" width="110" height="46" rx="8" class="node"/>
+<text x="65.9" y="149.9" text-anchor="middle" class="t1">⑤ 반응 보기</text>
+<text x="65.9" y="165.9" text-anchor="middle" class="t2">feedback-agent</text>
+<text x="294.1" y="123.9" text-anchor="middle" class="tag">병목</text>
+<text x="180" y="194" text-anchor="middle" class="t2">다시 ①로</text>
+</svg>
+<p class="meta">한 바퀴: ① → ② → ③ → ④ → ⑤ → 다시 ①. 병목은 ② 분석하기 칸에 놓았어요. 이유: 바뀐 소식을 골라내는 일이 지금은 손으로 하는 비교라서, 여기가 막히면 뒤 칸이 모두 기다려요.</p>
+<div class="wrap"><table>
+<thead><tr><th>칸</th><th>에이전트</th><th>하는 일</th><th>입력</th><th>출력</th><th>만드는 날</th></tr></thead>
+<tbody>
+<tr><td>① 리서치하기</td><td>research-agent</td><td>경쟁 5곳의 최근 소식(신제품·캠페인·기사)을 찾아 표에 적는다</td><td>경쟁 5곳 이름, 검색어</td><td>research.csv, run_log.md</td><td>11/24</td></tr>
+<tr><td><b>② 분석하기 · 병목</b></td><td>analysis-agent</td><td>지난 표와 비교해 바뀐 소식·먹힌 메시지를 골라 한 장으로 만든다</td><td>research.csv</td><td>weekly.html</td><td>11/24, 12/1</td></tr>
+<tr><td>③ 만들기</td><td>content-agent</td><td>분석을 바탕으로 카피와 이미지 또는 영상 초안을 만든다</td><td>weekly.html</td><td>content_draft.md (예정)</td><td>11/25 이미지 또는 영상, 11/27 화면 안 AI</td></tr>
+<tr><td>④ 내보내기</td><td>publish-agent</td><td>콘텐츠를 올리고 팀에 공유한다</td><td>content_draft.md (예정)</td><td>share_log.md (예정)</td><td>11/30</td></tr>
+<tr><td>⑤ 반응 보기</td><td>feedback-agent</td><td>성과(전환율, 매출)를 보고 다음 리서치에 되먹인다</td><td>share_log.md (예정)</td><td>results.csv (예정)</td><td>12/1</td></tr>
+</tbody></table></div>
+
+<h2>2주 진행표</h2>
+<div class="wrap"><table>
+<thead><tr><th>날짜</th><th>할 일</th><th>올릴 칸</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td>11/23</td><td>내 루프 그림</td><td>지금 상태 점검</td><td>오늘</td></tr>
+<tr><td>11/24</td><td>① 리서치하기·② 분석하기 첫 판</td><td>재료·기록</td><td>예정</td></tr>
+<tr><td>11/25</td><td>③ 이미지 또는 영상(선택)</td><td>일</td><td>예정</td></tr>
+<tr><td>11/26</td><td>설계서(spec.md)</td><td>검사·멈춤</td><td>예정</td></tr>
+<tr><td>11/27</td><td>③ 화면 안 AI</td><td>일</td><td>예정</td></tr>
+<tr><td>11/30</td><td>④ 내보내기·공유 저장(리서치 한 번 더)</td><td>기록</td><td>예정</td></tr>
+<tr><td>12/1</td><td>②·⑤ 분석하기·반응 보기</td><td>되먹임</td><td>예정</td></tr>
+<tr><td>12/2</td><td>루프 연결</td><td>방아쇠·검사·멈춤</td><td>예정</td></tr>
+<tr><td>12/3</td><td>점검·데모</td><td>다시 점검</td><td>예정</td></tr>
+</tbody></table></div>
+</body>
+</html>

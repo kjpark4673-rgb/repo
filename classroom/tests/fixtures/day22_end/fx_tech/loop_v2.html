@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컬리 MVP 루프</title>
+<style>
+  :root{--bg:#fff;--fg:#1f1f24;--mute:#6b6b76;--line:#e3e3ea;--accent:#5f0080;--card:#f6f3f8}
+  @media (prefers-color-scheme:dark){:root{--bg:#17171c;--fg:#ececf1;--mute:#a0a0ad;--line:#33333d;--accent:#c58be0;--card:#22212a}}
+  *{box-sizing:border-box}
+  body{margin:0;padding:0 16px 40px;background:var(--bg);color:var(--fg);font:15px/1.65 system-ui,-apple-system,"Noto Sans KR",sans-serif;overflow-wrap:anywhere}
+  header{padding:16px 0 8px;border-bottom:2px solid var(--accent);margin-bottom:8px}
+  header h1{font-size:20px;margin:0;color:var(--accent)}
+  header p{margin:2px 0 0;color:var(--mute);font-size:13px}
+  h2{font-size:18px;margin:28px 0 8px;color:var(--accent)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:12px 0}
+  .card h3{margin:0 0 6px;font-size:16px}
+  .card ol{margin:0 0 8px;padding-left:20px}
+  .card p{margin:6px 0}
+  b.k{color:var(--accent)}
+  .todo{color:var(--mute)}
+  .note{color:var(--mute);font-size:13px}
+  .card.hot{border:3px solid #d9480f}
+  .badge{background:#d9480f;color:#fff;font-size:13px;padding:2px 8px;border-radius:99px;vertical-align:middle}
+  .why{color:#d9480f;font-weight:600}
+  svg text{fill:var(--fg);font:13px system-ui,"Noto Sans KR",sans-serif}
+  svg .small{font-size:11px;font-weight:700;fill:#d9480f}
+  svg .center{fill:var(--mute);font-size:12px}
+  svg .node rect{fill:var(--card);stroke:var(--accent);stroke-width:2}
+  svg .hotnode rect{stroke:#d9480f;stroke-width:4}
+  svg .edge line{stroke:var(--accent);stroke-width:2}
+  svg .arrowhead{fill:var(--accent)}
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+  table{border-collapse:collapse;min-width:520px;width:100%;font-size:14px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:rgba(127,127,127,.12);white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <h1>컬리 · 새벽배송 경쟁사 최근 동향</h1>
+  <p>MVP: mvp.html (조사형) · 직무: 데이터 분석가 · 고객: 장 볼 시간이 없는 맞벌이 직장인</p>
+</header>
+
+<h2 id="stories">유저 스토리</h2>
+<p class="note">mvp.html에는 메뉴·버튼이 없고, 제목 "컬리 새벽배송 경쟁사 최근 동향"과 표 하나뿐이에요. 표의 칸 이름은 회사 · 최근 소식(신제품·캠페인·기사) · 소식 날짜 · 조사일 · 출처예요. 횟수와 시간은 모두 (가정)이에요.</p>
+
+<div class="card">
+  <h3>팀장 (데이터 분석가)</h3>
+  <ol>
+    <li>오전 9시 반쯤 출근해 커피를 마시며 주간 회의 자료를 확인한다. (가정)</li>
+    <li>회의 10분 전에 mvp.html을 열고 "컬리 새벽배송 경쟁사 최근 동향" 제목 아래 표를 훑는다. (가정)</li>
+    <li>"최근 소식" 칸과 "소식 날짜" 칸으로 이번 주에 새로 움직인 회사를 고른다.</li>
+    <li>"출처" 칸의 링크로 기사 원문을 확인하고 회의 때 한 줄로 공유한다. 주 1회 정도 쓴다. (가정)</li>
+  </ol>
+  <p><b class="k">유저 스토리</b> 데이터 분석가 팀장으로서 경쟁사 5곳의 최근 소식을 한 표로 보고 싶다, 왜냐하면 회의 전에 따로 검색하지 않고 달라진 점을 바로 말하고 싶기 때문이다.</p>
+  <p><b class="k">가장 만족할 기능</b> 표의 "소식 날짜" 칸. 오래된 소식과 새 소식을 한눈에 가를 수 있어서다.</p>
+  <p><b class="k">부족한 것</b> 지난주와 비교해 무엇이 바뀌었는지 표시가 없다. 그때는 지난 표를 따로 열어 눈으로 대조한다.</p>
+  <p><b class="k">통과 기준</b> "소식 날짜" 칸을 보면 각 회사 줄에 기사 날짜가 적혀 있고, 날짜를 못 찾은 줄에는 "못 찾음"이 보인다.</p>
+</div>
+
+<div class="card">
+  <h3>동료 (같은 팀 데이터 분석가)</h3>
+  <ol>
+    <li>점심 직후 오후 업무를 시작하며 쓰던 분석 파일을 연다. (가정)</li>
+    <li>고객 이탈 분석 중에 mvp.html을 열어 표의 "회사" 칸에서 쿠팡 로켓프레시와 오아시스마켓 줄을 찾는다. (가정)</li>
+    <li>"최근 소식(신제품·캠페인·기사)" 칸을 읽고 분석 메모의 가설과 맞는지 따져 본다.</li>
+    <li>맞는 소식은 "출처" 링크를 메모에 붙인다. 하루 두세 번 연다. (가정)</li>
+  </ol>
+  <p><b class="k">유저 스토리</b> 데이터 분석가 동료로서 경쟁사 소식의 출처 링크를 바로 가져가고 싶다, 왜냐하면 분석 메모에 근거 링크를 빠르게 붙이고 싶기 때문이다.</p>
+  <p><b class="k">가장 만족할 기능</b> 표의 "출처" 칸 링크. 클릭 한 번으로 원문에 가서 근거를 확인할 수 있어서다.</p>
+  <p><b class="k">부족한 것</b> 소식이 고객 행동에 준 영향 숫자가 표에 없다. 그때는 우리 쪽 주문 데이터를 직접 뽑아 날짜를 맞춰 본다.</p>
+  <p><b class="k">통과 기준</b> "출처" 칸의 링크를 누르면 그 줄 회사의 기사 원문이 열린다.</p>
+</div>
+
+<div class="card">
+  <h3>부사수 (신입 데이터 분석가)</h3>
+  <ol>
+    <li>아침에 일찍 출근해 팀장이 준 조사 과제를 확인한다. (가정)</li>
+    <li>경쟁사를 잘 몰라서 mvp.html을 열고 제목과 표의 칸 이름부터 읽는다.</li>
+    <li>"회사"와 "최근 소식(신제품·캠페인·기사)" 칸을 읽으며 경쟁 5곳이 무엇을 하는지 정리한다.</li>
+    <li>"조사일" 칸으로 자료가 언제 모은 것인지 확인한 뒤 팀장에게 질문을 모은다. 첫 2주는 매일 연다. (가정)</li>
+  </ol>
+  <p><b class="k">유저 스토리</b> 신입 데이터 분석가 부사수로서 경쟁사 5곳을 한 화면에서 파악하고 싶다, 왜냐하면 팀 회의에서 용어와 맥락을 따라가고 싶기 때문이다.</p>
+  <p><b class="k">가장 만족할 기능</b> 표 하나에 5곳이 모여 있는 구성. 여러 사이트를 돌지 않아도 되어서다.</p>
+  <p><b class="k">부족한 것</b> 각 소식이 컬리에 왜 중요한지 설명이 없다. 그때는 동료에게 물어 메모에 직접 적는다.</p>
+  <p><b class="k">통과 기준</b> 표를 열면 5개 회사 줄이 모두 보이고, 줄마다 "조사일" 칸에 날짜가 적혀 있다.</p>
+</div>
+
+<h2 id="bottleneck">병목</h2>
+<div class="card hot">
+  <p><b class="k">병목: ① 리서치하기</b> — 경쟁사 5곳의 최근 소식을 사람이 직접 검색해 표에 옮기는 일.</p>
+  <p>이유: 매주 5곳을 손으로 찾고 옮기느라 시간이 많이 들고(주 1회 2시간 정도 (가정)), 못 찾는 칸이 생겨 mvp.html 표가 늦고 빈다. 이 칸이 느리면 뒤의 ②~⑤가 모두 기다린다.</p>
+</div>
+
+<h2 id="loop">루프 설계도</h2>
+<p class="note">루프 한 바퀴: ① → ② → ③ → ④ → ⑤ → 다시 ①. 병목은 ①에 있어요. (예정)은 아직 만들기 전 파일이에요.</p>
+<svg viewBox="0 0 360 340" role="img" aria-labelledby="loopT loopD" style="width:100%;height:auto;display:block;max-width:420px;margin:8px auto">
+  <title id="loopT">내 루프 그림</title>
+  <desc id="loopD">리서치하기, 분석하기, 만들기, 내보내기, 반응 보기가 원처럼 이어지고 다시 리서치하기로 돌아온다. 병목은 리서치하기.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead"/>
+    </marker>
+  </defs>
+  <g class="edge" marker-end="url(#arr)">
+    <line x1="222" y1="74" x2="262" y2="118" marker-end="url(#arr)"/>
+    <line x1="298" y1="164" x2="278" y2="252" marker-end="url(#arr)"/>
+    <line x1="196" y1="276" x2="164" y2="276" marker-end="url(#arr)"/>
+    <line x1="82" y1="252" x2="62" y2="164" marker-end="url(#arr)"/>
+    <line x1="98" y1="118" x2="138" y2="74" marker-end="url(#arr)"/>
+  </g>
+  <g class="node hotnode"><rect x="122" y="32" width="116" height="44" rx="10"/><text x="180" y="52" text-anchor="middle">① 리서치하기</text><text x="180" y="68" text-anchor="middle" class="small">병목</text></g>
+  <g class="node"><rect x="236" y="118" width="116" height="44" rx="10"/><text x="294" y="145" text-anchor="middle">② 분석하기</text></g>
+  <g class="node"><rect x="196" y="254" width="116" height="44" rx="10"/><text x="254" y="281" text-anchor="middle">③ 만들기</text></g>
+  <g class="node"><rect x="48" y="254" width="116" height="44" rx="10"/><text x="106" y="281" text-anchor="middle">④ 내보내기</text></g>
+  <g class="node"><rect x="8" y="118" width="116" height="44" rx="10"/><text x="66" y="145" text-anchor="middle">⑤ 반응 보기</text></g>
+  <text x="180" y="190" text-anchor="middle" class="center">다시 ①로</text>
+</svg>
+
+<div class="card hot">
+  <h3>① 리서치하기 <span class="badge">병목</span></h3>
+  <p><b class="k">에이전트</b> research-agent</p>
+  <p><b class="k">하는 일</b> 경쟁사·업계 동향을 웹에서 찾아 표에 한 줄씩 적는다.</p>
+  <p><b class="k">입력</b> CLAUDE.md의 회사·고객, 경쟁사 5곳 목록</p>
+  <p><b class="k">출력</b> research.csv, run_log.md</p>
+  <p><b class="k">만드는 날</b> 11/24 (11/30에 한 번 더)</p>
+  <p class="why">병목인 이유: 사람이 직접 검색해 옮기느라 가장 오래 걸리고 빈칸이 생긴다.</p>
+</div>
+<div class="card">
+  <h3>② 분석하기</h3>
+  <p><b class="k">에이전트</b> analysis-agent</p>
+  <p><b class="k">하는 일</b> 지난주와 비교해 바뀐 것과 먹힌 것을 골라 주간 화면으로 만든다.</p>
+  <p><b class="k">입력</b> research.csv</p>
+  <p><b class="k">출력</b> weekly.html</p>
+  <p><b class="k">만드는 날</b> 11/24, 12/1</p>
+</div>
+<div class="card">
+  <h3>③ 만들기</h3>
+  <p><b class="k">에이전트</b> maker-agent</p>
+  <p><b class="k">하는 일</b> 분석 결과로 카피·이미지·영상과 화면 안 AI를 만든다.</p>
+  <p><b class="k">입력</b> weekly.html</p>
+  <p><b class="k">출력</b> content_draft.md (예정)</p>
+  <p><b class="k">만드는 날</b> 11/25 이미지 또는 영상, 11/27 화면 안 AI</p>
+</div>
+<div class="card">
+  <h3>④ 내보내기</h3>
+  <p><b class="k">에이전트</b> publish-agent</p>
+  <p><b class="k">하는 일</b> 만든 것을 올리고 팀에 공유한 기록을 저장한다.</p>
+  <p><b class="k">입력</b> content_draft.md (예정)</p>
+  <p><b class="k">출력</b> share_log.md (예정)</p>
+  <p><b class="k">만드는 날</b> 11/30</p>
+</div>
+<div class="card">
+  <h3>⑤ 반응 보기</h3>
+  <p><b class="k">에이전트</b> feedback-agent</p>
+  <p><b class="k">하는 일</b> 성과(전환율, 매출)를 보고 다음 ①에 넘길 점을 적는다.</p>
+  <p><b class="k">입력</b> share_log.md (예정)</p>
+  <p><b class="k">출력</b> feedback.csv (예정)</p>
+  <p><b class="k">만드는 날</b> 12/1</p>
+</div>
+
+<h2 id="plan">2주 진행표</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>날짜</th><th>할 일</th><th>상태</th><th>올릴 칸</th></tr></thead>
+<tbody>
+<tr><td>11/23</td><td>내 루프 그림</td><td>오늘</td><td>지금 상태 점검</td></tr>
+<tr><td>11/24</td><td>① 리서치하기 · ② 분석하기 첫 판</td><td>예정</td><td>재료·기록 (A 카드를 하면 방아쇠도)</td></tr>
+<tr><td>11/25</td><td>③ 이미지 또는 영상 (선택)</td><td>예정</td><td>일</td></tr>
+<tr><td>11/26</td><td>설계서 (spec.md)</td><td>예정</td><td>검사·멈춤</td></tr>
+<tr><td>11/27</td><td>③ 화면 안 AI</td><td>예정</td><td>일</td></tr>
+<tr><td>11/30</td><td>④ 내보내기·공유 저장 (리서치 한 번 더)</td><td>예정</td><td>기록</td></tr>
+<tr><td>12/1</td><td>② 분석하기 · ⑤ 반응 보기</td><td>예정</td><td>되먹임</td></tr>
+<tr><td>12/2</td><td>루프 연결</td><td>예정</td><td>방아쇠·검사·멈춤</td></tr>
+<tr><td>12/3</td><td>점검·데모</td><td>예정</td><td>다시 점검</td></tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

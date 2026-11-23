@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라네즈 MVP 루프</title>
+<style>
+body{font-family:sans-serif;margin:0;padding:16px;background:#fff;color:#222;line-height:1.6}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:18px;margin:24px 0 8px;border-bottom:2px solid #ddd;padding-bottom:4px}
+h3{font-size:16px;margin:16px 0 4px}
+.meta{font-size:14px;color:#555;margin:0}
+.card{border:1px solid #ddd;border-radius:6px;padding:8px 12px;margin-bottom:12px;overflow-wrap:anywhere}
+.todo{color:#888}
+li{margin-bottom:2px}
+b.k{color:#0b5ed7}
+</style>
+</head>
+<body>
+<h1>라네즈 · 수분 크림</h1>
+<p class="meta">MVP: mvp.html ("라네즈 수분 크림 경쟁사 동향" 화면, 조사형) · 직무: 콘텐츠 마케터 · 고객: 건조함이 고민인 2030 직장인</p>
+<p class="meta">화면에 있는 것: "경쟁사 동향" 표(회사 · 최근 소식 한 줄 · 소식 날짜 · 조사일 · 출처 링크). 메뉴와 버튼은 아직 없음. 횟수·시간은 모두 (가정).</p>
+
+<h2>유저 스토리</h2>
+
+<div class="card">
+<h3>팀장</h3>
+<ul>
+<li>출근해서 커피를 마시며 오늘 회의에서 쓸 경쟁사 이야기를 챙긴다.</li>
+<li>mvp.html을 열자마자 "경쟁사 동향" 표의 맨 위 줄이 보인다.</li>
+<li>"소식 날짜"와 "조사일" 칸을 보고 얼마나 오래된 소식인지 가늠하고, "못 찾음" 줄은 따로 표시한다.</li>
+<li>그다음 "출처" 링크 한두 개를 눌러 본문을 확인한 뒤 회의 자료에 한 줄로 옮긴다. (하루 1번, 10분 (가정))</li>
+</ul>
+<p><b class="k">유저 스토리:</b> 콘텐츠 마케터 팀장으로서 경쟁사 최근 소식을 한 표에서 날짜와 출처까지 보고 싶다, 왜냐하면 회의에서 근거 없이 말하지 않으려고.</p>
+<p><b class="k">가장 만족할 기능:</b> "소식 날짜"와 "조사일" 칸. 소식이 얼마나 최신인지 바로 판단돼서.</p>
+<p><b class="k">부족한 것:</b> 어느 소식이 새로 바뀌었는지 표시가 없다. 그때는 어제 표를 손으로 기억해 비교한다.</p>
+<p><b class="k">통과 기준:</b> 표를 열면 모든 줄에 "소식 날짜"와 "조사일"이 보이고, 못 찾은 칸은 "못 찾음"으로 보인다.</p>
+</div>
+
+<div class="card">
+<h3>동료 (같은 팀 콘텐츠 마케터)</h3>
+<ul>
+<li>출근해서 오늘 올릴 수분 크림 콘텐츠 주제를 고민한다.</li>
+<li>mvp.html을 열어 "최근 소식 한 줄" 칸에서 경쟁사가 요즘 무슨 말을 하는지 훑는다.</li>
+<li>겹치지 않는 주제를 고르고, 필요하면 "출처" 링크로 원문 표현을 확인한다.</li>
+<li>그다음 고른 주제를 콘텐츠 일정표에 적는다. (주 3번, 15분 (가정))</li>
+</ul>
+<p><b class="k">유저 스토리:</b> 콘텐츠 마케터 동료로서 경쟁사가 지금 내세우는 메시지를 한눈에 보고 싶다, 왜냐하면 우리 콘텐츠 주제가 겹치지 않게 정하려고.</p>
+<p><b class="k">가장 만족할 기능:</b> "최근 소식 한 줄" 칸. 읽는 데 10초면 돼서 주제 고르기가 빨라진다.</p>
+<p><b class="k">부족한 것:</b> 소식을 광고·신제품·기사로 나눠 보는 칸이 없다. 그때는 한 줄을 읽고 종류를 직접 메모한다.</p>
+<p><b class="k">통과 기준:</b> "최근 소식 한 줄" 칸을 보면 회사마다 소식 한 줄이 보이거나 "못 찾음"이 보인다.</p>
+</div>
+
+<div class="card">
+<h3>부사수 (신입 콘텐츠 마케터)</h3>
+<ul>
+<li>출근해서 팀장이 시킨 "경쟁사 조사"를 어디서부터 할지 막막해한다.</li>
+<li>mvp.html을 열고 "회사" 칸의 5곳 이름을 보며 조사 범위를 안다.</li>
+<li>"출처" 링크로 들어가 기사를 읽고, 표에 없는 소식은 따로 적어 둔다.</li>
+<li>그다음 적은 것을 동료에게 보여 주고 표에 넣어도 되는지 묻는다. (주 2번, 30분 (가정))</li>
+</ul>
+<p><b class="k">유저 스토리:</b> 신입 콘텐츠 마케터 부사수로서 조사할 회사와 출처가 정리된 표를 보고 싶다, 왜냐하면 처음 해도 어디서 시작할지 헤매지 않으려고.</p>
+<p><b class="k">가장 만족할 기능:</b> "출처" 링크. 어디서 가져온 말인지 바로 눌러 확인할 수 있어서.</p>
+<p><b class="k">부족한 것:</b> 표에 소식을 직접 더하는 버튼이 없다. 그때는 메모장에 적어 동료에게 전달한다.</p>
+<p><b class="k">통과 기준:</b> "출처" 칸을 보면 소식이 있는 줄마다 눌러 볼 수 있는 링크가 보인다.</p>
+</div>
+
+<h2>병목</h2>
+<p class="todo">오늘 P2에서 채워요</p>
+
+<h2>루프 설계도</h2>
+<p class="todo">오늘 P2에서 채워요</p>
+
+<h2>2주 진행표</h2>
+<p class="todo">오늘 P2에서 채워요</p>
+</body>
+</html>

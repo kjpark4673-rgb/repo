@@ -45,7 +45,7 @@ tr.bn{background:rgba(217,72,15,.12)}
 </header>
 
 <h2>유저 스토리</h2>
-<p class="tag">mvp.html은 임시 화면(가정)이라 메뉴·버튼은 없고, 화면에 있는 "경쟁사 동향 표"(칸: 회사 / 최근 소식 / 날짜 / 조사일 / 출처)와 "출처" 링크로 썼어요. 횟수·시간은 모두 (가정).</p>
+<p class="tag">mvp.html은 임시 화면(가정)이라 메뉴·버튼은 없고, 화면에 있는 "경쟁사 동향 표"(칸: 회사 / 최근 소식 / 날짜 / 조사일 / 출처)와 "출처" 링크로 썼어요. 횟수·시간은 모두 (가정). 11/26부터 맨 위에 AI 버튼 "보내기 전 확인"이 더해졌어요.</p>
 
 <div class="card">
 <h3>팀장 (콘텐츠 마케팅 팀장)</h3>
@@ -95,22 +95,23 @@ tr.bn{background:rgba(217,72,15,.12)}
 <p><span class="lbl">이유 한 줄:</span> mvp.html 표에 "못 찾음" 칸이 있고(이니스프리 출처, 닥터지·토리든 날짜), 세 사람 모두 이 표에서 일이 시작돼서 여기가 막히면 ②~⑤가 전부 늦어진다.</p></div>
 
 <h2>지금 내 루프</h2>
-<p class="tag">지난 점검 11/23 ✓ 3칸 → 오늘 ✓ 4칸 · 올라간 칸 재료(시작 → 됨), 일(아직 → 시작)</p>
-<p class="tag">11/24 · 점수 없이 칸별 상태만 봤어요. 근거는 이 폴더의 파일에서만 찾았어요. 어제 점검은 decisions.md의 "루프 점검 11/23" 줄과 loop_v4.html 기준이에요. .github/workflows 파일은 없어요.</p>
+<p class="tag">지난 점검 11/24 ✓ 4칸 → 오늘 ✓ 5칸 · 올라간 칸 검사·멈춤(시작 → 됨), 되먹임(아직 → 시작)</p>
+<p class="tag">11/26 · 점수 없이 칸별 상태만 봤어요. 근거는 이 폴더의 파일과 화면에서만 찾았어요. 어제 점검은 decisions.md의 "루프 점검 11/24" 줄과 loop_v4.html 기준이에요(11/25 점검 줄은 없어요). .github/workflows 파일은 없어요.</p>
 <div class="card">
 <h3>✓ 이미 된 칸</h3>
-<p><b>재료 — 됨 (오늘 시작 → 됨)</b><br>이미 한 것: 경쟁사 5곳 × 3항목을 스킬 한 줄로 같은 칸(조사일·이름·항목·값·출처 링크·상태)에 쌓았다.<br>근거: .claude/skills/weekly-research/SKILL.md, research.csv 15줄(조사일 2026-11-22), run_log.md의 실행 기록.<br>다음 한 걸음: 다음 조사 때 상태 칸으로 지난 조사와 비교해 본다.</p>
-<p><b>일 — 시작 (오늘 새로 ✓)</b><br>이미 한 것: 모은 자료에서 Top 5와 한 줄 결론을 골라 weekly.html 한 장으로 정리했다.<br>근거: weekly.html의 Top 5·팩트체크 표. 다만 한 줄 결론은 Claude가 대화에서 써서 붙였고, 화면이나 스킬이 AI 결과를 바로 만들지는 않는다.<br>다음 한 걸음: 스킬 한 번으로 요약·추천이 바로 나오게 한다.</p>
-<p><b>검사·멈춤 — 시작</b><br>이미 한 것: 사람이 확인할 표시를 달았다.<br>근거: research.csv의 출처 링크·조사일·"못 찾음"·(검색 요약)·(30일 넘음), weekly.html의 팩트체크 표. 멈추는 규칙은 아직 없다.<br>다음 한 걸음: 못 찾음이 몇 줄이면 멈추고 사람에게 묻는지 기준 한 줄을 정한다.</p>
-<p><b>기록 — 시작</b><br>이미 한 것: 날짜가 붙은 파일에 쌓고 지난 판을 남겼다.<br>근거: run_log.md, research.csv, decisions.md의 날짜 줄, CLAUDE_v1.md·CLAUDE_v2.md, loop_v1~v4.html. 팀이 같이 보는 곳은 아직 아니고, 지난 조사가 없어 비교도 아직이다.<br>다음 한 걸음: 팀이 같이 보는 곳에 올린다.</p>
+<p><b>재료 — 됨</b><br>이미 한 것: 경쟁사 5곳 × 3항목을 스킬 한 줄로 같은 칸에 쌓았다.<br>근거: .claude/skills/weekly-research/SKILL.md, research.csv 15줄(조사일 2026-11-22), run_log.md의 실행 기록. 다음 한 걸음: 다음 조사 때 상태 칸으로 지난 조사와 비교해 본다.</p>
+<p><b>일 — 시작</b><br>이미 한 것: Top 5·결론(weekly.html), 시안 3개(영상, compare_1125.html), 그리고 오늘 mvp.html 맨 위에 AI 버튼 "보내기 전 확인"을 더했다.<br>근거: weekly.html, ad15_1125_a·b·c.mp4, mvp.html의 id="ai-check". 다만 버튼은 AI에게 보낼 글을 만들어 복사하는 데까지라, 결과는 사람이 Claude·ChatGPT 새 채팅에서 받는다(화면이 바로 결과를 만들지는 않아서 됨이 아님). 다음 한 걸음: 화면 안에서 바로 답을 받는 서버 함수(키는 서버에만).</p>
+<p><b>검사·멈춤 — 됨 (오늘 시작 → 됨)</b><br>이미 한 것: 기준 ①~⑥으로 시안을 심사하고, 두 번 고쳐도 남으면 "보류: 사람 확인"으로 멈췄다. 오늘은 같은 방식으로 글 기준 여섯 개를 만들어 예시 3개를 새 눈 AI로 시험했다.<br>근거: review_1125.md(시안 3개 모두 보류, 고친 횟수 2), button_test_1126.md(예시 3개 중 3개 같음, 고친 횟수 1), 두 곳 모두 사람 확인 목록이 있음. 다음 한 걸음: 새 글(효능 암시·자리 표시·"오늘만")로 시험하고 어긋나는 기준 고치기(tomorrow_1127.md).</p>
+<p><b>기록 — 시작</b><br>이미 한 것: 날짜가 붙은 파일에 쌓고 지난 판을 남겼다.<br>근거: run_log.md, research.csv, decisions.md, CLAUDE_v1~v4.md, loop_v1~v6.html, mvp_v1·v2.html, spec_v1.md. 팀이 같이 보는 곳은 아직 아니고, 지난 조사와의 비교도 아직이다. 다음 한 걸음: 팀이 같이 보는 곳에 올린다.</p>
+<p><b>되먹임 — 시작 (오늘 아직 → 시작)</b><br>이미 한 것: 시험에서 잰 수(예시 3개 중 1차에 기대와 달랐던 것, 고친 뒤 3개 중 3개 같음)로 기준 ①②를 고쳤고 고치기 전 판(mvp_v2.html, spec_v1.md)과 이유를 남겼다.<br>근거: button_test_1126.md, decisions.md의 "AI 버튼 확인 11/26" 줄. 다만 실제로 써 본 사람의 반응이나 클릭·성과를 재는 장치(Clarity·한 줄 답)는 없다. 다음 한 걸음: 팀원이 버튼을 써 보고 한 줄 답을 남기는 칸을 정한다.</p>
 </div>
 <div class="card">
 <h3>다음 칸 하나</h3>
-<p><b>일 — 11/25·11/27에 올려요.</b> weekly.html의 결론이 아직 대화에서 손으로 붙인 글이라, 스킬이나 화면 안 AI가 바로 초안을 만들어야 ③ 만들기로 이어지기 때문이다.</p>
+<p><b>일 — 11/27 AI 버튼 다듬기에 올려요.</b> 버튼이 아직 글을 복사하는 데까지라서, 결과를 화면 안에서 바로 받는 쪽으로 가야 ③ 만들기가 사람 손을 덜 타기 때문이다(검사·멈춤은 내일 새 글 시험으로 함께 다듬음).</p>
 </div>
 <div class="card">
 <h3>앞으로 채울 칸</h3>
-<p>방아쇠 — 12/2<br>되먹임 — 12/1</p>
+<p>기록(팀 공유) — 11/30<br>되먹임(재는 장치) — 12/1<br>방아쇠 — 12/2</p>
 </div>
 <p><b>12/3에 다시 봐서 ✓가 늘어난 것을 확인해요.</b></p>
 <h2>루프 설계도</h2>
@@ -148,7 +149,7 @@ tr.bn{background:rgba(217,72,15,.12)}
 <tbody>
 <tr class="bn"><td><span class="big">병목</span> <b>① 리서치하기</b></td><td>research-agent</td><td>경쟁사 5곳의 최근 소식(신제품·캠페인·기사)을 모아 표에 적는다.</td><td>경쟁사 5곳 이름, 검색어(수분 크림·2030 직장인 건조 피부)</td><td>research.csv, run_log.md</td><td>11/24 (11/30 한 번 더) · <b>완료(수동)</b> <a href="weekly.html">weekly.html</a></td></tr>
 <tr><td><b>② 분석하기</b></td><td>analysis-agent</td><td>표에서 바뀐 것과 먹힌 것을 골라 한 장으로 정리한다.</td><td>research.csv</td><td>weekly.html</td><td>11/24, 12/1</td></tr>
-<tr><td><b>③ 만들기</b></td><td>maker-agent</td><td>분석을 바탕으로 수분 크림 카피·이미지·영상 초안을 만든다.</td><td>weekly.html</td><td>content_draft.md (예정)</td><td><b>첫 판(11/25, 수동 1회)</b> <a href="compare_1125.html">compare_1125.html</a> · <b>AI 버튼 첫 판(보내기 전 확인, 11/26)</b> <a href="mvp.html">mvp.html</a> · 11/27 화면 안 AI</td></tr>
+<tr><td><b>③ 만들기</b></td><td>maker-agent</td><td>분석을 바탕으로 수분 크림 카피·이미지·영상 초안을 만든다.</td><td>weekly.html</td><td>content_draft.md (예정)</td><td><b>첫 판(11/25, 수동 1회)</b> <a href="compare_1125.html">compare_1125.html</a> · <b>AI 버튼 첫 판(보내기 전 확인, 11/26)</b> · 11/27 화면 안 AI</td></tr>
 <tr><td><b>④ 내보내기</b></td><td>publish-agent</td><td>초안을 확인한 뒤 올리고 팀에 공유하며 올린 기록을 저장한다.</td><td>content_draft.md (예정)</td><td>posted.csv (예정)</td><td>11/30</td></tr>
 <tr><td><b>⑤ 반응 보기</b></td><td>feedback-agent</td><td>올린 콘텐츠의 성과(전환율, 매출)를 보고 다음 ①에 넘길 점을 적는다.</td><td>posted.csv (예정)</td><td>results.csv (예정)</td><td>12/1</td></tr>
 </tbody></table></div>
@@ -160,7 +161,7 @@ tr.bn{background:rgba(217,72,15,.12)}
 <tr><td>11/23</td><td>내 루프 그림 그리기</td><td>지금 상태 점검</td><td>오늘</td></tr>
 <tr><td><b>11/24</b></td><td><b>① 리서치하기·② 분석하기 첫 판</b></td><td><b>재료·기록 (A 카드를 하면 방아쇠도)</b></td><td><b>① 완료(수동) <a href="weekly.html">weekly.html</a> · ② 예정</b></td></tr>
 <tr><td><b>11/25</b></td><td><b>③ 만들기: 영상(선택)</b></td><td><b>일</b></td><td><b>첫 판(11/25, 수동 1회) <a href="compare_1125.html">compare_1125.html</a></b></td></tr>
-<tr><td>11/26</td><td>설계서(spec.md) · AI 버튼 첫 판(보내기 전 확인)</td><td>검사·멈춤</td><td>예정 · AI 버튼 첫 판 <a href="mvp.html">mvp.html</a></td></tr>
+<tr><td>11/26</td><td>설계서(spec.md)</td><td>검사·멈춤</td><td>예정 · <b>AI 버튼 첫 판(보내기 전 확인)</b></td></tr>
 <tr><td>11/27</td><td>③ 만들기: 화면 안 AI</td><td>일</td><td>예정</td></tr>
 <tr><td>11/30</td><td>④ 내보내기·공유 저장 (리서치 한 번 더)</td><td>기록</td><td>예정</td></tr>
 <tr><td>12/1</td><td>②·⑤ 분석하기·반응 보기</td><td>되먹임</td><td>예정</td></tr>

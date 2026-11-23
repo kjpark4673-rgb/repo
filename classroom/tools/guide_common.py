@@ -334,7 +334,8 @@ def clip_boxes(h, min_chars=330):
     """긴 복사 상자는 앞 몇 줄만 보이게. 학생이 고칠 ○○가 든 상자는 그대로 펴 둔다."""
     def rep(m):
         txt = re.sub(r'<[^>]+>', '', m.group(3))
-        if len(txt) < min_chars or '○○' in txt:
+        keep_open = '○○' in txt and 'data-copy="dfi"' not in m.group(1)   # 설치 상자(dfi)는 스킬 글 속에 ○○가 있어도 고칠 곳이 없으니 접는다
+        if len(txt) < min_chars or keep_open:
             return m.group(0)
         return m.group(1).replace('class="copy"', 'class="copy clip"', 1) + m.group(2) + m.group(3) + m.group(4) + '<button type="button" class="peek" aria-expanded="false">상자 글 전체 보기</button>'
     return re.sub(r'(<button class="copy"[^>]*>)(.*?<pre id="[^"]+">)(.*?)(</pre></button>)', rep, h, flags=re.S)
@@ -387,3 +388,5 @@ def df_red(name):
     '빨간펜 상자(설계서를 승인 전에 고치기)'
     return ('설계서를 이렇게 고칠게: ○○. 이유는 ○○. docs/design/%s_설계서.md를 고치고(고치기 전 판은 _v번호로), decisions.md에 "내가 정함"으로 한 줄 더한 뒤 바뀐 곳을 이전 → 지금으로 보여줘. 아직 만들지는 마. '
             '첫 문장에 ○○가 그대로 남아 있으면 아무것도 고치지 말고 "○○를 내 말로 바꿔 다시 보내요"라고만 말해줘.'%name)
+# 스킬 머리말 고치기(11/24 새벽): description이 큰따옴표로 시작하면 머리말이 읽히지 않아 한국어 한 줄로 안 불린다
+SKFIX='이 작업 폴더의 .claude/skills 아래 SKILL.md를 모두 열어, 맨 위 머리말의 description 값이 작은따옴표로 통째로 감싸져 있지 않으면 그렇게 감싸줘(값 안에 작은따옴표가 있으면 두 번 써). name과 본문, description의 글자는 바꾸지 마. 끝나면 고친 파일 이름과 고친 뒤의 description 줄만 보여줘. 고칠 것이 없으면 "고칠 것 없음"만 말해줘.'

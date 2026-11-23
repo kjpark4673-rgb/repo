@@ -23,10 +23,11 @@
 - 사진과 시안 PNG는 `day23_end`에서 줄인 그대로예요.
 - `CLAUDE.md`는 `_CLAUDE.md`, `.claude`는 `_claude`로 이름을 바꿔 뒀어요. `restore.sh`가 되돌려요.
 
-## 11/23에 더한 것 · 설계 먼저 스킬
+## 11/24 새벽에 다시 만듦 · "설계 먼저" 흐름
 
-- 네 폴더의 `_claude/skills/design-first/SKILL.md`에 학생용 스킬 원본(`classroom/student-kit/design-first/SKILL.md`)을 넣었어요. 11/24 설치 상자를 보낸 학생 폴더와 같아요.
-- 이 폴더들은 11/22에 "설계 먼저" 전의 Day 24 상자로 만든 것이라 `docs/design/aibutton_조사.md`가 없고, spec.md에 기능 태그·바꿀 파일·위험 칸이 없어요. 11/23 판 Day 24 상자로 돌린 폴더 모습은 `classroom/tests/design-first-test-results.md` 2차 표에 있어요. 11/27 상자가 이 칸들을 읽게 되면 Day 24의 P13-1·P13-2를 먼저 한 번 돌리고 시작해요.
+- 네 폴더를 `day23_end`에서 11/26 가이드(Version 4와 같은 상자)로 다시 돌려 만들었어요: P0 → (테크만 설계 먼저 설치, 나머지는 스킬 원본을 미리 넣음) → P13-1 현장 조사 → P13-2 설계서 → P14(계획 모드) → 계획 승인 → P15 → 내일 고칠 것(잘 모르겠으면) → (테크만 D 카드 서버 함수) → P16. 모두 끝까지 돌았고 네 화면 모두 `check_aibutton.js` 통과.
+- 그래서 폴더마다 `_claude/skills/design-first/SKILL.md`, `docs/design/aibutton_조사.md`, 기능 표시([필수]/[선택]/[빼도 됨])·바꿀 파일·위험 칸이 든 `spec.md`, `button_test_1126.md`, `tomorrow_1127.md`가 있어요. 테크에는 `site/`(index.html, api/check.js)와 `scripts/test_check.mjs`도 있어요.
+- 출발점이 옛 `day23_end`라 `weekly-research`·`weekly-create` 스킬의 머리말은 옛 꼴(큰따옴표로 시작)인 폴더가 있어요. 11/25 가이드의 "스킬 설명 줄 고치기" 상자를 보낸 학생을 흉내 내려면 되살린 뒤 그 상자를 한 번 보내요.
 
 ## 쓰는 법
 
