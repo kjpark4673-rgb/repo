@@ -23,6 +23,11 @@
 - 사진과 시안 PNG는 `day23_end`에서 줄인 그대로예요.
 - `CLAUDE.md`는 `_CLAUDE.md`, `.claude`는 `_claude`로 이름을 바꿔 뒀어요. `restore.sh`가 되돌려요.
 
+## 11/23에 더한 것 · 설계 먼저 스킬
+
+- 네 폴더의 `_claude/skills/design-first/SKILL.md`에 학생용 스킬 원본(`classroom/student-kit/design-first/SKILL.md`)을 넣었어요. 11/24 설치 상자를 보낸 학생 폴더와 같아요.
+- 이 폴더들은 11/22에 "설계 먼저" 전의 Day 24 상자로 만든 것이라 `docs/design/aibutton_조사.md`가 없고, spec.md에 기능 태그·바꿀 파일·위험 칸이 없어요. 11/23 판 Day 24 상자로 돌린 폴더 모습은 `classroom/tests/design-first-test-results.md` 2차 표에 있어요. 11/27 상자가 이 칸들을 읽게 되면 Day 24의 P13-1·P13-2를 먼저 한 번 돌리고 시작해요.
+
 ## 쓰는 법
 
 ```bash
