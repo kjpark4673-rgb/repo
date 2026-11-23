@@ -24,6 +24,11 @@
 - **사진:** `fx_md`의 사진은 강사님이 P9 그림 글로 만든 것을 줄인 것이고, 나머지 셋은 시험용 자리 사진(흐린 색 덩어리)이라 심사가 보류로 멈춘 상태예요. 다음 날 시험에서 "보류가 남은 학생"으로 쓰기 좋아요.
 - `CLAUDE.md`는 `_CLAUDE.md`, `.claude`는 `_claude`로 이름을 바꿔 뒀어요. `restore.sh`가 되돌려요.
 
+## 11/24 새벽에 더한 것 · 설계 먼저 스킬
+
+- 네 폴더의 `_claude/skills/design-first/SKILL.md`에 학생용 스킬 원본(`classroom/student-kit/design-first/SKILL.md`)을 넣었어요. 11/24 2교시 설치 상자를 보낸 학생 폴더와 같아요. 설치를 안 한 학생을 흉내 내려면 되살린 뒤 `.claude/skills/design-first`를 지워요.
+- 이 폴더들은 "설계 먼저" 전의 상자로 만든 것이라 `docs/design/`의 조사 보고서·설계서는 없어요(스킬 파일의 description도 옛 꼴). 새 상자로 돌린 모습은 `classroom/tests/design-first-test-results.md`에 있어요.
+
 ## 쓰는 법
 
 ```bash

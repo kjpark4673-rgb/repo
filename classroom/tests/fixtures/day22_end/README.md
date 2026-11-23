@@ -21,6 +21,11 @@
 
 `CLAUDE.md`는 `_CLAUDE.md`로, `.claude`는 `_claude`로 이름을 바꿔 뒀어요. 저장소 안에서 규칙 파일이나 스킬로 읽히지 않게 하려는 거예요. `restore.sh`가 원래 이름으로 되돌려요.
 
+## 11/24 새벽에 더한 것 · 설계 먼저 스킬
+
+- 네 폴더의 `_claude/skills/design-first/SKILL.md`에 학생용 스킬 원본(`classroom/student-kit/design-first/SKILL.md`)을 넣었어요. 11/24 2교시 설치 상자를 보낸 학생 폴더와 같아요. 설치를 안 한 학생을 흉내 내려면 되살린 뒤 `.claude/skills/design-first`를 지워요.
+- 이 폴더들은 "설계 먼저" 전의 상자로 만든 것이라 `docs/design/`의 조사 보고서·설계서는 없어요(스킬 파일의 description도 옛 꼴). 새 상자로 돌린 모습은 `classroom/tests/design-first-test-results.md`에 있어요.
+
 ## 쓰는 법
 
 ```bash
