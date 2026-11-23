@@ -175,7 +175,7 @@ EX_CARD = ('<div class="card" id="example"><h3>오늘 만들 결과물 · 한 �
   + shot('ex_ops_loop_now_d22.jpg', 'loop.html의 지금 내 루프 예시: 맨 위에 지난 점검 11/23 ✓ 2칸에서 오늘 ✓ 4칸, 올라간 칸 재료와 일', '예시 · P7 뒤 "지금 내 루프" (예시 교육센터). 맨 위 줄에 어제보다 올라간 칸이 적혀요') +
   '</div></details>'
   '<details class="more"><summary>SKILL.md와 run_log.md는 이렇게 생겼어요</summary><div class="body">'
-  '<p class="sub">SKILL.md 앞부분 (라라스윗 예시, 부르는 한 줄 "이번 주 리서치해줘")</p><div class="excode">---\nname: weekly-research\ndescription: "이번 주 리서치해줘", "이번 주 동향 리서치해줘"라고 하면 쓰는 스킬. 내 루프의 ① 리서치하기를 한국어 한 줄로 다시 돌려 research.csv와 run_log.md에 남긴다.\n---\n\n# 이번 주 리서치 (루프 ① 리서치하기)\n\n## 1. 먼저 읽기\n- loop.html의 ① 리서치하기 칸(하는 일·입력)과 decisions.md의 마지막 병목을 읽는다. 리서치할 것은 그 일에 맞춘다.\n- CLAUDE.md의 갈래(조사형/운영형)와 회사·제품·고객을 읽는다.\n…</div>'
+  '<p class="sub">SKILL.md 앞부분 (라라스윗 예시, 부르는 한 줄 "이번 주 리서치해줘")</p><div class="excode">---\nname: weekly-research\ndescription: \'"이번 주 리서치해줘", "이번 주 동향 리서치해줘"라고 하면 쓰는 스킬. 내 루프의 ① 리서치하기를 한국어 한 줄로 다시 돌려 research.csv와 run_log.md에 남긴다.\'\n---\n\n# 이번 주 리서치 (루프 ① 리서치하기)\n\n## 1. 먼저 읽기\n- loop.html의 ① 리서치하기 칸(하는 일·입력)과 decisions.md의 마지막 병목을 읽는다. 리서치할 것은 그 일에 맞춘다.\n- CLAUDE.md의 갈래(조사형/운영형)와 회사·제품·고객을 읽는다.\n…</div>'
   '<p class="sub">run_log.md 한 줄 (위: 라라스윗, 아래: 예시 교육센터. 예시를 미리 만들 때의 기록이라 날짜가 수업 날과 달라요)</p><div class="excode">- 2026-11-22 02:35 | 수동 1회 | research.csv 15줄 더함(NEW 15·바뀜 0·사라짐 0·확인 필요 0) | 못 찾음 6\n2026-11-24 02:22 | 수동 1회 | 운영형 | 더한 줄 0 (센 기록 73건: 최근 7일 11/15~11/21 26건, 앞 7일 11/08~11/14 24건) | 못 찾음 0</div>'
   '</div></details></div>\n')
 # 11/21 강사 지시 "업무 직무마다 병목 증상 20가지 추려서 추가해": 어제 못 온 학생이 B 상자 앞에서 보는 접힌 칸(목록은 guide_common.BN20)
