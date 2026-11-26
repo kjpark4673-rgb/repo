@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>컬리 새벽배송 경쟁사 동향</title>
+<style>
+:root{--bg:#fff;--fg:#1d1d1f;--mute:#6b6b70;--line:#e2e2e6;--accent:#5f0080;--warn:#fff4d6;--warnfg:#5c4300}
+@media (prefers-color-scheme:dark){:root{--bg:#161618;--fg:#f2f2f4;--mute:#a0a0a8;--line:#333338;--accent:#d9a3ee;--warn:#3a3016;--warnfg:#f3deaa}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Noto Sans KR",sans-serif;padding:0 16px 32px}
+.top{background:var(--warn);color:var(--warnfg);margin:0 -16px 16px;padding:10px 16px;font-size:14px;font-weight:600}
+h1{font-size:22px;margin:0 0 4px;color:var(--accent)}
+p.sub{margin:0 0 16px;color:var(--mute);font-size:14px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;min-width:720px;width:100%;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:rgba(127,127,127,.12);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+a{color:var(--accent)}
+.note{margin-top:16px;font-size:13px;color:var(--mute)}
+#ai-check{margin:0 0 16px;padding:12px;border:1px solid var(--line);border-radius:8px;box-sizing:border-box;width:100%;word-break:keep-all}
+#ai-check h2{font-size:17px;margin:0 0 4px;color:var(--accent)}
+#ai-check p{margin:0 0 8px;font-size:14px}
+#ai-check .aic-small{font-size:13px;color:var(--mute)}
+#ai-check textarea{display:block;width:100%;box-sizing:border-box;min-height:84px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;font-size:14px;resize:vertical}
+#ai-check .aic-btn{display:block;width:100%;min-height:44px;margin:8px 0;border:0;border-radius:6px;background:var(--accent);color:var(--bg);font:inherit;font-weight:700;cursor:pointer}
+#ai-check .aic-msg{min-height:20px;font-size:14px;font-weight:600}
+#ai-check details{margin-top:8px;font-size:13px}
+#ai-check details textarea{min-height:140px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="top">임시 화면(가정) · 따라잡기 원본 없이 만듦</div>
+<h1>컬리 새벽배송 경쟁사 동향</h1>
+<p class="sub">고객: 장 볼 시간이 없는 맞벌이 직장인 · 같은 고객을 두고 경쟁하는 5곳의 최근 소식 한 줄 · 조사일 2026-11-22</p>
+<section id="ai-check">
+<h2>AI 보내기 전 확인</h2>
+<p>주간 리포트의 요약 문장을 보내기 전에 붙이고 버튼을 누르면, AI에게 "기준대로 확인해 줘"라고 보낼 글이 복사돼요.</p>
+<textarea id="aic-text" rows="4" placeholder="2026-11-22 조사 기준, 경쟁 5곳의 최근 소식은 무료배송·세일 같은 구체적 혜택을 앞세운 곳이 많아요." aria-label="보내기 전의 글"></textarea>
+<button type="button" id="aic-copy" class="aic-btn">AI 확인 글 복사</button>
+<p id="aic-msg" class="aic-msg" role="status"></p>
+<p class="aic-small">복사한 글을 Claude나 ChatGPT 새 채팅에 붙여 넣으면 기준마다 ✓와 판정이 와요. <a href="https://claude.ai/new" target="_blank" rel="noopener">claude.ai 새 채팅 열기</a></p>
+<details id="aic-more"><summary>만들어진 글 펴 보기</summary>
+<textarea id="aic-out" readonly rows="8" aria-label="만들어진 글"></textarea>
+</details>
+</section>
+<div class="scroll">
+<table>
+<thead><tr><th>회사</th><th>종류</th><th>최근 소식 한 줄</th><th>날짜</th><th>조사일</th><th>출처</th></tr></thead>
+<tbody>
+<tr><td>쿠팡 로켓프레시</td><td>기사</td><td>올봄부터 지방 소도시 30여 곳에 새벽배송 도입(3월 안동·예천·영주부터)</td><td>2026-05-18 (기사일)</td><td>2026-11-22</td><td><a href="https://sports.khan.co.kr/article/202605180824003">경향신문 스포츠</a></td></tr>
+<tr><td>오아시스마켓</td><td>기사</td><td>토스쇼핑 안에 전용관을 열고 직매입 신선식품을 토스 앱에서 판매</td><td>2026-09-29 (기사일)</td><td>2026-11-22</td><td><a href="https://news.mtn.co.kr/news-detail/2026092916241550230">머니투데이방송</a></td></tr>
+<tr><td>SSG닷컴</td><td>기사</td><td>이마트 점포 기반 '2시간 배송'을 10월 중 전국 33곳으로 확대</td><td>2026-10-02 (페이지 표기)</td><td>2026-11-22</td><td><a href="https://www.insight.co.kr/news/575827">인사이트</a></td></tr>
+<tr><td>네이버 (N배송)</td><td>캠페인</td><td>컬리N마트 등 N배송 단골 혜택 강화</td><td>2026-01-06 (기사일)</td><td>2026-11-22</td><td><a href="https://www.ceoscoredaily.com/page/view/2026010609453370474">CEO스코어데일리</a></td></tr>
+<tr><td>홈플러스</td><td>기사</td><td>홈플러스 위기 속에 대형마트 새벽배송 허용 등 규제 완화 논의가 빨라짐</td><td>2026-08-03 (기사일)</td><td>2026-11-22</td><td><a href="https://www.khan.co.kr/article/202608031544001">경향신문</a></td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">날짜는 기사·페이지 표기 기준이며 원문에서 한 번 더 확인이 필요합니다. 신제품 소식과 수치는 못 찾음(이번 조사에서 확인한 것만 적음).</p>
+<script type="text/plain" id="aic-prompt">
+너는 꼼꼼한 검수 담당이야. 아래 글을 보내기 전에 기준대로 확인해 줘. 답은 한국어로 쉽게 써 줘.
+
+[회사·고객] 컬리 / 새벽배송 식료품 / 장 볼 시간이 없는 맞벌이 직장인
+
+[참고 자료]
+- 이번 주 패턴: 지금·오늘 첫 문장 / 이미지 한 장 / 구체적 혜택 자리
+- 고객에게 할 말: "퇴근하고 장 볼 시간 없어도, 밤에 담으면 아침에 문 앞에 와 있어요."
+
+[기준 여섯 개]
+① 첫 문장에 무엇의 요약인지(대상·조사 날짜)가 보인다.
+② 두 문장 안, 쉬운 말이라 폰에서 한눈에 읽힌다.
+③ 이번 주 패턴 가운데 하나가 보인다.
+④ 문구에 넣지 않는 말(최고·1위·100%·완벽·무조건·최저가·역대급·단독·완치·부작용 없음)과 경쟁사 이름, 효능을 암시하는 말(살 안 찌는·다이어트·체중·혈당·피부 재생 같은 것)이 없다.
+⑤ 숫자는 출처와 조사일이 글에 함께 있거나 숫자가 없고, 오늘만·품절 임박은 실제 행사가 적혀 있을 때만 있으며, 우리 행사 숫자는 [할인율](가정) 같은 자리 표시로 둔다.
+⑥ 컬리 이름은 글자로만 쓰고, 다른 회사 문구를 그대로 옮기지 않았고 실제 로고·포장 흉내가 없다.
+
+[답 모양]
+1. 잘된 점 한 줄을 먼저 써.
+2. 기준마다 "① ✓" 또는 "① 고칠 것: 한 줄"로 ①부터 ⑥까지 써.
+3. 고칠 것이 있으면 고친 글을 한 번 써.
+4. 마지막 줄은 셋 중 하나만 써: "판정: 보내도 돼요"(모두 ✓) / "판정: 고쳐서 다시"(글만 고치면 되는 것) / "판정: 보류(사람 확인)".
+- 보류가 먼저야: 출처 없는 숫자, 효능·건강을 암시하는 말, 실제 행사인지 모르는 기간·수량 한정(오늘만·품절 임박), [할인율](가정) 같은 자리 표시처럼 사람이 사실을 확인해야 하는 것이 하나라도 있으면 보류야.
+- 판정은 아래 붙여 준 글만 보고 정해. 네가 고친 글은 판정에 넣지 마.
+
+확인할 글:
+{{글}}
+</script>
+<script>
+(function () {
+  var txt = document.getElementById('aic-text');
+  var btn = document.getElementById('aic-copy');
+  var msg = document.getElementById('aic-msg');
+  var out = document.getElementById('aic-out');
+  var more = document.getElementById('aic-more');
+  var tpl = document.getElementById('aic-prompt');
+  if (!txt || !btn || !msg || !out || !more || !tpl) { return; }
+  var OK = '복사됐어요';
+
+  function show(t) { msg.textContent = t; }
+
+  function build(body) {
+    return tpl.textContent.replace(/^\n+|\n+$/g, '').split('{{글}}').join(body);
+  }
+
+  function selectOut() {
+    more.open = true;
+    out.focus();
+    out.select();
+    try { out.setSelectionRange(0, out.value.length); } catch (e) {}
+  }
+
+  function done() {
+    show(OK);
+    setTimeout(function () { if (msg.textContent === OK) { show(''); } }, 2000);
+  }
+
+  function fallback() {
+    selectOut();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    if (ok) { done(); } else { show('Ctrl+C(맥은 Cmd+C)로 복사해요'); }
+  }
+
+  btn.addEventListener('click', function () {
+    var body = txt.value.replace(/^\s+|\s+$/g, '');
+    if (!body) { show('확인할 글을 먼저 붙여요'); return; }
+    var full = build(body);
+    out.value = full;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(full).then(done, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+</script>
+</body>
+</html>

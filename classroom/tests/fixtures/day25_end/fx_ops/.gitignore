@@ -1,0 +1,5 @@
+.env
+.env.*
+node_modules
+공통광고_*
+따라잡기_*

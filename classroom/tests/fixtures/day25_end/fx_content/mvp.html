@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라네즈 수분 크림 경쟁사 동향</title>
+<style>
+:root{--bg:#f7f9fc;--fg:#1b2430;--card:#fff;--line:#d9e0ea;--warn:#fff3cd;--warnfg:#6b5200;--link:#0b5cd5}
+@media (prefers-color-scheme:dark){:root{--bg:#12171f;--fg:#e8edf4;--card:#1b222d;--line:#34404f;--warn:#4a3d10;--warnfg:#ffe9a6;--link:#7db3ff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 32px}
+.banner{background:var(--warn);color:var(--warnfg);padding:10px 16px;font-weight:600;font-size:14px;text-align:center}
+h1{font-size:20px;margin:20px 0 4px}
+.sub{font-size:14px;margin:0 0 16px;opacity:.85}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;min-width:640px;width:100%;font-size:14px}
+th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{white-space:nowrap}
+a{color:var(--link)}
+.note{font-size:13px;margin-top:12px;opacity:.85}
+</style>
+<style>
+#ai-check{margin:0 0 20px;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--card);word-break:keep-all}
+#ai-check .aic-title{font-size:17px;margin:0 0 4px}
+#ai-check .aic-lead{font-size:14px;margin:0 0 10px}
+#ai-check .aic-input{display:block;width:100%;min-height:110px;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;font-size:14px;resize:vertical}
+#ai-check .aic-btn{display:block;width:100%;margin:10px 0 6px;padding:12px;border:0;border-radius:6px;background:var(--link);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+#ai-check .aic-small{font-size:13px;margin:0;opacity:.9}
+#ai-check .aic-msg{font-size:13px;margin:6px 0 0;min-height:1.2em;color:var(--warnfg);background:var(--warn);border-radius:4px;padding:0 6px}
+#ai-check .aic-msg:empty{display:none}
+#ai-check .aic-ok{font-size:13px;margin:6px 0 0;font-weight:700}
+#ai-check details{margin-top:10px;font-size:13px}
+#ai-check .aic-out{display:block;width:100%;min-height:140px;margin-top:6px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;font-size:12px}
+#ai-check .aic-ver{font-size:12px;font-weight:400;opacity:.8}
+#ai-check .aic-label{display:block;font-size:14px;font-weight:700;margin:10px 0 6px}
+#ai-check .aic-facts{min-height:80px}
+#ai-check .aic-privacy{margin:6px 0 0}
+#ai-check .aic-changes ul{margin:6px 0 0;padding-left:18px;font-size:13px}
+#ai-check .aic-changes li{margin:4px 0}
+</style>
+</head>
+<body>
+<div class="banner">임시 화면(가정) · 따라잡기 원본 없이 만듦</div>
+<div class="wrap">
+<h1>라네즈 수분 크림 경쟁사 동향</h1>
+<p class="sub">고객: 건조함이 고민인 2030 직장인 · 경쟁 5곳은 (가정) · 최근 소식 한 줄씩 · 조사일 2026-11-22</p>
+<section id="ai-check">
+<h2 class="aic-title">AI 보내기 전 확인 <span class="aic-ver">v2 · 11/27</span></h2>
+<p class="aic-lead">콘텐츠 마케터가 광고 카피를 팀장에게 보내기 전에, 글을 붙이고 버튼 한 번으로 "기준대로 확인해 줘" 글을 복사해 AI 새 채팅에서 ✓·고칠 것·판정을 받아요. (가명만, 개인정보는 넣지 마세요)</p>
+<textarea id="aic-input" class="aic-input" placeholder="수분 크림, 어떻게 바르고 계세요?" aria-label="확인할 글"></textarea>
+<label class="aic-label" for="aic-facts">기준 사실(선택) · 글과 맞춰 볼 날짜·장소·수량을 붙여요</label>
+<textarea id="aic-facts" class="aic-input aic-facts" placeholder="일정표: 행사 종료일 12월 10일 (예시로 지은 사실)" aria-label="기준 사실(선택)"></textarea>
+<p class="aic-small aic-privacy">실제 사람 이름·연락처·출결은 붙이지 않아요.</p>
+<button type="button" id="aic-btn" class="aic-btn">AI 확인 글 복사</button>
+<p class="aic-small">복사한 글을 Claude나 ChatGPT 새 채팅에 붙여 넣으면 기준마다 ✓와 판정이 와요 · <a href="https://claude.ai/new" target="_blank" rel="noopener">claude.ai 새 채팅</a></p>
+<p id="aic-msg" class="aic-msg" role="status"></p>
+<p id="aic-ok" class="aic-ok" role="status"></p>
+<details id="aic-details"><summary>만들어진 글 펴 보기</summary>
+<textarea id="aic-out" class="aic-out" readonly aria-label="AI에게 보낼 글"></textarea>
+</details>
+<details class="aic-changes"><summary>바뀐 곳</summary>
+<ul>
+<li>복사 뒤 다음 할 일 안내 · 이전: "복사됐어요"가 2초 뒤 사라지고 폰에서도 Ctrl+C 안내 → 지금: 다음 할 일 안내가 다음 복사 때까지 남고, 폰은 "글을 길게 눌러 복사하세요" (왜: button_test_1126.md "사람이 확인할 것" 둘째 줄)</li>
+<li>기준 사실(선택) 칸 · 이전: 붙이는 칸 한 개 → 지금: 기준 사실 칸을 더하고, 글 틀에 사실 자리 줄과 판정 규칙 추가 (왜: 내가 정함)</li>
+</ul>
+</details>
+<script type="text/plain" id="aic-prompt">
+너는 꼼꼼한 검수 담당이다. 아래 기준대로 내가 보내기 전의 광고 카피를 확인해 줘.
+
+[회사·고객]
+라네즈 수분 크림 / 건조함이 고민인 2030 직장인
+
+[참고 자료]
+1. 이번 주 패턴: 영상 형식 · 가격 할인·특가 제안([할인율](가정) 자리만) · "자세히 보기"형 행동 버튼
+2. 이번 주 고객에게 할 말: "히터 바람 부는 겨울 사무실, 수분 크림으로 챙기는 내 보습 루틴"
+3. 우리 행사 숫자(할인율·기간)는 기준 사실에 있으면 그 값과 맞춰 보고, 기준 사실이 없으면 [할인율](가정)처럼 자리 표시만 쓰고 사람이 확인한다.
+
+[기준 여섯 개]
+① 첫 문장에서 무엇을 파는지(수분 크림)가 보인다. 누구에게 하는 말인지는 글에 따로 적혀 있지 않아도 되고, 위 고객과 어긋나지만 않으면 된다.
+② 헤드라인이 짧은 한 줄 한 가지 말이고, 광고 피드에 섞여도 어색하지 않은 말투다(과장 표현·금지어는 ④에서만 본다).
+③ 이번 주 패턴(영상 형식 / 가격 할인·특가 / "자세히 보기" 버튼) 가운데 하나가 글에 보인다.
+④ 문구에 넣지 않는 말(최고·1위·100%·완벽·무조건·최저가·역대급·단독·완치·부작용 없음), 경쟁사 이름, 효능을 암시하는 말(살 안 찌는·다이어트·체중·혈당·피부 재생 같은 것)이 없다.
+⑤ 출처 없는 숫자가 없고, 우리 행사 숫자는 기준 사실에 있으면 그 값과 맞고, 없으면 [할인율](가정)처럼 자리 표시만 있으며, 실제 행사 확인 전의 "오늘만·품절 임박" 같은 기간·수량 한정이 없다. 기준 사실이 있으면 글의 날짜·시간·장소·수량·가격이 기준 사실과 같은지 본다.
+⑥ 회사 이름 "라네즈"가 글자로 있고, 지어낸 후기·전후 비교·다른 회사 문구 그대로 옮김이 없다.
+
+[판정 규칙 (보류가 먼저)]
+1. 글의 날짜·시간·장소·수량·가격이 기준 사실에 있고 같으면 ✓. 기준 사실은 사람이 붙여 넣은 값이라 출처가 있는 것으로 본다. 기준 사실 안의 설명 표시(예: "예시로 지은 사실")는 값 판단에 쓰지 않는다.
+2. 기준 사실과 다르면 "고칠 것: 글의 값 → 기준 사실의 값"으로 적고, 판정은 "고쳐서 다시".
+3. 기준 사실에 없는 숫자·기간이나 수량 한정·효능은 "보류(사람 확인)". 기준 사실이 (없음)이면 모두 이 기준으로 본다.
+보류 사유가 하나라도 있으면 판정은 보류가 먼저다.
+
+[답 모양]
+1. 잘된 점 한 줄을 맨 먼저 쓴다.
+2. 기준마다 한 줄: "① ✓" 또는 "① 고칠 것: 한 줄" (①~⑥).
+3. 고칠 것이 있으면 고친 글을 한 번 보여 준다(없으면 생략).
+4. 마지막 줄은 판정 셋 가운데 하나만 쓴다:
+ - "판정: 보내도 돼요" — 여섯 개 모두 ✓
+ - "판정: 고쳐서 다시" — 글만 고치면 되는 것만 있을 때 (기준 사실과 다른 값 포함)
+ - "판정: 보류(사람 확인)" — 출처 없는 숫자, 효능·건강을 암시하는 말, 실제 행사인지 모르는 기간·수량 한정(오늘만·품절 임박), [할인율](가정) 같은 자리 표시처럼 사람이 사실을 확인해야 하는 것이 하나라도 있으면. 이것이 먼저다.
+5. 판정은 내가 붙인 글과 기준 사실만 보고 정한다(네가 고친 글은 판정에 넣지 않는다).
+
+기준 사실:
+{{사실}}
+
+확인할 글:
+{{글}}
+</script>
+<script>
+(function aicInit(){
+var inputEl=document.getElementById('aic-input');
+var factsEl=document.getElementById('aic-facts');
+var btnEl=document.getElementById('aic-btn');
+var msgEl=document.getElementById('aic-msg');
+var okEl=document.getElementById('aic-ok');
+var outEl=document.getElementById('aic-out');
+var boxEl=document.getElementById('aic-details');
+var tplEl=document.getElementById('aic-prompt');
+if(!inputEl||!factsEl||!btnEl||!tplEl){return;}
+var OK_TEXT='복사됐어요. 다음: claude.ai 새 채팅에 붙여 넣으세요';
+function isTouch(){
+try{return window.matchMedia('(pointer:coarse)').matches;}catch(e){return false;}
+}
+function showOk(){
+okEl.textContent=OK_TEXT;
+}
+function selectOut(){
+boxEl.open=true;
+outEl.focus();
+outEl.select();
+try{outEl.setSelectionRange(0,outEl.value.length);}catch(e){}
+}
+function fallbackCopy(){
+selectOut();
+var done=false;
+try{done=document.execCommand('copy');}catch(e){done=false;}
+if(done){msgEl.textContent='';showOk();}
+else{msgEl.textContent=isTouch()?'글을 길게 눌러 복사하세요':'Ctrl+C(맥은 Cmd+C)로 복사해 주세요';}
+}
+function makeText(){
+var text=inputEl.value;
+var facts=factsEl.value.replace(/\s/g,'')?factsEl.value:'(없음)';
+var pieces=tplEl.textContent.replace(/^\n/,'').split(/(\{\{글\}\}|\{\{사실\}\})/);
+return pieces.map(function(p){
+if(p==='{{글}}'){return text;}
+if(p==='{{사실}}'){return facts;}
+return p;
+}).join('');
+}
+btnEl.addEventListener('click',function(){
+var text=inputEl.value;
+okEl.textContent='';
+if(!text.replace(/\s/g,'')){
+msgEl.textContent='확인할 글을 먼저 붙여요';
+return;
+}
+msgEl.textContent='';
+var full=makeText();
+outEl.value=full;
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(full).then(showOk,fallbackCopy);
+}else{
+fallbackCopy();
+}
+});
+})();
+</script>
+</section>
+
+<div class="scroll" tabindex="0">
+<table>
+<thead><tr><th>회사</th><th>최근 소식 (신제품·캠페인·기사)</th><th>날짜</th><th>조사일</th><th>출처</th></tr></thead>
+<tbody>
+<tr><td>이니스프리</td><td>그린티 씨드 히알루론산 크림 마키토이 에디션 출시, 패키지 35% 할인 프로모션</td><td>6월 1일~15일 프로모션(연도 못 찾음)</td><td>2026-11-22</td><td>못 찾음</td></tr>
+<tr><td>에스트라</td><td>아토베리어365 하이드로 수딩크림 출시(올리브영 먼저 판매)</td><td>2026-05</td><td>2026-11-22</td><td><a href="https://www.apgroup.com/int/ko/news/2026-05-21-2.html" target="_blank" rel="noopener">아모레퍼시픽 뉴스</a></td></tr>
+<tr><td>닥터지</td><td>배우 변우석을 새 글로벌 모델로 발탁</td><td>못 찾음</td><td>2026-11-22</td><td><a href="https://www.wikitree.co.kr/articles/1119844" target="_blank" rel="noopener">위키트리</a></td></tr>
+<tr><td>일리윤</td><td>몬치치 협업 세라마이드 아토 집중크림 150ml 2입 기획세트</td><td>2026-03-27 (자사몰 판매 시작)</td><td>2026-11-22</td><td><a href="https://www.apgroup.com/int/ko/news/2026-03-27-2.html" target="_blank" rel="noopener">아모레퍼시픽 뉴스</a></td></tr>
+<tr><td>토리든</td><td>다이브인 인텐시브 3종(크림 등) 출시, 판테놀 5% 함유</td><td>못 찾음 (기사에 "9월 21일"만, 연도 미확인)</td><td>2026-11-22</td><td><a href="https://www.wikitree.co.kr/articles/1160956" target="_blank" rel="noopener">위키트리</a></td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">못 찾은 칸은 "못 찾음"으로 두었어요. 기사 날짜 표기가 서로 달라 정확한 날짜는 공식 발표로 다시 확인이 필요해요.</p>
+</div>
+</body>
+</html>
