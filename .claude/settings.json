@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(git add -f:*)",
+      "Bash(git add --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push --force:*)"
+    ],
+    "ask": [
+      "Edit(./.claude/settings.json)",
+      "Write(./.claude/settings.json)",
+      "Edit(./classroom/tools/privacy_check.py)",
+      "Write(./classroom/tools/privacy_check.py)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/classroom/tools/privacy_check.py\" --hook",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
